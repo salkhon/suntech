@@ -20,7 +20,9 @@ def create_app(config_cls=Config) -> Flask:
     mail.init_app(app)
 
     from startechlite.main.routes import main
+    from startechlite.products.routes import products
 
     app.register_blueprint(main)
+    app.register_blueprint(products)
 
     return app
