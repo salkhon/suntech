@@ -14,6 +14,7 @@ mail = flask_mail.Mail()
 
 breadcrumbs = flask_breadcrumbs.Breadcrumbs()
 
+
 def create_app(config_cls=Config) -> Flask:
     app = Flask(__name__)
     app.config.from_object(config_cls)

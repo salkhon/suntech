@@ -17,8 +17,9 @@ def get_components() -> str:
     items = [Item("item", "#", ["prop1: prop"])] * 43
     # TODO:
     # pagination needs to be done inside datamanager, that returns the sliced query
-    # along with the pagination object. 
-    pagination = flask_paginate.Pagination(page=page, total=len(items), per_page=10)
+    # along with the pagination object.
+    pagination = flask_paginate.Pagination(
+        page=page, total=len(items), per_page=10)
     print(pagination.alignment)
     print(pagination.info)
     return flask.render_template("products.html", items=items, pagination=pagination, topbar_title="Component")

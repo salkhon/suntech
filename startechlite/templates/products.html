@@ -1,21 +1,5 @@
-{% extends "layout.html" %} {% block breadcrumbs %}
-<section class="after-header p-tb-10">
-	<div class="container">
-		<ul class="breadcrumb" itemscope="" itemtype="">
-			<li>
-				<a href="http://localhost:5000"
-					><i class="material-icons" title="Home">home</i></a
-				>
-			</li>
-			{% for breadcrumb in breadcrumbs %}
-			<li>
-				<a href="{{ breadcrumb.url }}"> {{ breadcrumb.text }} </a>
-			</li>
-			{% endfor %}
-		</ul>
-	</div>
-</section>
-{% endblock breadcrumbs %} {% block content %}
+{% extends "layout_with_breadcrumbs.html" %} 
+{% block content %}
 <section class="p-item-page bg-bt-gray p-tb-15">
 	<div class="container">
 		<div class="row">
@@ -137,11 +121,9 @@
 							</label>
 						</div>
 					</div>
-					{% block morefilters %}
-					{% for i in range(5) %}
+					{% block morefilters %} {% for i in range(5) %}
 					<p>More filters</p>
-					{% endfor %}
-					{% endblock %}
+					{% endfor %} {% endblock %}
 				</div>
 				<div class="clear ads ads-pos-2" data-position="2"></div>
 			</column>
@@ -152,7 +134,9 @@
 							<button class="tool-btn" id="lc-toggle">
 								<i class="material-icons">filter_list</i> Filter
 							</button>
-							<h6 class="page-heading m-hide">{{ topbar_title }}</h6>
+							<h6 class="page-heading m-hide">
+								{{ topbar_title }}
+							</h6>
 						</div>
 						<div class="col-sm-8 col-xs-10 show-sort">
 							<div class="form-group rs-none">
@@ -191,8 +175,7 @@
 					<div class="p-item">
 						<div class="p-item-inner">
 							<div class="p-item-img">
-								<a
-									href="{{ item.img_url }}"
+								<a href="{{ item.img_url }}"
 									><img
 										src="#"
 										alt="{{ item.title }}"
@@ -202,14 +185,12 @@
 							</div>
 							<div class="p-item-details">
 								<h4 class="p-item-name">
-									<a
-										href="#"
-										>{{ item.title }}</a
-									>
+									<a href="#">{{ item.title }}</a>
 								</h4>
 								<div class="short-description">
 									<ul>
-										{% for short_desc in item.short_descriptions %}
+										{% for short_desc in
+										item.short_descriptions %}
 										<li>{{ short_desc }}</li>
 										{% endfor %}
 									</ul>
@@ -239,23 +220,24 @@
 						</div>
 					</div>
 					{% endfor %}
-				<div class="bottom-bar">
-					<div class="row">
-						<div class="col-md-6 col-sm-12">
-							{{ pagination.links }}
+					<div class="bottom-bar">
+						<div class="row">
+							<div class="col-md-6 col-sm-12">
+								{{ pagination.links }}
+							</div>
+							<div class="col-md-6 rs-none text-right">
+								{{ pagination.info }}
+							</div>
+							<script>
+								// removing next, previous, current labels on the pagination
+								paginationTextLabels =
+									document.querySelectorAll("span.sr-only");
+								for (span of paginationTextLabels) {
+									span.remove();
+								}
+							</script>
 						</div>
-						<div class="col-md-6 rs-none text-right">
-							{{ pagination.info }}
-						</div>
-						<script>
-							// removing next, previous, current labels on the pagination
-							paginationTextLabels = document.querySelectorAll('span.sr-only');
-							for (span of paginationTextLabels) {
-								span.remove();
-							}
-						</script>
 					</div>
-				</div>
 				</div>
 			</div>
 		</div>

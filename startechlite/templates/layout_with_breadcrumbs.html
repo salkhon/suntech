@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block breadcrumbs %}
+<section class="after-header p-tb-10">
+	<div class="container">
+		<ul class="breadcrumb" itemscope="" itemtype="">
+			<li>
+				<a href="http://localhost:5000"
+					><i class="material-icons" title="Home">home</i></a
+				>
+			</li>
+            {% for breadcrumb in breadcrumbs %}
+                <li>
+                    <a href="{{ breadcrumb.url }}"> {{ breadcrumb.text }} </a>
+                </li>
+            {% endfor %}
+		</ul>
+	</div>
+</section>
+{% endblock breadcrumbs %}
