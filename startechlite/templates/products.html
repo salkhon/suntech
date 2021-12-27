@@ -1,10 +1,264 @@
-{% extends "layout.html" %}
-{% block content %}
-<ul>
-    {% for item in items %}
-        <li>
-            <h2>{{item}}</h2>
-        </li>
-    {% endfor %}
-</ul>
+{% extends "layout.html" %} {% block breadcrumbs %}
+<section class="after-header p-tb-10">
+	<div class="container">
+		<ul class="breadcrumb" itemscope="" itemtype="">
+			<li>
+				<a href="http://localhost:5000"
+					><i class="material-icons" title="Home">home</i></a
+				>
+			</li>
+			{% for breadcrumb in breadcrumbs %}
+			<li>
+				<a href="{{ breadcrumb.url }}"> {{ breadcrumb.text }} </a>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+</section>
+{% endblock breadcrumbs %} {% block content %}
+<section class="p-item-page bg-bt-gray p-tb-15">
+	<div class="container">
+		<div class="row">
+			<column id="column-left" class="col-sm-3">
+				<span class="lc-close"
+					><i class="material-icons" aria-hidden="true"
+						>close</i
+					></span
+				>
+				<div class="filters">
+					<div class="price-filter ws-box">
+						<div class="label">
+							<span>Price Range</span>
+						</div>
+						<div class="pf-wrap">
+							<div
+								id="rang-slider"
+								class="noUi-horizontal noUi-target noUi-ltr"
+								data-from="0"
+								data-to="290000"
+								data-min="0"
+								data-max="290000"
+							>
+								<div class="noUi-base">
+									<div class="noUi-connects">
+										<div
+											class="noUi-connect"
+											style="
+												transform: translate(0%, 0px)
+													scale(1, 1);
+											"
+										></div>
+									</div>
+									<div
+										class="noUi-origin"
+										style="
+											transform: translate(-100%, 0px);
+											z-index: 5;
+										"
+									>
+										<div
+											class="
+												noUi-handle noUi-handle-lower
+											"
+											data-handle="0"
+											tabindex="0"
+											role="slider"
+											aria-orientation="horizontal"
+											aria-valuemin="0.0"
+											aria-valuemax="100.0"
+											aria-valuenow="0.0"
+											aria-valuetext="0.00"
+											title="Lower Handle"
+										></div>
+									</div>
+									<div
+										class="noUi-origin"
+										style="
+											transform: translate(0%, 0px);
+											z-index: 4;
+										"
+									>
+										<div
+											class="
+												noUi-handle noUi-handle-upper
+											"
+											data-handle="1"
+											tabindex="0"
+											role="slider"
+											aria-orientation="horizontal"
+											aria-valuemin="0.0"
+											aria-valuemax="100.0"
+											aria-valuenow="100.0"
+											aria-valuetext="290000.00"
+											title="Upper Handle"
+										></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<label class="range-label from"
+							><input type="text" id="range-to" name="from"
+						/></label>
+						<label class="range-label to"
+							><input type="text" id="range-from" name="to"
+						/></label>
+					</div>
+					<div
+						class="filter-group ws-box show"
+						data-group-type="status"
+					>
+						<div class="label">
+							<span>Availability</span>
+						</div>
+						<div class="items">
+							<label class="filter">
+								<input
+									type="checkbox"
+									name="status"
+									value="7"
+								/>
+								<span>In Stock</span>
+							</label>
+							<label class="filter">
+								<input
+									type="checkbox"
+									name="status"
+									value="8"
+								/>
+								<span>Pre Order</span>
+							</label>
+							<label class="filter">
+								<input
+									type="checkbox"
+									name="status"
+									value="9"
+								/>
+								<span>Up Coming</span>
+							</label>
+						</div>
+					</div>
+					{% block morefilters %}
+					{% for i in range(5) %}
+					<p>More filters</p>
+					{% endfor %}
+					{% endblock %}
+				</div>
+				<div class="clear ads ads-pos-2" data-position="2"></div>
+			</column>
+			<div id="content" class="col-xs-12 col-md-9 product-listing">
+				<div class="top-bar ws-box">
+					<div class="row">
+						<div class="col-sm-4 col-xs-2 actions">
+							<button class="tool-btn" id="lc-toggle">
+								<i class="material-icons">filter_list</i> Filter
+							</button>
+							<h6 class="page-heading m-hide">{{ topbar_title }}</h6>
+						</div>
+						<div class="col-sm-8 col-xs-10 show-sort">
+							<div class="form-group rs-none">
+								<label>Show:</label>
+								<div class="custom-select">
+									<select id="input-limit">
+										<option value="20" selected="selected">
+											20
+										</option>
+										<option value="24">24</option>
+										<option value="48">48</option>
+										<option value="75">75</option>
+										<option value="90">90</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label>Sort By:</label>
+								<div class="custom-select">
+									<select id="input-sort">
+										<option value="">Default</option>
+										<option value="p.price-ASC">
+											Price (Low &gt; High)
+										</option>
+										<option value="p.price-DESC">
+											Price (High &gt; Low)
+										</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="main-content p-items-wrap">
+					{% for item in items %}
+					<div class="p-item">
+						<div class="p-item-inner">
+							<div class="p-item-img">
+								<a
+									href="{{ item.img_url }}"
+									><img
+										src="#"
+										alt="{{ item.title }}"
+										width="228"
+										height="228"
+								/></a>
+							</div>
+							<div class="p-item-details">
+								<h4 class="p-item-name">
+									<a
+										href="#"
+										>{{ item.title }}</a
+									>
+								</h4>
+								<div class="short-description">
+									<ul>
+										{% for short_desc in item.short_descriptions %}
+										<li>{{ short_desc }}</li>
+										{% endfor %}
+									</ul>
+								</div>
+								<div class="p-item-price">
+									<span>{{ item.price }}৳</span>
+								</div>
+								<div class="actions">
+									<span
+										class="st-btn btn-add-cart"
+										type="button"
+										onclick="cart.add('13593', '1');"
+										><i class="material-icons"
+											>shopping_cart</i
+										>
+										Buy Now</span
+									>
+									<span
+										class="st-btn btn-compare"
+										onclick="compare.add('13593');"
+										><i class="material-icons"
+											>library_add</i
+										>Add to Compare</span
+									>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				<div class="bottom-bar">
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							{{ pagination.links }}
+						</div>
+						<div class="col-md-6 rs-none text-right">
+							{{ pagination.info }}
+						</div>
+						<script>
+							// removing next, previous, current labels on the pagination
+							paginationTextLabels = document.querySelectorAll('span.sr-only');
+							for (span of paginationTextLabels) {
+								span.remove();
+							}
+						</script>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 {% endblock content %}

@@ -3535,19 +3535,21 @@ p.brand-index strong {
 	display: block;
 	border-radius: 4px;
 }
-.pagination li span.disabled {
+.pagination li.disabled span {
 	color: #666;
 	cursor: default;
 }
-.pagination li.active span {
+.pagination li.active a {
 	background-color: #ef4a23;
 	color: #ffffff;
 }
-.pagination li:hover a {
+.pagination li:hover a,
+.pagination li:not(.disabled):hover span {
 	background-color: #ef4a23;
 	color: #fff;
 	font-weight: bold;
 }
+
 .bottom-bar p {
 	font-size: 14px;
 	line-height: 34px;

@@ -3,6 +3,7 @@ import flask_bcrypt
 import flask_login
 import flask_mail
 from startechlite.config import Config
+import flask_breadcrumbs
 
 bcrypt = flask_bcrypt.Bcrypt()
 
@@ -11,6 +12,8 @@ bcrypt = flask_bcrypt.Bcrypt()
 
 mail = flask_mail.Mail()
 
+breadcrumbs = flask_breadcrumbs.Breadcrumbs()
+
 def create_app(config_cls=Config) -> Flask:
     app = Flask(__name__)
     app.config.from_object(config_cls)
@@ -18,11 +21,12 @@ def create_app(config_cls=Config) -> Flask:
     bcrypt.init_app(app)
     # login_manager.init_app(app)
     mail.init_app(app)
+    breadcrumbs.init_app(app)
 
     from startechlite.main.routes import main
-    from startechlite.products.routes import products
+    from startechlite.component.routes import component
 
     app.register_blueprint(main)
-    app.register_blueprint(products)
+    app.register_blueprint(component)
 
     return app

@@ -15,15 +15,8 @@
 		/>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<link
-			href="/static/img/logo.png"
-			rel="icon"
-		/>
-		<link
-			href="/static/main.css"
-			rel="stylesheet"
-		/>
-		
+		<link href="/static/img/logo.png" rel="icon" />
+		<link href="/static/main.css" rel="stylesheet" />
 	</head>
 
 	<body>
@@ -891,28 +884,28 @@
 						<li class="nav-item has-child c-1">
 							<a
 								class="nav-link"
-								href="https://www.startech.com.bd/component"
+								href="{{ url_for('component.get_components') }}"
 								>Component</a
 							>
 							<ul class="drop-down drop-menu-1">
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="https://www.startech.com.bd/component/processor"
+										href="{{ url_for('component.processors') }}"
 										>Processor</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/component/processor/amd-processor"
+												href="{{ url_for('component.specific_processors', brand='amd-processor') }}"
 												>AMD</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/component/processor/intel-processor"
+												href="{{ url_for('component.specific_processors', brand='intel-processor') }}"
 												>Intel</a
 											>
 										</li>
@@ -2308,7 +2301,7 @@
 								</li>
 								<li>
 									<a
-										href="https://www.startech.com.bd/component"
+										href="{{ url_for('component.get_components') }}"
 										class="see-all"
 										>Show All Component</a
 									>
@@ -6479,100 +6472,209 @@
 		<div class="drawer m-cart" id="m-cart">
 			<div class="title">
 				<p>YOUR CART</p>
-				<span class="mc-toggler loaded"><i class="material-icons">close</i></span>
+				<span class="mc-toggler loaded"
+					><i class="material-icons">close</i></span
+				>
 			</div>
 			<div class="content">
-						<div class="empty-content">
+				<div class="empty-content">
 					<p class="text-center">Your shopping cart is empty!</p>
 				</div>
-					</div>
+			</div>
 			<div class="footer">
 				<div class="promotion-code">
 					<div class="input-group">
-						<input type="text" placeholder="Promo Code" id="input-cart-coupon">
-						<span class="input-group-btn"><button data-target="#input-cart-coupon" class="btn button-coupon" type="submit">Apply</button></span>
+						<input
+							type="text"
+							placeholder="Promo Code"
+							id="input-cart-coupon"
+						/>
+						<span class="input-group-btn"
+							><button
+								data-target="#input-cart-coupon"
+								class="btn button-coupon"
+								type="submit"
+							>
+								Apply
+							</button></span
+						>
 					</div>
 				</div>
-						<div class="total">
+				<div class="total">
 					<div class="title">Sub-Total</div>
 					<div class="amount">0৳</div>
 				</div>
-						<div class="total">
+				<div class="total">
 					<div class="title">Total</div>
 					<div class="amount">0৳</div>
 				</div>
+			</div>
+		</div>
+
+		{% block breadcrumbs %} {% endblock breadcrumbs %}
+
+		<div class="bg-gry content p-tb-20">
+			{% block content %} {% endblock content %}
+		</div>
+
+		<footer>
+			<div class="container">
+				<div class="main-footer">
+					<div class="footer-block contact-us">
+						<h4>Support</h4>
+
+						<a
+							href="tel:09678002003"
+							class="helpline-btn footer-big-btn"
+						>
+							<div class="ic">
+								<i class="material-icons">phone</i>
 							</div>
-		</div>
+							<p>9AM - 8PM</p>
+							<h5>09678002003</h5>
+						</a>
 
-		<div class="bg-gry content p-tb-30">
-			{% block content %}
-			{% endblock %}
-		</div>
+						<a
+							href="https://www.startech.com.bd/information/contact"
+							class="store-locator-btn footer-big-btn"
+						>
+							<div class="ic">
+								<i class="material-icons">place</i>
+							</div>
+							<p>Store Locator</p>
+							<h5>Find Our Stores</h5>
+						</a>
+					</div>
 
-        <footer>
-            <div class="container">
-                <div class="main-footer">
-        
-                    <div class="footer-block contact-us">
-                        <h4>Support</h4>
-        
-                        <a href="tel:09678002003" class="helpline-btn footer-big-btn">
-                            <div class="ic"><i class="material-icons">phone</i></div>
-                            <p>9AM - 8PM</p>
-                            <h5>09678002003</h5>
-                        </a>
-        
-                        <a href="https://www.startech.com.bd/information/contact" class="store-locator-btn footer-big-btn">
-                            <div class="ic"><i class="material-icons">place</i></div>
-                            <p>Store Locator</p>
-                            <h5>Find Our Stores</h5>
-                        </a>
-                    </div>
-        
-                    <div class="footer-block about-us">
-                        <h4>About Us</h4>
-                        <ul>
-                                                <li><a href="https://www.startech.com.bd/emi-terms">EMI Terms</a></li>
-                                                <li><a href="https://www.startech.com.bd/about_us">About Us</a></li>
-                                                <li><a href="https://www.startech.com.bd/online-delivery">Online Delivery</a></li>
-                                                <li><a href="https://www.startech.com.bd/privacy">Privacy Policy</a></li>
-                                                <li><a href="https://www.startech.com.bd/warranty-policy">Terms and Conditions</a></li>
-                                                <li><a href="https://www.startech.com.bd/refund-policy">Refund and Return Policy</a></li>
-                                                <li><a href="https://www.startech.com.bd/career">Career</a></li>
-                                                <li><a href="https://www.startech.com.bd/star-point-policy">Star Point Policy</a></li>
-                                                <li><a href="https://www.startech.com.bd/blog">Blog</a></li>
-                            <li><a href="https://www.startech.com.bd/information/contact">Contact Us</a></li>
-                            <li><a href="https://www.startech.com.bd/product/manufacturer">Brands</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-block org-info">
-                        <h4>Stay Connected</h4>
-                        <p><b class="store-name">Star Tech &amp; Engineering Ltd</b><br>6th floor, 28 Kazi Nazrul Islam Ave,Navana Zohura Square, Dhaka 1000</p>
-                        <p><b>Email:</b><br><a href="mailto:info.webteam@startechbd.com">info.webteam@startechbd.com</a> </p>
-        
-                        <p class="social-links">
-                            <a href="https://www.facebook.com/star.tech.ltd/" target="_blank" rel="noopener" title="Facebook">
-                                <span class="icon-sprite fb"></span>
-                            </a>
-                            <a href="https://www.youtube.com/channel/UC-SDF_4DM3unoP7JeAodz2g" target="_blank" rel="noopener" title="Youtube">
-                                <span class="icon-sprite youtube"></span>
-                            </a>
-                            <a href="https://www.instagram.com/startech.com.bd/" target="_blank" rel="noopener" title="Instagram">
-                                <span class="icon-sprite insta"></span>
-                            </a>
-                        </p>
-        
-                    </div>
-                </div>
-                <div class="row sub-footer">
-                    <div class="col-md-6 copyright-info">
-                        <p>© 2020 Star Tech &amp; Engineering Ltd | All rights reserved</p>
-                    </div>
-                    <div class="col-md-6 powered-by">
-                        <p>Powered By: <a href="https://soft.startech.com.bd/" target="_blank" rel="noopener">Star Soft</a> </p>
-                    </div>
-                </div>
-            </div>
-        </footer>
+					<div class="footer-block about-us">
+						<h4>About Us</h4>
+						<ul>
+							<li>
+								<a href="https://www.startech.com.bd/emi-terms"
+									>EMI Terms</a
+								>
+							</li>
+							<li>
+								<a href="https://www.startech.com.bd/about_us"
+									>About Us</a
+								>
+							</li>
+							<li>
+								<a
+									href="https://www.startech.com.bd/online-delivery"
+									>Online Delivery</a
+								>
+							</li>
+							<li>
+								<a href="https://www.startech.com.bd/privacy"
+									>Privacy Policy</a
+								>
+							</li>
+							<li>
+								<a
+									href="https://www.startech.com.bd/warranty-policy"
+									>Terms and Conditions</a
+								>
+							</li>
+							<li>
+								<a
+									href="https://www.startech.com.bd/refund-policy"
+									>Refund and Return Policy</a
+								>
+							</li>
+							<li>
+								<a href="https://www.startech.com.bd/career"
+									>Career</a
+								>
+							</li>
+							<li>
+								<a
+									href="https://www.startech.com.bd/star-point-policy"
+									>Star Point Policy</a
+								>
+							</li>
+							<li>
+								<a href="https://www.startech.com.bd/blog"
+									>Blog</a
+								>
+							</li>
+							<li>
+								<a
+									href="https://www.startech.com.bd/information/contact"
+									>Contact Us</a
+								>
+							</li>
+							<li>
+								<a
+									href="https://www.startech.com.bd/product/manufacturer"
+									>Brands</a
+								>
+							</li>
+						</ul>
+					</div>
+					<div class="footer-block org-info">
+						<h4>Stay Connected</h4>
+						<p>
+							<b class="store-name"
+								>Star Tech &amp; Engineering Ltd</b
+							><br />6th floor, 28 Kazi Nazrul Islam Ave,Navana
+							Zohura Square, Dhaka 1000
+						</p>
+						<p>
+							<b>Email:</b><br /><a
+								href="mailto:info.webteam@startechbd.com"
+								>info.webteam@startechbd.com</a
+							>
+						</p>
+
+						<p class="social-links">
+							<a
+								href="https://www.facebook.com/star.tech.ltd/"
+								target="_blank"
+								rel="noopener"
+								title="Facebook"
+							>
+								<span class="icon-sprite fb"></span>
+							</a>
+							<a
+								href="https://www.youtube.com/channel/UC-SDF_4DM3unoP7JeAodz2g"
+								target="_blank"
+								rel="noopener"
+								title="Youtube"
+							>
+								<span class="icon-sprite youtube"></span>
+							</a>
+							<a
+								href="https://www.instagram.com/startech.com.bd/"
+								target="_blank"
+								rel="noopener"
+								title="Instagram"
+							>
+								<span class="icon-sprite insta"></span>
+							</a>
+						</p>
+					</div>
+				</div>
+				<div class="row sub-footer">
+					<div class="col-md-6 copyright-info">
+						<p>
+							© 2020 Star Tech &amp; Engineering Ltd | All rights
+							reserved
+						</p>
+					</div>
+					<div class="col-md-6 powered-by">
+						<p>
+							Powered By:
+							<a
+								href="https://soft.startech.com.bd/"
+								target="_blank"
+								rel="noopener"
+								>Star Soft</a
+							>
+						</p>
+					</div>
+				</div>
+			</div>
+		</footer>
 	</body>
 </html>
