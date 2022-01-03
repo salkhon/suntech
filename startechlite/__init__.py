@@ -26,8 +26,10 @@ def create_app(config_cls=Config) -> Flask:
 
     from startechlite.main.routes import main
     from startechlite.component.routes import component
+    from startechlite.product.routes import product
 
     app.register_blueprint(main)
     app.register_blueprint(component)
+    app.register_blueprint(product)
 
     return app

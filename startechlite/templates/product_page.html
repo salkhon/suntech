@@ -1,2 +1,659 @@
-{% extends "layout_with_breadcrumbs.html" %}
-
+{% extends "layout_with_breadcrumbs.html" %} {% block content %}
+<div
+	class="product-details content"
+	itemscope=""
+	itemtype="http://schema.org/Product"
+>
+	<meta itemprop="sku" content="13593" />
+	<div class="product-details-summary">
+		<div class="container">
+			<div class="pd-q-actions">
+				<div class="review" data-area="review">
+					<div class="rating">
+						<span class="ic i-star-o"></span>
+						<span class="ic i-star-o"></span>
+						<span class="ic i-star-o"></span>
+						<span class="ic i-star-o"></span>
+						<span class="ic i-star-o"></span>
+					</div>
+					<div class="count">0 Review(s)</div>
+				</div>
+				<div class="que" data-area="question">
+					0 Answered Question(s)
+				</div>
+				<div class="share-on">
+					<span class="share">Share:</span>
+					<span
+						class="icon-sprite share-ico fb-dark"
+						data-type="facebook"
+					></span>
+					<span
+						class="icon-sprite share-ico pinterest-dark"
+						data-type="pinterest"
+					></span>
+				</div>
+				<div class="options">
+					<span class="add-list" onclick="wishlist.add('13593');"
+						><i class="material-icons">bookmark_border</i>
+						Save</span
+					>
+					<span class="add-compare" onclick="compare.add('13593');"
+						><i class="material-icons">library_add</i> Add to
+						Compare</span
+					>
+				</div>
+			</div>
+			<div class="basic row">
+				<div class="col-md-5 left">
+					<div class="images product-images">
+						<div class="product-img-holder">
+							<a
+								class="thumbnail"
+								href="{{ item.img_url }}"
+								title="{{ item.title }}"
+								><img
+									class="main-img"
+									src="{{ item.img_url }}"
+									title="{{ item.title }}"
+									alt="{{ item.title }}"
+									width="500"
+									height="500"
+							/></a>
+							<meta
+								itemprop="image"
+								content="{{ item.img_url }}"
+							/>
+						</div>
+						<ul class="thumbnails">
+							<li>
+								<a
+									class="thumbnail"
+									href="https://www.startech.com.bd/image/cache/catalog/processor/AMD/athlon-3000g/athlon-3000g-500x500.jpg"
+									title="{{ item.title }}"
+									><img
+										src="https://www.startech.com.bd/image/cache/catalog/processor/AMD/athlon-3000g/athlon-3000g-74x74.jpg"
+										title="{{ item.title }}"
+										alt="{{ item.title }}"
+										width="74"
+										height="74"
+								/></a>
+							</li>
+							<meta
+								itemprop="image"
+								content="https://www.startech.com.bd/image/cache/catalog/processor/AMD/athlon-3000g/athlon-3000g-500x500.jpg"
+							/>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-7 right" id="product">
+					<div class="pd-summary">
+						<div class="product-short-info">
+							<h1 itemprop="name" class="product-name">
+								{{ item.title }}
+							</h1>
+							<table class="product-info-table">
+								<tbody>
+									<tr class="product-info-group">
+										<td class="product-info-label">
+											Price
+										</td>
+										<td
+											class="
+												product-info-data product-price
+											"
+										>
+											{{ item.price }}৳
+										</td>
+									</tr>
+									<tr class="product-info-group">
+										<td class="product-info-label">
+											Regular Price
+										</td>
+										<td
+											class="
+												product-info-data
+												product-regular-price
+											"
+										>
+											{{ item.price }}৳
+										</td>
+									</tr>
+									<tr class="product-info-group">
+										<td class="product-info-label">
+											Status
+										</td>
+										<td
+											class="
+												product-info-data product-status
+											"
+										>
+											In Stock
+										</td>
+									</tr>
+									<tr class="product-info-group">
+										<td class="product-info-label">
+											Product Code
+										</td>
+										<td
+											class="
+												product-info-data product-code
+											"
+										>
+											13593
+										</td>
+									</tr>
+									<tr
+										class="product-info-group"
+										itemprop="brand"
+										itemtype="http://schema.org/Thing"
+										itemscope=""
+									>
+										<td class="product-info-label">
+											{{ item.brand_title }}
+										</td>
+										<td
+											class="
+												product-info-data product-brand
+											"
+											itemprop="name"
+										>
+											{{ item.brand_title }}
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div
+							class="short-description"
+							itemprop="offers"
+							itemscope=""
+							itemtype="http://schema.org/Offer"
+						>
+							<link
+								itemprop="availability"
+								href="http://schema.org/InStock"
+							/>
+							<link
+								itemprop="itemCondition"
+								href="http://schema.org/NewCondition"
+							/>
+							<meta itemprop="priceCurrency" content="BDT" />
+							<meta itemprop="price" content="7500.0000" />
+							<h2>Key Features</h2>
+							<ul>
+                                {% for description in item.short_descriptions %}
+                                <li>{{ description }}</li>
+                                {% endfor %}
+								<li class="view-more" data-area="specification">
+									View More Info
+								</li>
+							</ul>
+						</div>
+						<div class="stickers">
+							<div class="sticker reward">
+								<span class="material-icons">stars</span>
+								<span class="points">100</span>
+								<span class="text">Star Points</span>
+							</div>
+						</div>
+						<h2>Payment Options</h2>
+						<div class="product-price-options">
+							<label class="p-wrap cash-payment active">
+								<input
+									type="radio"
+									name="enable_emi"
+									checked=""
+									value="0"
+								/>
+								<span class="price">{{ item.price }}৳</span>
+								<div class="p-tag">Cash Discount Price</div>
+								<div class="p-tag fade">
+									Online / Cash Payment
+								</div>
+							</label>
+							<label class="p-wrap">
+								<input
+									type="radio"
+									name="enable_emi"
+									value="1"
+								/>
+								<span class="price">1,338৳/month</span>
+								<div class="p-tag">Regular Price: {{ item.price }}৳</div>
+								<div class="p-tag fade">
+									0% EMI for 6 Months(12 Months on Store)
+								</div>
+							</label>
+						</div>
+						<div class="cart-option">
+							<label class="quantity">
+								<span class="ctl"
+									><i class="material-icons">remove</i></span
+								>
+								<span class="qty"
+									><input
+										type="text"
+										name="quantity"
+										id="input-quantity"
+										value="1"
+										size="2"
+								/></span>
+								<span class="ctl increment"
+									><i class="material-icons">add</i></span
+								>
+								<input
+									type="hidden"
+									name="product_id"
+									value="13593"
+								/>
+							</label>
+							<button
+								id="button-cart"
+								class="btn submit-btn"
+								data-loading-text="Loading..."
+							>
+								Buy Now
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="navs">
+				<ul>
+					<li data-area="specification">Specification</li>
+					<li data-area="description">Description</li>
+					<li class="hidden-xs" data-area="ask-question">
+						Questions
+					</li>
+					<li data-area="write-review">Reviews (0)</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="pd-full">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-9 col-md-12">
+					<section
+						class="specification-tab m-tb-10"
+						id="specification"
+					>
+						<div class="section-head">
+							<h2>Specification</h2>
+						</div>
+						<table
+							class="data-table flex-table"
+							cellpadding="0"
+							cellspacing="0"
+						>
+							<colgroup>
+								<col class="name" />
+								<col class="value" />
+							</colgroup>
+							<thead>
+								<tr>
+									<td class="heading-row" colspan="3">
+										Basic Information
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="name">Brand</td>
+									<td class="value">AMD</td>
+								</tr>
+								<tr>
+									<td class="name">Model</td>
+									<td class="value">AMD Athlon 3000G</td>
+								</tr>
+								<tr>
+									<td class="name">Base Frequency</td>
+									<td class="value">3.5GHz</td>
+								</tr>
+								<tr>
+									<td class="name">Cache</td>
+									<td class="value">
+										Total L1 Cache: 192KB<br />
+										Total L2 Cache: 1MB<br />
+										Total L3 Cache: 4MB
+									</td>
+								</tr>
+								<tr>
+									<td class="name">Cores</td>
+									<td class="value">2</td>
+								</tr>
+								<tr>
+									<td class="name">Threads</td>
+									<td class="value">4</td>
+								</tr>
+								<tr>
+									<td class="name">Default TDP</td>
+									<td class="value">35W</td>
+								</tr>
+							</tbody>
+							<thead>
+								<tr>
+									<td class="heading-row" colspan="3">
+										Memory Specifications
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="name">Maximum Speed</td>
+									<td class="value">2667MHz</td>
+								</tr>
+								<tr>
+									<td class="name">Type</td>
+									<td class="value">DDR4</td>
+								</tr>
+								<tr>
+									<td class="name">Max Number of Channels</td>
+									<td class="value">2</td>
+								</tr>
+							</tbody>
+							<thead>
+								<tr>
+									<td class="heading-row" colspan="3">
+										Graphics Specifications
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="name">Processor Graphics</td>
+									<td class="value">
+										Radeon Vega 3 Graphics
+									</td>
+								</tr>
+								<tr>
+									<td class="name">Base Frequency</td>
+									<td class="value">1100 MHz</td>
+								</tr>
+								<tr>
+									<td class="name">Core Count</td>
+									<td class="value">3</td>
+								</tr>
+							</tbody>
+							<thead>
+								<tr>
+									<td class="heading-row" colspan="3">
+										Warranty Information
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="name">Manufacturing Warranty</td>
+									<td class="value">
+										03 years warranty (No Warranty for Fan
+										or Cooler)
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+					<section
+						class="description bg-white m-tb-15"
+						id="description"
+					>
+						<div class="section-head">
+							<h2>Description</h2>
+						</div>
+						<div class="full-description" itemprop="description">
+							<h2>
+								<span style="font-weight: 700"
+									>AMD Athlon 3000G Processor with Radeon
+									Graphics</span
+								><br />
+							</h2>
+							<p>
+								Designed for overclocking, the Athlon 3000G 3.5
+								GHz Dual-Core AM4 Processor from AMD has a base
+								clock speed of 3.5 GHz, two cores with four
+								threads in an AM4 socket, 1MB of L2 cache
+								memory, and 4MB of L3 cache memory. Having two
+								cores allows the processor to run multiple
+								programs simultaneously without slowing down the
+								system, while the four threads allow a basic
+								ordered sequence of instructions to be passed
+								through or processed by a single CPU core. This
+								processor also has a TDP of 35W. Graphically,
+								the Athlon 3000G uses integrated AMD Radeon Vega
+								3 Graphics. It is also unlocked, meaning it can
+								be overclocked past its maximum turbo frequency.
+								However, this is not recommended, as it will
+								cause the processor to run much hotter. Also,
+								the warranty does not cover damage caused by
+								overclocking, even when overclocking is enabled
+								via AMD hardware.(No Warranty for Fan or
+								Cooler)<br />
+							</p>
+						</div>
+					</section>
+					<section
+						class="latest-price bg-white m-tb-15"
+						id="latest-price"
+					>
+						<div class="section-head">
+							<h2>
+								What is the price of AMD Athlon 3000G Processor
+								in Bangladesh?
+							</h2>
+						</div>
+						<p>
+							The latest price of AMD Athlon 3000G Processor in
+							Bangladesh is 7,500৳. You can buy the AMD Athlon
+							3000G Processor at best price from our website or
+							visit any of our showrooms.
+						</p>
+					</section>
+					<section
+						class="ask-question q-n-r-section bg-white m-tb-15"
+						id="ask-question"
+					>
+						<div class="section-head">
+							<div class="title-n-action">
+								<h2>Questions</h2>
+								<p class="section-blurb">
+									Have question about this product? Get
+									specific details about this product from
+									expert.
+								</p>
+							</div>
+							<div class="q-action">
+								<a
+									href="https://www.startech.com.bd/account/question?product_id=13593"
+									class="btn st-outline"
+									>Ask Question</a
+								>
+							</div>
+						</div>
+						<div id="question">
+							<div class="empty-content">
+								<span class="icon material-icons">textsms</span>
+								<div class="empty-text">
+									There are no questions asked yet. Be the
+									first one to ask a question.
+								</div>
+							</div>
+						</div>
+					</section>
+					<section
+						class="review q-n-r-section bg-white m-tb-15"
+						id="write-review"
+					>
+						<div class="section-head">
+							<div class="title-n-action">
+								<h2>Reviews (0)</h2>
+								<p class="section-blurb">
+									Get specific details about this product from
+									customers who own it.
+								</p>
+								<div class="average-rating"></div>
+							</div>
+							<div class="q-action">
+								<a
+									href="https://www.startech.com.bd/account/review?product_id=13593"
+									class="btn st-outline"
+									>Write a Review</a
+								>
+							</div>
+						</div>
+						<div id="review">
+							<div class="empty-content">
+								<span class="icon material-icons"
+									>assignment</span
+								>
+								<div class="empty-text">
+									This product has no reviews yet. Be the
+									first one to write a review.
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+				<div class="col-lg-3 col-md-12 c-left">
+					<section class="related-product-list">
+						<h3>Related Product</h3>
+						<div class="p-s-item">
+							<div class="image-holder">
+								<a
+									href="https://www.startech.com.bd/intel-pentium-gold-g5420-processor"
+									><img
+										src="https://www.startech.com.bd/image/cache/catalog/processor/Intel/pentium-gold-g5420/pentium-gold-g5420-80x80.jpg"
+										alt="Intel Pentium Gold G5420 8th gen Coffee Lake Processor"
+										width="80"
+										height="80"
+								/></a>
+							</div>
+							<div class="caption">
+								<h4 class="product-name">
+									<a
+										href="https://www.startech.com.bd/intel-pentium-gold-g5420-processor"
+										>Intel Pentium Gold G5420 8th gen Coffee
+										Lake Processor</a
+									>
+								</h4>
+								<div class="p-item-price price">
+									<span>6,300৳</span>
+								</div>
+								<div class="actions">
+									<span
+										class="btn-compare"
+										onclick="compare.add('12541');"
+										><i class="material-icons"
+											>library_add</i
+										>Add to Compare</span
+									>
+								</div>
+							</div>
+						</div>
+						<div class="p-s-item">
+							<div class="image-holder">
+								<a
+									href="https://www.startech.com.bd/amd-athlon-3000g-processor"
+									><img
+										src="https://www.startech.com.bd/image/cache/catalog/processor/AMD/athlon-3000g/athlon-3000g-1-80x80.jpg"
+										alt="{{ item.title }}"
+										width="80"
+										height="80"
+								/></a>
+							</div>
+							<div class="caption">
+								<h4 class="product-name">
+									<a
+										href="https://www.startech.com.bd/amd-athlon-3000g-processor"
+										>AMD Athlon 3000G Processor with Radeon
+										Graphics</a
+									>
+								</h4>
+								<div class="p-item-price price">
+									<span>7,500৳</span>
+								</div>
+								<div class="actions">
+									<span
+										class="btn-compare"
+										onclick="compare.add('13593');"
+										><i class="material-icons"
+											>library_add</i
+										>Add to Compare</span
+									>
+								</div>
+							</div>
+						</div>
+						<div class="p-s-item">
+							<div class="image-holder">
+								<a
+									href="https://www.startech.com.bd/intel-10th-gen-core-i3-10100f-processor"
+									><img
+										src="https://www.startech.com.bd/image/cache/catalog/processor/Intel/i3-10100/i3-10100-80x80.jpg"
+										alt="Intel 10th Gen Core i3 10100F Processor"
+										width="80"
+										height="80"
+								/></a>
+							</div>
+							<div class="caption">
+								<h4 class="product-name">
+									<a
+										href="https://www.startech.com.bd/intel-10th-gen-core-i3-10100f-processor"
+										>Intel 10th Gen Core i3 10100F
+										Processor</a
+									>
+								</h4>
+								<div class="p-item-price price">
+									<span>8,800৳</span>
+								</div>
+								<div class="actions">
+									<span
+										class="btn-compare"
+										onclick="compare.add('14955');"
+										><i class="material-icons"
+											>library_add</i
+										>Add to Compare</span
+									>
+								</div>
+							</div>
+						</div>
+						<div class="p-s-item">
+							<div class="image-holder">
+								<a
+									href="https://www.startech.com.bd/intel-pentium-gold-g6400-processor"
+									><img
+										src="https://www.startech.com.bd/image/cache/catalog/processor/Intel/g6400/g6400-80x80.jpg"
+										alt="Intel Pentium Gold G6400 10th gen Coffee Lake Processor"
+										width="80"
+										height="80"
+								/></a>
+							</div>
+							<div class="caption">
+								<h4 class="product-name">
+									<a
+										href="https://www.startech.com.bd/intel-pentium-gold-g6400-processor"
+										>Intel Pentium Gold G6400 10th gen
+										Coffee Lake Processor</a
+									>
+								</h4>
+								<div class="p-item-price price">
+									<span>6,100৳</span>
+								</div>
+								<div class="actions">
+									<span
+										class="btn-compare"
+										onclick="compare.add('15250');"
+										><i class="material-icons"
+											>library_add</i
+										>Add to Compare</span
+									>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section class="related-product-list">
+						<h3>Recently Viewed</h3>
+					</section>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}

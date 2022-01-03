@@ -135,7 +135,11 @@
 								<i class="material-icons">filter_list</i> Filter
 							</button>
 							<h6 class="page-heading m-hide">
-								{{ topbar_title }}
+								{% for breadcrumb in breadcrumbs %}
+									{% if loop.last %}
+										{{ breadcrumb.text }}
+									{% endif %}
+            					{% endfor %}
 							</h6>
 						</div>
 						<div class="col-sm-8 col-xs-10 show-sort">
@@ -185,7 +189,7 @@
 							</div>
 							<div class="p-item-details">
 								<h4 class="p-item-name">
-									<a href="#">{{ item.title }}</a>
+									<a href="{{ url_for('product.product_view', product_name=item.name)}}">{{ item.title }}</a>
 								</h4>
 								<div class="short-description">
 									<ul>
