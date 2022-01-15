@@ -143,13 +143,11 @@
 									<a
 										href="https://www.startech.com.bd/account/account"
 										><span></span></a
-									><a
-										href="https://www.startech.com.bd/account/register"
+									><a href="{{ url_for('account.register') }}"
 										>Register</a
 									>
 									or
-									<a
-										href="https://www.startech.com.bd/account/login"
+									<a href="{{ url_for('account.login') }}"
 										>Login</a
 									>
 								</p>
@@ -171,28 +169,28 @@
 						<li class="nav-item has-child c-1">
 							<a
 								class="nav-link"
-								href="https://www.startech.com.bd/desktops"
+								href="{{ url_for('desktop.desktops') }}"
 								>Desktop</a
 							>
 							<ul class="drop-down drop-menu-1">
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="https://www.startech.com.bd/special-pc"
+										href="{{ url_for('desktop.get_subcategory', subcategory='special_pc') }}"
 										>Special PC</a
 									>
 								</li>
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="https://www.startech.com.bd/desktops/star-pc"
+										href="{{ url_for('desktop.get_subcategory', subcategory='star-pc') }}"
 										>Star PC</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/desktops/star-pc/ryzen-pc"
+												href="{{ url_for('desktop.get_subcategory_brand', subcategory='star-pc', brand='ryzen-pc') }}"
 												>RYZEN PC</a
 											>
 										</li>

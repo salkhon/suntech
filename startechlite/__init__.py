@@ -7,7 +7,7 @@ import flask_breadcrumbs
 
 bcrypt = flask_bcrypt.Bcrypt()
 
-# login_manager = flask_login.LoginManager()
+login_manager = flask_login.LoginManager()
 # has to implement user_loader method, UserMixin methods
 
 mail = flask_mail.Mail()
@@ -20,16 +20,20 @@ def create_app(config_cls=Config) -> Flask:
     app.config.from_object(config_cls)
 
     bcrypt.init_app(app)
-    # login_manager.init_app(app)
+    login_manager.init_app(app)
     mail.init_app(app)
     breadcrumbs.init_app(app)
 
     from startechlite.main.routes import main
     from startechlite.component.routes import component
     from startechlite.product.routes import product
+    from startechlite.account.routes import account
+    from startechlite.desktop.routes import desktop
 
     app.register_blueprint(main)
     app.register_blueprint(component)
     app.register_blueprint(product)
+    app.register_blueprint(account)
+    app.register_blueprint(desktop)
 
     return app

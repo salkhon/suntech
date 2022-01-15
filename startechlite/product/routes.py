@@ -2,15 +2,16 @@ import flask
 from startechlite.product.model import Item
 from startechlite.constants import *
 import flask_breadcrumbs
-import flask_paginate
 
 product = flask.Blueprint("product", __name__, url_prefix="/product")
-
 flask_breadcrumbs.default_breadcrumb_root(product, ".")
 
 
-def dynamic_breadcrumb_name() -> str | None:
-    return flask.request.args.get("product_name")
+def dynamic_breadcrumb_name() -> list[dict]:
+    assert flask.request.view_args
+    prod_name =  flask.request.view_args.get("product_name")
+    path = flask.request.path
+    return [{"text": prod_name, "url": path}]
 
 
 @product.route("/<string:product_name>")

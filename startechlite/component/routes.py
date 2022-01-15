@@ -8,7 +8,7 @@ dbmanager = DBManager()
 flask_breadcrumbs.default_breadcrumb_root(component, ".")
 
 
-@component.route("")
+@component.route("/")
 @flask_breadcrumbs.register_breadcrumb(component, ".", "Component")
 def get_components() -> str:
     # return components

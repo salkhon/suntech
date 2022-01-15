@@ -85,3 +85,4 @@ CREATE TABLE salman.bans (
     FOREIGN KEY (banned) REFERENCES salman.users(id),
     FOREIGN KEY (banned_by) REFERENCES salman.startech_admins(id)
 );
+
