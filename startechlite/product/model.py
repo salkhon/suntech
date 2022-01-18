@@ -1,7 +1,17 @@
-class Item:
-    def __init__(self, title: str, name: str, brand_title: str, img_url: str, short_descriptions: list[str] = []):
-        self.title = title
-        self.name = name # website internal name
-        self.brand_title = brand_title
-        self.img_url = img_url
-        self.short_descriptions = short_descriptions
+from dataclasses import dataclass
+
+
+@dataclass
+class Product:
+    handle: str
+    name: str
+    category: str
+    subcategory: str
+    brand: str
+    base_price: float
+    discount: float
+    year: int
+    rating: float
+    tags: list[str]
+    img_urls: list[str]
+    basic_properties: dict[str, str]

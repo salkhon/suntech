@@ -2,7 +2,7 @@ import random
 import flask
 from werkzeug import Response
 from startechlite.account.model import User
-from startechlite.product.model import Item
+from startechlite.product.model import Product
 from startechlite.constants import *
 import flask_breadcrumbs
 import flask_login
@@ -13,9 +13,10 @@ dbmanager = DBManager()
 account = flask.Blueprint("account", __name__, url_prefix="/account")
 flask_breadcrumbs.default_breadcrumb_root(account, ".")
 
-@account.route("/")
-@flask_breadcrumbs.register_breadcrumb(account, ".", "Account")
+@account.route("/account")
+@flask_breadcrumbs.register_breadcrumb(account, ".account", "Account")
 def user_account():
+    # have to check if logged in, otherwise redirects to login page
     return flask.redirect(flask.url_for("account.login"))
 
 @account.route("/register", methods=["GET", "POST"])

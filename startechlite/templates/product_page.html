@@ -49,19 +49,19 @@
 						<div class="product-img-holder">
 							<a
 								class="thumbnail"
-								href="{{ item.img_url }}"
-								title="{{ item.title }}"
+								href="{{ product.img_urls[0] }}"
+								title="{{ product.name }}"
 								><img
 									class="main-img"
-									src="{{ item.img_url }}"
-									title="{{ item.title }}"
-									alt="{{ item.title }}"
+									src="{{ product.img_urls[0] }}"
+									title="{{ product.name }}"
+									alt="{{ product.name }}"
 									width="500"
 									height="500"
 							/></a>
 							<meta
 								itemprop="image"
-								content="{{ item.img_url }}"
+								content="{{ product.img_urls[0] }}"
 							/>
 						</div>
 						<ul class="thumbnails">
@@ -69,11 +69,11 @@
 								<a
 									class="thumbnail"
 									href="https://www.startech.com.bd/image/cache/catalog/processor/AMD/athlon-3000g/athlon-3000g-500x500.jpg"
-									title="{{ item.title }}"
+									title="{{ product.name }}"
 									><img
 										src="https://www.startech.com.bd/image/cache/catalog/processor/AMD/athlon-3000g/athlon-3000g-74x74.jpg"
-										title="{{ item.title }}"
-										alt="{{ item.title }}"
+										title="{{ product.name }}"
+										alt="{{ product.name }}"
 										width="74"
 										height="74"
 								/></a>
@@ -89,7 +89,7 @@
 					<div class="pd-summary">
 						<div class="product-short-info">
 							<h1 itemprop="name" class="product-name">
-								{{ item.title }}
+								{{ product.name }}
 							</h1>
 							<table class="product-info-table">
 								<tbody>
@@ -102,7 +102,7 @@
 												product-info-data product-price
 											"
 										>
-											{{ item.price }}৳
+											{{ product.base_price }}৳
 										</td>
 									</tr>
 									<tr class="product-info-group">
@@ -115,7 +115,7 @@
 												product-regular-price
 											"
 										>
-											{{ item.price }}৳
+											{{ product.base_price }}৳
 										</td>
 									</tr>
 									<tr class="product-info-group">
@@ -149,7 +149,7 @@
 										itemscope=""
 									>
 										<td class="product-info-label">
-											{{ item.brand_title }}
+											{{ product.brand_title }}
 										</td>
 										<td
 											class="
@@ -157,7 +157,7 @@
 											"
 											itemprop="name"
 										>
-											{{ item.brand_title }}
+											{{ product.brand_title }}
 										</td>
 									</tr>
 								</tbody>
@@ -181,7 +181,7 @@
 							<meta itemprop="price" content="7500.0000" />
 							<h2>Key Features</h2>
 							<ul>
-                                {% for description in item.short_descriptions %}
+                                {% for description in product.short_descriptions %}
                                 <li>{{ description }}</li>
                                 {% endfor %}
 								<li class="view-more" data-area="specification">
@@ -205,7 +205,7 @@
 									checked=""
 									value="0"
 								/>
-								<span class="price">{{ item.price }}৳</span>
+								<span class="price">{{ product.base_price }}৳</span>
 								<div class="p-tag">Cash Discount Price</div>
 								<div class="p-tag fade">
 									Online / Cash Payment
@@ -218,7 +218,7 @@
 									value="1"
 								/>
 								<span class="price">1,338৳/month</span>
-								<div class="p-tag">Regular Price: {{ item.price }}৳</div>
+								<div class="p-tag">Regular Price: {{ product.base_price }}৳</div>
 								<div class="p-tag fade">
 									0% EMI for 6 Months(12 Months on Store)
 								</div>
@@ -554,7 +554,7 @@
 									href="https://www.startech.com.bd/amd-athlon-3000g-processor"
 									><img
 										src="https://www.startech.com.bd/image/cache/catalog/processor/AMD/athlon-3000g/athlon-3000g-1-80x80.jpg"
-										alt="{{ item.title }}"
+										alt="{{ product.name }}"
 										width="80"
 										height="80"
 								/></a>

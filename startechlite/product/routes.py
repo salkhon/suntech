@@ -1,22 +1,19 @@
 import flask
-from startechlite.product.model import Item
+from startechlite.dbmanager.dbmanager import DBManager
+from startechlite.product.model import Product
+from startechlite.productslist.routes import view_arg_dlc
 from startechlite.constants import *
 import flask_breadcrumbs
 
 product = flask.Blueprint("product", __name__, url_prefix="/product")
-flask_breadcrumbs.default_breadcrumb_root(product, ".")
+dbman = DBManager()
 
 
-def dynamic_breadcrumb_name() -> list[dict]:
-    assert flask.request.view_args
-    prod_name =  flask.request.view_args.get("product_name")
-    path = flask.request.path
-    return [{"text": prod_name, "url": path}]
+def product_name_dlc():
+    return view_arg_dlc("product_handle")
 
-
-@product.route("/<string:product_name>")
-@flask_breadcrumbs.register_breadcrumb(product, ".item", "", dynamic_list_constructor=dynamic_breadcrumb_name)
-def product_view(product_name) -> str:
-    item = Item("sample product", product_name, "BMW", "#", [
-                "prop1: nice", "prop2: real nice", "prop3: great"])
-    return flask.render_template("product_page.html", item=item)
+@product.route("/<string:product_handle>")
+@flask_breadcrumbs.register_breadcrumb(product, ".producthandle", "", dynamic_list_constructor=product_name_dlc)
+def product_view(product_handle) -> str:
+    product = dbman.get_product_by_handle(product_handle)
+    return flask.render_template("product_page.html", product=product)

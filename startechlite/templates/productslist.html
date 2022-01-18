@@ -110,14 +110,14 @@
 					</div>
 				</div>
 				<div class="main-content p-items-wrap">
-					{% for item in items %}
+					{% for product in products %}
 					<div class="p-item">
 						<div class="p-item-inner">
 							<div class="p-item-img">
-								<a href="{{ item.img_url }}"
+								<a href="{{ product.img_urls[0] }}"
 									><img
 										src="#"
-										alt="{{ item.title }}"
+										alt="{{ product.name }}"
 										width="228"
 										height="228"
 								/></a>
@@ -125,20 +125,20 @@
 							<div class="p-item-details">
 								<h4 class="p-item-name">
 									<a
-										href="{{ url_for('product.product_view', product_name=item.name)}}"
-										>{{ item.title }}</a
+										href="{{ url_for('product.product_view', product_handle=product.handle)}}"
+										>{{ product.name }}</a
 									>
 								</h4>
 								<div class="short-description">
 									<ul>
-										{% for short_desc in
-										item.short_descriptions %}
-										<li>{{ short_desc }}</li>
+										{% for property in
+										product.basic_properties %}
+										<li>{{ property }} : {{ product.basic_properties[property] }}</li>
 										{% endfor %}
 									</ul>
 								</div>
 								<div class="p-item-price">
-									<span>{{ item.price }}৳</span>
+									<span>{{ product.base_price }}৳</span>
 								</div>
 								<div class="actions">
 									<span

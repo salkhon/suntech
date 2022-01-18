@@ -25,15 +25,13 @@ def create_app(config_cls=Config) -> Flask:
     breadcrumbs.init_app(app)
 
     from startechlite.main.routes import main
-    from startechlite.component.routes import component
+    from startechlite.productslist.routes import productslist
     from startechlite.product.routes import product
     from startechlite.account.routes import account
-    from startechlite.desktop.routes import desktop
 
     app.register_blueprint(main)
-    app.register_blueprint(component)
+    app.register_blueprint(productslist)
     app.register_blueprint(product)
     app.register_blueprint(account)
-    app.register_blueprint(desktop)
 
     return app
