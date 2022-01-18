@@ -25,7 +25,7 @@ class DBManager:
 
     def get_product_by_handle(self, handle: str) -> Product:
         # TODO: query product by handle, and populate its model class
-        product = Product(handle, "Name", "Category", "Subcategory", "Brand", 1.0, 0.1, 2022, 5, ["sick", "awesome"], ["#", "#"], {
+        product = Product(handle, "Name", "Category", "Subcategory", "Brand", 1.0, 0.1, 2022, 5, ["sick", "awesome"], ["/static/img/dummy.jpg", "#"], {
             "Property 1": "Awesome",
             "Property 2": "Great stuff",
             "Property 3": "Nice"
@@ -42,7 +42,7 @@ class DBManager:
         start_index, num_items = self._pagination_indices(
             pagination)  # for querying
 
-        items = [Product("product-handle", "Name", "Category", "Subcategory", "Brand", 1.0, 0.1, 2022, 5, ["sick", "awesome"], ["#", "#"], {
+        items = [Product("product-handle", "Name", "Category", "Subcategory", "Brand", 1.0, 0.1, 2022, 5, ["sick", "awesome"], ["/static/img/dummy.jpg", "#"], {
             "Property 1": "Awesome",
             "Property 2": "Great stuff",
             "Property 3": "Nice"
@@ -57,7 +57,7 @@ class DBManager:
         start_index, num_items = self._pagination_indices(
             pagination)
 
-        items = [Product("product-handle", "Name", "Category", "Subcategory", "Brand", 1.0, 0.1, 2022, 5, ["sick", "awesome"], ["#", "#"], {
+        items = [Product("product-handle", "Name", "Category", "Subcategory", "Brand", 1.0, 0.1, 2022, 5, ["sick", "awesome"], ["/static/img/dummy.jpg", "#"], {
             "Property 1": "Awesome",
             "Property 2": "Great stuff",
             "Property 3": "Nice"
@@ -71,7 +71,7 @@ class DBManager:
         start_index, num_items = self._pagination_indices(
             pagination)
 
-        items = [Product("product-handle", "Name", "Category", "Subcategory", "Brand", 1.0, 0.1, 2022, 5, ["sick", "awesome"], ["#", "#"], {
+        items = [Product("product-handle", "Name", "Category", "Subcategory", "Brand", 1.0, 0.1, 2022, 5, ["sick", "awesome"], ["/static/img/dummy.jpg", "#"], {
             "Property 1": "Awesome",
             "Property 2": "Great stuff",
             "Property 3": "Nice"
