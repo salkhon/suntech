@@ -1,5 +1,5 @@
-{% extends "layout_with_breadcrumbs.html" %} 
-{% block content %}
+{% extends "layout_with_breadcrumbs.html" %} {% block content %}
+<script src="/static/scripts/productsListFilter.js" defer></script>
 <section class="p-item-page bg-bt-gray p-tb-15">
 	<div class="container">
 		<div class="row">
@@ -15,70 +15,7 @@
 							<span>Price Range</span>
 						</div>
 						<div class="pf-wrap">
-							<div
-								id="rang-slider"
-								class="noUi-horizontal noUi-target noUi-ltr"
-								data-from="0"
-								data-to="290000"
-								data-min="0"
-								data-max="290000"
-							>
-								<div class="noUi-base">
-									<div class="noUi-connects">
-										<div
-											class="noUi-connect"
-											style="
-												transform: translate(0%, 0px)
-													scale(1, 1);
-											"
-										></div>
-									</div>
-									<div
-										class="noUi-origin"
-										style="
-											transform: translate(-100%, 0px);
-											z-index: 5;
-										"
-									>
-										<div
-											class="
-												noUi-handle noUi-handle-lower
-											"
-											data-handle="0"
-											tabindex="0"
-											role="slider"
-											aria-orientation="horizontal"
-											aria-valuemin="0.0"
-											aria-valuemax="100.0"
-											aria-valuenow="0.0"
-											aria-valuetext="0.00"
-											title="Lower Handle"
-										></div>
-									</div>
-									<div
-										class="noUi-origin"
-										style="
-											transform: translate(0%, 0px);
-											z-index: 4;
-										"
-									>
-										<div
-											class="
-												noUi-handle noUi-handle-upper
-											"
-											data-handle="1"
-											tabindex="0"
-											role="slider"
-											aria-orientation="horizontal"
-											aria-valuemin="0.0"
-											aria-valuemax="100.0"
-											aria-valuenow="100.0"
-											aria-valuetext="290000.00"
-											title="Upper Handle"
-										></div>
-									</div>
-								</div>
-							</div>
+							<input type="range" id="rang-slider" />
 						</div>
 						<label class="range-label from"
 							><input type="text" id="range-to" name="from"
@@ -135,11 +72,9 @@
 								<i class="material-icons">filter_list</i> Filter
 							</button>
 							<h6 class="page-heading m-hide">
-								{% for breadcrumb in breadcrumbs %}
-									{% if loop.last %}
-										{{ breadcrumb.text }}
-									{% endif %}
-            					{% endfor %}
+								{% for breadcrumb in breadcrumbs %} {% if
+								loop.last %} {{ breadcrumb.text }} {% endif %}
+								{% endfor %}
 							</h6>
 						</div>
 						<div class="col-sm-8 col-xs-10 show-sort">
@@ -189,7 +124,10 @@
 							</div>
 							<div class="p-item-details">
 								<h4 class="p-item-name">
-									<a href="{{ url_for('product.product_view', product_name=item.name)}}">{{ item.title }}</a>
+									<a
+										href="{{ url_for('product.product_view', product_name=item.name)}}"
+										>{{ item.title }}</a
+									>
 								</h4>
 								<div class="short-description">
 									<ul>

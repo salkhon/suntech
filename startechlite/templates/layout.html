@@ -15,7 +15,7 @@
 		/>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<link href="/static/img/logo.png" rel="icon" />
+		<link href="/static/img/logo1.png" rel="icon" />
 		<link href="/static/main.css" rel="stylesheet" />
 	</head>
 
@@ -33,7 +33,7 @@
 						</div>
 						<a class="brand" href="{{ url_for('main.home') }}"
 							><img
-								src="/static/img/logo.png"
+								src="/static/img/logo1.png"
 								title="Star Tech &amp; Engineering Ltd "
 								width="144"
 								height="164"
@@ -197,7 +197,7 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/desktops/star-pc/intel-pc"
+												href="{{ url_for('desktop.get_subcategory_brand', subcategory='star-pc', brand='intel-pc') }}"
 												>Intel PC</a
 											>
 										</li>
@@ -206,21 +206,21 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="https://www.startech.com.bd/desktops/gaming-pc"
+										href="{{ url_for('desktop.get_subcategory', subcategory='gaming-pc') }}"
 										>Gaming PC</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/desktops/gaming-pc/amd-gaming-pc"
+												href="{{ url_for('desktop.get_subcategory_brand', subcategory='gaming-pc', brand='intel-pc') }}"
 												>RYZEN PC</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/desktops/gaming-pc/intel-gaming-pc"
+												href="{{ url_for('desktop.get_subcategory_brand', subcategory='gaming-pc', brand='intel-gaming-pc') }}"
 												>Intel PC</a
 											>
 										</li>
@@ -229,49 +229,49 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="https://www.startech.com.bd/desktops/brand-pc"
+										href="{{ url_for('desktop.get_subcategory', subcategory='brand-pc') }}"
 										>Brand PC</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/desktops/brand-pc/lenovo-desktop"
+												href="{{ url_for('desktop.get_subcategory_brand', subcategory='brand-pc', brand='lenovo-desktop') }}"
 												>Lenovo</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/desktops/brand-pc/hp-desktop"
+												href="{{ url_for('desktop.get_subcategory_brand', subcategory='brand-pc', brand='hp-desktop') }}"
 												>HP</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/desktops/brand-pc/dell-desktop"
+												href="{{ url_for('desktop.get_subcategory_brand', subcategory='brand-pc', brand='dell-desktop') }}"
 												>Dell</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/desktops/brand-pc/acer-desktop"
+												href="{{ url_for('desktop.get_subcategory_brand', subcategory='brand-pc', brand='acer-desktop') }}"
 												>Acer</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/desktops/brand-pc/asus-desktop"
+												href="{{ url_for('desktop.get_subcategory_brand', subcategory='brand-pc', brand='asus-desktop') }}"
 												>Asus</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/walton-brand-pc"
+												href="{{ url_for('desktop.get_subcategory_brand', subcategory='brand-pc', brand='walton-brand-desktop') }}"
 												>Walton</a
 											>
 										</li>
@@ -280,42 +280,42 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="https://www.startech.com.bd/desktops/all-in-one-pc"
+										href="{{ url_for('desktop.get_subcategory', subcategory='all-in-one-pc') }}"
 										>All in one PC</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/desktops/all-in-one-pc/dell-all-in-one"
+												href="{{ url_for('desktop.get_subcategory_brand', subcategory='all-in-one-pc', brand='dell-all-in-one') }}"
 												>DELL</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/desktops/all-in-one-pc/i-life-all-in-one-pc"
+												href="{{ url_for('desktop.get_subcategory_brand', subcategory='all-in-one-pc', brand='i-life-all-in-one') }}"
 												>i-Life</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/desktops/all-in-one-pc/hp-all-in-one"
+												href="{{ url_for('desktop.get_subcategory_brand', subcategory='all-in-one-pc', brand='hp-all-in-one') }}"
 												>HP</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/desktops/all-in-one-pc/asus-all-in-one"
+												href="{{ url_for('desktop.get_subcategory_brand', subcategory='all-in-one-pc', brand='asus-all-in-one') }}"
 												>ASUS</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/desktops/all-in-one-pc/lenovo-all-in-one"
+												href="{{ url_for('desktop.get_subcategory_brand', subcategory='all-in-one-pc', brand='lenovo-all-in-one') }}"
 												>LENOVO</a
 											>
 										</li>
@@ -324,28 +324,28 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="https://www.startech.com.bd/desktops/portable-mini-pc"
+										href="{{ url_for('desktop.get_subcategory', subcategory='portable-mini-pc') }}"
 										>Portable Mini PC</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/asrock-portable-mini-pc"
+												href="{{ url_for('desktop.get_subcategory_brand', subcategory='portable-mini-pc', brand='asrock-portable-mini-pc') }}"
 												>ASRock</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/viewsonic-mini-pc"
+												href="{{ url_for('desktop.get_subcategory_brand', subcategory='portable-mini-pc', brand='viewsonic-mini-pc') }}"
 												>ViewSonic</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/desktops/portable-mini-pc/mini-pc-asus"
+												href="{{ url_for('desktop.get_subcategory_brand', subcategory='portable-mini-pc', brand='mini-pc-asus') }}"
 											>
 												Asus</a
 											>
@@ -353,28 +353,28 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/desktops/portable-mini-pc/intel-mini-pc"
+												href="{{ url_for('desktop.get_subcategory_brand', subcategory='portable-mini-pc', brand='intel-mini-pc') }}"
 												>Intel</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/desktops/portable-mini-pc/gigabyte-mini-pc"
+												href="{{ url_for('desktop.get_subcategory_brand', subcategory='portable-mini-pc', brand='gigabyte-mini-pc') }}"
 												>GIGABYTE</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/zotac-portable-mini-pc"
+												href="{{ url_for('desktop.get_subcategory_brand', subcategory='portable-mini-pc', brand='zotac-mini-pc') }}"
 												>Zotac</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/chuwi-mini-pc"
+												href="{{ url_for('desktop.get_subcategory_brand', subcategory='portable-mini-pc', brand='chuwi-mini-pc') }}"
 												>Chuwi</a
 											>
 										</li>
@@ -383,27 +383,27 @@
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="https://www.startech.com.bd/desktops/apple-mini-pc"
+										href="{{ url_for('desktop.get_subcategory', subcategory='apple-mini-pc') }}"
 										>Apple Mac Mini</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="https://www.startech.com.bd/desktops/apple-imac-desktop-pc"
+										href="{{ url_for('desktop.get_subcategory', subcategory='apple-imac-desktop-pc') }}"
 										>Apple iMac</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="https://www.startech.com.bd/desktops/economy-pc"
+										href="{{ url_for('desktop.get_subcategory', subcategory='economy-pc') }}"
 										>Budget PC</a
 									>
 								</li>
 								<li>
 									<a
-										href="https://www.startech.com.bd/desktops"
+										href="{{ url_for('desktop.desktops') }}"
 										class="see-all"
 										>Show All Desktop</a
 									>
