@@ -412,35 +412,35 @@
 						<li class="nav-item has-child c-1">
 							<a
 								class="nav-link"
-								href="url_for('productslist.get_category', category='laptop-notebook')"
+								href="{{ url_for('productslist.get_category', category='laptop-notebook') }}"
 								>Laptop</a
 							>
 							<ul class="drop-down drop-menu-1">
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='laptop-notebook', subcategory='laptop')"
+										href="{{ url_for('productslist.get_category_subcategory', category='laptop-notebook', subcategory='laptop') }}"
 										>All Laptop</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='laptop', brand='razer-laptop')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop', brand='razer-laptop') }}"
 												>Razer</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='laptop', brand='dell-laptop')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop', brand='dell-laptop') }}"
 												>Dell</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='laptop', brand='hp-laptop')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop', brand='hp-laptop') }}"
 											>
 												HP</a
 											>
@@ -448,21 +448,21 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='laptop', brand='lenovo-laptop')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop', brand='lenovo-laptop') }}"
 												>Lenovo</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='laptop', brand='acer-laptop')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop', brand='acer-laptop') }}"
 												>Acer</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='laptop', brand='msi-laptop')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop', brand='msi-laptop') }}"
 												>MSI</a
 											>
 										</li>
@@ -476,14 +476,14 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='laptop', brand='apple-macbook')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop', brand='apple-macbook') }}"
 												>MacBook</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='laptop', brand='microsoft-surface-pro')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop', brand='microsoft-surface-pro') }}"
 												>Surface</a
 											>
 										</li>
@@ -497,7 +497,7 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='laptop', brand='asus-laptop')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop', brand='asus-laptop') }}"
 											>
 												Asus</a
 											>
@@ -526,7 +526,7 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='laptop', brand='chuwi')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop', brand='chuwi') }}"
 												>Chuwi</a
 											>
 										</li>
@@ -554,7 +554,7 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='laptop', brand='i-life-laptop')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop', brand='i-life-laptop') }}"
 												>iLife</a
 											>
 										</li>
@@ -563,70 +563,70 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='laptop-notebook', subcategory='Gaming-Laptop')"
+										href="{{ url_for('productslist.get_category_subcategory', category='laptop-notebook', subcategory='Gaming-Laptop') }}"
 										>Gaming Laptop</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='Gaming-Laptop', brand='razer')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='Gaming-Laptop', brand='razer') }}"
 												>RAZER</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='Gaming-Laptop', brand='hp')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='Gaming-Laptop', brand='hp') }}"
 												>HP</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='Gaming-Laptop', brand='asus')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='Gaming-Laptop', brand='asus') }}"
 												>Asus</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='Gaming-Laptop', brand='msi')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='Gaming-Laptop', brand='msi') }}"
 												>MSI</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='Gaming-Laptop', brand='gigabyte')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='Gaming-Laptop', brand='gigabyte') }}"
 												>GIGABYTE</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='Gaming-Laptop', brand='acer')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='Gaming-Laptop', brand='acer') }}"
 												>Acer</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='Gaming-Laptop', brand='dell')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='Gaming-Laptop', brand='dell') }}"
 												>Dell</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='Gaming-Laptop', brand='lenovo')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='Gaming-Laptop', brand='lenovo') }}"
 												>Lenovo</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='Gaming-Laptop', brand='xiaomi')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='Gaming-Laptop', brand='xiaomi') }}"
 												>XIAOMI</a
 											>
 										</li>
@@ -635,7 +635,7 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='laptop-notebook', subcategory='ultrabook')"
+										href="{{ url_for('productslist.get_category_subcategory', category='laptop-notebook', subcategory='ultrabook') }}"
 										>Premium Ultrabook</a
 									>
 									<ul class="drop-down drop-menu-2">
@@ -649,42 +649,42 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='ultrabook', brand='asus')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='ultrabook', brand='asus') }}"
 												>Asus</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='ultrabook', brand='acer')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='ultrabook', brand='acer') }}"
 												>Acer</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='ultrabook', brand='microsoft')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='ultrabook', brand='microsoft') }}"
 												>Microsoft</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='ultrabook', brand='hp')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='ultrabook', brand='hp') }}"
 												>HP</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='ultrabook', brand='dell')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='ultrabook', brand='dell') }}"
 												>Dell</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='ultrabook', brand='lenovo')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='ultrabook', brand='lenovo') }}"
 												>Lenovo</a
 											>
 										</li>
@@ -786,21 +786,21 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='laptop-notebook', subcategory='laptop-accessories')"
+										href="{{ url_for('productslist.get_category_subcategory', category='laptop-notebook', subcategory='laptop-accessories') }}"
 										>Laptop Accessories</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-cooler')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-cooler') }}"
 												>Laptop Cooler</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-desk')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-desk') }}"
 												>Laptop Desk</a
 											>
 										</li>
@@ -814,49 +814,49 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-battery')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-battery') }}"
 												>Laptop Battery</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-adapter')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-adapter') }}"
 												>Charger / Adapter</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-display')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-display') }}"
 												>Display</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-keyboard')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-keyboard') }}"
 												>Keyboard</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-hdd-caddy')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-hdd-caddy') }}"
 												>CADDY</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-dvd-writer')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-dvd-writer') }}"
 												>DVD Writer</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-locker')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-locker') }}"
 												>Laptop Locker</a
 											>
 										</li>
@@ -911,7 +911,7 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='component', subcategory='CPU-Cooler')"
+										href="{{ url_for('productslist.get_category_subcategory', category='component', subcategory='CPU-Cooler') }}"
 										>CPU Cooler</a
 									>
 									<ul class="drop-down drop-menu-2">
@@ -932,14 +932,14 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='CPU-Cooler', brand='Antec-Cooler')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='CPU-Cooler', brand='Antec-Cooler') }}"
 												>Antec</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='CPU-Cooler', brand='gamdias-cpu-cooler')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='CPU-Cooler', brand='gamdias-cpu-cooler') }}"
 												>Gamdias</a
 											>
 										</li>
@@ -967,7 +967,7 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='CPU-Cooler', brand='corsair-cpu-cooler')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='CPU-Cooler', brand='corsair-cpu-cooler') }}"
 												>Corsair</a
 											>
 										</li>
@@ -1023,7 +1023,7 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='CPU-Cooler', brand='cryorig-cpu-cooler')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='CPU-Cooler', brand='cryorig-cpu-cooler') }}"
 												>CRYORIG</a
 											>
 										</li>
@@ -1090,63 +1090,63 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='component', subcategory='motherboard')"
+										href="{{ url_for('productslist.get_category_subcategory', category='component', subcategory='motherboard') }}"
 										>Motherboard</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='motherboard', brand='asrock-intel-motherboard')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='motherboard', brand='asrock-intel-motherboard') }}"
 												>ASRock (Intel)</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='motherboard', brand='asrock-motherboard')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='motherboard', brand='asrock-motherboard') }}"
 												>ASRock (RYZEN)</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='motherboard', brand='asus-motherboard')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='motherboard', brand='asus-motherboard') }}"
 												>ASUS (Intel)</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='motherboard', brand='asus-amd-motherboard')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='motherboard', brand='asus-amd-motherboard') }}"
 												>ASUS (AMD)</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='motherboard', brand='gigabyte-motherboard')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='motherboard', brand='gigabyte-motherboard') }}"
 												>GIGABYTE (Intel)</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='motherboard', brand='gigabyte-amd-motherboard')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='motherboard', brand='gigabyte-amd-motherboard') }}"
 												>GIGABYTE (AMD)</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='motherboard', brand='msi-motherboard')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='motherboard', brand='msi-motherboard') }}"
 												>MSI (Intel)</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='motherboard', brand='msi-ryzen-motherboard')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='motherboard', brand='msi-ryzen-motherboard') }}"
 												>MSI (Ryzen)</a
 											>
 										</li>
@@ -1169,7 +1169,7 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='component', subcategory='graphics-card')"
+										href="{{ url_for('productslist.get_category_subcategory', category='component', subcategory='graphics-card') }}"
 										>Graphics Card</a
 									>
 									<ul class="drop-down drop-menu-2">
@@ -1183,35 +1183,35 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='graphics-card', brand='ZOTAC-Graphics')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='graphics-card', brand='ZOTAC-Graphics') }}"
 												>ZOTAC</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='graphics-card', brand='gigabyte-graphics-card')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='graphics-card', brand='gigabyte-graphics-card') }}"
 												>GIGABYTE</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='graphics-card', brand='asus-graphics-card')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='graphics-card', brand='asus-graphics-card') }}"
 												>ASUS</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='graphics-card', brand='sapphire-graphics-card')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='graphics-card', brand='sapphire-graphics-card') }}"
 												>Sapphire</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='graphics-card', brand='msi-graphics-card')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='graphics-card', brand='msi-graphics-card') }}"
 												>MSI</a
 											>
 										</li>
@@ -1232,14 +1232,14 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='graphics-card', brand='xfx-graphics-card')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='graphics-card', brand='xfx-graphics-card') }}"
 												>XFX</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='graphics-card', brand='galax-graphics-card')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='graphics-card', brand='galax-graphics-card') }}"
 												>Galax</a
 											>
 										</li>
@@ -1276,14 +1276,14 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='component', subcategory='ram')"
+										href="{{ url_for('productslist.get_category_subcategory', category='component', subcategory='ram') }}"
 										>RAM (Desktop)</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='ram', brand='team-ram')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='ram', brand='team-ram') }}"
 												>Team</a
 											>
 										</li>
@@ -1297,28 +1297,28 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='ram', brand='geil-ram')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='ram', brand='geil-ram') }}"
 												>GEIL</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='ram', brand='gigabyte-ram')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='ram', brand='gigabyte-ram') }}"
 												>Gigabyte</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='ram', brand='corsair-ram')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='ram', brand='corsair-ram') }}"
 												>Corsair</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='ram', brand='g-skill-ram')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='ram', brand='g-skill-ram') }}"
 												>G.Skill</a
 											>
 										</li>
@@ -1332,28 +1332,28 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='ram', brand='twinmos-ram')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='ram', brand='twinmos-ram') }}"
 												>TwinMOS</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='ram', brand='adata')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='ram', brand='adata') }}"
 												>Adata</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='ram', brand='patriot-ram')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='ram', brand='patriot-ram') }}"
 												>Patriot</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='ram', brand='transcend-ram')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='ram', brand='transcend-ram') }}"
 												>Transcend</a
 											>
 										</li>
@@ -1367,7 +1367,7 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='ram', brand='hp-ram')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='ram', brand='hp-ram') }}"
 												>HP</a
 											>
 										</li>
@@ -1404,28 +1404,28 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='component', subcategory='laptop-ram')"
+										href="{{ url_for('productslist.get_category_subcategory', category='component', subcategory='laptop-ram') }}"
 										>RAM (Laptop)</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='laptop-ram', brand='team-laptop-ram')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='laptop-ram', brand='team-laptop-ram') }}"
 												>Team</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='laptop-ram', brand='geil-laptop-ram')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='laptop-ram', brand='geil-laptop-ram') }}"
 												>GEIL</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='laptop-ram', brand='adata-laptop-ram')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='laptop-ram', brand='adata-laptop-ram') }}"
 												>Adata</a
 											>
 										</li>
@@ -1446,14 +1446,14 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='laptop-ram', brand='hp-laptop-ram')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='laptop-ram', brand='hp-laptop-ram') }}"
 												>HP</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='laptop-ram', brand='patriot-laptop-ram')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='laptop-ram', brand='patriot-laptop-ram') }}"
 												>Patriot</a
 											>
 										</li>
@@ -1497,35 +1497,35 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='component', subcategory='power-supply')"
+										href="{{ url_for('productslist.get_category_subcategory', category='component', subcategory='power-supply') }}"
 										>Power Supply</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='power-supply', brand='gamdias-power-supply')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='power-supply', brand='gamdias-power-supply') }}"
 												>Gamdias</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='power-supply', brand='Antec-Power')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='power-supply', brand='Antec-Power') }}"
 												>Antec</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='power-supply', brand='maxgreen-power-supply')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='power-supply', brand='maxgreen-power-supply') }}"
 												>MaxGreen</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='power-supply', brand='Cooler-Master-power')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='power-supply', brand='Cooler-Master-power') }}"
 												>Cooler Master</a
 											>
 										</li>
@@ -1539,7 +1539,7 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='power-supply', brand='corsair-psu')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='power-supply', brand='corsair-psu') }}"
 												>Corsair</a
 											>
 										</li>
@@ -1597,35 +1597,35 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='component', subcategory='hard-disk-drive')"
+										href="{{ url_for('productslist.get_category_subcategory', category='component', subcategory='hard-disk-drive') }}"
 										>Hard Disk Drive</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='hard-disk-drive', brand='western-digital-hdd')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='hard-disk-drive', brand='western-digital-hdd') }}"
 												>Western Digital</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='hard-disk-drive', brand='toshiba-hdd')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='hard-disk-drive', brand='toshiba-hdd') }}"
 												>Toshiba</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='hard-disk-drive', brand='seagate-hard-disk')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='hard-disk-drive', brand='seagate-hard-disk') }}"
 												>Seagate</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='hard-disk-drive', brand='apple-hdd')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='hard-disk-drive', brand='apple-hdd') }}"
 												>Apple</a
 											>
 										</li>
@@ -1634,20 +1634,20 @@
 								<li class="nav-item has-child multi-col">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='component', subcategory='SSD-Hard-Disk')"
+										href="{{ url_for('productslist.get_category_subcategory', category='component', subcategory='SSD-Hard-Disk') }}"
 										>SSD</a
 									>
 									<div class="drop-down drop-menu-2">
 										<ul>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='component', subcategory='SSD-Hard-Disk', brand='team-ssd')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='SSD-Hard-Disk', brand='team-ssd') }}"
 													>Team</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='component', subcategory='SSD-Hard-Disk', brand='geil-ssd')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='SSD-Hard-Disk', brand='geil-ssd') }}"
 													>GeIL</a
 												>
 											</li>
@@ -1659,49 +1659,49 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='component', subcategory='SSD-Hard-Disk', brand='western-digital-ssd')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='SSD-Hard-Disk', brand='western-digital-ssd') }}"
 													>Western Digital</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='component', subcategory='SSD-Hard-Disk', brand='adata-hdd')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='SSD-Hard-Disk', brand='adata-hdd') }}"
 													>Adata</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='component', subcategory='SSD-Hard-Disk', brand='Transcend-ssd')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='SSD-Hard-Disk', brand='Transcend-ssd') }}"
 													>Transcend</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='component', subcategory='SSD-Hard-Disk', brand='samsung-hdd')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='SSD-Hard-Disk', brand='samsung-hdd') }}"
 													>Samsung</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='component', subcategory='SSD-Hard-Disk', brand='pny-ssd')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='SSD-Hard-Disk', brand='pny-ssd') }}"
 													>PNY</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='component', subcategory='SSD-Hard-Disk', brand='hp-ssd')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='SSD-Hard-Disk', brand='hp-ssd') }}"
 													>HP</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='component', subcategory='SSD-Hard-Disk', brand='kingston-ssd')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='SSD-Hard-Disk', brand='kingston-ssd') }}"
 													>Kingston</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='component', subcategory='SSD-Hard-Disk', brand='corsair-ssd')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='SSD-Hard-Disk', brand='corsair-ssd') }}"
 													>Corsair</a
 												>
 											</li>
@@ -1719,7 +1719,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='component', subcategory='SSD-Hard-Disk', brand='gigabyte-ssd')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='SSD-Hard-Disk', brand='gigabyte-ssd') }}"
 													>Gigabyte</a
 												>
 											</li>
@@ -1739,13 +1739,13 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='component', subcategory='SSD-Hard-Disk', brand='intel-ssd')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='SSD-Hard-Disk', brand='intel-ssd') }}"
 													>Intel</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='component', subcategory='SSD-Hard-Disk', brand='teutons-ssd')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='SSD-Hard-Disk', brand='teutons-ssd') }}"
 													>Teutons</a
 												>
 											</li>
@@ -1763,13 +1763,13 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='component', subcategory='SSD-Hard-Disk', brand='twinmos-ssd')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='SSD-Hard-Disk', brand='twinmos-ssd') }}"
 													>Twinmos</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='component', subcategory='SSD-Hard-Disk', brand='colorful-ssd')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='SSD-Hard-Disk', brand='colorful-ssd') }}"
 													>Colorful</a
 												>
 											</li>
@@ -1817,7 +1817,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='component', subcategory='SSD-Hard-Disk', brand='apacer-ssd')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='SSD-Hard-Disk', brand='apacer-ssd') }}"
 													>Apacer</a
 												>
 											</li>
@@ -1827,21 +1827,21 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='component', subcategory='casing')"
+										href="{{ url_for('productslist.get_category_subcategory', category='component', subcategory='casing') }}"
 										>Casing</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='casing', brand='Antec-Casing')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='casing', brand='Antec-Casing') }}"
 												>Antec</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='casing', brand='gamdias-casing')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='casing', brand='gamdias-casing') }}"
 												>Gamdias</a
 											>
 										</li>
@@ -1869,7 +1869,7 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='casing', brand='maxgreen-casing')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='casing', brand='maxgreen-casing') }}"
 												>MaxGreen</a
 											>
 										</li>
@@ -1918,7 +1918,7 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='casing', brand='gigabyte-casing')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='casing', brand='gigabyte-casing') }}"
 												>Gigabyte</a
 											>
 										</li>
@@ -1967,7 +1967,7 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='casing', brand='golden-field-casing')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='casing', brand='golden-field-casing') }}"
 												>Golden Field</a
 											>
 										</li>
@@ -1990,7 +1990,7 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='component', subcategory='portable-hard-disk-drive')"
+										href="{{ url_for('productslist.get_category_subcategory', category='component', subcategory='portable-hard-disk-drive') }}"
 										>Portable Hard Disk Drive</a
 									>
 									<ul class="drop-down drop-menu-2">
@@ -2004,14 +2004,14 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='portable-hard-disk-drive', brand='ADATA-Hard-disk')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='portable-hard-disk-drive', brand='ADATA-Hard-disk') }}"
 												>ADATA</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='portable-hard-disk-drive', brand='tanscend-hdd')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='portable-hard-disk-drive', brand='tanscend-hdd') }}"
 												>Transcend</a
 											>
 										</li>
@@ -2025,14 +2025,14 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='portable-hard-disk-drive', brand='western-digital-portable-hard-disk')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='portable-hard-disk-drive', brand='western-digital-portable-hard-disk') }}"
 												>Western Digital</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='portable-hard-disk-drive', brand='seagate-portable-hdd')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='portable-hard-disk-drive', brand='seagate-portable-hdd') }}"
 												>Seagate</a
 											>
 										</li>
@@ -2048,14 +2048,14 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='component', subcategory='portable-ssd-hard-disk')"
+										href="{{ url_for('productslist.get_category_subcategory', category='component', subcategory='portable-ssd-hard-disk') }}"
 										>Portable SSD</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='portable-ssd-hard-disk', brand='samsung-portable-ssd-hard-disk')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='portable-ssd-hard-disk', brand='samsung-portable-ssd-hard-disk') }}"
 												>Samsung</a
 											>
 										</li>
@@ -2069,7 +2069,7 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='portable-ssd-hard-disk', brand='hp-portable-ssd')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='portable-ssd-hard-disk', brand='hp-portable-ssd') }}"
 												>HP</a
 											>
 										</li>
@@ -2083,21 +2083,21 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='portable-ssd-hard-disk', brand='transcend-portable-ssd')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='portable-ssd-hard-disk', brand='transcend-portable-ssd') }}"
 												>Transcend
 											</a>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='portable-ssd-hard-disk', brand='western-ssd')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='portable-ssd-hard-disk', brand='western-ssd') }}"
 												>Western Digital</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='portable-ssd-hard-disk', brand='adata-portable-ssd')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='portable-ssd-hard-disk', brand='adata-portable-ssd') }}"
 												>Adata</a
 											>
 										</li>
@@ -2148,7 +2148,7 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='component', subcategory='casing-cooler')"
+										href="{{ url_for('productslist.get_category_subcategory', category='component', subcategory='casing-cooler') }}"
 										>Casing Cooler</a
 									>
 									<ul class="drop-down drop-menu-2">
@@ -2162,7 +2162,7 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='casing-cooler', brand='antec-casing-cooler')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='casing-cooler', brand='antec-casing-cooler') }}"
 												>Antec</a
 											>
 										</li>
@@ -2176,21 +2176,21 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='casing-cooler', brand='bitfenix-casing-cooler')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='casing-cooler', brand='bitfenix-casing-cooler') }}"
 												>Bitfenix</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='casing-cooler', brand='gamdias-casing-fan')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='casing-cooler', brand='gamdias-casing-fan') }}"
 												>Gamdias</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='casing-cooler', brand='corsair-casing-cooler')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='casing-cooler', brand='corsair-casing-cooler') }}"
 												>Corsair</a
 											>
 										</li>
@@ -2255,28 +2255,28 @@
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='component', subcategory='sound-card')"
+										href="{{ url_for('productslist.get_category_subcategory', category='component', subcategory='sound-card') }}"
 										>Sound Card</a
 									>
 								</li>
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='component', subcategory='optical-hdd')"
+										href="{{ url_for('productslist.get_category_subcategory', category='component', subcategory='optical-hdd') }}"
 										>Optical Disk Drive</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='optical-hdd', brand='internal-optical-hdd')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='optical-hdd', brand='internal-optical-hdd') }}"
 												>Internal Optical Disk Drive</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='component', subcategory='optical-hdd', brand='external-optical-hdd')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='component', subcategory='optical-hdd', brand='external-optical-hdd') }}"
 												>External Optical Disk Drive</a
 											>
 										</li>
@@ -2285,7 +2285,7 @@
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='component', subcategory='stabilizer')"
+										href="{{ url_for('productslist.get_category_subcategory', category='component', subcategory='stabilizer') }}"
 										>Voltage Stabilizer</a
 									>
 								</li>
@@ -2322,49 +2322,49 @@
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='monitor', subcategory='benq')"
+										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='benq') }}"
 										>BenQ</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='monitor', subcategory='asus')"
+										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='asus') }}"
 										>Asus</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='monitor', subcategory='lg')"
+										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='lg') }}"
 										>LG
 									</a>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='monitor', subcategory='hp')"
+										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='hp') }}"
 										>HP</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='monitor', subcategory='dell')"
+										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='dell') }}"
 										>Dell</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='monitor', subcategory='gigabyte')"
+										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='gigabyte') }}"
 										>GIGABYTE</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='monitor', subcategory='samsung')"
+										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='samsung') }}"
 										>Samsung</a
 									>
 								</li>
@@ -2378,56 +2378,56 @@
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='monitor', subcategory='msi')"
+										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='msi') }}"
 										>MSI</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='monitor', subcategory='xiaomi')"
+										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='xiaomi') }}"
 										>XIAOMI</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='monitor', subcategory='philips')"
+										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='philips') }}"
 										>PHILIPS</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='monitor', subcategory='viewsonic')"
+										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='viewsonic') }}"
 										>Viewsonic</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='monitor', subcategory='walton')"
+										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='walton') }}"
 										>Walton</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='monitor', subcategory='acer')"
+										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='acer') }}"
 										>Acer</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='monitor', subcategory='aoc')"
+										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='aoc') }}"
 										>AOC</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='monitor', subcategory='esonic')"
+										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='esonic') }}"
 										>Esonic</a
 									>
 								</li>
@@ -2520,28 +2520,28 @@
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='tablet-pc', subcategory='apple-tablet')"
+										href="{{ url_for('productslist.get_category_subcategory', category='tablet-pc', subcategory='apple-tablet') }}"
 										>Apple</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='tablet-pc', subcategory='microsoft-tablet-pc')"
+										href="{{ url_for('productslist.get_category_subcategory', category='tablet-pc', subcategory='microsoft-tablet-pc') }}"
 										>Microsoft</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='tablet-pc', subcategory='lenovo-tablet-pc')"
+										href="{{ url_for('productslist.get_category_subcategory', category='tablet-pc', subcategory='lenovo-tablet-pc') }}"
 										>Lenovo</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='tablet-pc', subcategory='huawei-tablet-pc')"
+										href="{{ url_for('productslist.get_category_subcategory', category='tablet-pc', subcategory='huawei-tablet-pc') }}"
 										>HUAWEI</a
 									>
 								</li>
@@ -2562,7 +2562,7 @@
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='tablet-pc', subcategory='wacom-tablet-pc')"
+										href="{{ url_for('productslist.get_category_subcategory', category='tablet-pc', subcategory='wacom-tablet-pc') }}"
 										>Wacom</a
 									>
 								</li>
@@ -2583,7 +2583,7 @@
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='tablet-pc', subcategory='amazon')"
+										href="{{ url_for('productslist.get_category_subcategory', category='tablet-pc', subcategory='amazon') }}"
 										>Amazon</a
 									>
 								</li>
@@ -2597,7 +2597,7 @@
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='tablet-pc', subcategory='stylus')"
+										href="{{ url_for('productslist.get_category_subcategory', category='tablet-pc', subcategory='stylus') }}"
 										>Stylus</a
 									>
 								</li>
@@ -2641,70 +2641,70 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='projector', subcategory='infocus')"
+												href="{{ url_for('productslist.get_category_subcategory', category='projector', subcategory='infocus') }}"
 												>InFocus</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='projector', subcategory='benq')"
+												href="{{ url_for('productslist.get_category_subcategory', category='projector', subcategory='benq') }}"
 												>BenQ</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='projector', subcategory='epson')"
+												href="{{ url_for('productslist.get_category_subcategory', category='projector', subcategory='epson') }}"
 												>EPSON</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='projector', subcategory='casio')"
+												href="{{ url_for('productslist.get_category_subcategory', category='projector', subcategory='casio') }}"
 												>CASIO</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='projector', subcategory='viewsonic')"
+												href="{{ url_for('productslist.get_category_subcategory', category='projector', subcategory='viewsonic') }}"
 												>Viewsonic</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='projector', subcategory='vivitek')"
+												href="{{ url_for('productslist.get_category_subcategory', category='projector', subcategory='vivitek') }}"
 												>VIVItek</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='projector', subcategory='optoma')"
+												href="{{ url_for('productslist.get_category_subcategory', category='projector', subcategory='optoma') }}"
 												>Optoma</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='projector', subcategory='asus')"
+												href="{{ url_for('productslist.get_category_subcategory', category='projector', subcategory='asus') }}"
 												>Asus</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='projector', subcategory='maxell')"
+												href="{{ url_for('productslist.get_category_subcategory', category='projector', subcategory='maxell') }}"
 												>Maxell</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='projector', subcategory='cheerlux')"
+												href="{{ url_for('productslist.get_category_subcategory', category='projector', subcategory='cheerlux') }}"
 												>Cheerlux</a
 											>
 										</li>
@@ -2718,7 +2718,7 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='projector', subcategory='non-brand-products')"
+												href="{{ url_for('productslist.get_category_subcategory', category='projector', subcategory='non-brand-products') }}"
 												>OTHERS</a
 											>
 										</li>
@@ -2748,35 +2748,35 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='office-equipment', subcategory='printer')"
+										href="{{ url_for('productslist.get_category_subcategory', category='office-equipment', subcategory='printer') }}"
 										>Printer</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='office-equipment', subcategory='printer', brand='brother-printer')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='office-equipment', subcategory='printer', brand='brother-printer') }}"
 												>Brother</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='office-equipment', subcategory='printer', brand='Canon-printer')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='office-equipment', subcategory='printer', brand='Canon-printer') }}"
 												>Canon</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='office-equipment', subcategory='printer', brand='EPSON-Printer')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='office-equipment', subcategory='printer', brand='EPSON-Printer') }}"
 												>EPSON</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='office-equipment', subcategory='printer', brand='HP-printer')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='office-equipment', subcategory='printer', brand='HP-printer') }}"
 											>
 												HP</a
 											>
@@ -2784,14 +2784,14 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='office-equipment', subcategory='printer', brand='pantum-printer')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='office-equipment', subcategory='printer', brand='pantum-printer') }}"
 												>Pantum</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='office-equipment', subcategory='printer', brand='xerox')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='office-equipment', subcategory='printer', brand='xerox') }}"
 												>Xerox</a
 											>
 										</li>
@@ -2852,56 +2852,56 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='office-equipment', subcategory='Scanner')"
+										href="{{ url_for('productslist.get_category_subcategory', category='office-equipment', subcategory='Scanner') }}"
 										>Scanner</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='office-equipment', subcategory='Scanner', brand='hp')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='office-equipment', subcategory='Scanner', brand='hp') }}"
 												>HP</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='office-equipment', subcategory='Scanner', brand='canon')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='office-equipment', subcategory='Scanner', brand='canon') }}"
 												>Canon</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='office-equipment', subcategory='Scanner', brand='epson')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='office-equipment', subcategory='Scanner', brand='epson') }}"
 												>EPSON</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='office-equipment', subcategory='Scanner', brand='plustek')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='office-equipment', subcategory='Scanner', brand='plustek') }}"
 												>Plustek</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='office-equipment', subcategory='Scanner', brand='brother')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='office-equipment', subcategory='Scanner', brand='brother') }}"
 												>Brother</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='office-equipment', subcategory='Scanner', brand='mustek')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='office-equipment', subcategory='Scanner', brand='mustek') }}"
 												>Mustek</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='office-equipment', subcategory='Scanner', brand='avision')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='office-equipment', subcategory='Scanner', brand='avision') }}"
 												>Avision</a
 											>
 										</li>
@@ -2940,20 +2940,20 @@
 								<li class="nav-item has-child multi-col">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='accessories', subcategory='keyboards')"
+										href="{{ url_for('productslist.get_category_subcategory', category='accessories', subcategory='keyboards') }}"
 										>Keyboard</a
 									>
 									<div class="drop-down drop-menu-2">
 										<ul>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='keyboards', brand='razer-keyboard')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='keyboards', brand='razer-keyboard') }}"
 													>RAZER</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='keyboards', brand='gamdias-keyboard')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='keyboards', brand='gamdias-keyboard') }}"
 													>GAMDIAS</a
 												>
 											</li>
@@ -2965,13 +2965,13 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='keyboards', brand='maxgreen-keyboard')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='keyboards', brand='maxgreen-keyboard') }}"
 													>MaxGreen</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='keyboards', brand='apple-keyboard')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='keyboards', brand='apple-keyboard') }}"
 													>Apple</a
 												>
 											</li>
@@ -2989,7 +2989,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='keyboards', brand='logitech-keyboard')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='keyboards', brand='logitech-keyboard') }}"
 													>Logitech</a
 												>
 											</li>
@@ -3007,13 +3007,13 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='keyboards', brand='a4-tech-keyboard')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='keyboards', brand='a4-tech-keyboard') }}"
 													>A4Tech</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='keyboards', brand='hp-keyboard')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='keyboards', brand='hp-keyboard') }}"
 													>HP</a
 												>
 											</li>
@@ -3031,25 +3031,25 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='keyboards', brand='gigabyte-keyboard')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='keyboards', brand='gigabyte-keyboard') }}"
 													>GIGABYTE</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='keyboards', brand='dell-keyboard')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='keyboards', brand='dell-keyboard') }}"
 													>Dell</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='keyboards', brand='rapoo-keyboard')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='keyboards', brand='rapoo-keyboard') }}"
 													>Rapoo</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='keyboards', brand='microsoft-surface-pro-keyboard')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='keyboards', brand='microsoft-surface-pro-keyboard') }}"
 													>Microsoft</a
 												>
 											</li>
@@ -3069,7 +3069,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='keyboards', brand='xiaomi-keyboard')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='keyboards', brand='xiaomi-keyboard') }}"
 													>Xiaomi</a
 												>
 											</li>
@@ -3081,13 +3081,13 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='keyboards', brand='havit-keyboard')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='keyboards', brand='havit-keyboard') }}"
 													>Havit</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='keyboards', brand='motospeed-keyboard')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='keyboards', brand='motospeed-keyboard') }}"
 													>MotoSpeed</a
 												>
 											</li>
@@ -3099,7 +3099,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='keyboards', brand='cougar-keyboard')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='keyboards', brand='cougar-keyboard') }}"
 													>Cougar</a
 												>
 											</li>
@@ -3123,7 +3123,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='keyboards', brand='micropack-keyboard')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='keyboards', brand='micropack-keyboard') }}"
 													>Micropack</a
 												>
 											</li>
@@ -3181,21 +3181,21 @@
 								<li class="nav-item has-child multi-col">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='accessories', subcategory='mouse')"
+										href="{{ url_for('productslist.get_category_subcategory', category='accessories', subcategory='mouse') }}"
 										>Mouse</a
 									>
 									<div class="drop-down drop-menu-2">
 										<ul>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='mouse', brand='razer-mouse')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='mouse', brand='razer-mouse') }}"
 												>
 													RAZER</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='mouse', brand='gamdias-gaming-mouse')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='mouse', brand='gamdias-gaming-mouse') }}"
 													>GAMDIAS</a
 												>
 											</li>
@@ -3207,13 +3207,13 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='mouse', brand='max-green-mouse')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='mouse', brand='max-green-mouse') }}"
 													>MaxGreen</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='mouse', brand='asus-mouse')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='mouse', brand='asus-mouse') }}"
 													>Asus</a
 												>
 											</li>
@@ -3225,13 +3225,13 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='mouse', brand='apple-mouse')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='mouse', brand='apple-mouse') }}"
 													>Apple</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='mouse', brand='xiaomi-mouse')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='mouse', brand='xiaomi-mouse') }}"
 													>Xiaomi</a
 												>
 											</li>
@@ -3243,13 +3243,13 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='mouse', brand='logitech-mouse')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='mouse', brand='logitech-mouse') }}"
 													>Logitech</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='mouse', brand='hp-mouse')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='mouse', brand='hp-mouse') }}"
 													>HP</a
 												>
 											</li>
@@ -3267,37 +3267,37 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='mouse', brand='delux-mouse')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='mouse', brand='delux-mouse') }}"
 													>Delux</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='mouse', brand='dell-mouse')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='mouse', brand='dell-mouse') }}"
 													>Dell</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='mouse', brand='rapoo-mouse')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='mouse', brand='rapoo-mouse') }}"
 													>Rapoo</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='mouse', brand='a4-tech-mouse')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='mouse', brand='a4-tech-mouse') }}"
 													>A4Tech</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='mouse', brand='havit-mouse')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='mouse', brand='havit-mouse') }}"
 													>Havit</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='mouse', brand='corsair-mouse')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='mouse', brand='corsair-mouse') }}"
 													>Corsair</a
 												>
 											</li>
@@ -3311,7 +3311,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='mouse', brand='steelseries')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='mouse', brand='steelseries') }}"
 													>SteelSeries</a
 												>
 											</li>
@@ -3323,13 +3323,13 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='mouse', brand='lenovo-mouse')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='mouse', brand='lenovo-mouse') }}"
 													>Lenovo</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='mouse', brand='prolink-mouse')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='mouse', brand='prolink-mouse') }}"
 													>Prolink</a
 												>
 											</li>
@@ -3341,7 +3341,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='mouse', brand='motospeed-mouse')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='mouse', brand='motospeed-mouse') }}"
 													>MotoSpeed</a
 												>
 											</li>
@@ -3359,7 +3359,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='mouse', brand='micropack')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='mouse', brand='micropack') }}"
 													>Micropack</a
 												>
 											</li>
@@ -3417,21 +3417,21 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='accessories', subcategory='mouse-pad')"
+										href="{{ url_for('productslist.get_category_subcategory', category='accessories', subcategory='mouse-pad') }}"
 										>Mouse Pad</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='mouse-pad', brand='razer-mouse-pad')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='mouse-pad', brand='razer-mouse-pad') }}"
 												>RAZER</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='mouse-pad', brand='gamdias-mouse-pad')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='mouse-pad', brand='gamdias-mouse-pad') }}"
 												>Gamdias</a
 											>
 										</li>
@@ -3459,35 +3459,35 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='mouse-pad', brand='havit-mouse-pad')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='mouse-pad', brand='havit-mouse-pad') }}"
 												>Havit</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='mouse-pad', brand='hp-mouse-pad')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='mouse-pad', brand='hp-mouse-pad') }}"
 												>HP</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='mouse-pad', brand='logitech-mouse-pad')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='mouse-pad', brand='logitech-mouse-pad') }}"
 												>Logitech</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='mouse-pad', brand='rapoo-mouse-pad')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='mouse-pad', brand='rapoo-mouse-pad') }}"
 												>Rapoo</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='mouse-pad', brand='steelseries-mouse-pad')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='mouse-pad', brand='steelseries-mouse-pad') }}"
 												>SteelSeries
 											</a>
 										</li>
@@ -3552,7 +3552,7 @@
 								<li class="nav-item has-child multi-col">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='accessories', subcategory='headphone')"
+										href="{{ url_for('productslist.get_category_subcategory', category='accessories', subcategory='headphone') }}"
 										>Headphone</a
 									>
 									<div class="drop-down drop-menu-2">
@@ -3565,13 +3565,13 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='headphone', brand='gamdias-headphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='headphone', brand='gamdias-headphone') }}"
 													>GAMDIAS</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='headphone', brand='razer-headphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='headphone', brand='razer-headphone') }}"
 													>RAZER</a
 												>
 											</li>
@@ -3583,7 +3583,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='headphone', brand='logitech-headphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='headphone', brand='logitech-headphone') }}"
 													>Logitech</a
 												>
 											</li>
@@ -3601,19 +3601,19 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='headphone', brand='havit-headphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='headphone', brand='havit-headphone') }}"
 													>Havit</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='headphone', brand='a4-tech-headphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='headphone', brand='a4-tech-headphone') }}"
 													>A4Tech</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='headphone', brand='edifier-headphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='headphone', brand='edifier-headphone') }}"
 													>Edifier</a
 												>
 											</li>
@@ -3625,13 +3625,13 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='headphone', brand='rapoo-headset')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='headphone', brand='rapoo-headset') }}"
 													>Rapoo</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='headphone', brand='xiaomi-headset')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='headphone', brand='xiaomi-headset') }}"
 													>Xiaomi</a
 												>
 											</li>
@@ -3643,7 +3643,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='headphone', brand='jabra-headphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='headphone', brand='jabra-headphone') }}"
 													>Jabra</a
 												>
 											</li>
@@ -3661,7 +3661,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='headphone', brand='corsair-headphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='headphone', brand='corsair-headphone') }}"
 													>Corsair</a
 												>
 											</li>
@@ -3691,7 +3691,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='headphone', brand='steelseries-headphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='headphone', brand='steelseries-headphone') }}"
 													>SteelSeries</a
 												>
 											</li>
@@ -3723,7 +3723,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='headphone', brand='microlab-headphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='headphone', brand='microlab-headphone') }}"
 													>Microlab</a
 												>
 											</li>
@@ -3741,7 +3741,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='headphone', brand='audio-technica-headphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='headphone', brand='audio-technica-headphone') }}"
 													>Audio Technica</a
 												>
 											</li>
@@ -3753,13 +3753,13 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='headphone', brand='prolink-heoneadph')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='headphone', brand='prolink-heoneadph') }}"
 													>Prolink</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='headphone', brand='sennheiser-headphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='headphone', brand='sennheiser-headphone') }}"
 													>Sennheiser</a
 												>
 											</li>
@@ -3777,13 +3777,13 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='headphone', brand='hp-headphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='headphone', brand='hp-headphone') }}"
 													>HP</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='headphone', brand='jbl-headphones')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='headphone', brand='jbl-headphones') }}"
 													>JBL</a
 												>
 											</li>
@@ -3795,7 +3795,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='headphone', brand='bose-headphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='headphone', brand='bose-headphone') }}"
 													>Bose</a
 												>
 											</li>
@@ -3807,7 +3807,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='headphone', brand='1more-headphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='headphone', brand='1more-headphone') }}"
 													>1More</a
 												>
 											</li>
@@ -3831,7 +3831,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='headphone', brand='casio-headphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='headphone', brand='casio-headphone') }}"
 													>Casio</a
 												>
 											</li>
@@ -3853,14 +3853,14 @@
 								<li class="nav-item has-child multi-col">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='accessories', subcategory='speaker-and-home-theater')"
+										href="{{ url_for('productslist.get_category_subcategory', category='accessories', subcategory='speaker-and-home-theater') }}"
 										>Speaker &amp; Home Theater</a
 									>
 									<div class="drop-down drop-menu-2">
 										<ul>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='speaker-and-home-theater', brand='razer-speaker')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='speaker-and-home-theater', brand='razer-speaker') }}"
 												>
 													Razer</a
 												>
@@ -3873,43 +3873,43 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='speaker-and-home-theater', brand='sony-speaker-and-home-theater')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='speaker-and-home-theater', brand='sony-speaker-and-home-theater') }}"
 													>Sony</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='speaker-and-home-theater', brand='Logitech-speaker')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='speaker-and-home-theater', brand='Logitech-speaker') }}"
 													>Logitech</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='speaker-and-home-theater', brand='edifier-speaker')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='speaker-and-home-theater', brand='edifier-speaker') }}"
 													>Edifier</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='speaker-and-home-theater', brand='xiaomi-speaker')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='speaker-and-home-theater', brand='xiaomi-speaker') }}"
 													>Xiaomi</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='speaker-and-home-theater', brand='philips-speaker')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='speaker-and-home-theater', brand='philips-speaker') }}"
 													>Philips</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='speaker-and-home-theater', brand='microlab-speaker')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='speaker-and-home-theater', brand='microlab-speaker') }}"
 													>Microlab</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='speaker-and-home-theater', brand='havit-speaker')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='speaker-and-home-theater', brand='havit-speaker') }}"
 													>Havit</a
 												>
 											</li>
@@ -3927,7 +3927,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='speaker-and-home-theater', brand='f-and-d-multimedia-speaker')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='speaker-and-home-theater', brand='f-and-d-multimedia-speaker') }}"
 													>F&amp;D</a
 												>
 											</li>
@@ -3941,7 +3941,7 @@
 										<ul>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='speaker-and-home-theater', brand='xtreme-speaker')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='speaker-and-home-theater', brand='xtreme-speaker') }}"
 													>Xtreme</a
 												>
 											</li>
@@ -3959,43 +3959,43 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='speaker-and-home-theater', brand='bose')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='speaker-and-home-theater', brand='bose') }}"
 													>Bose</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='speaker-and-home-theater', brand='micropack-speaker')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='speaker-and-home-theater', brand='micropack-speaker') }}"
 													>Micropack</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='speaker-and-home-theater', brand='digital-x-speaker')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='speaker-and-home-theater', brand='digital-x-speaker') }}"
 													>Digital X</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='speaker-and-home-theater', brand='golden-field-speaker')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='speaker-and-home-theater', brand='golden-field-speaker') }}"
 													>Golden Field</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='speaker-and-home-theater', brand='avermedia')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='speaker-and-home-theater', brand='avermedia') }}"
 													>AVerMedia</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='speaker-and-home-theater', brand='creative')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='speaker-and-home-theater', brand='creative') }}"
 													>Creative</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='speaker-and-home-theater', brand='altec-lansing-speaker')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='speaker-and-home-theater', brand='altec-lansing-speaker') }}"
 													>Altec Lansing</a
 												>
 											</li>
@@ -4013,7 +4013,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='speaker-and-home-theater', brand='others-speaker')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='speaker-and-home-theater', brand='others-speaker') }}"
 													>Others</a
 												>
 											</li>
@@ -4023,20 +4023,20 @@
 								<li class="nav-item has-child multi-col">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='accessories', subcategory='bluetooth-speaker')"
+										href="{{ url_for('productslist.get_category_subcategory', category='accessories', subcategory='bluetooth-speaker') }}"
 										>Bluetooth Speakers</a
 									>
 									<div class="drop-down drop-menu-2">
 										<ul>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='bluetooth-speaker', brand='f-and-d')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='bluetooth-speaker', brand='f-and-d') }}"
 													>F&amp;D</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='bluetooth-speaker', brand='jbl')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='bluetooth-speaker', brand='jbl') }}"
 													>JBL</a
 												>
 											</li>
@@ -4060,19 +4060,19 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='bluetooth-speaker', brand='bose-speaker')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='bluetooth-speaker', brand='bose-speaker') }}"
 													>Bose</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='bluetooth-speaker', brand='jabra')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='bluetooth-speaker', brand='jabra') }}"
 													>Jabra</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='bluetooth-speaker', brand='bang-and-olufsen')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='bluetooth-speaker', brand='bang-and-olufsen') }}"
 													>Bang &amp; Olufsen</a
 												>
 											</li>
@@ -4108,31 +4108,31 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='bluetooth-speaker', brand='havit')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='bluetooth-speaker', brand='havit') }}"
 													>Havit</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='bluetooth-speaker', brand='edifier')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='bluetooth-speaker', brand='edifier') }}"
 													>Edifier</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='bluetooth-speaker', brand='xiaomi')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='bluetooth-speaker', brand='xiaomi') }}"
 													>XIAOMI</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='bluetooth-speaker', brand='awei')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='bluetooth-speaker', brand='awei') }}"
 													>Awei</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='bluetooth-speaker', brand='microlab')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='bluetooth-speaker', brand='microlab') }}"
 													>Microlab</a
 												>
 											</li>
@@ -4140,43 +4140,43 @@
 										<ul>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='bluetooth-speaker', brand='philips')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='bluetooth-speaker', brand='philips') }}"
 													>PHILIPS</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='bluetooth-speaker', brand='remax')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='bluetooth-speaker', brand='remax') }}"
 													>Remax</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='bluetooth-speaker', brand='rapoo')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='bluetooth-speaker', brand='rapoo') }}"
 													>Rapoo</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='bluetooth-speaker', brand='x-mini-speaker')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='bluetooth-speaker', brand='x-mini-speaker') }}"
 													>X-mini</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='bluetooth-speaker', brand='xtreme')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='bluetooth-speaker', brand='xtreme') }}"
 													>Xtreme</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='bluetooth-speaker', brand='non-brand-products')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='bluetooth-speaker', brand='non-brand-products') }}"
 													>OTHERS</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='bluetooth-speaker', brand='harman-kardon')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='bluetooth-speaker', brand='harman-kardon') }}"
 													>Harman Kardon</a
 												>
 											</li>
@@ -4188,7 +4188,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='bluetooth-speaker', brand='huawei')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='bluetooth-speaker', brand='huawei') }}"
 													>HUAWEI</a
 												>
 											</li>
@@ -4200,31 +4200,31 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='bluetooth-speaker', brand='golden-field')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='bluetooth-speaker', brand='golden-field') }}"
 													>Golden Field</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='bluetooth-speaker', brand='logitech')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='bluetooth-speaker', brand='logitech') }}"
 													>Logitech</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='bluetooth-speaker', brand='a4-tech')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='bluetooth-speaker', brand='a4-tech') }}"
 													>A4Tech</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='bluetooth-speaker', brand='dell')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='bluetooth-speaker', brand='dell') }}"
 													>Dell</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='bluetooth-speaker', brand='hp')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='bluetooth-speaker', brand='hp') }}"
 													>HP</a
 												>
 											</li>
@@ -4236,13 +4236,13 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='bluetooth-speaker', brand='pure')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='bluetooth-speaker', brand='pure') }}"
 													>Pure Acoustics</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='bluetooth-speaker', brand='teutons')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='bluetooth-speaker', brand='teutons') }}"
 													>Teutons</a
 												>
 											</li>
@@ -4252,7 +4252,7 @@
 								<li class="nav-item has-child multi-col">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='accessories', subcategory='ear-phone')"
+										href="{{ url_for('productslist.get_category_subcategory', category='accessories', subcategory='ear-phone') }}"
 										>Ear Phone</a
 									>
 									<div class="drop-down drop-menu-2">
@@ -4265,25 +4265,25 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='ear-phone', brand='razer-ear-phone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='ear-phone', brand='razer-ear-phone') }}"
 													>RAZER</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='ear-phone', brand='xiaomi-earphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='ear-phone', brand='xiaomi-earphone') }}"
 													>Xiaomi</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='ear-phone', brand='hp-earphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='ear-phone', brand='hp-earphone') }}"
 													>HP</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='ear-phone', brand='a4tech-earphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='ear-phone', brand='a4tech-earphone') }}"
 													>A4Tech</a
 												>
 											</li>
@@ -4295,13 +4295,13 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='ear-phone', brand='rapoo-ear-phone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='ear-phone', brand='rapoo-ear-phone') }}"
 													>Rapoo</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='ear-phone', brand='apple-earphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='ear-phone', brand='apple-earphone') }}"
 													>Apple</a
 												>
 											</li>
@@ -4313,13 +4313,13 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='ear-phone', brand='microlab-earphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='ear-phone', brand='microlab-earphone') }}"
 													>Microlab</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='ear-phone', brand='uiisii')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='ear-phone', brand='uiisii') }}"
 													>UiiSii</a
 												>
 											</li>
@@ -4349,7 +4349,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='ear-phone', brand='remax-earphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='ear-phone', brand='remax-earphone') }}"
 													>Remax</a
 												>
 											</li>
@@ -4361,7 +4361,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='ear-phone', brand='havit-earphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='ear-phone', brand='havit-earphone') }}"
 													>Havit</a
 												>
 											</li>
@@ -4385,7 +4385,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='ear-phone', brand='micropack-earphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='ear-phone', brand='micropack-earphone') }}"
 													>Micropack</a
 												>
 											</li>
@@ -4399,7 +4399,7 @@
 										<ul>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='ear-phone', brand='samsung-earphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='ear-phone', brand='samsung-earphone') }}"
 													>Samsung</a
 												>
 											</li>
@@ -4447,7 +4447,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='ear-phone', brand='jbl-earphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='ear-phone', brand='jbl-earphone') }}"
 													>JBL</a
 												>
 											</li>
@@ -4471,19 +4471,19 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='ear-phone', brand='1more-earphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='ear-phone', brand='1more-earphone') }}"
 													>1MORE</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='ear-phone', brand='jabra-earphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='ear-phone', brand='jabra-earphone') }}"
 													>Jabra</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='ear-phone', brand='huawei-earphone')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='ear-phone', brand='huawei-earphone') }}"
 													>Huawei</a
 												>
 											</li>
@@ -4541,21 +4541,21 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='accessories', subcategory='webcam')"
+										href="{{ url_for('productslist.get_category_subcategory', category='accessories', subcategory='webcam') }}"
 										>Webcam</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='webcam', brand='a4-tech-webcam')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='webcam', brand='a4-tech-webcam') }}"
 												>A4Tech</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='webcam', brand='logitech-webcam')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='webcam', brand='logitech-webcam') }}"
 												>Logitech</a
 											>
 										</li>
@@ -4690,14 +4690,14 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='accessories', subcategory='microphone')"
+										href="{{ url_for('productslist.get_category_subcategory', category='accessories', subcategory='microphone') }}"
 										>Microphone</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='microphone', brand='razer-microphone-accessories')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='microphone', brand='razer-microphone-accessories') }}"
 												>RAZER</a
 											>
 										</li>
@@ -4711,35 +4711,35 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='microphone', brand='boya-speaker')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='microphone', brand='boya-speaker') }}"
 												>Boya</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='microphone', brand='rode-microphone')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='microphone', brand='rode-microphone') }}"
 												>RODE</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='microphone', brand='audio-technica-microphone')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='microphone', brand='audio-technica-microphone') }}"
 												>Audio Technica</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='microphone', brand='panasonic-microphone')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='microphone', brand='panasonic-microphone') }}"
 												>Panasonic</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='microphone', brand='sennheiser-microphone')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='microphone', brand='sennheiser-microphone') }}"
 												>Sennheiser</a
 											>
 										</li>
@@ -4753,14 +4753,14 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='microphone', brand='zoom')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='microphone', brand='zoom') }}"
 												>Zoom</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='microphone', brand='avermedia-microphone')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='microphone', brand='avermedia-microphone') }}"
 												>AVerMedia</a
 											>
 										</li>
@@ -4774,7 +4774,7 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='microphone', brand='tev-microphone')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='microphone', brand='tev-microphone') }}"
 												>TEV</a
 											>
 										</li>
@@ -4867,50 +4867,50 @@
 								<li class="nav-item has-child multi-col">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='accessories', subcategory='Pen-Drive')"
+										href="{{ url_for('productslist.get_category_subcategory', category='accessories', subcategory='Pen-Drive') }}"
 										>Pen Drive</a
 									>
 									<div class="drop-down drop-menu-2">
 										<ul>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='Pen-Drive', brand='team-pendrive')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='Pen-Drive', brand='team-pendrive') }}"
 													>Team</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='Pen-Drive', brand='Transcend-Pendrive')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='Pen-Drive', brand='Transcend-Pendrive') }}"
 													>Transcend</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='Pen-Drive', brand='teutons-pendrive')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='Pen-Drive', brand='teutons-pendrive') }}"
 													>Teutons</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='Pen-Drive', brand='TWINMOS-Pendrive')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='Pen-Drive', brand='TWINMOS-Pendrive') }}"
 													>TWINMOS</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='Pen-Drive', brand='pny-pendrive')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='Pen-Drive', brand='pny-pendrive') }}"
 													>PNY</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='Pen-Drive', brand='hp-pendrive')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='Pen-Drive', brand='hp-pendrive') }}"
 													>HP</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='Pen-Drive', brand='ADATA-Pen-drive')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='Pen-Drive', brand='ADATA-Pen-drive') }}"
 													>ADATA</a
 												>
 											</li>
@@ -4918,25 +4918,25 @@
 										<ul>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='Pen-Drive', brand='ugreen-pendrive')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='Pen-Drive', brand='ugreen-pendrive') }}"
 													>UGREEN</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='Pen-Drive', brand='sandisk-pendrive')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='Pen-Drive', brand='sandisk-pendrive') }}"
 													>SanDisk</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='Pen-Drive', brand='kingston-pendrive')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='Pen-Drive', brand='kingston-pendrive') }}"
 													>Kingston</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='Pen-Drive', brand='apacer-pendrive')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='Pen-Drive', brand='apacer-pendrive') }}"
 													>Apacer</a
 												>
 											</li>
@@ -4948,7 +4948,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='Pen-Drive', brand='card-pendrive')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='Pen-Drive', brand='card-pendrive') }}"
 													>Others</a
 												>
 											</li>
@@ -4958,35 +4958,35 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='accessories', subcategory='micro-sd-card')"
+										href="{{ url_for('productslist.get_category_subcategory', category='accessories', subcategory='micro-sd-card') }}"
 										>Memory Card</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='micro-sd-card', brand='sandisk-memory-card')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='micro-sd-card', brand='sandisk-memory-card') }}"
 												>SanDisk</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='micro-sd-card', brand='pny-micro-sd-card')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='micro-sd-card', brand='pny-micro-sd-card') }}"
 												>PNY</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='micro-sd-card', brand='transcend-memory-card')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='micro-sd-card', brand='transcend-memory-card') }}"
 												>Transcend</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='micro-sd-card', brand='apacer-memory')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='micro-sd-card', brand='apacer-memory') }}"
 												>Apacer</a
 											>
 										</li>
@@ -5000,7 +5000,7 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='micro-sd-card', brand='adata-micro-sd')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='micro-sd-card', brand='adata-micro-sd') }}"
 												>Adata</a
 											>
 										</li>
@@ -5009,44 +5009,44 @@
 								<li class="nav-item has-child multi-col">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='accessories', subcategory='power-bank')"
+										href="{{ url_for('productslist.get_category_subcategory', category='accessories', subcategory='power-bank') }}"
 										>Power Bank</a
 									>
 									<div class="drop-down drop-menu-2">
 										<ul>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='power-bank', brand='rapoo-power-bank')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='power-bank', brand='rapoo-power-bank') }}"
 													>Rapoo</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='power-bank', brand='tp-link-power-bank')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='power-bank', brand='tp-link-power-bank') }}"
 													>TP-Link</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='power-bank', brand='adata-power-bank')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='power-bank', brand='adata-power-bank') }}"
 													>Adata</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='power-bank', brand='micropack-power-bank')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='power-bank', brand='micropack-power-bank') }}"
 													>Micropack</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='power-bank', brand='xiaomi-power-bank')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='power-bank', brand='xiaomi-power-bank') }}"
 													>Xiaomi</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='power-bank', brand='energizer-power-bank')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='power-bank', brand='energizer-power-bank') }}"
 													>Energizer</a
 												>
 											</li>
@@ -5058,13 +5058,13 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='power-bank', brand='hp-power-bank')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='power-bank', brand='hp-power-bank') }}"
 													>HP</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='power-bank', brand='huawei-power-bank')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='power-bank', brand='huawei-power-bank') }}"
 													>Huawei</a
 												>
 											</li>
@@ -5078,13 +5078,13 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='power-bank', brand='dell-power-bank')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='power-bank', brand='dell-power-bank') }}"
 													>Dell</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='power-bank', brand='ugreen-power-adapter')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='power-bank', brand='ugreen-power-adapter') }}"
 													>UGREEN</a
 												>
 											</li>
@@ -5102,7 +5102,7 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='power-bank', brand='remax-power-bank')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='power-bank', brand='remax-power-bank') }}"
 													>Remax</a
 												>
 											</li>
@@ -5114,13 +5114,13 @@
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='power-bank', brand='apacer-power-bank')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='power-bank', brand='apacer-power-bank') }}"
 													>Apacer</a
 												>
 											</li>
 											<li>
 												<a
-													href="url_for('productslist.get_category', category='accessories', subcategory='power-bank', brand='havit-power-bank')"
+													href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='power-bank', brand='havit-power-bank') }}"
 													>Havit</a
 												>
 											</li>
@@ -5153,7 +5153,7 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='accessories', subcategory='presenter')"
+										href="{{ url_for('productslist.get_category_subcategory', category='accessories', subcategory='presenter') }}"
 										>Router</a
 									>
 									<ul class="drop-down drop-menu-2">
@@ -5167,21 +5167,21 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='presenter', brand='logitech-presenter')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='presenter', brand='logitech-presenter') }}"
 												>Logitech</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='presenter', brand='targus-presenter')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='presenter', brand='targus-presenter') }}"
 												>Targus</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='presenter', brand='prolink-presenter')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='presenter', brand='prolink-presenter') }}"
 												>Prolink</a
 											>
 										</li>
@@ -5209,14 +5209,14 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='presenter', brand='micropack-presenter')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='presenter', brand='micropack-presenter') }}"
 												>Micropack</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='presenter', brand='non-brand-presenters')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='presenter', brand='non-brand-presenters') }}"
 												>Others</a
 											>
 										</li>
@@ -5225,14 +5225,14 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='accessories', subcategory='tv-card')"
+										href="{{ url_for('productslist.get_category_subcategory', category='accessories', subcategory='tv-card') }}"
 										>TV Card</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='tv-card', brand='external-tv-card')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='tv-card', brand='external-tv-card') }}"
 												>External TV Card</a
 											>
 										</li>
@@ -5241,7 +5241,7 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='accessories', subcategory='converter-and-cable')"
+										href="{{ url_for('productslist.get_category_subcategory', category='accessories', subcategory='converter-and-cable') }}"
 										>Converter &amp; Cable</a
 									>
 									<ul class="drop-down drop-menu-2">
@@ -5278,7 +5278,7 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='accessories', subcategory='enclosure')"
+										href="{{ url_for('productslist.get_category_subcategory', category='accessories', subcategory='enclosure') }}"
 										>HDD-SSD Enclosure</a
 									>
 									<ul class="drop-down drop-menu-2">
@@ -5315,14 +5315,14 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='accessories', subcategory='power-strip')"
+										href="{{ url_for('productslist.get_category_subcategory', category='accessories', subcategory='power-strip') }}"
 										>Power Strip</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='power-strip', brand='deli')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='power-strip', brand='deli') }}"
 												>Deli</a
 											>
 										</li>
@@ -5336,21 +5336,21 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='power-strip', brand='power-pac')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='power-strip', brand='power-pac') }}"
 												>Power Pac</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='power-strip', brand='belkin')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='power-strip', brand='belkin') }}"
 												>Belkin</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='accessories', subcategory='power-strip', brand='nano')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='accessories', subcategory='power-strip', brand='nano') }}"
 												>Nano</a
 											>
 										</li>
@@ -5366,7 +5366,7 @@
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='accessories', subcategory='digital-voice-recorder')"
+										href="{{ url_for('productslist.get_category_subcategory', category='accessories', subcategory='digital-voice-recorder') }}"
 										>Digital Voice Recorder</a
 									>
 								</li>
@@ -5396,7 +5396,7 @@
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='accessories', subcategory='pc-lighting-led-strips')"
+										href="{{ url_for('productslist.get_category_subcategory', category='accessories', subcategory='pc-lighting-led-strips') }}"
 										>PC Lighting &amp; LED Strips</a
 									>
 								</li>
@@ -5479,49 +5479,49 @@
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='software', subcategory='vmware')"
+										href="{{ url_for('productslist.get_category_subcategory', category='software', subcategory='vmware') }}"
 										>VMware</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='software', subcategory='adobe')"
+										href="{{ url_for('productslist.get_category_subcategory', category='software', subcategory='adobe') }}"
 										>Adobe</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='software', subcategory='pdf')"
+										href="{{ url_for('productslist.get_category_subcategory', category='software', subcategory='pdf') }}"
 										>Nuance</a
 									>
 								</li>
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='software', subcategory='antivirus')"
+										href="{{ url_for('productslist.get_category_subcategory', category='software', subcategory='antivirus') }}"
 										>Antivirus</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='software', subcategory='antivirus', brand='for-home-user')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='software', subcategory='antivirus', brand='for-home-user') }}"
 												>For Home User</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='software', subcategory='antivirus', brand='for-business-users')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='software', subcategory='antivirus', brand='for-business-users') }}"
 												>For Business Users</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='software', subcategory='antivirus', brand='data-encryption')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='software', subcategory='antivirus', brand='data-encryption') }}"
 												>Data Encryption</a
 											>
 										</li>
@@ -5530,7 +5530,7 @@
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='software', subcategory='autodesk')"
+										href="{{ url_for('productslist.get_category_subcategory', category='software', subcategory='autodesk') }}"
 										>AutoDesk</a
 									>
 								</li>
@@ -5553,14 +5553,14 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='server-networking', subcategory='workstation')"
+										href="{{ url_for('productslist.get_category_subcategory', category='server-networking', subcategory='workstation') }}"
 										>Workstation</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='server-networking', subcategory='workstation', brand='workstation-hp')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='server-networking', subcategory='workstation', brand='workstation-hp') }}"
 											>
 												HP</a
 											>
@@ -5568,7 +5568,7 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='server-networking', subcategory='workstation', brand='dell-workstation')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='server-networking', subcategory='workstation', brand='dell-workstation') }}"
 											>
 												Dell</a
 											>
@@ -5578,7 +5578,7 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='server-networking', subcategory='server')"
+										href="{{ url_for('productslist.get_category_subcategory', category='server-networking', subcategory='server') }}"
 										>Server</a
 									>
 									<ul class="drop-down drop-menu-2">
@@ -5592,28 +5592,28 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='server-networking', subcategory='server', brand='dell-server')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='server-networking', subcategory='server', brand='dell-server') }}"
 												>Dell</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='server-networking', subcategory='server', brand='nas-server')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='server-networking', subcategory='server', brand='nas-server') }}"
 												>NAS</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='server-networking', subcategory='server', brand='hp-server')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='server-networking', subcategory='server', brand='hp-server') }}"
 												>HP</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='server-networking', subcategory='server', brand='cisco-server')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='server-networking', subcategory='server', brand='cisco-server') }}"
 												>Cisco</a
 											>
 										</li>
@@ -5629,14 +5629,14 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='server-networking', subcategory='storage')"
+										href="{{ url_for('productslist.get_category_subcategory', category='server-networking', subcategory='storage') }}"
 										>Storage</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='server-networking', subcategory='storage', brand='dell')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='server-networking', subcategory='storage', brand='dell') }}"
 												>Dell</a
 											>
 										</li>
@@ -5659,28 +5659,28 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='server-networking', subcategory='server-accessories')"
+										href="{{ url_for('productslist.get_category_subcategory', category='server-networking', subcategory='server-accessories') }}"
 										>Accessories</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='server-networking', subcategory='server-accessories', brand='server-power-supply')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='server-networking', subcategory='server-accessories', brand='server-power-supply') }}"
 												>Power Supply</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='server-networking', subcategory='server-accessories', brand='server-hdd')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='server-networking', subcategory='server-accessories', brand='server-hdd') }}"
 												>HDD</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='server-networking', subcategory='server-accessories', brand='hdd-bay')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='server-networking', subcategory='server-accessories', brand='hdd-bay') }}"
 												>HDD Bay</a
 											>
 										</li>
@@ -5694,14 +5694,14 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='server-networking', subcategory='server-accessories', brand='raid-controller')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='server-networking', subcategory='server-accessories', brand='raid-controller') }}"
 												>RAID Controller</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='server-networking', subcategory='server-accessories', brand='server-ram')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='server-networking', subcategory='server-accessories', brand='server-ram') }}"
 												>RAM</a
 											>
 										</li>
@@ -5835,14 +5835,14 @@
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='air-conditioner', subcategory='general-air-conditioner')"
+										href="{{ url_for('productslist.get_category_subcategory', category='air-conditioner', subcategory='general-air-conditioner') }}"
 										>GENERAL</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='air-conditioner', subcategory='midea-ac')"
+										href="{{ url_for('productslist.get_category_subcategory', category='air-conditioner', subcategory='midea-ac') }}"
 										>Midea</a
 									>
 								</li>
@@ -5879,35 +5879,35 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='gadget', subcategory='smart-watch')"
+										href="{{ url_for('productslist.get_category_subcategory', category='gadget', subcategory='smart-watch') }}"
 										>Smart Watch</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='gadget', subcategory='smart-watch', brand='apple')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='gadget', subcategory='smart-watch', brand='apple') }}"
 												>Apple</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='gadget', subcategory='smart-watch', brand='xiaomi')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='gadget', subcategory='smart-watch', brand='xiaomi') }}"
 												>XIAOMI</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='gadget', subcategory='smart-watch', brand='huawei')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='gadget', subcategory='smart-watch', brand='huawei') }}"
 												>HUAWEI</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='gadget', subcategory='smart-watch', brand='realme')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='gadget', subcategory='smart-watch', brand='realme') }}"
 												>Realme</a
 											>
 										</li>
@@ -5972,7 +5972,7 @@
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='gadget', subcategory='tv-box')"
+										href="{{ url_for('productslist.get_category_subcategory', category='gadget', subcategory='tv-box') }}"
 										>TV Box</a
 									>
 								</li>
@@ -6060,7 +6060,7 @@
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="url_for('productslist.get_category', category='gadget', subcategory='daily-lifestyle')"
+										href="{{ url_for('productslist.get_category_subcategory', category='gadget', subcategory='daily-lifestyle') }}"
 										>Daily Lifestyle</a
 									>
 								</li>
@@ -6360,7 +6360,7 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="url_for('productslist.get_category', category='gaming', subcategory='game-pad', brand='logitech-gamepad')"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='gaming', subcategory='game-pad', brand='logitech-gamepad') }}"
 												>Logitech</a
 											>
 										</li>

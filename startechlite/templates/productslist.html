@@ -114,7 +114,7 @@
 					<div class="p-item">
 						<div class="p-item-inner">
 							<div class="p-item-img">
-								<a href="{{ product.img_urls[0] }}"
+								<a href="{{ url_for('product.product_view', product_handle=product.handle) }}"
 									><img
 										src="{{ product.img_urls[0] }}"
 										alt="{{ product.name }}"

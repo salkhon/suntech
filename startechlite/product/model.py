@@ -15,3 +15,4 @@ class Product:
     tags: list[str]
     img_urls: list[str]
     basic_properties: dict[str, str]
+    description: str = ""

@@ -25,11 +25,13 @@ class DBManager:
 
     def get_product_by_handle(self, handle: str) -> Product:
         # TODO: query product by handle, and populate its model class
-        product = Product(handle, "Name", "Category", "Subcategory", "Brand", 1.0, 0.1, 2022, 5, ["sick", "awesome"], ["/static/img/dummy.jpg", "#"], {
-            "Property 1": "Awesome",
-            "Property 2": "Great stuff",
-            "Property 3": "Nice"
-        })
+        product = Product(handle, "Name", "Category", "Subcategory", "Brand",
+                          1.0, 0.1, 2022, 5,
+                          ["sick", "awesome"], ["/static/img/dummy.jpg", "#"], {
+                              "Property 1": "Awesome",
+                              "Property 2": "Great stuff",
+                              "Property 3": "Nice"
+                          })
         return product
 
     def get_category(self, category: str, page: int = 1, per_page: int = 15) -> tuple[list[Product], flask_paginate.Pagination]:
@@ -42,11 +44,13 @@ class DBManager:
         start_index, num_items = self._pagination_indices(
             pagination)  # for querying
 
-        items = [Product("product-handle", "Name", "Category", "Subcategory", "Brand", 1.0, 0.1, 2022, 5, ["sick", "awesome"], ["/static/img/dummy.jpg", "#"], {
-            "Property 1": "Awesome",
-            "Property 2": "Great stuff",
-            "Property 3": "Nice"
-        })] * num_items
+        items = [Product("product-handle", "Name", "Category", "Subcategory", "Brand",
+                         1.0, 0.1, 2022, 5,
+                         ["sick", "awesome"], ["/static/img/dummy.jpg", "#"], {
+                             "Property 1": "Awesome",
+                             "Property 2": "Great stuff",
+                             "Property 3": "Nice"
+                         })] * num_items
 
         return (items, pagination)
 
@@ -57,11 +61,13 @@ class DBManager:
         start_index, num_items = self._pagination_indices(
             pagination)
 
-        items = [Product("product-handle", "Name", "Category", "Subcategory", "Brand", 1.0, 0.1, 2022, 5, ["sick", "awesome"], ["/static/img/dummy.jpg", "#"], {
-            "Property 1": "Awesome",
-            "Property 2": "Great stuff",
-            "Property 3": "Nice"
-        })] * num_items
+        items = [Product("product-handle", "Name", "Category", "Subcategory", "Brand",
+                         1.0, 0.1, 2022, 5,
+                         ["sick", "awesome"], ["/static/img/dummy.jpg", "#"], {
+                             "Property 1": "Awesome",
+                             "Property 2": "Great stuff",
+                             "Property 3": "Nice"
+                         })] * num_items
         return (items, pagination)
 
     def get_category_subcategory_brand(self, category: str, subcategory: str, brand: str, page: int = 1, per_page: int = 15) -> tuple[list[Product], flask_paginate.Pagination]:
@@ -71,11 +77,13 @@ class DBManager:
         start_index, num_items = self._pagination_indices(
             pagination)
 
-        items = [Product("product-handle", "Name", "Category", "Subcategory", "Brand", 1.0, 0.1, 2022, 5, ["sick", "awesome"], ["/static/img/dummy.jpg", "#"], {
-            "Property 1": "Awesome",
-            "Property 2": "Great stuff",
-            "Property 3": "Nice"
-        })] * num_items
+        items = [Product("product-handle", "Name", "Category", "Subcategory", "Brand",
+                         1.0, 0.1, 2022, 5,
+                         ["sick", "awesome"], ["/static/img/dummy.jpg", "#"], {
+                             "Property 1": "Awesome",
+                             "Property 2": "Great stuff",
+                             "Property 3": "Nice"
+                         })] * num_items
         return (items, pagination)
 
     @startechlite.login_manager.user_loader
