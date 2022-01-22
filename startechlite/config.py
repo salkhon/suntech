@@ -9,3 +9,6 @@ class Config:
     MAIL_USERNAME = os.environ.get("EMAIL_USER")
     MAIL_PASSWORD = os.environ.get("EMAIL_PASS")
     
+    DB_USER = "salman"
+    DB_PASS = "salman"
+    DB_CONNECTION_STR = "localhost/startechlite"

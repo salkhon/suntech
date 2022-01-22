@@ -1,20 +1,38 @@
+import contextlib
+from importlib.resources import Resource
 import flask_paginate
 import re
+from startechlite.config import Config
 from startechlite.constants import *
 import startechlite
 from startechlite.account.model import User
 from startechlite.product.model import Product
+import cx_Oracle
 
 
 class DBManager:
+    TABLE_USERS = "users"
+    INSERT_USERS_SQL = "INSERT INTO users (first_name, last_name, email, pass_word, phone_number, user_address) VALUES (:first_name, :last_name, :email, :pass_word, :phone_number, :user_address)"
+    SELECT_USERS_BY_EMAIL = "SELECT * FROM users WHERE email = :email"
+    SELECT_USERS_BY_ID = "SELECT * FROM users WHERE id = :id"
+
+    class ConnectionAndCursor(contextlib.ExitStack):
+        def __init__(self) -> None:
+            super().__init__()
+            connection = cx_Oracle.connect(
+                user=Config.DB_USER,
+                password=Config.DB_PASS,
+                dsn=Config.DB_CONNECTION_STR,
+                encoding="UTF-8"
+            )
+            connection.autocommit = True
+            self.connection = self.enter_context(connection)
+            self.cursor = self.enter_context(connection.cursor())
+
     def __new__(cls, *args, **kwargs):
         if not hasattr(cls, "instance"):
             cls.instance = super().__new__(cls, *args, **kwargs)
-            cls.instance._establish_db_connection()
         return cls.instance
-
-    def _establish_db_connection(self):
-        pass
 
     def _pagination_indices(self, pagination: flask_paginate.Pagination) -> tuple[int, int]:
         infostr = pagination.info  # div tag but we only need to extract the ints
@@ -86,21 +104,46 @@ class DBManager:
                          })] * num_items
         return (items, pagination)
 
-    @startechlite.login_manager.user_loader
-    def get_user(self, userid: int) -> User:
-        # TODO: Query and build user
-        user = User(userid, "salman", "khon",
-                    "sal@gmail.com", "123", ["911"], "#",)
+    def get_user(self, userid: int) -> User | None:
+        user = None
+        with self.ConnectionAndCursor() as conncur:
+            user = conncur.cursor.execute(
+                self.SELECT_USERS_BY_ID, id=userid).fetchone()
+
+        if user:
+            user = User(*user)
+
         return user
 
-    def get_user_by_email(self, email: str) -> User:
-        hashed_pass = startechlite.bcrypt.generate_password_hash("123").decode("utf-8")
-        user = User(11111, "salman", "khon",
-                    email, hashed_pass, ["911"], "#",)
+    def get_user_by_email(self, email: str) -> User | None:
+        # TODO: make email a primary key, or THE primary key
+        user = None
+        with self.ConnectionAndCursor() as connection_cursor:
+            user = connection_cursor.cursor.execute(
+                self.SELECT_USERS_BY_EMAIL, email=email).fetchone()
+
+        if user:
+            user = User(*user)
+
         return user
 
     def insert_user(self, user: User):
-        # TODO:
-        # insert user
-        print("In dbmanager user insert")
-        print(user)
+        """Inserts a user into the "users" table. 
+
+        Args:
+            user (User): User model for the data.
+        """
+        with self.ConnectionAndCursor() as connection_cursor:
+            connection_cursor.cursor.execute(self.INSERT_USERS_SQL,
+                                             first_name=user.first_name,
+                                             last_name=user.last_name,
+                                             email=user.email,
+                                             pass_word=user.password,
+                                             phone_number=user.phone_number,
+                                             user_address=user.address)
+
+
+@startechlite.login_manager.user_loader
+def load_user(userid):
+    dbman = DBManager()
+    return dbman.get_user(userid)

@@ -1,12 +1,13 @@
 from dataclasses import dataclass
+from flask_login import UserMixin
 
 
 @dataclass
-class User:
-    user_id: int
+class User(UserMixin):
+    id: int  # needs to be just id for UserMixin
     first_name: str
     last_name: str
     email: str
     password: str
-    phone_numbers: list[str]
+    phone_number: str
     address: str
