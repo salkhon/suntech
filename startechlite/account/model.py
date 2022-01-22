@@ -1,9 +1,12 @@
+from dataclasses import dataclass
+
+
+@dataclass
 class User:
-    def __init__(self, id: int, firstname: str, lastname: str, email: str, password: str, telephone: str, img_url: str):
-        self.id = id
-        self.firstname = firstname
-        self.lastname = lastname
-        self.email = email
-        self.password = password
-        self.telephone = telephone
-        self.img_url = img_url
+    user_id: int
+    first_name: str
+    last_name: str
+    email: str
+    password: str
+    phone_numbers: list[str]
+    address: str

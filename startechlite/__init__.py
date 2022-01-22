@@ -9,6 +9,8 @@ bcrypt = flask_bcrypt.Bcrypt()
 
 login_manager = flask_login.LoginManager()
 # has to implement user_loader method, UserMixin methods
+login_manager.login_view = "account.login"  # type: ignore
+login_manager.login_message_category = "info"
 
 mail = flask_mail.Mail()
 

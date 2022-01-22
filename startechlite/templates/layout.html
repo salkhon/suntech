@@ -6510,6 +6510,15 @@
 
 		{% block breadcrumbs %} {% endblock breadcrumbs %}
 
+		{% with messages = get_flashed_messages(with_categories=true) %}
+			{% if messages %}
+				{% for category, message in messages %}
+					<div class="alert alert-{{ category }}">
+						{{ message }}
+					</div>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
 		<div class="bg-gry content p-tb-20">
 			{% block content %} {% endblock content %}
 		</div>

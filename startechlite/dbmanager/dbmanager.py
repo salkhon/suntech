@@ -90,15 +90,17 @@ class DBManager:
     def get_user(self, userid: int) -> User:
         # TODO: Query and build user
         user = User(userid, "salman", "khon",
-                    "sal@gmail.com", "123", "911", "#",)
+                    "sal@gmail.com", "123", ["911"], "#",)
         return user
 
     def get_user_by_email(self, email: str) -> User:
-        user = User(111111, "salman", "khon",
-                    email, "123", "911", "#",)
+        hashed_pass = startechlite.bcrypt.generate_password_hash("123").decode("utf-8")
+        user = User(11111, "salman", "khon",
+                    email, hashed_pass, ["911"], "#",)
         return user
 
     def insert_user(self, user: User):
         # TODO:
         # insert user
-        print(f"user {user.email} insert")
+        print("In dbmanager user insert")
+        print(user)
