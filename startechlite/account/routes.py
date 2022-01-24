@@ -11,7 +11,6 @@ from startechlite.dbmanager.dbmanager import DBManager
 dbmanager = DBManager()
 
 account = flask.Blueprint("account", __name__, url_prefix="/account")
-flask_breadcrumbs.default_breadcrumb_root(account, ".")
 
 
 @account.route("/account")

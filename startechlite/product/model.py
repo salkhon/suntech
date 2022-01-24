@@ -3,6 +3,7 @@ from dataclasses import dataclass
 
 @dataclass
 class Product:
+    id: int
     handle: str
     name: str
     category: str

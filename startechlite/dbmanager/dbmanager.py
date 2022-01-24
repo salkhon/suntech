@@ -1,5 +1,6 @@
 import contextlib
 from importlib.resources import Resource
+import random
 import flask_paginate
 import re
 from startechlite.config import Config
@@ -43,7 +44,8 @@ class DBManager:
 
     def get_product_by_handle(self, handle: str) -> Product:
         # TODO: query product by handle, and populate its model class
-        product = Product(handle, "Name", "Category", "Subcategory", "Brand",
+        id = random.randint(100000, 999999)
+        product = Product(id, handle, "Name", "Category", "Subcategory", "Brand",
                           1.0, 0.1, 2022, 5,
                           ["sick", "awesome"], ["/static/img/dummy.jpg", "#"], {
                               "Property 1": "Awesome",
@@ -62,13 +64,16 @@ class DBManager:
         start_index, num_items = self._pagination_indices(
             pagination)  # for querying
 
-        items = [Product("product-handle", "Name", "Category", "Subcategory", "Brand",
-                         1.0, 0.1, 2022, 5,
-                         ["sick", "awesome"], ["/static/img/dummy.jpg", "#"], {
-                             "Property 1": "Awesome",
-                             "Property 2": "Great stuff",
-                             "Property 3": "Nice"
-                         })] * num_items
+        items = []
+        for _ in range(num_items):
+            id = random.randint(100000, 999999)
+            items.append(Product(id, "product-handle", "Name", "Category", "Subcategory", "Brand",
+                                 1.0, 0.1, 2022, 5,
+                                 ["sick", "awesome"], ["/static/img/dummy.jpg", "#"], {
+                                     "Property 1": "Awesome",
+                                     "Property 2": "Great stuff",
+                                     "Property 3": "Nice"
+                                 }))
 
         return (items, pagination)
 
@@ -79,13 +84,16 @@ class DBManager:
         start_index, num_items = self._pagination_indices(
             pagination)
 
-        items = [Product("product-handle", "Name", "Category", "Subcategory", "Brand",
-                         1.0, 0.1, 2022, 5,
-                         ["sick", "awesome"], ["/static/img/dummy.jpg", "#"], {
-                             "Property 1": "Awesome",
-                             "Property 2": "Great stuff",
-                             "Property 3": "Nice"
-                         })] * num_items
+        items = []
+        for _ in range(num_items):
+            id = random.randint(100000, 999999)
+            items.append(Product(id, "product-handle", "Name", "Category", "Subcategory", "Brand",
+                                 1.0, 0.1, 2022, 5,
+                                 ["sick", "awesome"], ["/static/img/dummy.jpg", "#"], {
+                                     "Property 1": "Awesome",
+                                     "Property 2": "Great stuff",
+                                     "Property 3": "Nice"
+                                 }))
         return (items, pagination)
 
     def get_category_subcategory_brand(self, category: str, subcategory: str, brand: str, page: int = 1, per_page: int = 15) -> tuple[list[Product], flask_paginate.Pagination]:
@@ -95,13 +103,16 @@ class DBManager:
         start_index, num_items = self._pagination_indices(
             pagination)
 
-        items = [Product("product-handle", "Name", "Category", "Subcategory", "Brand",
-                         1.0, 0.1, 2022, 5,
-                         ["sick", "awesome"], ["/static/img/dummy.jpg", "#"], {
-                             "Property 1": "Awesome",
-                             "Property 2": "Great stuff",
-                             "Property 3": "Nice"
-                         })] * num_items
+        items = []
+        for _ in range(num_items):
+            id = random.randint(100000, 999999)
+            items.append(Product(id, "product-handle", "Name", "Category", "Subcategory", "Brand",
+                                 1.0, 0.1, 2022, 5,
+                                 ["sick", "awesome"], ["/static/img/dummy.jpg", "#"], {
+                                     "Property 1": "Awesome",
+                                     "Property 2": "Great stuff",
+                                     "Property 3": "Nice"
+                                 }))
         return (items, pagination)
 
     def get_user(self, userid: int) -> User | None:
@@ -128,7 +139,7 @@ class DBManager:
         return user
 
     def insert_user(self, user: User):
-        """Inserts a user into the "users" table. 
+        """Inserts a user into the "users" table.
 
         Args:
             user (User): User model for the data.
@@ -143,7 +154,7 @@ class DBManager:
                                              user_address=user.address)
 
 
-@startechlite.login_manager.user_loader
+@ startechlite.login_manager.user_loader
 def load_user(userid):
     dbman = DBManager()
     return dbman.get_user(userid)

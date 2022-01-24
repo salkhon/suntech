@@ -1,0 +1,267 @@
+{% extends "layout_with_breadcrumbs.html" %} {% block content %}
+<script src="/static/scripts/checkout.js" defer></script>
+<section class="checkout bg-bt-gray p-tb-15">
+	<div class="container">
+		<h1 class="page-title">Checkout</h1>
+		<form
+			class="checkout-content"
+			id="checkout-form"
+			action=""
+			method="post"
+		>
+			<div class="row">
+				<div class="col-md-4 col-sm-12">
+					<div class="page-section ws-box">
+						<div class="section-head">
+							<h2><span>1</span>Customer Information</h2>
+						</div>
+						<div class="address">
+							<div class="multiple-form-group">
+								<div class="form-group">
+									<label
+										class="control-label"
+										for="input-firstname"
+										>First Name</label
+									>
+									<input
+										class="form-control"
+										name="firstname"
+										type="text"
+										id="input-firstname"
+										value=""
+										placeholder="First Name*"
+									/>
+								</div>
+								<div class="form-group">
+									<label
+										class="control-label"
+										for="input-lastname"
+										>Last Name</label
+									>
+									<input
+										type="text"
+										id="input-lastname"
+										name="lastname"
+										value=""
+										class="form-control"
+										placeholder="Last Name*"
+									/>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="control-label" for="input-address"
+									>Address</label
+								>
+								<input
+									type="text"
+									id="input-address"
+									name="address_1"
+									value=""
+									class="form-control"
+									placeholder="Address*"
+								/>
+							</div>
+							<div class="form-group">
+								<label
+									class="control-label"
+									for="input-telephone"
+									>Mobile</label
+								>
+								<input
+									type="tel"
+									id="input-telephone"
+									name="telephone"
+									value=""
+									class="form-control"
+									placeholder="Telephone*"
+								/>
+							</div>
+							<div class="form-group" for="input-email">
+								<label class="control-label">Email</label>
+								<input
+									type="email"
+									id="input-email"
+									name="email"
+									value=""
+									class="form-control"
+									placeholder="E-Mail*"
+								/>
+							</div>
+							<div class="multiple-form-group">
+								<div class="form-group" for="input-city">
+									<label class="control-label">City</label>
+									<input
+										type="text"
+										id="input-city"
+										name="city"
+										value=""
+										class="form-control"
+										placeholder="City*"
+									/>
+								</div>
+								<div class="form-group" for="input-zone">
+									<label class="control-label">Zone</label>
+									<select
+										name="zone_id"
+										id="input-zone"
+										class="form-control"
+									>
+										<option value="321">
+											Chittagong City
+										</option>
+										<option value="322" selected="">
+											Dhaka City
+										</option>
+										<option value="323">Khulna City</option>
+										<option value="4232">Others</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Comment</label>
+								<textarea
+									class="form-control"
+									name="comment"
+									value=""
+									placeholder="Comment"
+									rows="6"
+								></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8 col-sm-12">
+					<div class="row row-payment-delivery-order">
+						<div class="col-md-6 col-sm-12 payment-methods">
+							<div class="page-section ws-box">
+								<div class="section-head">
+									<h2><span>2</span>Payment Method</h2>
+								</div>
+								<p>Select a payment method</p>
+								<label class="radio-inline">
+									<input
+										type="radio"
+										name="payment_method"
+										value="cod"
+										checked="checked"
+									/>
+									Cash on Delivery </label
+								><br />
+								<label class="radio-inline">
+									<input
+										type="radio"
+										name="payment_method"
+										value="online"
+									/>
+									Online Payment </label
+								><br />
+								<div class="accepted-logo">
+									<h5>We Accepted :</h5>
+									<a href="#"
+										><img
+											class="logo logo-visa"
+											src="/static/img/card-logo.png"
+									/></a>
+									<div class="clear"></div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-12 delivery-methods">
+							<div class="page-section ws-box">
+								<div class="section-head">
+									<h2><span>3</span>Delivery Method</h2>
+								</div>
+								<p>Select a delivery method</p>
+								<label class="radio-inline">
+									<input
+										type="radio"
+										name="shipping_method"
+										value="flat.flat"
+										checked="checked"
+									/>
+									Home Delivery - 60৳ </label
+								><br />
+								<input
+									type="hidden"
+									name="flat.flat.title"
+									value="Home Delivery"
+								/>
+								<label class="radio-inline">
+									<input
+										type="radio"
+										name="shipping_method"
+										value="pickup.pickup"
+									/>
+									Store Pickup - 0৳ </label
+								><br />
+								<input
+									type="hidden"
+									name="pickup.pickup.title"
+									value="Store Pickup"
+								/>
+							</div>
+						</div>
+						<div class="col-md-12 col-sm-12 details-section-wrap">
+							<div class="page-section ws-box">
+								<div class="section-head">
+									<h2><span>4</span>Order Overview</h2>
+								</div>
+								<table
+									class="table-bordered bg-white checkout-data"
+								>
+									<thead>
+										<tr>
+											<td>Product Name</td>
+											<td class="rs-none">Unit Price</td>
+											<td class="rs-none">Quantity</td>
+											<td class="text-right">Total</td>
+										</tr>
+									</thead>
+									<tbody>
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="checkout-final-action">
+				<div class="agree-text" style="margin-bottom: 10px">
+					I have read and agree to the
+					<a
+						href="https://www.startech.com.bd/warranty-policy"
+						target="_blank"
+						><b>Terms and Conditions</b></a
+					>,
+					<a
+						href="https://www.startech.com.bd/privacy"
+						target="_blank"
+						><b>Privacy Policy</b></a
+					>
+					and
+					<a
+						href="https://www.startech.com.bd/refund-policy"
+						target="_blank"
+						><b>Refund and Return Policy</b></a
+					>
+					<input
+						type="checkbox"
+						name="agree"
+						value="1"
+						checked="checked"
+					/>
+				</div>
+				<button
+					id="button-confirm"
+					class="btn submit-btn pull-right"
+					type="submit"
+				>
+					Confirm Order
+				</button>
+			</div>
+		</form>
+	</div>
+</section>
+{% endblock content %}

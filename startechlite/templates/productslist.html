@@ -111,7 +111,7 @@
 				</div>
 				<div class="main-content p-items-wrap">
 					{% for product in products %}
-					<div class="p-item">
+					<div class="p-item" data-product-id="{{ product.id }}">
 						<div class="p-item-inner">
 							<div class="p-item-img">
 								<a href="{{ url_for('product.product_view', product_handle=product.handle) }}"
@@ -144,7 +144,6 @@
 									<span
 										class="st-btn btn-add-cart"
 										type="button"
-										onclick="cart.add('13593', '1');"
 										><i class="material-icons"
 											>shopping_cart</i
 										>

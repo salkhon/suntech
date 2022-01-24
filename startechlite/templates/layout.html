@@ -17,6 +17,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<link href="/static/img/logo1.png" rel="icon" />
 		<link href="/static/main.css" rel="stylesheet" />
+		<script src="/static/scripts/cart.js" defer></script>
 	</head>
 
 	<body>
@@ -6477,17 +6478,20 @@
 			</nav>
 		</header>
 
+		<div class="f-btn mc-toggler loaded" id="cart" title="0 item(s)">
+			<i class="material-icons">shopping_basket</i>
+			<div class="label">Cart</div>
+			<span class="counter" data-count="0">0</span>
+		</div>
+
 		<div class="drawer m-cart" id="m-cart">
 			<div class="title">
 				<p>YOUR CART</p>
-				<span class="mc-toggler loaded"
+				<span class="mc-toggler loaded" id="cart-close"
 					><i class="material-icons">close</i></span
 				>
 			</div>
 			<div class="content">
-				<div class="empty-content">
-					<p class="text-center">Your shopping cart is empty!</p>
-				</div>
 			</div>
 			<div class="footer">
 				<div class="promotion-code">
@@ -6515,6 +6519,9 @@
 				<div class="total">
 					<div class="title">Total</div>
 					<div class="amount">0৳</div>
+				</div>
+				<div class="checkout-btn">
+					<a href="{{ url_for('sales.checkout') }}"><button class="btn submit">Checkout</button></a>
 				</div>
 			</div>
 		</div>
