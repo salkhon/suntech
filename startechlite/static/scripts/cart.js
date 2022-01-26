@@ -43,7 +43,6 @@ class Cart {
 	constructor(cartElem) {
 		/** @type {Product[]} */
 		this.products = this.#retrieveProductsFromSessionStorage();
-		this.numProducts = this.products.length;
 		this.cartElem = cartElem;
 
 		this.renderCartElement();
@@ -98,6 +97,12 @@ class Cart {
 		});
 
 		return products;
+	}
+
+	clearCart() {
+		this.products = [];
+		sessionStorage.clear();
+		this.renderCartElement();
 	}
 
 	/**

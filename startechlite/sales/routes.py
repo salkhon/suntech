@@ -20,6 +20,7 @@ data needs to be sent to the server.
 
 # POST will send the cart data
 @sales.route("/checkout", methods=["GET", "POST"])
+@flask_breadcrumbs.register_breadcrumb(sales, ".checkout", "Checkout")
 @flask_login.login_required
 def checkout() -> str | Response:
     if flask.request.method == "POST":

@@ -45,12 +45,12 @@ orderOverviewTableBody.innerHTML += `
 
 checkoutForm.onsubmit = async (/** @type { Event } */ event) => {
 	event.preventDefault();
-    const formdata = new FormData(checkoutForm);
-    const formdataJSON = Object.fromEntries(formdata.entries());
+	const formdata = new FormData(checkoutForm);
+	const formdataJSON = Object.fromEntries(formdata.entries());
 
 	fetch("http://localhost:5000/sale/checkout", {
 		method: "POST",
-        redirect: "follow",
+		redirect: "follow",
 		headers: {
 			"Content-Type": "application/json",
 		},
@@ -61,10 +61,11 @@ checkoutForm.onsubmit = async (/** @type { Event } */ event) => {
 					count: product.count,
 				};
 			}),
-            formdata: formdataJSON
+			formdata: formdataJSON,
 		}),
 	})
 		.then((response) => {
+			cartJS.clearCart();
 			if (response.redirected) {
 				window.location.href = response.url;
 			}
