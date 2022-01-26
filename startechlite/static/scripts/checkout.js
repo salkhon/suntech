@@ -1,4 +1,7 @@
 const orderOverviewTableBody = document.querySelector("tbody");
+/** @type {HTMLFormElement} */
+const checkoutForm = document.querySelector("form#checkout-form");
+
 let subTotal = 0.0;
 
 cartJS.products.forEach((product) => {
@@ -23,8 +26,7 @@ cartJS.products.forEach((product) => {
 
 const homeDelivery = 60;
 
-const totalTableRow = document.createElement("tr");
-totalTableRow.innerHTML = `
+orderOverviewTableBody.innerHTML += `
     <tr class="total">
         <td colspan="3" class="text-right"><strong>Sub-Total:</strong></td>
         <td class="text-right"><span class="amount">${subTotal}৳</span></td>
@@ -40,4 +42,32 @@ totalTableRow.innerHTML = `
 		}৳</span></td>
     </tr>
 `;
-orderOverviewTableBody.appendChild(totalTableRow);
+
+checkoutForm.onsubmit = async (/** @type { Event } */ event) => {
+	event.preventDefault();
+    const formdata = new FormData(checkoutForm);
+    const formdataJSON = Object.fromEntries(formdata.entries());
+
+	fetch("http://localhost:5000/sale/checkout", {
+		method: "POST",
+        redirect: "follow",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({
+			products: cartJS.products.map((product) => {
+				return {
+					id: product.id,
+					count: product.count,
+				};
+			}),
+            formdata: formdataJSON
+		}),
+	})
+		.then((response) => {
+			if (response.redirected) {
+				window.location.href = response.url;
+			}
+		})
+		.catch((err) => console.log("Could not send checkout", err));
+};

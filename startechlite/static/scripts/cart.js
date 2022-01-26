@@ -201,10 +201,15 @@ class Cart {
 		const cartContentDiv = this.cartElem.querySelector("div.content");
 		cartContentDiv.replaceChildren();
 
+		let total = 0.0;
 		this.products.forEach((product) => {
 			const cartProduct = this.#buildCartProduct(product);
 			cartContentDiv.appendChild(cartProduct);
+			total += product.count * product.price;
 		});
+
+		const cartSubtotal = document.querySelector("div.total div.amount");
+		cartSubtotal.textContent = "" + total + "৳";
 
 		cartToggler.title = `${this.products.length} item(s)`;
 		const cartToggleCount = cartToggler.querySelector("span.counter");
