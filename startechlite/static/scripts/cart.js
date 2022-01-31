@@ -22,7 +22,7 @@ class Product {
 		handle = "",
 		name = "",
 		img = "",
-		price = 0,
+		price = 0,                                                     
 		count = 0,
 		elem = null
 	) {

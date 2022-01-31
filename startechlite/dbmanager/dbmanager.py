@@ -10,12 +10,16 @@ from startechlite.account.model import User
 from startechlite.product.model import Product
 import cx_Oracle
 
+from startechlite.sales.model import Purchase
+
 
 class DBManager:
     TABLE_USERS = "users"
     INSERT_USERS_SQL = "INSERT INTO users (first_name, last_name, email, pass_word, phone_number, user_address) VALUES (:first_name, :last_name, :email, :pass_word, :phone_number, :user_address)"
     SELECT_USERS_BY_EMAIL = "SELECT * FROM users WHERE email = :email"
     SELECT_USERS_BY_ID = "SELECT * FROM users WHERE id = :id"
+    INSERT_PURCHASE = "INSERT INTO salman.purchase (payment_info, bought_by) VALUES (:info, :bought_by) RETURNING purchase_id INTO :id_output"
+    INSERT_PURCHASE_PRODUCT = "INSERT INTO salman.purchase_product (purchase_id, product_id, product_count) VALUES (:purchase_id, :product_id, :product_count)"
 
     class ConnectionAndCursor(contextlib.ExitStack):
         def __init__(self) -> None:
@@ -117,8 +121,8 @@ class DBManager:
 
     def get_user(self, userid: int) -> User | None:
         user = None
-        with self.ConnectionAndCursor() as conncur:
-            user = conncur.cursor.execute(
+        with self.ConnectionAndCursor() as connection_cursor:
+            user = connection_cursor.cursor.execute(
                 self.SELECT_USERS_BY_ID, id=userid).fetchone()
 
         if user:
@@ -131,7 +135,8 @@ class DBManager:
         user = None
         with self.ConnectionAndCursor() as connection_cursor:
             user = connection_cursor.cursor.execute(
-                self.SELECT_USERS_BY_EMAIL, email=email).fetchone()
+                self.SELECT_USERS_BY_EMAIL, email=email
+            ).fetchone()
 
         if user:
             user = User(*user)
@@ -145,13 +150,35 @@ class DBManager:
             user (User): User model for the data.
         """
         with self.ConnectionAndCursor() as connection_cursor:
-            connection_cursor.cursor.execute(self.INSERT_USERS_SQL,
-                                             first_name=user.first_name,
-                                             last_name=user.last_name,
-                                             email=user.email,
-                                             pass_word=user.password,
-                                             phone_number=user.phone_number,
-                                             user_address=user.address)
+            connection_cursor.cursor.execute(
+                self.INSERT_USERS_SQL,
+                first_name=user.first_name,
+                last_name=user.last_name,
+                email=user.email,
+                pass_word=user.password,
+                phone_number=user.phone_number,
+                user_address=user.address
+            )
+
+    def insert_purchase(self, purchase: Purchase):
+        with self.ConnectionAndCursor() as connection_cursor:
+            id_output = connection_cursor.cursor.var(int)
+
+            connection_cursor.cursor.execute(
+                self.INSERT_PURCHASE,
+                info=purchase.info,
+                bought_by=purchase.bought_by,
+                id_output=id_output
+            )
+
+            assert purchase.productid_count
+            for product_id in purchase.productid_count:
+                connection_cursor.cursor.execute(
+                    self.INSERT_PURCHASE_PRODUCT,
+                    purchase_id=id_output.getvalue()[0],
+                    product_id=product_id,
+                    product_count=purchase.productid_count.get(product_id)
+                )
 
 
 @ startechlite.login_manager.user_loader
