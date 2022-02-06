@@ -8,43 +8,65 @@
 	<div class="product-details-summary">
 		<div class="container">
 			<div class="pd-q-actions">
-				<div class="review" data-area="review">
-					<div class="rating">
-						<span class="ic i-star-o"></span>
-						<span class="ic i-star-o"></span>
-						<span class="ic i-star-o"></span>
-						<span class="ic i-star-o"></span>
-						<span class="ic i-star-o"></span>
-					</div>
-					<div class="count">0 Review(s)</div>
-				</div>
-				<div class="que" data-area="question">
-					0 Answered Question(s)
-				</div>
-				<div class="share-on">
-					<span class="share">Share:</span>
-					<span
-						class="icon-sprite share-ico fb-dark"
-						data-type="facebook"
-					></span>
-					<span
-						class="icon-sprite share-ico pinterest-dark"
-						data-type="pinterest"
-					></span>
-				</div>
 				<div class="options">
 					<span class="add-list" onclick="wishlist.add('13593');"
 						><i class="material-icons">bookmark_border</i>
-						Save</span
+						Wishlist</span
 					>
 					<span class="add-compare" onclick="compare.add('13593');"
-						><i class="material-icons">library_add</i> Add to
-						Compare</span
+						><i class="material-icons">library_add</i> Compare</span
 					>
 				</div>
 			</div>
+
+			<div class="product-short-info">
+				<h1 itemprop="name" class="product-name">{{ product.name }}</h1>
+				<table class="product-info-table">
+					<tbody>
+						<tr class="product-info-group">
+							<td class="product-info-label">Price</td>
+							<td class="product-info-data product-price">
+								Tk.{{ product.base_price }}
+							</td>
+						</tr>
+						<tr class="product-info-group">
+							<td class="product-info-label">Regular Price</td>
+							<td class="product-info-data product-regular-price">
+								Tk.{{ product.base_price }}
+							</td>
+						</tr>
+						<tr class="product-info-group">
+							<td class="product-info-label">Status</td>
+							<td class="product-info-data product-status">
+								{{product.inStock()}}
+							</td>
+						</tr>
+						<tr class="product-info-group">
+							<td class="product-info-label">Product Code</td>
+							<td class="product-info-data product-code">
+								{{product.handle}}
+							</td>
+						</tr>
+						<tr
+							class="product-info-group"
+							itemprop="brand"
+							itemtype="http://schema.org/Thing"
+							itemscope=""
+						>
+							<td class="product-info-label">Brand</td>
+							<td
+								class="product-info-data product-brand"
+								itemprop="name"
+							>
+								{{ product.brand }}
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
 			<div class="basic row">
-				<div class="col-md-5 left">
+				<div class="sameen_40_div">
 					<div class="images product-images">
 						<div class="product-img-holder">
 							<a
@@ -56,8 +78,8 @@
 									src="{{ product.img_urls[0] }}"
 									title="{{ product.name }}"
 									alt="{{ product.name }}"
-									width="500"
-									height="500"
+									width="700"
+									height="700"
 							/></a>
 							<meta
 								itemprop="image"
@@ -65,137 +87,25 @@
 							/>
 						</div>
 						<ul class="thumbnails">
+							{% for image in product.img_urls %}
 							<li>
 								<a
-									class="thumbnail"
-									href="https://www.startech.com.bd/image/cache/catalog/processor/AMD/athlon-3000g/athlon-3000g-500x500.jpg"
+									class="sameen_thumbnail"
+									href="{{image}}"
 									title="{{ product.name }}"
 									><img
-										src="https://www.startech.com.bd/image/cache/catalog/processor/AMD/athlon-3000g/athlon-3000g-74x74.jpg"
+										src="{{image}}"
 										title="{{ product.name }}"
 										alt="{{ product.name }}"
-										width="74"
-										height="74"
 								/></a>
 							</li>
-							<meta
-								itemprop="image"
-								content="https://www.startech.com.bd/image/cache/catalog/processor/AMD/athlon-3000g/athlon-3000g-500x500.jpg"
-							/>
+							{% endfor %}
 						</ul>
 					</div>
 				</div>
-				<div class="col-md-7 right" id="product">
+
+				<div id="product sameen_60_div">
 					<div class="pd-summary">
-						<div class="product-short-info">
-							<h1 itemprop="name" class="product-name">
-								{{ product.name }}
-							</h1>
-							<table class="product-info-table">
-								<tbody>
-									<tr class="product-info-group">
-										<td class="product-info-label">
-											Price
-										</td>
-										<td
-											class="
-												product-info-data product-price
-											"
-										>
-											{{ product.base_price }}৳
-										</td>
-									</tr>
-									<tr class="product-info-group">
-										<td class="product-info-label">
-											Regular Price
-										</td>
-										<td
-											class="
-												product-info-data
-												product-regular-price
-											"
-										>
-											{{ product.base_price }}৳
-										</td>
-									</tr>
-									<tr class="product-info-group">
-										<td class="product-info-label">
-											Status
-										</td>
-										<td
-											class="
-												product-info-data product-status
-											"
-										>
-											In Stock
-										</td>
-									</tr>
-									<tr class="product-info-group">
-										<td class="product-info-label">
-											Product Code
-										</td>
-										<td
-											class="
-												product-info-data product-code
-											"
-										>
-											13593
-										</td>
-									</tr>
-									<tr
-										class="product-info-group"
-										itemprop="brand"
-										itemtype="http://schema.org/Thing"
-										itemscope=""
-									>
-										<td class="product-info-label">
-											{{ product.brand_title }}
-										</td>
-										<td
-											class="
-												product-info-data product-brand
-											"
-											itemprop="name"
-										>
-											{{ product.brand_title }}
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div
-							class="short-description"
-							itemprop="offers"
-							itemscope=""
-							itemtype="http://schema.org/Offer"
-						>
-							<link
-								itemprop="availability"
-								href="http://schema.org/InStock"
-							/>
-							<link
-								itemprop="itemCondition"
-								href="http://schema.org/NewCondition"
-							/>
-							<meta itemprop="priceCurrency" content="BDT" />
-							<meta itemprop="price" content="7500.0000" />
-							<h2>Key Features</h2>
-							<ul>
-                                {% for description in product.short_descriptions %}
-                                <li>{{ description }}</li>
-                                {% endfor %}
-								<li class="view-more" data-area="specification">
-									View More Info
-								</li>
-							</ul>
-						</div>
-						<div class="stickers">
-							<div class="sticker reward">
-								<span class="material-icons">stars</span>
-								<span class="points">100</span>
-								<span class="text">Star Points</span>
-							</div>
-						</div>
 						<h2>Payment Options</h2>
 						<div class="product-price-options">
 							<label class="p-wrap cash-payment active">
@@ -205,8 +115,9 @@
 									checked=""
 									value="0"
 								/>
-								<span class="price">{{ product.base_price }}৳</span>
-								<div class="p-tag">Cash Discount Price</div>
+								<span class="price"
+									>Tk.{{ product.base_price }}</span
+								>
 								<div class="p-tag fade">
 									Online / Cash Payment
 								</div>
@@ -217,11 +128,10 @@
 									name="enable_emi"
 									value="1"
 								/>
-								<span class="price">1,338৳/month</span>
-								<div class="p-tag">Regular Price: {{ product.base_price }}৳</div>
-								<div class="p-tag fade">
-									0% EMI for 6 Months(12 Months on Store)
-								</div>
+								<span class="price"
+									>{{product.EMI}} ৳/month</span
+								>
+								<div class="p-tag fade">0% EMI for 1 Year</div>
 							</label>
 						</div>
 						<div class="cart-option">
@@ -257,16 +167,6 @@
 					</div>
 				</div>
 			</div>
-			<div class="navs">
-				<ul>
-					<li data-area="specification">Specification</li>
-					<li data-area="description">Description</li>
-					<li class="hidden-xs" data-area="ask-question">
-						Questions
-					</li>
-					<li data-area="write-review">Reviews (0)</li>
-				</ul>
-			</div>
 		</div>
 	</div>
 	<div class="pd-full">
@@ -299,118 +199,26 @@
 							<tbody>
 								<tr>
 									<td class="name">Brand</td>
-									<td class="value">AMD</td>
+									<td class="value">{{product.brand}}</td>
 								</tr>
-								<tr>
-									<td class="name">Model</td>
-									<td class="value">AMD Athlon 3000G</td>
-								</tr>
-								<tr>
-									<td class="name">Base Frequency</td>
-									<td class="value">3.5GHz</td>
-								</tr>
-								<tr>
-									<td class="name">Cache</td>
-									<td class="value">
-										Total L1 Cache: 192KB<br />
-										Total L2 Cache: 1MB<br />
-										Total L3 Cache: 4MB
-									</td>
-								</tr>
-								<tr>
-									<td class="name">Cores</td>
-									<td class="value">2</td>
-								</tr>
-								<tr>
-									<td class="name">Threads</td>
-									<td class="value">4</td>
-								</tr>
-								<tr>
-									<td class="name">Default TDP</td>
-									<td class="value">35W</td>
-								</tr>
-							</tbody>
-							<thead>
+
+								{% for property in product.spec_dict %}
+
 								<tr>
 									<td class="heading-row" colspan="3">
-										Memory Specifications
+										{{ property }}
 									</td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class="name">Maximum Speed</td>
-									<td class="value">2667MHz</td>
-								</tr>
-								<tr>
-									<td class="name">Type</td>
-									<td class="value">DDR4</td>
-								</tr>
-								<tr>
-									<td class="name">Max Number of Channels</td>
-									<td class="value">2</td>
-								</tr>
-							</tbody>
-							<thead>
-								<tr>
-									<td class="heading-row" colspan="3">
-										Graphics Specifications
-									</td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class="name">Processor Graphics</td>
+
 									<td class="value">
-										Radeon Vega 3 Graphics
+										{{ product.spec_dict[property] }}
 									</td>
 								</tr>
-								<tr>
-									<td class="name">Base Frequency</td>
-									<td class="value">1100 MHz</td>
-								</tr>
-								<tr>
-									<td class="name">Core Count</td>
-									<td class="value">3</td>
-								</tr>
-							</tbody>
-							<thead>
-								<tr>
-									<td class="heading-row" colspan="3">
-										Warranty Information
-									</td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class="name">Manufacturing Warranty</td>
-									<td class="value">
-										03 years warranty (No Warranty for Fan
-										or Cooler)
-									</td>
-								</tr>
+
+								{% endfor %}
 							</tbody>
 						</table>
 					</section>
-					<section
-						class="description bg-white m-tb-15"
-						id="description"
-					>
-						<div class="section-head">
-							<h2>Description</h2>
-						</div>
-						<div class="full-description" itemprop="description">
-							<h2>
-								<span style="font-weight: 700"
-									>{{ product.name }}</span
-								><br />
-							</h2>
-							<p>
-								{{ product.description }}
-								<br />
-							</p>
-						</div>
-					</section>
+
 					<section
 						class="ask-question q-n-r-section bg-white m-tb-15"
 						id="ask-question"
@@ -499,111 +307,12 @@
 									>
 								</h4>
 								<div class="p-item-price price">
-									<span>6,300৳</span>
+									<span>Tk.6,300</span>
 								</div>
 								<div class="actions">
 									<span
 										class="btn-compare"
 										onclick="compare.add('12541');"
-										><i class="material-icons"
-											>library_add</i
-										>Add to Compare</span
-									>
-								</div>
-							</div>
-						</div>
-						<div class="p-s-item">
-							<div class="image-holder">
-								<a
-									href="https://www.startech.com.bd/amd-athlon-3000g-processor"
-									><img
-										src="https://www.startech.com.bd/image/cache/catalog/processor/AMD/athlon-3000g/athlon-3000g-1-80x80.jpg"
-										alt="{{ product.name }}"
-										width="80"
-										height="80"
-								/></a>
-							</div>
-							<div class="caption">
-								<h4 class="product-name">
-									<a
-										href="https://www.startech.com.bd/amd-athlon-3000g-processor"
-										>AMD Athlon 3000G Processor with Radeon
-										Graphics</a
-									>
-								</h4>
-								<div class="p-item-price price">
-									<span>7,500৳</span>
-								</div>
-								<div class="actions">
-									<span
-										class="btn-compare"
-										onclick="compare.add('13593');"
-										><i class="material-icons"
-											>library_add</i
-										>Add to Compare</span
-									>
-								</div>
-							</div>
-						</div>
-						<div class="p-s-item">
-							<div class="image-holder">
-								<a
-									href="https://www.startech.com.bd/intel-10th-gen-core-i3-10100f-processor"
-									><img
-										src="https://www.startech.com.bd/image/cache/catalog/processor/Intel/i3-10100/i3-10100-80x80.jpg"
-										alt="Intel 10th Gen Core i3 10100F Processor"
-										width="80"
-										height="80"
-								/></a>
-							</div>
-							<div class="caption">
-								<h4 class="product-name">
-									<a
-										href="https://www.startech.com.bd/intel-10th-gen-core-i3-10100f-processor"
-										>Intel 10th Gen Core i3 10100F
-										Processor</a
-									>
-								</h4>
-								<div class="p-item-price price">
-									<span>8,800৳</span>
-								</div>
-								<div class="actions">
-									<span
-										class="btn-compare"
-										onclick="compare.add('14955');"
-										><i class="material-icons"
-											>library_add</i
-										>Add to Compare</span
-									>
-								</div>
-							</div>
-						</div>
-						<div class="p-s-item">
-							<div class="image-holder">
-								<a
-									href="https://www.startech.com.bd/intel-pentium-gold-g6400-processor"
-									><img
-										src="https://www.startech.com.bd/image/cache/catalog/processor/Intel/g6400/g6400-80x80.jpg"
-										alt="Intel Pentium Gold G6400 10th gen Coffee Lake Processor"
-										width="80"
-										height="80"
-								/></a>
-							</div>
-							<div class="caption">
-								<h4 class="product-name">
-									<a
-										href="https://www.startech.com.bd/intel-pentium-gold-g6400-processor"
-										>Intel Pentium Gold G6400 10th gen
-										Coffee Lake Processor</a
-									>
-								</h4>
-								<div class="p-item-price price">
-									<span>6,100৳</span>
-								</div>
-								<div class="actions">
-									<span
-										class="btn-compare"
-										onclick="compare.add('15250');"
 										><i class="material-icons"
 											>library_add</i
 										>Add to Compare</span

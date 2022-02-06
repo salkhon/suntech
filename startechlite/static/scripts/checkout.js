@@ -9,7 +9,7 @@ cartJS.products.forEach((product) => {
 	tableRow.innerHTML = `
         <td class="name">
             <a
-                href="http://localhost:5000/product/${product.handle}"
+                href="http://localhost:5000/product/${product.id}"
                 >${product.name}</a
             >
             <div class="options"></div>

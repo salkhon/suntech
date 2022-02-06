@@ -1,0 +1,149 @@
+{% extends "layout_with_breadcrumbs.html" %} {% block content %}
+
+<div class="table-responsive">
+	<form
+		method="post"
+		action="https://www.startech.com.bd/common/compare/add"
+		class="form-cmpr"
+	>
+		<input type="hidden" name="product_id" />
+	</form>
+	<table class="table table-bordered cmpr-table count-3">
+		<thead></thead>
+		<tbody>
+			<tr class="cmpr-header">
+				<td class="compare-blurb name">
+					<h4 class="page-heading">Product Comparison</h4>
+					<p>
+						Find and select products to see the differences and
+						similarities between them
+					</p>
+				</td>
+				<td class="value">
+					<div class="compare-item-wrapper">
+						<div class="p-item-img">
+							<img
+								src="{{product1.img_urls[0]}}"
+								alt="{{product1.name}}"
+								title="{{product1.name}}"
+								class="img-thumbnail"
+								width="228"
+								height="228"
+							/>
+						</div>
+						<a
+							class="p-item-name"
+							href="{{ url_for('product.product_view', product_id=product1.id) }}"
+							><strong> {{product1.name}} </strong></a
+						>
+						<div class="p-item-price">
+							<span>Tk.{{product1.base_price}}</span>
+						</div>
+						
+					</div>
+				</td>
+				<td class="value">
+					<div class="compare-item-wrapper">
+						<div class="p-item-img">
+							<img
+								src="{{product2.img_urls[0]}}"
+								alt="{{product2.name}}"
+								title="{{product2.name}}"
+								class="img-thumbnail"
+								width="228"
+								height="228"
+							/>
+						</div>
+						<a
+							class="p-item-name"
+							href="{{ url_for('product.product_view', product_id=product2.id) }}"
+							><strong> {{product2.name}} </strong></a
+						>
+						<div class="p-item-price">
+							<span>Tk.{{product2.base_price}}</span>
+						</div>
+						
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td class="name">Brand</td>
+				<td class="value">{{product1.brand}}</td>
+				<td class="value">{{product2.brand}}</td>
+			</tr>
+			<tr>
+				<td class="name">Availability</td>
+				<td class="value">{{product1.inStock()}}</td>
+				<td class="value">{{product2.inStock()}}</td>
+			</tr>
+			<tr>
+				<td class="name">Rating</td>
+				<td class="value rating">
+					<div class="rating-star">
+						<i class="material-icons rating-icon">star_border</i>
+						<i class="material-icons rating-icon">star_border</i>
+						<i class="material-icons rating-icon">star_border</i>
+						<i class="material-icons rating-icon">star_border</i>
+						<i class="material-icons rating-icon">star_border</i>
+					</div>
+					<div class="rating-text">Based on 0 reviews.</div>
+				</td>
+				<td class="value rating">
+					<div class="rating-star">
+						<i class="material-icons rating-icon">star_border</i>
+						<i class="material-icons rating-icon">star_border</i>
+						<i class="material-icons rating-icon">star_border</i>
+						<i class="material-icons rating-icon">star_border</i>
+						<i class="material-icons rating-icon">star_border</i>
+					</div>
+					<div class="rating-text">Based on 0 reviews.</div>
+				</td>
+			</tr>
+		</tbody>
+		<thead>
+			<tr>
+				<td colspan="3">
+					<i class="material-icons"> expand_more</i>
+					<strong>Main Features</strong>
+				</td>
+			</tr>
+		</thead>
+
+        {% set comparison_dict1, comparison_dict2 = product1.compareWith(product2)  %}
+		<tbody>
+			{%for key in comparison_dict1%}
+
+			<tr>
+				<td class="name">{{key}}</td>
+				<td class="value">{{ comparison_dict1[key][0]}}</td>
+				<td class="value">{{ comparison_dict1[key][1]}}</td>
+			</tr>
+
+			{%endfor%}
+		</tbody>
+
+		<thead>
+			<tr>
+				<td colspan="3">
+					<i class="material-icons"> expand_more</i>
+					<strong>Other Features</strong>
+				</td>
+			</tr>
+		</thead>
+
+		<tbody>
+			{%for key in comparison_dict2%}
+
+			<tr>
+				<td class="name">{{key}}</td>
+				<td class="value">{{ comparison_dict2[key][0]}}</td>
+				<td class="value">{{ comparison_dict2[key][1]}}</td>
+			</tr>
+
+			{%endfor%}
+		</tbody>
+	</table>
+</div>
+
+{% endblock content %}

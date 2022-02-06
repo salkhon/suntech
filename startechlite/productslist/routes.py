@@ -33,6 +33,8 @@ def brand_dlc():
 @productslist.route("/<string:category>")
 @flask_breadcrumbs.register_breadcrumb(productslist, ".category", "", dynamic_list_constructor=category_dlc)
 def get_category(category: str) -> str:
+    category = category.lower()
+
     if category not in CATEGORIES:
         flask.abort(404)
 
@@ -44,6 +46,8 @@ def get_category(category: str) -> str:
 @productslist.route("/<string:category>/<string:subcategory>")
 @flask_breadcrumbs.register_breadcrumb(productslist, ".category.subcategory", "", dynamic_list_constructor=subcategory_dlc)
 def get_category_subcategory(category: str, subcategory: str) -> str:
+    category, subcategory = category.lower(), subcategory.lower()
+
     if category not in CATEGORIES or subcategory not in SUBCATEGORIES:
         flask.abort(404)
 
@@ -56,6 +60,8 @@ def get_category_subcategory(category: str, subcategory: str) -> str:
 @productslist.route("/<string:category>/<string:subcategory>/<string:brand>")
 @flask_breadcrumbs.register_breadcrumb(productslist, ".category.subcategory.brand", "", dynamic_list_constructor=brand_dlc)
 def get_category_subcategory_brand(category: str, subcategory: str, brand: str) -> str:
+    category, subcategory, brand = category.lower(), subcategory.lower(), brand.lower()
+
     if category not in CATEGORIES or subcategory not in SUBCATEGORIES or brand not in BRANDS:
         flask.abort(404)
 

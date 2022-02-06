@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 import datetime
 
+from startechlite.product.model import Product
+
 
 @dataclass
 class Purchase:
@@ -12,3 +14,4 @@ class Purchase:
     bought_by: int = -1
     verified_by: int = -1
     productid_count: dict[int, int] | None = None
+    _products: list[Product] | None = None  # used when we render products from purchase

@@ -1,7 +1,7 @@
 import flask
+from werkzeug import Response
 from startechlite.dbmanager.dbmanager import DBManager
 from startechlite.product.model import Product
-from startechlite.productslist.routes import view_arg_dlc
 from startechlite.constants import *
 import flask_breadcrumbs
 
@@ -9,11 +9,30 @@ product = flask.Blueprint("product", __name__, url_prefix="/product")
 dbman = DBManager()
 
 
-def product_name_dlc():
-    return view_arg_dlc("product_handle")
+def product_id_dlc():
+    view_args = flask.request.view_args
+    assert view_args
+    return f"{view_args.get('product_id')}"
 
-@product.route("/<string:product_handle>")
-@flask_breadcrumbs.register_breadcrumb(product, ".producthandle", "", dynamic_list_constructor=product_name_dlc)
-def product_view(product_handle) -> str:
-    product = dbman.get_product_by_handle(product_handle)
+
+@product.route("/<string:product_id>")
+@flask_breadcrumbs.register_breadcrumb(product, ".productid", "", dynamic_list_constructor=product_id_dlc)
+def product_view(product_id) -> str:
+    product = dbman.get_product_by_id(product_id)
     return flask.render_template("product_page.html", product=product)
+
+
+@product.route("/compare")
+@flask_breadcrumbs.register_breadcrumb(product, ".compare", "Product Comparison")
+def compare() -> str | Response:
+    prod1_id = flask.request.args.get("prod1")
+    prod2_id = flask.request.args.get("prod2")
+
+    assert prod1_id and prod2_id
+
+    product1 = dbman.get_product_by_id(int(prod1_id))
+    product2 = dbman.get_product_by_id(int(prod2_id))
+
+    assert product1 and product2
+
+    return flask.render_template("compare.html", product1=product1, product2=product2)

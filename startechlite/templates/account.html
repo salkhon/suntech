@@ -1,0 +1,109 @@
+{% extends "layout_with_breadcrumbs.html" %} {% block content %}
+<div class="container ac-layout">
+	<div class="ac-header">
+		<div class="left">
+			<span class="avatar"
+				><img
+					src="https://www.gravatar.com/avatar/422209769a694c732b03c4a073279cc4?s=70&amp;d=mp&amp;r=g"
+					width="80"
+					height="80"
+					alt="SK"
+			/></span>
+			<div class="name">
+				<p>Hello,</p>
+				<p class="user">Salman Khondker</p>
+			</div>
+		</div>
+	</div>
+	<ul class="navbar-nav ac-navbar">
+		<li class="nav-item">
+			<a href="{{ url_for('account.order_history') }}" class="nav-link"
+				><span class="material-icons">chrome_reader_mode</span>Orders</a
+			>
+		</li>
+		<li class="nav-item">
+			<a href="{{ url_for('account.edit_info') }}" class="nav-link"
+				><span class="material-icons">person</span>Edit Account</a
+			>
+		</li>
+		<li class="nav-item">
+			<a
+				href="https://www.startech.com.bd/account/password"
+				class="nav-link"
+				><span class="material-icons">lock</span>Password</a
+			>
+		</li>
+		<li class="nav-item">
+			<a
+				href="https://www.startech.com.bd/account/address"
+				class="nav-link"
+				><span class="material-icons">book</span>Addresses</a
+			>
+		</li>
+		<li class="nav-item">
+			<a
+				href="https://www.startech.com.bd/account/wishlist"
+				class="nav-link"
+				><span class="material-icons">favorite_border</span>Saved
+				List</a
+			>
+		</li>
+		<li class="nav-item">
+			<a href="https://www.startech.com.bd/account/pc" class="nav-link"
+				><span class="material-icons">important_devices</span>Saved
+				Pc</a
+			>
+		</li>
+	</ul>
+	{% block account_content %}
+	<div class="ac-menus">
+		<div class="ac-menu-item">
+			<a href="{{ url_for('account.order_history') }}" class="ico-btn"
+				><span class="material-icons">chrome_reader_mode</span
+				><span>Orders</span></a
+			>
+		</div>
+		<div class="ac-menu-item">
+			<a href="{{ url_for('account.edit_info') }}" class="ico-btn"
+				><span class="material-icons">person</span
+				><span>Edit Profile</span></a
+			>
+		</div>
+		<div class="ac-menu-item">
+			<a
+				href="https://www.startech.com.bd/account/password"
+				class="ico-btn"
+				><span class="material-icons">lock</span
+				><span>Change Password</span></a
+			>
+		</div>
+		<div class="ac-menu-item">
+			<a
+				href="https://www.startech.com.bd/account/address"
+				class="ico-btn"
+				><span class="material-icons">book</span
+				><span>Addresses</span></a
+			>
+		</div>
+		<div class="ac-menu-item">
+			<a
+				href="https://www.startech.com.bd/account/wishlist"
+				class="ico-btn"
+				><span class="material-icons">favorite_border</span
+				><span>Wish List</span></a
+			>
+		</div>
+		<div class="ac-menu-item">
+			<a href="https://www.startech.com.bd/account/pc" class="ico-btn"
+				><span class="material-icons">important_devices</span
+				><span>Saved PC</span></a
+			>
+		</div>
+		<div class="ac-menu-item h-desk">
+			<a href="https://www.startech.com.bd/account/logout" class="ico-btn"
+				><span class="material-icons">input</span><span>Logout</span></a
+			>
+		</div>
+	</div>
+</div>
+{% endblock account_content %} {% endblock content %}

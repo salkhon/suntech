@@ -5,19 +5,18 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
 		/>
-		<title>
-			Star Tech - Leading Computer, Laptop &amp; Gadget Shop in Bangladesh
-		</title>
+		<title>SUNTECH</title>
 		<base href="localhost" />
 		<meta
 			name="description"
-			content="Star Tech is the Best Laptop, Computer, Gaming PC, Component, Accessories, and Gadget retail &amp; Online shop in Bangladesh. Star Tech offers the Latest Tech products with the most competitive price in BD."
+			content="SUNTECH &amp; CSE216 LAB PROJECT BY 1805050 and 1805053."
 		/>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<link href="/static/img/logo1.png" rel="icon" />
 		<link href="/static/main.css" rel="stylesheet" />
 		<script src="/static/scripts/cart.js" defer></script>
+		<script src="/static/scripts/compare.js" defer></script>
 	</head>
 
 	<body>
@@ -40,7 +39,7 @@
 								height="164"
 								alt="Star Tech &amp; Engineering Ltd "
 						/></a>
-						<div class="mbl-right h-desk">
+						<!-- <div class="mbl-right h-desk">
 							<div class="ac search-toggler">
 								<i class="material-icons">search</i>
 							</div>
@@ -48,7 +47,7 @@
 								<i class="material-icons">shopping_basket</i
 								><span class="counter" data-count="0">0</span>
 							</div>
-						</div>
+						</div> -->
 					</div>
 					<div class="ht-item search" id="search">
 						<input
@@ -86,41 +85,6 @@
 						<button class="material-icons">search</button>
 					</div>
 					<div class="ht-item q-actions">
-						<a
-							href="https://www.startech.com.bd/information/offer"
-							class="ac h-offer-icon"
-						>
-							<div class="ic">
-								<i class="material-icons">card_giftcard</i>
-							</div>
-							<div class="ac-content">
-								<h5>Offers</h5>
-								<p>Special Deals</p>
-							</div>
-						</a>
-						<a
-							href="https://www.startech.com.bd/deals"
-							class="ac h-offer-icon"
-						>
-							<div class="ic">
-								<i class="material-icons">flash_on</i>
-							</div>
-							<div class="ac-content">
-								<h5>Flash Sale</h5>
-								<p>Mega Deal</p>
-							</div>
-						</a>
-						<a
-							href="https://www.startech.com.bd/tool/pc_builder"
-							class="ac h-desk build-pc"
-						>
-							<div class="ic">
-								<i class="material-icons">important_devices</i>
-							</div>
-							<div class="ac-content">
-								<h5 class="text">PC Builder</h5>
-							</div>
-						</a>
 						<div class="ac cmpr-toggler h-desk">
 							<div class="ic">
 								<i class="material-icons">library_add</i>
@@ -140,36 +104,29 @@
 									><h5>Account</h5></a
 								>
 								{% if not current_user.is_authenticated %}
-									<p>
-										<a
-											href="{{ url_for('account.user_account') }}"
-											><span></span></a
-										><a href="{{ url_for('account.register') }}"
-											>Register</a
-										>
-										or
-										<a href="{{ url_for('account.login') }}"
-											>Login</a
-										>
-									</p>
+								<p>
+									<a
+										href="{{ url_for('account.user_account') }}"
+										><span></span></a
+									><a href="{{ url_for('account.register') }}"
+										>Register</a
+									>
+									or
+									<a href="{{ url_for('account.login') }}"
+										>Login</a
+									>
+								</p>
 								{% else %}
-									<p>
-										<a
-											href="{{ url_for('account.user_account') }}"
-											><span></span></a
-										><a href="{{ url_for('account.logout') }}"
-											>Log out</a
-										>
-									</p>
+								<p>
+									<a
+										href="{{ url_for('account.user_account') }}"
+										><span></span></a
+									><a href="{{ url_for('account.logout') }}"
+										>Log out</a
+									>
+								</p>
 								{% endif %}
 							</div>
-						</div>
-						<div class="ac build-pc m-hide">
-							<a
-								class="btn"
-								href="https://www.startech.com.bd/tool/pc_builder"
-								>PC Builder</a
-							>
 						</div>
 					</div>
 				</div>
@@ -180,35 +137,35 @@
 						<li class="nav-item has-child c-1">
 							<a
 								class="nav-link"
-								href="{{ url_for('productslist.get_category', category='desktops') }}"
+								href="{{ url_for('productslist.get_category', category='Desktop') }}"
 								>Desktop</a
 							>
 							<ul class="drop-down drop-menu-1">
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='desktops', subcategory='special-pc') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Desktop', subcategory='special-pc') }}"
 										>Special PC</a
 									>
 								</li>
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='desktops', subcategory='star-pc') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Desktop', subcategory='star-pc') }}"
 										>Star PC</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='desktops', subcategory='star-pc', brand='ryzen-pc') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='star-pc', brand='Ryzen') }}"
 												>RYZEN PC</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='desktops', subcategory='star-pc', brand='intel-pc') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='star-pc', brand='Intel') }}"
 												>Intel PC</a
 											>
 										</li>
@@ -217,21 +174,21 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='desktops', subcategory='gaming-pc') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Desktop', subcategory='Gaming PC') }}"
 										>Gaming PC</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='desktops', subcategory='gaming-pc', brand='intel-pc') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='Gaming PC', brand='Ryzen') }}"
 												>RYZEN PC</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='desktops', subcategory='gaming-pc', brand='intel-gaming-pc') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='Gaming PC', brand='Intel') }}"
 												>Intel PC</a
 											>
 										</li>
@@ -240,49 +197,49 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='desktops', subcategory='brand-pc') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Desktop', subcategory='Brand PC') }}"
 										>Brand PC</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='desktops', subcategory='brand-pc', brand='lenovo-desktop') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='Brand PC', brand='Lenovo') }}"
 												>Lenovo</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='desktops', subcategory='brand-pc', brand='hp-desktop') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='Brand PC', brand='HP') }}"
 												>HP</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='desktops', subcategory='brand-pc', brand='dell-desktop') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='Brand PC', brand='Dell') }}"
 												>Dell</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='desktops', subcategory='brand-pc', brand='acer-desktop') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='Brand PC', brand='Acer') }}"
 												>Acer</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='desktops', subcategory='brand-pc', brand='asus-desktop') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='Brand PC', brand='Asus') }}"
 												>Asus</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='desktops', subcategory='brand-pc', brand='walton-brand-desktop') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='Brand PC', brand='Walton') }}"
 												>Walton</a
 											>
 										</li>
@@ -291,42 +248,42 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='desktops', subcategory='all-in-one-pc') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Desktop', subcategory='all-in-one-pc') }}"
 										>All in one PC</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='desktops', subcategory='all-in-one-pc', brand='dell-all-in-one') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='all-in-one-pc', brand='dell-all-in-one') }}"
 												>DELL</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='desktops', subcategory='all-in-one-pc', brand='i-life-all-in-one') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='all-in-one-pc', brand='i-life-all-in-one') }}"
 												>i-Life</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='desktops', subcategory='all-in-one-pc', brand='hp-all-in-one') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='all-in-one-pc', brand='hp-all-in-one') }}"
 												>HP</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='desktops', subcategory='all-in-one-pc', brand='asus-all-in-one') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='all-in-one-pc', brand='asus-all-in-one') }}"
 												>ASUS</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='desktops', subcategory='all-in-one-pc', brand='lenovo-all-in-one') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='all-in-one-pc', brand='lenovo-all-in-one') }}"
 												>LENOVO</a
 											>
 										</li>
@@ -335,28 +292,28 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='desktops', subcategory='portable-mini-pc') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Desktop', subcategory='portable-mini-pc') }}"
 										>Portable Mini PC</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='desktops', subcategory='portable-mini-pc', brand='asrock-portable-mini-pc') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='portable-mini-pc', brand='asrock-portable-mini-pc') }}"
 												>ASRock</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='desktops', subcategory='portable-mini-pc', brand='viewsonic-mini-pc') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='portable-mini-pc', brand='viewsonic-mini-pc') }}"
 												>ViewSonic</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='desktops', subcategory='portable-mini-pc', brand='mini-pc-asus') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='portable-mini-pc', brand='mini-pc-asus') }}"
 											>
 												Asus</a
 											>
@@ -364,28 +321,28 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='desktops', subcategory='portable-mini-pc', brand='intel-mini-pc') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='portable-mini-pc', brand='intel-mini-pc') }}"
 												>Intel</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='desktops', subcategory='portable-mini-pc', brand='gigabyte-mini-pc') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='portable-mini-pc', brand='gigabyte-mini-pc') }}"
 												>GIGABYTE</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='desktops', subcategory='portable-mini-pc', brand='zotac-mini-pc') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='portable-mini-pc', brand='zotac-mini-pc') }}"
 												>Zotac</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='desktops', subcategory='portable-mini-pc', brand='chuwi-mini-pc') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='portable-mini-pc', brand='chuwi-mini-pc') }}"
 												>Chuwi</a
 											>
 										</li>
@@ -394,27 +351,27 @@
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='desktops', subcategory='apple-mini-pc') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Desktop', subcategory='apple-mini-pc') }}"
 										>Apple Mac Mini</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='desktops', subcategory='apple-imac-desktop-pc') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Desktop', subcategory='apple-imac-desktop-pc') }}"
 										>Apple iMac</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='desktops', subcategory='economy-pc') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Desktop', subcategory='economy-pc') }}"
 										>Budget PC</a
 									>
 								</li>
 								<li>
 									<a
-										href="{{ url_for('productslist.get_category', category='desktops') }}"
+										href="{{ url_for('productslist.get_category', category='Desktop') }}"
 										class="see-all"
 										>Show All Desktop</a
 									>
@@ -424,221 +381,77 @@
 						<li class="nav-item has-child c-1">
 							<a
 								class="nav-link"
-								href="{{ url_for('productslist.get_category', category='laptop-notebook') }}"
+								href="{{ url_for('productslist.get_category', category='Laptop') }}"
 								>Laptop</a
 							>
 							<ul class="drop-down drop-menu-1">
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='laptop-notebook', subcategory='laptop') }}"
-										>All Laptop</a
-									>
-									<ul class="drop-down drop-menu-2">
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop', brand='razer-laptop') }}"
-												>Razer</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop', brand='dell-laptop') }}"
-												>Dell</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop', brand='hp-laptop') }}"
-											>
-												HP</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop', brand='lenovo-laptop') }}"
-												>Lenovo</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop', brand='acer-laptop') }}"
-												>Acer</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop', brand='msi-laptop') }}"
-												>MSI</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/xiaomi-mi-laptop"
-												>Mi
-											</a>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop', brand='apple-macbook') }}"
-												>MacBook</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop', brand='microsoft-surface-pro') }}"
-												>Surface</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/avita-laptop"
-												>AVITA_Laptop</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop', brand='asus-laptop') }}"
-											>
-												Asus</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/samsung-laptop"
-												>Samsung</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/gigabyte-laptop"
-												>Gigabyte</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/realme-laptop"
-												>Realme</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop', brand='chuwi') }}"
-												>Chuwi</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/huawei-laptop"
-												>Huawei</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/walton-laptop"
-												>Walton</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/nexstgo-laptop"
-												>Nexstgo</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop', brand='i-life-laptop') }}"
-												>iLife</a
-											>
-										</li>
-									</ul>
-								</li>
-								<li class="nav-item has-child">
-									<a
-										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='laptop-notebook', subcategory='Gaming-Laptop') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Laptop', subcategory='Gaming Laptop') }}"
 										>Gaming Laptop</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='Gaming-Laptop', brand='razer') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='Gaming Laptop', brand='Razer') }}"
 												>RAZER</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='Gaming-Laptop', brand='hp') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='Gaming Laptop', brand='HP') }}"
 												>HP</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='Gaming-Laptop', brand='asus') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='Gaming Laptop', brand='Asus') }}"
 												>Asus</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='Gaming-Laptop', brand='msi') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='Gaming Laptop', brand='MSI') }}"
 												>MSI</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='Gaming-Laptop', brand='gigabyte') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='Gaming Laptop', brand='GIGABYTE') }}"
 												>GIGABYTE</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='Gaming-Laptop', brand='acer') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='Gaming Laptop', brand='Acer') }}"
 												>Acer</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='Gaming-Laptop', brand='dell') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='Gaming Laptop', brand='Dell') }}"
 												>Dell</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='Gaming-Laptop', brand='lenovo') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='Gaming Laptop', brand='Lenovo') }}"
 												>Lenovo</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='Gaming-Laptop', brand='xiaomi') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='Gaming Laptop', brand='Xiaomi') }}"
 												>XIAOMI</a
 											>
 										</li>
@@ -647,77 +460,77 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='laptop-notebook', subcategory='ultrabook') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Laptop', subcategory='Ultrabook') }}"
 										>Premium Ultrabook</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/razer-premium-ultrabook"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='Ultrabook', brand='Razer') }}"
 												>Razer</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='ultrabook', brand='asus') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='Ultrabook', brand='Asus') }}"
 												>Asus</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='ultrabook', brand='acer') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='Ultrabook', brand='Acer') }}"
 												>Acer</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='ultrabook', brand='microsoft') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='Ultrabook', brand='Microsoft') }}"
 												>Microsoft</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='ultrabook', brand='hp') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='Ultrabook', brand='HP') }}"
 												>HP</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='ultrabook', brand='dell') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='Ultrabook', brand='Dell') }}"
 												>Dell</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='ultrabook', brand='lenovo') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='Ultrabook', brand='Lenovo') }}"
 												>Lenovo</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/huawei-premium-ultrabook"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='Ultrabook', brand='Huawei') }}"
 												>Huawei</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/msi-premium-ultrabook"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='Ultrabook', brand='MSI') }}"
 												>MSI</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="https://www.startech.com.bd/samsung-premium-ultrabook"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='Ultrabook', brand='Samsung') }}"
 												>Samsung</a
 											>
 										</li>
@@ -798,21 +611,21 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='laptop-notebook', subcategory='laptop-accessories') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Laptop', subcategory='laptop-accessories') }}"
 										>Laptop Accessories</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-cooler') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='laptop-accessories', brand='laptop-cooler') }}"
 												>Laptop Cooler</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-desk') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='laptop-accessories', brand='laptop-desk') }}"
 												>Laptop Desk</a
 											>
 										</li>
@@ -826,49 +639,49 @@
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-battery') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='laptop-accessories', brand='laptop-battery') }}"
 												>Laptop Battery</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-adapter') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='laptop-accessories', brand='laptop-adapter') }}"
 												>Charger / Adapter</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-display') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='laptop-accessories', brand='laptop-display') }}"
 												>Display</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-keyboard') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='laptop-accessories', brand='laptop-keyboard') }}"
 												>Keyboard</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-hdd-caddy') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='laptop-accessories', brand='laptop-hdd-caddy') }}"
 												>CADDY</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-dvd-writer') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='laptop-accessories', brand='laptop-dvd-writer') }}"
 												>DVD Writer</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='laptop-notebook', subcategory='laptop-accessories', brand='laptop-locker') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Laptop', subcategory='laptop-accessories', brand='laptop-locker') }}"
 												>Laptop Locker</a
 											>
 										</li>
@@ -883,7 +696,7 @@
 								</li>
 								<li>
 									<a
-										href="https://www.startech.com.bd/laptop-notebook"
+										href="{{ url_for('productslist.get_category', category='Laptop') }}"
 										class="see-all"
 										>Show All Laptop</a
 									>
@@ -2320,63 +2133,63 @@
 						<li class="nav-item has-child c-1">
 							<a
 								class="nav-link"
-								href="https://www.startech.com.bd/monitor"
+								href="{{ url_for('productslist.get_category', category='Monitor') }}"
 								>Monitor</a
 							>
 							<ul class="drop-down drop-menu-1">
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="https://www.startech.com.bd/razer-monitor"
+										href="{{ url_for('productslist.get_category_subcategory', category='Monitor', subcategory='Razer') }}"
 										>Razer</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='benq') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Monitor', subcategory='BenQ') }}"
 										>BenQ</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='asus') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Monitor', subcategory='ASUS') }}"
 										>Asus</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='lg') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Monitor', subcategory='LG') }}"
 										>LG
 									</a>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='hp') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Monitor', subcategory='HP') }}"
 										>HP</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='dell') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Monitor', subcategory='Dell') }}"
 										>Dell</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='gigabyte') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Monitor', subcategory='GIGABYTE') }}"
 										>GIGABYTE</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='samsung') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Monitor', subcategory='Samsung') }}"
 										>Samsung</a
 									>
 								</li>
@@ -2390,91 +2203,91 @@
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='msi') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Monitor', subcategory='MSI') }}"
 										>MSI</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='xiaomi') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Monitor', subcategory='Xiaomi') }}"
 										>XIAOMI</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='philips') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Monitor', subcategory='PHILIPS') }}"
 										>PHILIPS</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='viewsonic') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Monitor', subcategory='Viewsonic') }}"
 										>Viewsonic</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='walton') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Monitor', subcategory='Walton') }}"
 										>Walton</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='acer') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Monitor', subcategory='Acer') }}"
 										>Acer</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='aoc') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Monitor', subcategory='AOC') }}"
 										>AOC</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='monitor', subcategory='esonic') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Monitor', subcategory='Esonic') }}"
 										>Esonic</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="https://www.startech.com.bd/hikvision-monitor"
+										href="{{ url_for('productslist.get_category_subcategory', category='Monitor', subcategory='Hikvision') }}"
 										>Hikvision</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="https://www.startech.com.bd/huawei-monitor"
+										href="{{ url_for('productslist.get_category_subcategory', category='Monitor', subcategory='Huawei') }}"
 										>Huawei</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="https://www.startech.com.bd/fantech-monitor"
+										href="{{ url_for('productslist.get_category_subcategory', category='Monitor', subcategory='Fantech') }}"
 										>Fantech</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="https://www.startech.com.bd/lenovo-monitor"
+										href="{{ url_for('productslist.get_category_subcategory', category='Monitor', subcategory='Lenovo') }}"
 										>Lenovo</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
 										class="nav-link"
-										href="https://www.startech.com.bd/gamemax-monitor"
+										href="{{ url_for('productslist.get_category_subcategory', category='Monitor', subcategory='GameMax') }}"
 										>GameMax</a
 									>
 								</li>
@@ -2515,7 +2328,7 @@
 								</li>
 								<li>
 									<a
-										href="https://www.startech.com.bd/monitor"
+										href="{{ url_for('productslist.get_category', category='Monitor') }}"
 										class="see-all"
 										>Show All Monitor</a
 									>
@@ -6478,7 +6291,27 @@
 			</nav>
 		</header>
 
-		<div class="f-btn mc-toggler loaded" id="cart" title="0 item(s)">
+		<div class="f-btn cmpr-toggler" id="cmpr-btn">
+			<i class="material-icons">library_add</i>
+			<div class="label">Compare</div>
+			<span class="counter">0</span>
+		</div>
+
+		<div class="drawer cmpr-panel" id="cmpr-panel">
+			<div class="title">
+				<p>Compare Product</p>
+				<span class="cmpr-toggler"
+					><i class="material-icons">close</i></span
+				>
+			</div>
+			<div class="content"></div>
+			<div class="footer btn-wrap">
+				<a class="clear-all" id="cmpr-clear-all">Clear</a>
+				<a class="btn" id="compare-now-btn" href="#">Compare Now</a>
+			</div>
+		</div>
+
+		<div class="f-btn mc-toggler" id="cart" title="0 item(s)">
 			<i class="material-icons">shopping_basket</i>
 			<div class="label">Cart</div>
 			<span class="counter" data-count="0">0</span>
@@ -6491,8 +6324,7 @@
 					><i class="material-icons">close</i></span
 				>
 			</div>
-			<div class="content">
-			</div>
+			<div class="content"></div>
 			<div class="footer">
 				<div class="promotion-code">
 					<div class="input-group">
@@ -6517,22 +6349,18 @@
 					<div class="amount"></div>
 				</div>
 				<div class="checkout-btn">
-					<a href="{{ url_for('sales.checkout') }}"><button class="btn submit">Checkout</button></a>
+					<a href="{{ url_for('sales.checkout') }}"
+						><button class="btn submit">Checkout</button></a
+					>
 				</div>
 			</div>
 		</div>
 
-		{% block breadcrumbs %} {% endblock breadcrumbs %}
-
-		{% with messages = get_flashed_messages(with_categories=true) %}
-			{% if messages %}
-				{% for category, message in messages %}
-					<div class="alert alert-{{ category }}">
-						{{ message }}
-					</div>
-				{% endfor %}
-			{% endif %}
-		{% endwith %}
+		{% block breadcrumbs %} {% endblock breadcrumbs %} {% with messages =
+		get_flashed_messages(with_categories=true) %} {% if messages %} {% for
+		category, message in messages %}
+		<div class="alert alert-{{ category }}">{{ message }}</div>
+		{% endfor %} {% endif %} {% endwith %}
 		<div class="bg-gry content p-tb-20">
 			{% block content %} {% endblock content %}
 		</div>
@@ -6542,156 +6370,28 @@
 				<div class="main-footer">
 					<div class="footer-block contact-us">
 						<h4>Support</h4>
-
-						<a
-							href="tel:09678002003"
-							class="helpline-btn footer-big-btn"
-						>
-							<div class="ic">
-								<i class="material-icons">phone</i>
-							</div>
-							<p>9AM - 8PM</p>
-							<h5>09678002003</h5>
-						</a>
-
-						<a
-							href="https://www.startech.com.bd/information/contact"
-							class="store-locator-btn footer-big-btn"
-						>
-							<div class="ic">
-								<i class="material-icons">place</i>
-							</div>
-							<p>Store Locator</p>
-							<h5>Find Our Stores</h5>
-						</a>
-					</div>
-
-					<div class="footer-block about-us">
-						<h4>About Us</h4>
-						<ul>
-							<li>
-								<a href="https://www.startech.com.bd/emi-terms"
-									>EMI Terms</a
-								>
-							</li>
-							<li>
-								<a href="https://www.startech.com.bd/about_us"
-									>About Us</a
-								>
-							</li>
-							<li>
-								<a
-									href="https://www.startech.com.bd/online-delivery"
-									>Online Delivery</a
-								>
-							</li>
-							<li>
-								<a href="https://www.startech.com.bd/privacy"
-									>Privacy Policy</a
-								>
-							</li>
-							<li>
-								<a
-									href="https://www.startech.com.bd/warranty-policy"
-									>Terms and Conditions</a
-								>
-							</li>
-							<li>
-								<a
-									href="https://www.startech.com.bd/refund-policy"
-									>Refund and Return Policy</a
-								>
-							</li>
-							<li>
-								<a href="https://www.startech.com.bd/career"
-									>Career</a
-								>
-							</li>
-							<li>
-								<a
-									href="https://www.startech.com.bd/star-point-policy"
-									>Star Point Policy</a
-								>
-							</li>
-							<li>
-								<a href="https://www.startech.com.bd/blog"
-									>Blog</a
-								>
-							</li>
-							<li>
-								<a
-									href="https://www.startech.com.bd/information/contact"
-									>Contact Us</a
-								>
-							</li>
-							<li>
-								<a
-									href="https://www.startech.com.bd/product/manufacturer"
-									>Brands</a
-								>
-							</li>
-						</ul>
-					</div>
-					<div class="footer-block org-info">
-						<h4>Stay Connected</h4>
-						<p>
-							<b class="store-name"
-								>Star Tech &amp; Engineering Ltd</b
-							><br />6th floor, 28 Kazi Nazrul Islam Ave,Navana
-							Zohura Square, Dhaka 1000
-						</p>
-						<p>
-							<b>Email:</b><br /><a
-								href="mailto:info.webteam@startechbd.com"
-								>info.webteam@startechbd.com</a
-							>
-						</p>
-
-						<p class="social-links">
+						<div class="sam_horizontal">
 							<a
-								href="https://www.facebook.com/star.tech.ltd/"
-								target="_blank"
-								rel="noopener"
-								title="Facebook"
+								href="tel:01775550177"
+								class="helpline-btn footer-big-btn sam_left"
 							>
-								<span class="icon-sprite fb"></span>
+								<div class="ic">
+									<i class="material-icons">phone</i>
+								</div>
+								<p>10AM - 8PM</p>
+								<h5>01775550177</h5>
 							</a>
 							<a
-								href="https://www.youtube.com/channel/UC-SDF_4DM3unoP7JeAodz2g"
-								target="_blank"
-								rel="noopener"
-								title="Youtube"
+								href="mail:sameen2080@gmail.com"
+								class="helpline-btn footer-big-btn sam_right"
 							>
-								<span class="icon-sprite youtube"></span>
+								<div class="ic">
+									<i class="material-icons">phone</i>
+								</div>
+								<p>Helpline Email</p>
+								<h5>gmail@suntech.com</h5>
 							</a>
-							<a
-								href="https://www.instagram.com/startech.com.bd/"
-								target="_blank"
-								rel="noopener"
-								title="Instagram"
-							>
-								<span class="icon-sprite insta"></span>
-							</a>
-						</p>
-					</div>
-				</div>
-				<div class="row sub-footer">
-					<div class="col-md-6 copyright-info">
-						<p>
-							© 2020 Star Tech &amp; Engineering Ltd | All rights
-							reserved
-						</p>
-					</div>
-					<div class="col-md-6 powered-by">
-						<p>
-							Powered By:
-							<a
-								href="https://soft.startech.com.bd/"
-								target="_blank"
-								rel="noopener"
-								>Star Soft</a
-							>
-						</p>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -4,11 +4,6 @@
 	<div class="container">
 		<div class="row">
 			<column id="column-left" class="col-sm-3">
-				<span class="lc-close"
-					><i class="material-icons" aria-hidden="true"
-						>close</i
-					></span
-				>
 				<div class="filters">
 					<div class="price-filter ws-box">
 						<div class="label">
@@ -114,26 +109,32 @@
 					<div class="p-item" data-product-id="{{ product.id }}">
 						<div class="p-item-inner">
 							<div class="p-item-img">
-								<a href="{{ url_for('product.product_view', product_handle=product.handle) }}"
+								<a
+									href="{{ url_for('product.product_view', product_id=product.id) }}"
 									><img
 										src="{{ product.img_urls[0] }}"
 										alt="{{ product.name }}"
-										width="228"
-										height="228"
+										class="sameen_plist_img"
+										width="350"
+										height="350"
 								/></a>
 							</div>
 							<div class="p-item-details">
 								<h4 class="p-item-name">
 									<a
-										href="{{ url_for('product.product_view', product_handle=product.handle)}}"
+										href="{{ url_for('product.product_view', product_id=product.id)}}"
 										>{{ product.name }}</a
 									>
 								</h4>
 								<div class="short-description">
 									<ul>
 										{% for property in
-										product.basic_properties %}
-										<li>{{ property }} : {{ product.basic_properties[property] }}</li>
+										product.summaryProperties() %}
+										<li>
+											{{ property }} : {{
+											product.summaryProperties()[property]
+											}}
+										</li>
 										{% endfor %}
 									</ul>
 								</div>
@@ -149,9 +150,7 @@
 										>
 										Buy Now</span
 									>
-									<span
-										class="st-btn btn-compare"
-										onclick="compare.add('13593');"
+									<span class="st-btn btn-compare"
 										><i class="material-icons"
 											>library_add</i
 										>Add to Compare</span

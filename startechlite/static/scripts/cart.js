@@ -9,25 +9,21 @@ const cartCheckoutURL = cartCheckoutDiv.querySelector("a").href;
 
 const addToCartButtons = document.querySelectorAll("span.btn-add-cart");
 
-const SESSION_CART_NUM_PRODUCTS = "numProducts";
 const SESSION_CART_PRODUCT_COUNT = "cartProductCount"; // index comes here
 const SESSION_CART_PRODUCT_NAME = "cartProductName"; // index comes here
 const SESSION_CART_PRODUCT_PRICE = "cartProductPrice"; // index comes here
 const SESSION_CART_PRODUCT_IMG = "cartProductImg"; // index comes here
-const SESSION_CART_PRODUCT_HANDLE = "cartProductHandle"; // index comes here
 
 class Product {
 	constructor(
 		id = 0,
-		handle = "",
 		name = "",
 		img = "",
-		price = 0,                                                     
+		price = 0,
 		count = 0,
 		elem = null
 	) {
 		this.id = id;
-		this.handle = handle;
 		this.name = name;
 		this.img = img;
 		this.price = price;
@@ -82,10 +78,6 @@ class Cart {
 							SESSION_CART_PRODUCT_PRICE + product.id
 						)
 					);
-				} else if (key.startsWith(SESSION_CART_PRODUCT_HANDLE)) {
-					product.handle = sessionStorage.getItem(
-						SESSION_CART_PRODUCT_HANDLE + product.id
-					);
 				}
 			}
 		}
@@ -99,9 +91,17 @@ class Cart {
 		return products;
 	}
 
+	#clearCartSession() {
+		for (const key in sessionStorage) {
+			if (key.startsWith("cartProduct")) {
+				sessionStorage.removeItem(key);
+			}
+		}
+	}
+
 	clearCart() {
 		this.products = [];
-		sessionStorage.clear();
+		this.#clearCartSession();
 		this.renderCartElement();
 	}
 
@@ -121,10 +121,6 @@ class Cart {
 		} else {
 			const product = new Product(
 				productId,
-				productElem
-					.querySelector("div.p-item-img a")
-					// @ts-ignore
-					.href.match(/product\/(.+)$/)[1],
 				productElem.querySelector("h4.p-item-name a").textContent,
 				productElem
 					.querySelector("img")
@@ -146,7 +142,7 @@ class Cart {
 	}
 
 	#updateSessionStorage() {
-		sessionStorage.clear();
+		this.#clearCartSession();
 		this.products.forEach((product) => {
 			sessionStorage.setItem(
 				SESSION_CART_PRODUCT_COUNT + product.id,
@@ -163,10 +159,6 @@ class Cart {
 			sessionStorage.setItem(
 				SESSION_CART_PRODUCT_IMG + product.id,
 				"" + product.img
-			);
-			sessionStorage.setItem(
-				SESSION_CART_PRODUCT_HANDLE + product.id,
-				"" + product.handle
 			);
 		});
 	}
@@ -258,5 +250,3 @@ addToCartButtons.forEach((button) => {
 		cartJS.addToCart(productElem);
 	};
 });
-
-cartCheckoutButton.onclick = function () {};

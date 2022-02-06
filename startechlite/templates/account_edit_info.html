@@ -1,0 +1,58 @@
+{% extends "account.html" %} {% block account_content %}
+<form
+	action="https://www.startech.com.bd/account/edit"
+	method="post"
+	enctype="multipart/form-data"
+	class="form-horizontal"
+>
+	<div class="multiple-form-group">
+		<div class="form-group required">
+			<label for="input-firstname">First Name </label>
+			<input
+				type="text"
+				name="firstname"
+				value="{{ current_user.first_name }}"
+				placeholder="First Name"
+				id="input-firstname"
+				class="form-control"
+			/>
+		</div>
+		<div class="form-group required">
+			<label for="input-lastname">Last Name</label>
+			<input
+				type="text"
+				name="lastname"
+				value="{{ current_user.last_name }}"
+				placeholder="Last Name"
+				id="input-lastname"
+				class="form-control"
+			/>
+		</div>
+	</div>
+	<div class="form-group required">
+		<label for="input-email">E-Mail</label>
+		<input
+			type="email"
+			name="email"
+			value="{{ current_user.email }}"
+			placeholder="E-Mail"
+			readonly=""
+			id="input-email"
+			class="form-control"
+		/>
+	</div>
+	<div class="form-group required">
+		<label for="input-telephone">Telephone</label>
+		<input
+			type="tel"
+			name="telephone"
+			value="{{ current_user.phone_number }}"
+			placeholder="Telephone"
+			readonly=""
+			id="input-telephone"
+			class="form-control"
+		/>
+	</div>
+	<button type="submit" class="btn btn-primary">Continue</button>
+</form>
+{% endblock account_content %}

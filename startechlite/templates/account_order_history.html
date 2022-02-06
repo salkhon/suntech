@@ -1,0 +1,63 @@
+{% extends "account.html" %} {% block account_content %}
+<div class="ac-title">
+	<a href="https://www.startech.com.bd/account/account"
+		><span class="material-icons">arrow_back</span></a
+	>
+	<h1>Order History</h1>
+</div>
+<div class="cards">
+	{% for purchase in purchases %}
+	<div class="card o-card">
+		<div class="c-head">
+			<div class="left">
+				<span class="o-id"><span>Order# {{ purchase.id }}</span></span>
+				<span class="o-date">Date Added: {{ purchase.date.strftime("%Y-%m-%d %I:%M %p") }}</span>
+			</div>
+			<div class="right">
+				{% if purchase.status == "Pending" %}
+				<span class="status"
+					><span class="material-icons">check_circle</span
+					><span class="status">Pending</span></span
+				>
+				{% elif purchase.status == "Approved" %}
+				<span class="status"
+					><span class="material-icons">check_circle</span
+					><span class="status">Approved</span></span
+				>
+				{% elif purchase.status == "Delivered" %}
+				<span class="status delivered"
+					><span class="material-icons">check_circle</span
+					><span class="status">Delivered</span></span
+				>{% endif %}
+			</div>
+		</div>
+		<div class="c-body">
+			<ul>
+				{% for product in purchase._products %}
+				<li>
+					<div class="img-n-title">
+						<div class="img-wrap">
+							<img
+								src="{{ product.img_urls[0] }}"
+								alt="Salman Khondker"
+							/>
+						</div>
+						<div class="title">
+							<h6 class="item-name">{{ product.name }}</h6>
+							<p>
+								+{{ purchase.productid_count[product.id] }}
+								Item(s)
+							</p>
+						</div>
+					</div>
+					<div class="amount">{{ product.base_price }}৳</div>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+	{% endfor %}
+
+	<div class="text-center"></div>
+</div>
+{% endblock account_content %}

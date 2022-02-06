@@ -24,6 +24,7 @@ def _get_purchase() -> Purchase:
 
     product_counts: list[dict[str, int]] = purchase_json["products"]
     formdata: dict[str, str] = purchase_json["formdata"]
+    
     productid_count = {}
     for product_count in product_counts:
         productid_count[product_count["id"]] = product_count["count"]

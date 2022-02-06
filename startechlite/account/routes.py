@@ -7,6 +7,7 @@ from startechlite.constants import *
 import flask_breadcrumbs
 import flask_login
 from startechlite.dbmanager.dbmanager import DBManager
+from startechlite.sales.model import Purchase
 
 dbmanager = DBManager()
 
@@ -15,12 +16,26 @@ account = flask.Blueprint("account", __name__, url_prefix="/account")
 
 @account.route("/account")
 @flask_breadcrumbs.register_breadcrumb(account, ".account", "Account")
+@flask_login.login_required
 def user_account():
-    # have to check if logged in, otherwise redirects to login page
-    if flask_login.current_user.is_authenticated:  # type: ignore
-        # TODO: render user profile page
-        pass
-    return flask.redirect(flask.url_for("account.login"))
+    return flask.render_template("account.html")
+
+
+@account.route("/order")
+@flask_breadcrumbs.register_breadcrumb(account, ".order", "Order History")
+@flask_login.login_required
+def order_history():
+    purchases: list[Purchase] = dbmanager.get_user_purhcases()
+    # TODO: fill purchases with product info. So have to query products to fill purchase.
+    return flask.render_template("account_order_history.html", purchases=purchases)
+
+
+@account.route("/edit", methods=["GET", "POST"])
+@flask_breadcrumbs.register_breadcrumb(account, ".edit", "Edit Information")
+@flask_login.login_required
+def edit_info():
+    # TODO: might POST edit, that needs to be updated. Email and phone can't be changed. 
+    return flask.render_template("account_edit_info.html")
 
 
 def get_validated_registered_user() -> User | None:
