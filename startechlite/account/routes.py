@@ -44,7 +44,7 @@ def get_validated_registered_user() -> User | None:
     email = flask.request.form.get("email")
     password = flask.request.form.get("password")
     telephone = flask.request.form.get("telephone")
-    id = random.randint(100000, 999999)
+    PLACEHOLDER_ID = -1
 
     if not (firstname and lastname and email and telephone and password):
         return None
@@ -52,7 +52,7 @@ def get_validated_registered_user() -> User | None:
     if dbmanager.get_user_by_email(email):
         return None
 
-    return User(id, firstname, lastname, email, startechlite.bcrypt.generate_password_hash(password).decode("utf-8"), telephone, "")
+    return User(PLACEHOLDER_ID, firstname, lastname, email, startechlite.bcrypt.generate_password_hash(password).decode("utf-8"), telephone, "")
 
 
 @account.route("/register", methods=["GET", "POST"])

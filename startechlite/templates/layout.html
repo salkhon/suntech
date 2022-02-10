@@ -6,126 +6,130 @@
 			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
 		/>
 		<title>SUNTECH</title>
-		<base href="localhost" />
+		<base href="http://localhost:5000" />
 		<meta
 			name="description"
 			content="SUNTECH &amp; CSE216 LAB PROJECT BY 1805050 and 1805053."
 		/>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<link href="/static/img/logo1.png" rel="icon" />
+		<link href="/static/img/suntech.png" rel="icon" />
 		<link href="/static/main.css" rel="stylesheet" />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Sofia"
+		/>
 		<script src="/static/scripts/cart.js" defer></script>
 		<script src="/static/scripts/compare.js" defer></script>
 	</head>
 
-	<body>
+	<body class="black-body">
 		<header id="header">
 			<div class="top">
-				<div class="container">
-					<div class="ht-item logo">
-						<div class="mbl-nav-top h-desk">
-							<div id="nav-toggler">
-								<span></span>
-								<span></span>
-								<span></span>
+				<div class="sam_head_stuff">
+					<div class="sam-hori-inline-table">
+						<div class="ht-item logo">
+							<div class="logo_align_div">
+								<a href=".">
+									<img
+										src="/static/img/suntech.png"
+										title="SunTech"
+										width="144"
+										height="164"
+										alt="SunTech"
+									/>
+								</a>
 							</div>
 						</div>
-						<a class="brand" href="{{ url_for('main.home') }}"
-							><img
-								src="/static/img/logo1.png"
-								title="Star Tech &amp; Engineering Ltd "
-								width="144"
-								height="164"
-								alt="Star Tech &amp; Engineering Ltd "
-						/></a>
-						<!-- <div class="mbl-right h-desk">
-							<div class="ac search-toggler">
-								<i class="material-icons">search</i>
-							</div>
-							<div class="ac mc-toggler">
-								<i class="material-icons">shopping_basket</i
-								><span class="counter" data-count="0">0</span>
-							</div>
-						</div> -->
-					</div>
-					<div class="ht-item search" id="search">
-						<input
-							type="text"
-							name="search"
-							placeholder="Search"
-							autocomplete="off"
-						/>
-						<div class="dropdown-menu">
-							<div class="search-details">
-								<ul class="nav nav-tabs">
-									<li data-tab="tab-prod" class="active">
-										Products
-									</li>
-									<li data-tab="tab-cat">Categories</li>
-									<li data-tab="tab-man">Brands</li>
-								</ul>
-								<div
-									id="tab-prod"
-									class="search-results"
-									style="display: block"
-								></div>
-								<div
-									id="tab-cat"
-									class="search-results"
-									style="display: none"
-								></div>
-								<div
-									id="tab-man"
-									class="search-results"
-									style="display: none"
-								></div>
+						<div class="center-search">
+							<div class="ht-item search" id="search">
+								<input
+									class="sam_input"
+									type="text"
+									name="search"
+									placeholder="Search"
+									autocomplete="off"
+								/>
+								<div class="dropdown-menu">
+									<div class="search-details">
+										<ul class="nav nav-tabs">
+											<li
+												data-tab="tab-prod"
+												class="active"
+											>
+												Products
+											</li>
+											<li data-tab="tab-cat">
+												Categories
+											</li>
+											<li data-tab="tab-man">Brands</li>
+										</ul>
+										<div
+											id="tab-prod"
+											class="search-results"
+											style="display: block"
+										></div>
+										<div
+											id="tab-cat"
+											class="search-results"
+											style="display: none"
+										></div>
+										<div
+											id="tab-man"
+											class="search-results"
+											style="display: none"
+										></div>
+									</div>
+								</div>
+								<button class="material-icons">search</button>
 							</div>
 						</div>
-						<button class="material-icons">search</button>
-					</div>
-					<div class="ht-item q-actions">
-						<div class="ac cmpr-toggler h-desk">
-							<div class="ic">
-								<i class="material-icons">library_add</i>
+						<div class="ht-item q-actions">
+							<div class="ac cmpr-toggler h-desk">
+								<div class="ic">
+									<i class="material-icons">library_add</i>
+								</div>
+								<div class="ac-content">
+									<h5 class="text">Compare (0)</h5>
+								</div>
 							</div>
-							<div class="ac-content">
-								<h5 class="text">Compare (0)</h5>
-							</div>
-						</div>
-						<div class="ac">
-							<a
-								class="ic"
-								href="{{ url_for('account.user_account') }}"
-								><i class="material-icons">person</i></a
-							>
-							<div class="ac-content">
-								<a href="{{ url_for('account.user_account') }}"
-									><h5>Account</h5></a
+							<div class="ac">
+								<a
+									class="ic"
+									href="{{ url_for('account.user_account') }}"
+									><i class="material-icons">person</i></a
 								>
-								{% if not current_user.is_authenticated %}
-								<p>
+								<div class="ac-content">
 									<a
 										href="{{ url_for('account.user_account') }}"
-										><span></span></a
-									><a href="{{ url_for('account.register') }}"
-										>Register</a
+										><h5>Account</h5></a
 									>
-									or
-									<a href="{{ url_for('account.login') }}"
-										>Login</a
-									>
-								</p>
-								{% else %}
-								<p>
-									<a
-										href="{{ url_for('account.user_account') }}"
-										><span></span></a
-									><a href="{{ url_for('account.logout') }}"
-										>Log out</a
-									>
-								</p>
-								{% endif %}
+									{% if not current_user.is_authenticated %}
+									<p>
+										<a
+											href="{{ url_for('account.user_account') }}"
+											><span></span></a
+										><a
+											href="{{ url_for('account.register') }}"
+											>Register</a
+										>
+										or
+										<a href="{{ url_for('account.login') }}"
+											>Login</a
+										>
+									</p>
+									{% else %}
+									<p>
+										<a
+											href="{{ url_for('account.user_account') }}"
+											><span></span></a
+										><a
+											href="{{ url_for('account.logout') }}"
+											>Log out</a
+										>
+									</p>
+									{% endif %}
+								</div>
 							</div>
 						</div>
 					</div>
@@ -141,36 +145,6 @@
 								>Desktop</a
 							>
 							<ul class="drop-down drop-menu-1">
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='Desktop', subcategory='special-pc') }}"
-										>Special PC</a
-									>
-								</li>
-								<li class="nav-item has-child">
-									<a
-										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='Desktop', subcategory='star-pc') }}"
-										>Star PC</a
-									>
-									<ul class="drop-down drop-menu-2">
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='star-pc', brand='Ryzen') }}"
-												>RYZEN PC</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='star-pc', brand='Intel') }}"
-												>Intel PC</a
-											>
-										</li>
-									</ul>
-								</li>
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
@@ -248,127 +222,72 @@
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='Desktop', subcategory='all-in-one-pc') }}"
+										href="{{ url_for('productslist.get_category_subcategory', category='Desktop', subcategory='All in One PC') }}"
 										>All in one PC</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='all-in-one-pc', brand='dell-all-in-one') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='All in One PC', brand='dell') }}"
 												>DELL</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='all-in-one-pc', brand='i-life-all-in-one') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='All in One PC', brand='i-life') }}"
 												>i-Life</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='all-in-one-pc', brand='hp-all-in-one') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='All in One PC', brand='hp') }}"
 												>HP</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='all-in-one-pc', brand='asus-all-in-one') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='All in One PC', brand='asus') }}"
 												>ASUS</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='all-in-one-pc', brand='lenovo-all-in-one') }}"
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='All in One PC', brand='lenovo') }}"
 												>LENOVO</a
 											>
 										</li>
 									</ul>
 								</li>
+
 								<li class="nav-item has-child">
 									<a
 										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='Desktop', subcategory='portable-mini-pc') }}"
-										>Portable Mini PC</a
+										href="{{ url_for('productslist.get_category_subcategory', category='Desktop', subcategory='Apple PC') }}"
+										>Apple PC</a
 									>
 									<ul class="drop-down drop-menu-2">
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='portable-mini-pc', brand='asrock-portable-mini-pc') }}"
-												>ASRock</a
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='Apple PC', brand='Mac Mini') }}"
+												>Mac Mini</a
 											>
 										</li>
 										<li class="nav-item">
 											<a
 												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='portable-mini-pc', brand='viewsonic-mini-pc') }}"
-												>ViewSonic</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='portable-mini-pc', brand='mini-pc-asus') }}"
-											>
-												Asus</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='portable-mini-pc', brand='intel-mini-pc') }}"
-												>Intel</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='portable-mini-pc', brand='gigabyte-mini-pc') }}"
-												>GIGABYTE</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='portable-mini-pc', brand='zotac-mini-pc') }}"
-												>Zotac</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='portable-mini-pc', brand='chuwi-mini-pc') }}"
-												>Chuwi</a
+												href="{{ url_for('productslist.get_category_subcategory_brand', category='Desktop', subcategory='Apple PC', brand='iMac') }}"
+												>iMac</a
 											>
 										</li>
 									</ul>
 								</li>
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='Desktop', subcategory='apple-mini-pc') }}"
-										>Apple Mac Mini</a
-									>
-								</li>
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='Desktop', subcategory='apple-imac-desktop-pc') }}"
-										>Apple iMac</a
-									>
-								</li>
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='Desktop', subcategory='economy-pc') }}"
-										>Budget PC</a
-									>
-								</li>
+
 								<li>
 									<a
 										href="{{ url_for('productslist.get_category', category='Desktop') }}"
@@ -2449,312 +2368,7 @@
 								</li>
 							</ul>
 						</li>
-						<li class="nav-item has-child c-1">
-							<a
-								class="nav-link"
-								href="https://www.startech.com.bd/office-equipment"
-								>Office Equipment</a
-							>
-							<ul class="drop-down drop-menu-1">
-								<li class="nav-item has-child">
-									<a
-										class="nav-link"
-										href="https://www.startech.com.bd/projector"
-										>Projector</a
-									>
-									<ul class="drop-down drop-menu-2">
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory', category='projector', subcategory='infocus') }}"
-												>InFocus</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory', category='projector', subcategory='benq') }}"
-												>BenQ</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory', category='projector', subcategory='epson') }}"
-												>EPSON</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory', category='projector', subcategory='casio') }}"
-												>CASIO</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory', category='projector', subcategory='viewsonic') }}"
-												>Viewsonic</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory', category='projector', subcategory='vivitek') }}"
-												>VIVItek</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory', category='projector', subcategory='optoma') }}"
-												>Optoma</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory', category='projector', subcategory='asus') }}"
-												>Asus</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory', category='projector', subcategory='maxell') }}"
-												>Maxell</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory', category='projector', subcategory='cheerlux') }}"
-												>Cheerlux</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/xiaomi-projector"
-												>Xiaomi</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory', category='projector', subcategory='non-brand-products') }}"
-												>OTHERS</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/projection-screen"
-												>Projection Screen</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/projector-mount"
-												>Projector Mount</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/projector-accessories"
-												>Projector Accessories</a
-											>
-										</li>
-									</ul>
-								</li>
-								<li class="nav-item has-child">
-									<a
-										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='office-equipment', subcategory='printer') }}"
-										>Printer</a
-									>
-									<ul class="drop-down drop-menu-2">
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='office-equipment', subcategory='printer', brand='brother-printer') }}"
-												>Brother</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='office-equipment', subcategory='printer', brand='Canon-printer') }}"
-												>Canon</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='office-equipment', subcategory='printer', brand='EPSON-Printer') }}"
-												>EPSON</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='office-equipment', subcategory='printer', brand='HP-printer') }}"
-											>
-												HP</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='office-equipment', subcategory='printer', brand='pantum-printer') }}"
-												>Pantum</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='office-equipment', subcategory='printer', brand='xerox') }}"
-												>Xerox</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/zebra-printer"
-												>Zebra</a
-											>
-										</li>
-									</ul>
-								</li>
-								<li class="nav-item has-child">
-									<a
-										class="nav-link"
-										href="https://www.startech.com.bd/photocopier"
-										>Photocopier</a
-									>
-									<ul class="drop-down drop-menu-2">
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/hp-photocopier"
-											>
-												HP</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/canon-photocopier"
-												>Canon</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/toshiba-photocopier"
-												>Toshiba</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/sharp-photocopier"
-												>SHARP</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/ricoh-photocopier"
-												>RICOH</a
-											>
-										</li>
-									</ul>
-								</li>
-								<li class="nav-item has-child">
-									<a
-										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='office-equipment', subcategory='Scanner') }}"
-										>Scanner</a
-									>
-									<ul class="drop-down drop-menu-2">
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='office-equipment', subcategory='Scanner', brand='hp') }}"
-												>HP</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='office-equipment', subcategory='Scanner', brand='canon') }}"
-												>Canon</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='office-equipment', subcategory='Scanner', brand='epson') }}"
-												>EPSON</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='office-equipment', subcategory='Scanner', brand='plustek') }}"
-												>Plustek</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='office-equipment', subcategory='Scanner', brand='brother') }}"
-												>Brother</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='office-equipment', subcategory='Scanner', brand='mustek') }}"
-												>Mustek</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='office-equipment', subcategory='Scanner', brand='avision') }}"
-												>Avision</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/czur-smart-book-and-document-scanner"
-												>CZUR</a
-											>
-										</li>
-									</ul>
-								</li>
-								<li>
-									<a
-										href="https://www.startech.com.bd/office-equipment"
-										class="see-all"
-										>Show All Office Equipment</a
-									>
-								</li>
-								<li>
-									<a
-										href="https://www.startech.com.bd/office-equipment"
-										class="see-all"
-										>Accessories</a
-									>
-								</li>
-							</ul>
-						</li>
+
 						<li class="nav-item has-child c-2">
 							<a
 								class="nav-link"
@@ -5234,466 +4848,7 @@
 								</li>
 							</ul>
 						</li>
-						<li class="nav-item has-child c-2">
-							<a
-								class="nav-link"
-								href="https://www.startech.com.bd/software"
-								>Software</a
-							>
-							<ul class="drop-down drop-menu-1">
-								<li class="nav-item has-child">
-									<a
-										class="nav-link"
-										href="https://www.startech.com.bd/operating-system"
-										>Operating System</a
-									>
-									<ul class="drop-down drop-menu-2">
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/microsoft-windows"
-												>Microsoft Windows</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/redhat"
-												>Red Hat</a
-											>
-										</li>
-									</ul>
-								</li>
-								<li class="nav-item has-child">
-									<a
-										class="nav-link"
-										href="https://www.startech.com.bd/office-application"
-										>Office Application</a
-									>
-									<ul class="drop-down drop-menu-2">
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/microsoft-office"
-												>Microsoft Office</a
-											>
-										</li>
-									</ul>
-								</li>
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="https://www.startech.com.bd/database-server-solution"
-										>Database Server Solution</a
-									>
-								</li>
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="https://www.startech.com.bd/mail-server-solution"
-										>Mail Server Solution</a
-									>
-								</li>
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="https://www.startech.com.bd/cloud-solution"
-										>Cloud Solutions</a
-									>
-								</li>
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='software', subcategory='vmware') }}"
-										>VMware</a
-									>
-								</li>
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='software', subcategory='adobe') }}"
-										>Adobe</a
-									>
-								</li>
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='software', subcategory='pdf') }}"
-										>Nuance</a
-									>
-								</li>
-								<li class="nav-item has-child">
-									<a
-										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='software', subcategory='antivirus') }}"
-										>Antivirus</a
-									>
-									<ul class="drop-down drop-menu-2">
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='software', subcategory='antivirus', brand='for-home-user') }}"
-												>For Home User</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='software', subcategory='antivirus', brand='for-business-users') }}"
-												>For Business Users</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='software', subcategory='antivirus', brand='data-encryption') }}"
-												>Data Encryption</a
-											>
-										</li>
-									</ul>
-								</li>
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='software', subcategory='autodesk') }}"
-										>AutoDesk</a
-									>
-								</li>
-								<li>
-									<a
-										href="https://www.startech.com.bd/software"
-										class="see-all"
-										>Show All Software</a
-									>
-								</li>
-							</ul>
-						</li>
-						<li class="nav-item has-child c-2">
-							<a
-								class="nav-link"
-								href="https://www.startech.com.bd/server-networking"
-								>Server &amp; Storage</a
-							>
-							<ul class="drop-down drop-menu-1">
-								<li class="nav-item has-child">
-									<a
-										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='server-networking', subcategory='workstation') }}"
-										>Workstation</a
-									>
-									<ul class="drop-down drop-menu-2">
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='server-networking', subcategory='workstation', brand='workstation-hp') }}"
-											>
-												HP</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='server-networking', subcategory='workstation', brand='dell-workstation') }}"
-											>
-												Dell</a
-											>
-										</li>
-									</ul>
-								</li>
-								<li class="nav-item has-child">
-									<a
-										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='server-networking', subcategory='server') }}"
-										>Server</a
-									>
-									<ul class="drop-down drop-menu-2">
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/scalable-server"
-												>Scalable</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='server-networking', subcategory='server', brand='dell-server') }}"
-												>Dell</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='server-networking', subcategory='server', brand='nas-server') }}"
-												>NAS</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='server-networking', subcategory='server', brand='hp-server') }}"
-												>HP</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='server-networking', subcategory='server', brand='cisco-server') }}"
-												>Cisco</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/asus-server"
-												>Asus</a
-											>
-										</li>
-									</ul>
-								</li>
-								<li class="nav-item has-child">
-									<a
-										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='server-networking', subcategory='storage') }}"
-										>Storage</a
-									>
-									<ul class="drop-down drop-menu-2">
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='server-networking', subcategory='storage', brand='dell') }}"
-												>Dell</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/netgear-storage"
-												>Netgear</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/asustor-storage"
-												>Asustor</a
-											>
-										</li>
-									</ul>
-								</li>
-								<li class="nav-item has-child">
-									<a
-										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='server-networking', subcategory='server-accessories') }}"
-										>Accessories</a
-									>
-									<ul class="drop-down drop-menu-2">
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='server-networking', subcategory='server-accessories', brand='server-power-supply') }}"
-												>Power Supply</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='server-networking', subcategory='server-accessories', brand='server-hdd') }}"
-												>HDD</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='server-networking', subcategory='server-accessories', brand='hdd-bay') }}"
-												>HDD Bay</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/network-card"
-												>Network Card</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='server-networking', subcategory='server-accessories', brand='raid-controller') }}"
-												>RAID Controller</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='server-networking', subcategory='server-accessories', brand='server-ram') }}"
-												>RAM</a
-											>
-										</li>
-									</ul>
-								</li>
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="https://www.startech.com.bd/sip-server"
-										>SIP Server</a
-									>
-								</li>
-								<li>
-									<a
-										href="https://www.startech.com.bd/server-networking"
-										class="see-all"
-										>Show All Server &amp; Storage</a
-									>
-								</li>
-							</ul>
-						</li>
-						<li class="nav-item has-child c-2">
-							<a
-								class="nav-link"
-								href="https://www.startech.com.bd/television-shop"
-								>TV</a
-							>
-							<ul class="drop-down drop-menu-1">
-								<li class="nav-item has-child">
-									<a
-										class="nav-link"
-										href="https://www.startech.com.bd/television-startech"
-										>All TV</a
-									>
-									<ul class="drop-down drop-menu-2">
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/xiaomi-television"
-												>Xiaomi MI</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/starex-television"
-												>Starex</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/sony-television"
-												>Sony</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/samsung-television"
-												>Samsung</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/LG-TV"
-												>LG</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/haier-television"
-												>Haier</a
-											>
-										</li>
-									</ul>
-								</li>
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="https://www.startech.com.bd/led-tv"
-										>LED TV</a
-									>
-								</li>
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="https://www.startech.com.bd/smart-tv"
-										>Smart TV</a
-									>
-								</li>
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="https://www.startech.com.bd/android-tv"
-										>Android TV</a
-									>
-								</li>
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="https://www.startech.com.bd/4k-tv"
-										>4K TV</a
-									>
-								</li>
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="https://www.startech.com.bd/wall-mount"
-										>Wall Mount</a
-									>
-								</li>
-								<li>
-									<a
-										href="https://www.startech.com.bd/television-shop"
-										class="see-all"
-										>Show All TV</a
-									>
-								</li>
-							</ul>
-						</li>
-						<li class="nav-item has-child c-1">
-							<a
-								class="nav-link"
-								href="https://www.startech.com.bd/air-conditioner"
-								>AC</a
-							>
-							<ul class="drop-down drop-menu-1">
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='air-conditioner', subcategory='general-air-conditioner') }}"
-										>GENERAL</a
-									>
-								</li>
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="{{ url_for('productslist.get_category_subcategory', category='air-conditioner', subcategory='midea-ac') }}"
-										>Midea</a
-									>
-								</li>
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="https://www.startech.com.bd/gree-ac"
-										>Gree</a
-									>
-								</li>
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="https://www.startech.com.bd/elite-air-conditioner "
-										>Elite</a
-									>
-								</li>
-								<li>
-									<a
-										href="https://www.startech.com.bd/air-conditioner"
-										class="see-all"
-										>Show All AC</a
-									>
-								</li>
-							</ul>
-						</li>
+
 						<li class="nav-item has-child c-1">
 							<a
 								class="nav-link"
@@ -5922,366 +5077,6 @@
 										href="https://www.startech.com.bd/gadget"
 										class="see-all"
 										>Show All Gadget</a
-									>
-								</li>
-							</ul>
-						</li>
-						<li class="nav-item has-child c-1">
-							<a
-								class="nav-link"
-								href="https://www.startech.com.bd/gaming"
-								>Gaming</a
-							>
-							<ul class="drop-down drop-menu-1">
-								<li class="nav-item has-child multi-col">
-									<a
-										class="nav-link"
-										href="https://www.startech.com.bd/gaming-chair"
-										>Gaming Chair</a
-									>
-									<div class="drop-down drop-menu-2">
-										<ul>
-											<li>
-												<a
-													href="https://www.startech.com.bd/gamdias-gaming-chair"
-													>Gamdias</a
-												>
-											</li>
-											<li>
-												<a
-													href="https://www.startech.com.bd/razer-gaming-chair"
-													>Razer</a
-												>
-											</li>
-											<li>
-												<a
-													href="https://www.startech.com.bd/antec-gaming-chair"
-													>Antec</a
-												>
-											</li>
-											<li>
-												<a
-													href="https://www.startech.com.bd/dxracer-gaming-chair"
-													>DXRacer</a
-												>
-											</li>
-											<li>
-												<a
-													href="https://www.startech.com.bd/corsair-gaming-chair"
-													>Corsair</a
-												>
-											</li>
-											<li>
-												<a
-													href="https://www.startech.com.bd/msi-gaming-chair"
-													>MSI</a
-												>
-											</li>
-											<li>
-												<a
-													href="https://www.startech.com.bd/havit-gaming-chair"
-													>Havit</a
-												>
-											</li>
-											<li>
-												<a
-													href="https://www.startech.com.bd/fantech-gaming-chair"
-													>Fantech</a
-												>
-											</li>
-											<li>
-												<a
-													href="https://www.startech.com.bd/gigabyte-gaming-chair"
-													>Gigabyte</a
-												>
-											</li>
-											<li>
-												<a
-													href="https://www.startech.com.bd/cooler-master-gaming-chair"
-													>Cooler Master</a
-												>
-											</li>
-											<li>
-												<a
-													href="https://www.startech.com.bd/marvo-gaming-chair"
-													>Marvo</a
-												>
-											</li>
-											<li>
-												<a
-													href="https://www.startech.com.bd/thermaltake-gaming-chair"
-													>Thermaltake</a
-												>
-											</li>
-											<li>
-												<a
-													href="https://www.startech.com.bd/gamemax-gaming-chair"
-													>GameMax</a
-												>
-											</li>
-										</ul>
-										<ul>
-											<li>
-												<a
-													href="https://www.startech.com.bd/neon-gaming-chair"
-													>Neon</a
-												>
-											</li>
-											<li>
-												<a
-													href="https://www.startech.com.bd/a4tech-gaming-chair"
-													>A4Tech</a
-												>
-											</li>
-											<li>
-												<a
-													href="https://www.startech.com.bd/delux-gaming-chair"
-													>Delux</a
-												>
-											</li>
-											<li>
-												<a
-													href="https://www.startech.com.bd/cougar-gaming-chair"
-													>Cougar</a
-												>
-											</li>
-											<li>
-												<a
-													href="https://www.startech.com.bd/xigmatek-gaming-chair"
-													>Xigmatek</a
-												>
-											</li>
-											<li>
-												<a
-													href="https://www.startech.com.bd/1stplayer-gaming-chair"
-													>1STPLAYER</a
-												>
-											</li>
-											<li>
-												<a
-													href="https://www.startech.com.bd/acer-gaming-chair"
-													>Acer</a
-												>
-											</li>
-											<li>
-												<a
-													href="https://www.startech.com.bd/jedel-gaming-chair"
-													>Jedel</a
-												>
-											</li>
-											<li>
-												<a
-													href="https://www.startech.com.bd/imperatorworks-gaming-chair"
-													>Imperatorworks</a
-												>
-											</li>
-											<li>
-												<a
-													href="https://www.startech.com.bd/evolur-gaming-chair"
-													>EVOLUR</a
-												>
-											</li>
-											<li>
-												<a
-													href="https://www.startech.com.bd/redragon-gaming-chair"
-													>Redragon</a
-												>
-											</li>
-											<li>
-												<a
-													href="https://www.startech.com.bd/meetion-gaming-chair"
-													>MeeTion</a
-												>
-											</li>
-										</ul>
-									</div>
-								</li>
-								<li class="nav-item has-child">
-									<a
-										class="nav-link"
-										href="https://www.startech.com.bd/gaming-sofa"
-										>Gaming Sofa</a
-									>
-									<ul class="drop-down drop-menu-2">
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/cougar-gaming-sofa"
-												>Cougar</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/fantech-gaming-sofa"
-												>Fantech</a
-											>
-										</li>
-									</ul>
-								</li>
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="https://www.startech.com.bd/gaming-keyboard"
-										>Keyboard</a
-									>
-								</li>
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="https://www.startech.com.bd/gaming-mouse"
-										>Mouse</a
-									>
-								</li>
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="https://www.startech.com.bd/gaming-headphone"
-										>Headphone</a
-									>
-								</li>
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="https://www.startech.com.bd/gaming-mouse-pad"
-										>Mouse Pad</a
-									>
-								</li>
-								<li class="nav-item has-child">
-									<a
-										class="nav-link"
-										href="https://www.startech.com.bd/game-pad"
-										>Gamepad</a
-									>
-									<ul class="drop-down drop-menu-2">
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/razer-gamepad-controller"
-												>Razer</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/xbox-gamepad-controller"
-												>Xbox</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/playstation-gamepad-controller"
-												>PlayStation</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/msi-gamepad"
-												>MSI</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="{{ url_for('productslist.get_category_subcategory_brand', category='gaming', subcategory='game-pad', brand='logitech-gamepad') }}"
-												>Logitech</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/nacon-gamepad"
-												>Nacon</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/fantech-gamepad"
-												>Fantech
-											</a>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/rapoo-gamepad"
-												>Rapoo</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/havit-gamepad"
-												>Havit</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/steelseries-gamepad"
-												>SteelSeries</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/kieslect-gamepad"
-												>Kieslect</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/redragon-gamepad"
-												>Redragon</a
-											>
-										</li>
-									</ul>
-								</li>
-								<li class="nav-item has-child">
-									<a
-										class="nav-link"
-										href="https://www.startech.com.bd/gaming-console"
-										>Gaming Console</a
-									>
-									<ul class="drop-down drop-menu-2">
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/xbox"
-												>Xbox</a
-											>
-										</li>
-										<li class="nav-item">
-											<a
-												class="nav-link"
-												href="https://www.startech.com.bd/play-station"
-												>Play Station</a
-											>
-										</li>
-									</ul>
-								</li>
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="https://www.startech.com.bd/gaming-desk"
-										>Gaming Desk</a
-									>
-								</li>
-								<li class="nav-item">
-									<a
-										class="nav-link"
-										href="https://www.startech.com.bd/ps4-n-x-box-one-games"
-										>Games</a
-									>
-								</li>
-								<li>
-									<a
-										href="https://www.startech.com.bd/gaming"
-										class="see-all"
-										>Show All Gaming</a
 									>
 								</li>
 							</ul>

@@ -5,7 +5,9 @@ const comparePanel = document.getElementById("cmpr-panel");
 
 const comparePanelClearAll = document.getElementById("cmpr-clear-all");
 
-const compareNowButton = document.getElementById("compare-now-btn");
+/** @type {HTMLButtonElement} */
+const compareNowButton = document.querySelector("#compare-now-btn");
+compareNowButton.disabled = true;
 
 compareToggler.onclick = function () {
 	compareToggler.classList.toggle("close");
@@ -165,6 +167,7 @@ class ComparePanel {
 		const compareTogglerCounter =
 			compareToggler.querySelector("span.counter");
 		compareTogglerCounter.textContent = "" + this.products.length;
+		compareNowButton.disabled = this.products.length < 2;
 	}
 
 	#clearCompareSession() {
@@ -200,10 +203,17 @@ comparePanelClearAll.onclick = function () {
 // fetch compare GET here
 compareNowButton.onclick = async function (/** @type { Event } */ event) {
 	event.preventDefault();
-	const urlWithQueryParams = "http://localhost:5000/product/compare?" + new URLSearchParams( {
-		prod1: comparePanelJS.products[0].id.toString(), 
-		prod2: comparePanelJS.products[1].id.toString()
-	});
+	
+	// @ts-ignore
+	if (this.disabled) {
+		return;
+	}
+	const urlWithQueryParams =
+		"http://localhost:5000/product/compare?" +
+		new URLSearchParams({
+			prod1: comparePanelJS.products[0].id.toString(),
+			prod2: comparePanelJS.products[1].id.toString(),
+		});
 
 	window.location.href = urlWithQueryParams;
 };
