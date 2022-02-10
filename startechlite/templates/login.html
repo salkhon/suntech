@@ -3,11 +3,7 @@
 	<div class="panel m-auto">
 		<div class="p-head"><h2 class="text-center">Account Login</h2></div>
 		<div class="p-body">
-			<form
-				action=""
-				method="post"
-				enctype="multipart/form-data"
-			>
+			<form action="" method="post" enctype="multipart/form-data">
 				<div class="form-group">
 					<label class="control-label" for="input-username"
 						>E-Mail</label
@@ -42,9 +38,7 @@
 				<button type="submit" class="btn btn-primary">Login</button>
 			</form>
 			<p class="no-account-text"><span>Don't have an account?</span></p>
-			<a
-				class="btn st-outline"
-				href="{{ url_for('account.register') }}"
+			<a class="btn st-outline" href="{{ url_for('account.register') }}"
 				>Create Your Account</a
 			>
 		</div>

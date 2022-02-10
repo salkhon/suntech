@@ -1,6 +1,4 @@
-{% extends "layout.html" %}
-
-{% block breadcrumbs %}
+{% extends "layout.html" %} {% block breadcrumbs %}
 <section class="after-header p-tb-10">
 	<div class="container">
 		<ul class="breadcrumb" itemscope="" itemtype="">
@@ -9,11 +7,11 @@
 					><i class="material-icons" title="Home">home</i></a
 				>
 			</li>
-            {% for breadcrumb in breadcrumbs %}
-                <li>
-                    <a href="{{ breadcrumb.url }}"> {{ breadcrumb.text }} </a>
-				</li>
-            {% endfor %}
+			{% for breadcrumb in breadcrumbs %}
+			<li>
+				<a href="{{ breadcrumb.url }}"> {{ breadcrumb.text }} </a>
+			</li>
+			{% endfor %}
 		</ul>
 	</div>
 </section>

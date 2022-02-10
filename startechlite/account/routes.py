@@ -34,7 +34,7 @@ def order_history():
 @flask_breadcrumbs.register_breadcrumb(account, ".edit", "Edit Information")
 @flask_login.login_required
 def edit_info():
-    # TODO: might POST edit, that needs to be updated. Email and phone can't be changed. 
+    # TODO: might POST edit, that needs to be updated. Email and phone can't be changed.
     return flask.render_template("account_edit_info.html")
 
 

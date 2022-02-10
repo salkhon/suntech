@@ -11,7 +11,10 @@
 		<div class="c-head">
 			<div class="left">
 				<span class="o-id"><span>Order# {{ purchase.id }}</span></span>
-				<span class="o-date">Date Added: {{ purchase.date.strftime("%Y-%m-%d %I:%M %p") }}</span>
+				<span class="o-date"
+					>Date Added: {{ purchase.date.strftime("%Y-%m-%d %I:%M %p")
+					}}</span
+				>
 			</div>
 			<div class="right">
 				{% if purchase.status == "Pending" %}

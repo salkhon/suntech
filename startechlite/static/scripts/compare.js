@@ -200,14 +200,14 @@ comparePanelClearAll.onclick = function () {
 	comparePanelJS.clearComparePanel();
 };
 
-// fetch compare GET here
 compareNowButton.onclick = async function (/** @type { Event } */ event) {
 	event.preventDefault();
-	
+
 	// @ts-ignore
 	if (this.disabled) {
 		return;
 	}
+	
 	const urlWithQueryParams =
 		"http://localhost:5000/product/compare?" +
 		new URLSearchParams({

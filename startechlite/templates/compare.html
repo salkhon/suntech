@@ -39,7 +39,6 @@
 						<div class="p-item-price">
 							<span>Tk.{{product1.base_price}}</span>
 						</div>
-						
 					</div>
 				</td>
 				<td class="value">
@@ -62,7 +61,6 @@
 						<div class="p-item-price">
 							<span>Tk.{{product2.base_price}}</span>
 						</div>
-						
 					</div>
 				</td>
 			</tr>
@@ -110,7 +108,8 @@
 			</tr>
 		</thead>
 
-        {% set comparison_dict1, comparison_dict2 = product1.compareWith(product2)  %}
+		{% set comparison_dict1, comparison_dict2 =
+		product1.compareWith(product2) %}
 		<tbody>
 			{%for key in comparison_dict1%}
 

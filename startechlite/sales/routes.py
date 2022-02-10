@@ -18,24 +18,24 @@ Cart will be manager only at the frontend until the sale is confirmed and the
 data needs to be sent to the server. 
 """
 
+
 def _get_purchase() -> Purchase:
     purchase_json = flask.request.get_json()
     assert purchase_json
 
     product_counts: list[dict[str, int]] = purchase_json["products"]
     formdata: dict[str, str] = purchase_json["formdata"]
-    
+
     productid_count = {}
     for product_count in product_counts:
         productid_count[product_count["id"]] = product_count["count"]
 
     purchase = Purchase(info=formdata.get(
         "payment_method"), bought_by=flask_login.current_user.id, productid_count=productid_count)  # type: ignore
-    
+
     return purchase
 
 
-# POST will send the cart data
 @sales.route("/checkout", methods=["GET", "POST"])
 @flask_breadcrumbs.register_breadcrumb(sales, ".checkout", "Checkout")
 @flask_login.login_required

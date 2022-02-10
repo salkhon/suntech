@@ -84,7 +84,7 @@ class DBManager:
             for spec_name, spec_val, _ in cursor.execute(self.SELECT_PRODUCT_SPECS_BY_ID, id=id):
                 product.spec_dict[spec_name] = spec_val
 
-            product.name = product.spec_dict["Name"]  # WHY?
+            product.name = product.spec_dict["Name"]
 
             # querying img urls
             for _, img_url in cursor.execute(self.SELECT_PRODUCT_IMG_URLS_BY_ID, id=id):
