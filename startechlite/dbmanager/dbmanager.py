@@ -9,15 +9,26 @@ from startechlite.constants import *
 import startechlite
 from startechlite.account.model import User
 from startechlite.product.model import Product
-import cx_Oracle
-
 from startechlite.sales.model import Purchase
+import cx_Oracle
 
 
 class DBManager:
     INSERT_USERS_SQL = "INSERT INTO users (first_name, last_name, email, pass_word, phone_number, user_address) VALUES (:first_name, :last_name, :email, :pass_word, :phone_number, :user_address)"
     SELECT_USERS_BY_EMAIL = "SELECT * FROM users WHERE email = :email"
     SELECT_USERS_BY_ID = "SELECT * FROM users WHERE id = :id"
+    SELECT_USER_COUNT = "SELECT COUNT(*) FROM users"
+    SELECT_USERS = """
+        SELECT * FROM users 
+        OFFSET :offset ROWS FETCH NEXT :maxnumrows ROWS ONLY
+    """
+    UPDATE_USER = "UPDATE users SET first_name = :first_name, last_name = :last_name, phone_number = :phone_number, user_address = :user_address WHERE id = :id"
+    DELETE_USER = "DELETE FROM users WHERE id = :id"
+
+    # SELECT_ADMIN_BY_EMAIL = "SELECT * FROM startech_admins WHERE email = :email"
+    # INSERT_ADMIN = "INSERT INTO startech_admins (admin_name, email, pass_word) VALUES (:admin_name, :email, :pass_word)"
+    # SELECT_ADMIN_BY_ID = "SELECT * FROM startech_admins WHERE id = :id"
+
     INSERT_PURCHASE = "INSERT INTO salman.purchase (payment_info, bought_by) VALUES (:info, :bought_by) RETURNING purchase_id INTO :id_output"
     INSERT_PURCHASE_PRODUCT = "INSERT INTO salman.purchase_product (purchase_id, product_id, product_count) VALUES (:purchase_id, :product_id, :product_count)"
 
@@ -32,11 +43,27 @@ class DBManager:
     SELECT_PRODUCT_ID_BY_CATEGORY_SUBCATEGORY = "SELECT id FROM products WHERE LOWER(category) = :category AND LOWER(subcategory) = :subcategory OFFSET :offset ROWS FETCH NEXT :maxnumrows ROWS ONLY"
 
     SELECT_PRODUCT_COUNT_BY_CATEGORY_SUBCATEGORY_BRAND = "SELECT COUNT(*) FROM products WHERE LOWER(category) = :category AND LOWER(subcategory) = :subcategory AND LOWER(brand) = :brand"
-    SELECT_PRODUCT_ID_BY_CATEGORY_SUBCATEGORY_BRAND = "SELECT id FROM products WHERE LOWER(category) = :category AND LOWER(subcategory) = :subcategory AND LOWER(brand) = :brand OFFSET :offset ROWS FETCH NEXT :maxnumrows ROWS ONLY"
+    SELECT_PRODUCT_ID_BY_CATEGORY_SUBCATEGORY_BRAND = """
+        SELECT id FROM products 
+        WHERE LOWER(category) = :category AND 
+            LOWER(subcategory) = :subcategory AND 
+            LOWER(brand) = :brand 
+        OFFSET :offset ROWS FETCH NEXT :maxnumrows ROWS ONLY
+    """
 
-    SELECT_PURCHASES_BY_USERID = "SELECT * FROM purchase WHERE bought_by = :bought_by"
+    SELECT_PURCHASES_BY_USER_ID = "SELECT * FROM purchase WHERE bought_by = :bought_by"
 
-    SELECT_PRODUCTS_BY_PURCHASEID = "SELECT * FROM purchase_product WHERE purchase_id = :purchase_id"
+    SELECT_PRODUCTS_BY_PURCHASE_ID = "SELECT * FROM purchase_product WHERE purchase_id = :purchase_id"
+
+    SELECT_PRODUCTS_BOUGHT_WITH_ANOTHER_PRODUCT = """
+        SELECT product_id, COUNT(purchase_id) "purchase_count" FROM purchase_product 
+        WHERE purchase_id IN (
+            SELECT purchase_id FROM purchase_product
+            WHERE product_id = :product_id
+        ) AND product_id != :product_id
+        GROUP BY product_id
+        ORDER BY "purchase_count" DESC
+    """
 
     class ConnectionAndCursor(contextlib.ExitStack):
         def __init__(self, is_autocommit: bool = True, is_scrollable: bool = False) -> None:
@@ -55,6 +82,7 @@ class DBManager:
     def __new__(cls, *args, **kwargs):
         if not hasattr(cls, "instance"):
             cls.instance = super().__new__(cls, *args, **kwargs)
+            cls.instance.insert_init_admin()
         return cls.instance
 
     def _pagination_indices(self, pagination: flask_paginate.Pagination) -> tuple[int, int]:
@@ -65,7 +93,26 @@ class DBManager:
         num_items = end_index - start_index
         return (start_index, num_items)
 
-    def get_product_by_id(self, id: int) -> Product | None:
+    def get_bought_togethers_by_id(self, id: int) -> list[tuple[int, int]]:
+        """Queries product id s from purchases in purchase_product table where target product is 
+        present. Then counts the number of time each product pairs with the target product in distinct
+        purchases by grouping by products. 
+
+        Args:
+            id (int): Target product id
+
+        Returns:
+            list[tuple[int, int]]: Tuples of product id and its corresponding count of pairs 
+            with target product in distinct purchases. 
+        """
+        product_pair_count = []
+        with self.ConnectionAndCursor() as connection_cursor:
+            cursor = connection_cursor.cursor
+            product_pair_count = cursor.execute(
+                self.SELECT_PRODUCTS_BOUGHT_WITH_ANOTHER_PRODUCT, product_id=id).fetchall()
+        return product_pair_count
+
+    def get_product_by_id(self, id: int, bought_togethers_included: bool = False) -> Product | None:
         product = None
         with self.ConnectionAndCursor() as connection_cursor:
             cursor = connection_cursor.cursor
@@ -77,7 +124,8 @@ class DBManager:
             product = Product(
                 id=id, name="", base_price=base_price, discount=discount,
                 rating=rating, category=category, subcategory=subcategory, brand=brand,
-                stock=stock, year=0, tags=[], img_urls=[], spec_dict={}, EMI=base_price//12
+                stock=stock, year=0, tags=[], img_urls=[], spec_dict={}, EMI=base_price//12,
+                bought_together=[]
             )
 
             # query product specs
@@ -90,6 +138,19 @@ class DBManager:
             for _, img_url in cursor.execute(self.SELECT_PRODUCT_IMG_URLS_BY_ID, id=id):
                 img_url = f"/static/img/{img_url}"
                 product.img_urls.append(img_url)
+
+            # querying frequently bought together products
+            if bought_togethers_included:
+                product_count_tuples = self.get_bought_togethers_by_id(id)[:5]
+                for productid, _ in product_count_tuples:
+                    # bought_togethers_included MUST be False to stop starting a chain of calls
+                    paired_prod = self.get_product_by_id(
+                        productid, bought_togethers_included=False)
+
+                    if not paired_prod:
+                        continue
+
+                    product.bought_together.append(paired_prod)
 
         return product
 
@@ -130,7 +191,6 @@ class DBManager:
 
             execute_select_productid_query()
 
-            products = []
             for product in connection_cursor.cursor:
                 products.append(self.get_product_by_id(product[0]))
 
@@ -146,7 +206,7 @@ class DBManager:
     def get_category_subcategory_brand(self, category: str, subcategory: str, brand: str, page: int = 1, per_page: int = 15) -> tuple[list[Product], flask_paginate.Pagination]:
         return self._get_category_subcategory_brand_helper(category=category, subcategory=subcategory, brand=brand, page=page, per_page=per_page)
 
-    def get_user(self, userid: int) -> User | None:
+    def get_user_by_id(self, userid: int) -> User | None:
         user = None
         with self.ConnectionAndCursor() as connection_cursor:
             user = connection_cursor.cursor.execute(
@@ -170,6 +230,21 @@ class DBManager:
 
         return user
 
+    def insert_init_admin(self):
+        # there will be only one admin, so admin table is redundant
+        with self.ConnectionAndCursor() as connection_cursor:
+            admin = connection_cursor.cursor.execute(
+                self.SELECT_USERS_BY_EMAIL, email=ADMIN_EMAIL
+            ).fetchone()
+
+            if not admin:
+                password = startechlite.bcrypt.generate_password_hash(
+                    ADMIN_PASS_UNENCRYPTED).decode("utf-8")
+                connection_cursor.cursor.execute(
+                    self.INSERT_USERS_SQL, first_name=ADMIN_FIRST_NAME, last_name=ADMIN_LAST_NAME,
+                    email=ADMIN_EMAIL, pass_word=password, phone_number="", user_address=""
+                )
+
     def insert_user(self, user: User):
         """Inserts a user into the "users" table.
 
@@ -186,6 +261,43 @@ class DBManager:
                 phone_number=user.phone_number,
                 user_address=user.address
             )
+
+    def update_user(self, user: User):
+        with self.ConnectionAndCursor() as connection_cursor:
+            connection_cursor.cursor.execute(
+                self.UPDATE_USER,
+                first_name=user.first_name,
+                last_name=user.last_name,
+                phone_number=user.phone_number,
+                user_address=user.address, 
+                id=user.id
+            )
+
+    def delete_user(self, userid: int):
+        with self.ConnectionAndCursor() as connection_cursor:
+            print("deleting", userid)
+            connection_cursor.cursor.execute(
+                self.DELETE_USER,
+                id=userid
+            )
+
+    def get_user_list(self, page: int = 1, per_page: int = 15) -> tuple[list[User], flask_paginate.Pagination]:
+        users = []
+        pagination = flask_paginate.Pagination()
+
+        with self.ConnectionAndCursor() as connection_cursor:
+            cursor = connection_cursor.cursor
+
+            user_count, = cursor.execute(self.SELECT_USER_COUNT).fetchone()
+            pagination = flask_paginate.Pagination(
+                page=page, per_page=per_page, total=user_count)
+            offset, num_users = self._pagination_indices(pagination)
+
+            users = cursor.execute(
+                self.SELECT_USERS, offset=offset, maxnumrows=num_users).fetchall()
+            users = [User(*user) for user in users if user[3] != ADMIN_EMAIL]
+
+        return users, pagination
 
     def insert_purchase(self, purchase: Purchase):
         with self.ConnectionAndCursor() as connection_cursor:
@@ -210,11 +322,10 @@ class DBManager:
                     product_count=purchase.productid_count.get(product_id)
                 )
 
-    def get_products_counts_for_purchase(self, purchase_id: int) -> list[tuple[Product, int]]:
+    def get_products_counts_for_purchase(self, purchase_id: int, connection_cursor: "ConnectionAndCursor") -> list[tuple[Product, int]]:
         products = []
-        with self.ConnectionAndCursor() as connection_cursor:
-            for _, product_id, count in connection_cursor.cursor.execute(self.SELECT_PRODUCTS_BY_PURCHASEID, purchase_id=purchase_id):
-                products.append((self.get_product_by_id(product_id), count))
+        for _, product_id, count in connection_cursor.cursor.execute(self.SELECT_PRODUCTS_BY_PURCHASE_ID, purchase_id=purchase_id):
+            products.append((self.get_product_by_id(product_id), count))
         return products
 
     def get_user_purhcases(self) -> list[Purchase]:
@@ -224,7 +335,7 @@ class DBManager:
 
             # query purchase ids
             for id, date, _, status, _, _ in connection_cursor.cursor.execute(
-                    self.SELECT_PURCHASES_BY_USERID,
+                    self.SELECT_PURCHASES_BY_USER_ID,
                     bought_by=current_userid):
                 purchase = Purchase(id=id, date=date, status=status)
                 purchases.append(purchase)
@@ -233,7 +344,7 @@ class DBManager:
             for purchase in purchases:
                 purchase.productid_count = {}
                 purchase._products = []
-                for product, count in self.get_products_counts_for_purchase(purchase.id):
+                for product, count in self.get_products_counts_for_purchase(purchase.id, connection_cursor):
                     purchase.productid_count[product.id] = count
                     purchase._products.append(product)
 
@@ -241,6 +352,6 @@ class DBManager:
 
 
 @startechlite.login_manager.user_loader
-def load_user(userid):
+def load_user(id):
     dbman = DBManager()
-    return dbman.get_user(userid)
+    return dbman.get_user_by_id(id)

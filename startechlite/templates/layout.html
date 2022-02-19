@@ -19,8 +19,10 @@
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css?family=Sofia"
 		/>
+		{% if not current_user.is_admin %}
 		<script src="/static/scripts/cart.js" defer></script>
 		<script src="/static/scripts/compare.js" defer></script>
+		{% endif %}
 	</head>
 
 	<body class="black-body">
@@ -138,6 +140,16 @@
 			<nav class="navbar" id="main-nav">
 				<div class="container">
 					<ul class="navbar-nav">
+						{% if current_user.is_admin %}
+						<li class="nav-item c-1">
+							<a
+								class="nav-link"
+								href="{{ url_for('admin.get_users') }}"
+								>Users</a
+							>
+						</li>
+						{% endif %}
+
 						<li class="nav-item has-child c-1">
 							<a
 								class="nav-link"
@@ -5086,6 +5098,7 @@
 			</nav>
 		</header>
 
+		{% if not current_user.is_admin %}
 		<div class="f-btn cmpr-toggler" id="cmpr-btn">
 			<i class="material-icons">library_add</i>
 			<div class="label">Compare</div>
@@ -5121,24 +5134,6 @@
 			</div>
 			<div class="content"></div>
 			<div class="footer">
-				<div class="promotion-code">
-					<div class="input-group">
-						<input
-							type="text"
-							placeholder="Promo Code"
-							id="input-cart-coupon"
-						/>
-						<span class="input-group-btn"
-							><button
-								data-target="#input-cart-coupon"
-								class="btn button-coupon"
-								type="submit"
-							>
-								Apply
-							</button></span
-						>
-					</div>
-				</div>
 				<div class="total">
 					<div class="title">Total</div>
 					<div class="amount"></div>
@@ -5150,6 +5145,7 @@
 				</div>
 			</div>
 		</div>
+		{% endif %}
 
 		{% block breadcrumbs %} {% endblock breadcrumbs %} {% with messages =
 		get_flashed_messages(with_categories=true) %} {% if messages %} {% for

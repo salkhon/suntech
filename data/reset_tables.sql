@@ -85,7 +85,7 @@ CREATE TABLE salman.bans (
     banned INT, 
     banned_by INT, 
     PRIMARY KEY(banned),
-    FOREIGN KEY (banned) REFERENCES salman.users(id),
+    FOREIGN KEY (banned) REFERENCES salman.users(id) ON DELETE CASCADE,
     FOREIGN KEY (banned_by) REFERENCES salman.startech_admins(id)
 );
 
@@ -95,9 +95,9 @@ create table salman.comments(
     comment_on INT,
     user_id INT,
     PRIMARY KEY(comment_id),
-    FOREIGN KEY (user_id) REFERENCES salman.users(id),
-    FOREIGN KEY (product_id) REFERENCES salman.products(id),
-    FOREIGN KEY (comment_on) REFERENCES salman.comments(comment_id)
+    FOREIGN KEY (user_id) REFERENCES salman.users(id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES salman.products(id) ON DELETE CASCADE,
+    FOREIGN KEY (comment_on) REFERENCES salman.comments(comment_id) ON DELETE CASCADE
 );
 
 CREATE TABLE salman.purchase (
@@ -108,7 +108,7 @@ CREATE TABLE salman.purchase (
     PRIMARY KEY(purchase_id),
     bought_by INT, 
     verified_by INT DEFAULT NULL, 
-    FOREIGN KEY (bought_by) REFERENCES salman.users(id),
+    FOREIGN KEY (bought_by) REFERENCES salman.users(id) ON DELETE CASCADE,
     FOREIGN KEY (verified_by) REFERENCES salman.startech_admins(id)
 );
 

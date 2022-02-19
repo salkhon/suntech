@@ -19,3 +19,8 @@ BRANDS = [
     "aoc", "philips", "dell", "intel", "ryzen", "walton", "acer", "lenovo", "hp", "asus", 
     "microsoft", "huawei", "samsung", "msi", "gigabyte", "xiaomi"
 ]
+
+ADMIN_EMAIL = "admin@suntech.com"
+ADMIN_PASS_UNENCRYPTED = "admin"
+ADMIN_FIRST_NAME = "admin"
+ADMIN_LAST_NAME = "admin"

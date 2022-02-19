@@ -1,0 +1,31 @@
+{% extends "layout.html" %} {% block content %}
+<table class="table table-bordered cmpr-table count-4">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+			<th>Phone Number</th>
+			<th>Address</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		{% for user in users %}
+            {% set url = url_for("admin.edit_user", userid=user.id) %}
+            <tr onclick="window.location='{{ url }}'">
+            
+                <td class="value">{{user.id}}</td>
+                <td class="value">{{user.first_name}}</td>
+                <td class="value">{{user.last_name}}</td>
+                <td class="value">{{user.email}}</td>
+                <td class="value">{{user.phone_number}}</td>
+                <td class="value">{{user.address}}</td>
+            </tr>
+        </>
+		
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock content %}

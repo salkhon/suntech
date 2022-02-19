@@ -1,4 +1,3 @@
-import random
 import flask
 from werkzeug import Response
 import startechlite
@@ -83,9 +82,11 @@ def _auth_login() -> bool:
     email = flask.request.form.get("email")
     if email:
         queried_user = dbmanager.get_user_by_email(email)
-        print(queried_user)
         if queried_user and startechlite.bcrypt.check_password_hash(queried_user.password, flask.request.form.get("password")):
             flask.flash(f"Welcome {queried_user.first_name}!")
+            if queried_user.is_admin:
+                flask.flash("You have admin access!")
+
             flask_login.login_user(queried_user)
             return True
         else:
@@ -105,7 +106,11 @@ def login() -> str | Response:
 
     if flask.request.method == "POST" and _auth_login():
         next_page = flask.request.args.get("next")
-        return flask.redirect(next_page) if next_page else flask.redirect(flask.url_for("main.home"))
+
+        if next_page and not flask_login.current_user.is_admin:  # type: ignore
+            return flask.redirect(next_page)
+        else:
+            return flask.redirect(flask.url_for("main.home"))
 
     return flask.render_template("login.html")
 

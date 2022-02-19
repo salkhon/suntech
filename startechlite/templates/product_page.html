@@ -285,15 +285,16 @@
 					</section>
 				</div>
 				<div class="col-lg-3 col-md-12 c-left">
-					<section class="related-product-list">
-						<h3>Related Product</h3>
+					<section class="bought-together-list">
+						<h3>Frequently Bought Together</h3>
+						{% for paired_prod in product.bought_together %}
 						<div class="p-s-item">
 							<div class="image-holder">
 								<a
-									href="https://www.startech.com.bd/intel-pentium-gold-g5420-processor"
+									href="{{ url_for('product.product_view', product_id=paired_prod.id) }}"
 									><img
-										src="https://www.startech.com.bd/image/cache/catalog/processor/Intel/pentium-gold-g5420/pentium-gold-g5420-80x80.jpg"
-										alt="Intel Pentium Gold G5420 8th gen Coffee Lake Processor"
+										src="{{ paired_prod.img_urls[0] }}"
+										alt="{{ paired_prod.name }}"
 										width="80"
 										height="80"
 								/></a>
@@ -301,18 +302,16 @@
 							<div class="caption">
 								<h4 class="product-name">
 									<a
-										href="https://www.startech.com.bd/intel-pentium-gold-g5420-processor"
-										>Intel Pentium Gold G5420 8th gen Coffee
-										Lake Processor</a
+										href="{{ url_for('product.product_view', product_id=paired_prod.id) }}"
+										>{{ paired_prod.name }}</a
 									>
 								</h4>
 								<div class="p-item-price price">
-									<span>Tk.6,300</span>
+									<span>Tk.{{ paired_prod.base_price }}</span>
 								</div>
 								<div class="actions">
 									<span
 										class="btn-compare"
-										onclick="compare.add('12541');"
 										><i class="material-icons"
 											>library_add</i
 										>Add to Compare</span
@@ -320,9 +319,7 @@
 								</div>
 							</div>
 						</div>
-					</section>
-					<section class="related-product-list">
-						<h3>Recently Viewed</h3>
+						{% endfor %}
 					</section>
 				</div>
 			</div>

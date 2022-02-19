@@ -31,11 +31,13 @@ def create_app(config_cls=Config) -> Flask:
     from startechlite.product.routes import product
     from startechlite.account.routes import account
     from startechlite.sales.routes import sales
+    from startechlite.admin.routes import admin
 
     app.register_blueprint(main)
     app.register_blueprint(productslist)
     app.register_blueprint(product)
     app.register_blueprint(account)
     app.register_blueprint(sales)
+    app.register_blueprint(admin)
 
     return app

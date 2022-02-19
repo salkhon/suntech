@@ -1,4 +1,5 @@
 import flask
+import flask_login
 from werkzeug import Response
 from startechlite.dbmanager.dbmanager import DBManager
 from startechlite.product.model import Product
@@ -17,8 +18,12 @@ def product_id_dlc():
 
 @product.route("/<string:product_id>")
 @flask_breadcrumbs.register_breadcrumb(product, ".productid", "", dynamic_list_constructor=product_id_dlc)
-def product_view(product_id) -> str:
-    product = dbman.get_product_by_id(product_id)
+def product_view(product_id) -> str | Response:
+    product = dbman.get_product_by_id(
+        product_id, bought_togethers_included=True)
+
+    if flask_login.current_user.is_admin:  # type: ignore
+        return flask.redirect(flask.url_for("admin.item_edit"))
     return flask.render_template("product_page.html", product=product)
 
 
