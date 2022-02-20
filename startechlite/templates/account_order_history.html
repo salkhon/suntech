@@ -10,28 +10,38 @@
 	<div class="card o-card">
 		<div class="c-head">
 			<div class="left">
-				<span class="o-id"><span>Order# {{ purchase.id }}</span></span>
+				<span class="o-id"
+					><span>
+						<a
+							href="{{ url_for('sales.info', purchase_id=purchase.id) }}"
+						>
+							Order# {{ purchase.id }}
+						</a>
+					</span></span
+				>
 				<span class="o-date"
-					>Date Added: {{ purchase.date.strftime("%Y-%m-%d %I:%M %p")
-					}}</span
+					>Date Added: {{ purchase.purchase_date.strftime("%Y-%m-%d
+					%I:%M %p") }}</span
+				>
+				<span class="o-date"
+					>Due Added: {{ purchase.due_date.strftime("%Y-%m-%d %I:%M
+					%p") }}</span
 				>
 			</div>
 			<div class="right">
-				{% if purchase.status == "Pending" %}
-				<span class="status"
+				{% if purchase.is_shipped %}
+				<span class="status delivered"
 					><span class="material-icons">check_circle</span
-					><span class="status">Pending</span></span
+					><span class="status">Delivered</span></span
 				>
-				{% elif purchase.status == "Approved" %}
+				{% elif purchase.approval_date %}
 				<span class="status"
 					><span class="material-icons">check_circle</span
 					><span class="status">Approved</span></span
 				>
-				{% elif purchase.status == "Delivered" %}
-				<span class="status delivered"
-					><span class="material-icons">check_circle</span
-					><span class="status">Delivered</span></span
-				>{% endif %}
+				{% else %}
+				<span class="status"><span class="status">Pending</span></span>
+				{% endif %}
 			</div>
 		</div>
 		<div class="c-body">

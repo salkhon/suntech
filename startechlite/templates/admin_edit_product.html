@@ -1,3 +1,183 @@
 {% extends "layout.html" %} {% block content %}
-<h2> Hello god </h2>
+<div class="container ac-layout">
+	<h1>Edit Product</h1><br><br>
+	<form
+		action="{{ url_for('admin.edit_product', product_id=product.id) }}"
+		method="post"
+		enctype="multipart/form-data"
+		class="form-horizontal"
+	>
+		<div class="form-group">
+			<label for="input-id">ID </label>
+			<input
+				type="text"
+				name="id"
+				value="{{ product.id }}"
+				placeholder="ID"
+				id="input-id"
+				readonly=""
+				class="form-control"
+			/>
+		</div>
+		<div class="form-group">
+			<label for="input-name">Name</label>
+			<input
+				type="text"
+				name="name"
+				value="{{ product.name }}"
+				placeholder="Name"
+				id="input-name"
+				class="form-control"
+			/>
+		</div>
+		<div class="multiple-form-group">
+			<div class="form-group">
+				<label for="input-base-price">Base Price </label>
+				<input
+					type="number"
+					name="base_price"
+					value="{{ product.base_price }}"
+					placeholder="Base Price"
+					id="input-baseprice"
+					class="form-control"
+				/>
+			</div>
+			<div class="form-group">
+				<label for="input-discount">Discount</label>
+				<input
+					type="number"
+					name="discount"
+					value="{{ product.discount }}"
+					placeholder="Discount"
+					id="input-discount"
+					class="form-control"
+				/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="input-rating">Rating</label>
+			<input
+				type="number"
+				min="0"
+				max="5"
+				step="1"
+				name="rating"
+				value="{{ product.rating }}"
+				placeholder="Rating"
+				id="input-rating"
+				class="form-control"
+			/>
+		</div>
+		<div class="multiple-form-group">
+			<div class="form-group">
+				<label for="input-category">Category</label>
+				<input
+					type="text"
+					name="category"
+					value="{{ product.category }}"
+					placeholder="Category"
+					id="input-category"
+					class="form-control"
+				/>
+			</div>
+			<div class="form-group">
+				<label for="input-subcategory">Subcategory</label>
+				<input
+					type="text"
+					name="subcategory"
+					value="{{ product.subcategory }}"
+					placeholder="Subcategory"
+					id="input-subcategory"
+					class="form-control"
+				/>
+			</div>
+			<div class="form-group">
+				<label for="input-brand">Brand</label>
+				<input
+					type="text"
+					name="brand"
+					value="{{ product.brand }}"
+					placeholder="Brand"
+					id="input-brand"
+					class="form-control"
+				/>
+			</div>
+		</div>
+		<div class="multiple-form-group">
+			<div class="form-group">
+				<label for="input-stock">Stock</label>
+				<input
+					type="number"
+					name="stock"
+					value="{{ product.stock }}"
+					placeholder="stock"
+					id="input-stock"
+					class="form-control"
+				/>
+			</div>
+			<div class="form-group">
+				<label for="input-year">Year</label>
+				<input
+					type="number"
+					name="year"
+					value="{{ product.year }}"
+					placeholder="year"
+					id="input-year"
+					class="form-control"
+				/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="input-image">Add Image</label>
+			<input
+				type="file"
+				name="image"
+				placeholder="Image"
+				id="input-add-image"
+				class="form-control"
+			/>
+		</div>
+		<div class="form-group">
+			<label for="input-EMI">EMI</label>
+			<input
+				type="number"
+				name="EMI"
+				value="{{ product.EMI }}"
+				placeholder="EMI"
+				id="input-EMI"
+				class="form-control"
+			/>
+		</div>
+		{% for spec_name in product.spec_dict %}
+		<div class="form-group">
+			<label for="input-{{ spec_name }}">{{spec_name}}</label>
+			<input
+				type="text"
+				name="specdict-{{ spec_name }}"
+				value="{{ product.spec_dict[spec_name] }}"
+				placeholder="{{ spec_name }}"
+				id="input-{{ spec_name }}"
+				class="form-control"
+			/>
+		</div>
+		{% endfor %}
+
+		<button
+			type="submit"
+			name="action"
+			value="Update"
+			class="btn btn-primary"
+		>
+			Update
+		</button>
+		<button
+			type="submit"
+			name="action"
+			value="Delete"
+			class="btn btn-primary"
+		>
+			Delete
+		</button>
+	</form>
+</div>
 {% endblock content %}

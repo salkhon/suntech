@@ -1,0 +1,38 @@
+{% extends "layout.html" %} {% block content %}
+<table class="table table-bordered cmpr-table count-6">
+	<thead></thead>
+	<h2>Purchases</h2>
+	<tbody>
+		<tr>
+			<td class="value">ID</td>
+			<td class="value">Purchase Date</td>
+			<td class="value">Approval Date</td>
+			<td class="value">Info</td>
+			<td class="value">Address</td>
+			<td class="value">Bought By</td>
+		</tr>
+		{% for purchase in purchases %}
+		<tr>
+			<td class="value">{{ purchase.id }}</td>
+			<td class="value">{{ purchase.purchase_date }}</td>
+
+			<td class="value">
+				{% if purchase.approval_date %} {{ purchase.approval_date }} {%
+				else %}
+				<a
+					href="{{ url_for('admin.approve_purchase', purchase_id=purchase.id) }}"
+				>
+					Approve
+				</a>
+				{% endif %}
+			</td>
+
+			<td class="value">{{ purchase.info }}</td>
+			<td class="value">{{ purchase.address }}</td>
+			<td class="value">{{ purchase.bought_by }}</td>
+		</tr>
+
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock content %}

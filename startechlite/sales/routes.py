@@ -9,7 +9,7 @@ import flask_login
 from startechlite.dbmanager.dbmanager import DBManager
 from startechlite.sales.model import Purchase
 
-dbmanager = DBManager()
+dbman = DBManager()
 
 sales = flask.Blueprint("sales", __name__, url_prefix="/sale")
 
@@ -19,7 +19,7 @@ data needs to be sent to the server.
 """
 
 
-def _get_purchase() -> Purchase:
+def _make_purchase_from_form_and_json() -> Purchase:
     purchase_json = flask.request.get_json()
     assert purchase_json
 
@@ -31,7 +31,7 @@ def _get_purchase() -> Purchase:
         productid_count[product_count["id"]] = product_count["count"]
 
     purchase = Purchase(info=formdata.get(
-        "payment_method"), bought_by=flask_login.current_user.id, productid_count=productid_count)  # type: ignore
+        "payment_method"), address=formdata.get("address_1"), bought_by=flask_login.current_user.id, productid_count=productid_count)  # type: ignore
 
     return purchase
 
@@ -41,8 +41,8 @@ def _get_purchase() -> Purchase:
 @flask_login.login_required
 def checkout() -> str | Response:
     if flask.request.method == "POST":
-        purchase = _get_purchase()
-        dbmanager.insert_purchase(purchase)
+        purchase = _make_purchase_from_form_and_json()
+        dbman.insert_purchase(purchase)
         return flask.redirect(flask.url_for("sales.order_confirmed"))
 
     return flask.render_template("checkout.html")
@@ -58,3 +58,15 @@ def order_confirmed() -> str | flask.Response:
 def cart() -> str | Response:
     print("to be done cart")
     return ""
+
+
+@sales.route("/info/<int:purchase_id>", methods=["GET", "POST"])
+@flask_login.login_required
+def info(purchase_id: int):
+    if flask.request.method == "POST":
+        new_address = flask.request.form.get("address")
+        dbman.update_purchase_address_by_id(purchase_id, new_address)
+        return flask.redirect(flask.url_for("sales.info", purchase_id=purchase_id))
+
+    purchase = dbman.get_purchase_by_id(purchase_id)
+    return flask.render_template("sale_info.html", purchase=purchase)

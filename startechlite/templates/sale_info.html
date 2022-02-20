@@ -1,0 +1,239 @@
+{% extends "layout_with_breadcrumbs.html" %} {% block content %}
+<style type="text/css">
+	.order-details .head {
+		text-align: center;
+		padding-bottom: 30px;
+	}
+
+	.order-details p {
+		font-size: 14px;
+		line-height: 18px;
+	}
+
+	.order-details .head h1 {
+		margin: 0 0 5px;
+	}
+
+	.order-details .head p {
+		font-size: 14px;
+		line-height: 18px;
+		margin: 0;
+	}
+
+	.order-details .head .status {
+		display: inline-block;
+		padding: 3px 5px;
+		border-radius: 2px;
+		background: #27ae60;
+		color: #fff;
+		font-size: 12px;
+	}
+
+	.order-details .order-summary table {
+		width: 100%;
+	}
+
+	.order-details .order-summary table td {
+		padding: 0 0 7px;
+	}
+
+	.order-details .order-summary table .due td {
+		border-top: 1px solid #ddd;
+		padding-top: 7px;
+	}
+
+	.order-details .order-summary table .due td.text-right {
+		color: red;
+	}
+
+	.order-details .order-summary table .paid td.text-right {
+		color: #27ae60;
+	}
+
+	.order-details .table-order-products img {
+		height: 50px;
+	}
+
+	.order-details .table-order-products {
+		margin-bottom: 20px;
+	}
+
+	.order-details .table-order-products td {
+		padding-left: 0;
+	}
+
+	.order-details .table-order-products thead td {
+		border-bottom: 1px solid #eee;
+		background: #fff;
+	}
+
+	.order-details .order-details-comment {
+		border-bottom: 1px solid #eee;
+		margin-bottom: 20px;
+	}
+
+	.order-details-history .histories {
+		border-left: 2px solid #ddd;
+		padding-left: 20px;
+		margin-left: 4px;
+	}
+
+	.order-details-history .histories .history {
+		margin-bottom: 20px;
+		position: relative;
+	}
+
+	.order-details-history {
+		height: 100%;
+	}
+
+	.order-details-history .histories .history:before {
+		content: "";
+		position: absolute;
+		display: inline-block;
+		width: 10px;
+		height: 10px;
+		border-radius: 10px;
+		border: 2px solid #ef4a23;
+		background: #fff;
+		left: -26px;
+		top: 6px;
+	}
+
+	.order-details-history .histories h5 {
+		margin-bottom: 4px;
+	}
+
+	.order-details-history .histories p {
+		margin-bottom: 0px;
+	}
+
+	.order-details-history .histories span {
+		display: inline-block;
+		margin-top: 5px;
+	}
+
+	@media (max-width: 768px) {
+		.order-details-history {
+			margin-top: 15px;
+		}
+		.col-md-6.order-summary {
+			padding-top: 20px;
+		}
+	}
+</style>
+<section class="info-page bg-bt-gray">
+	<div class="container ac-layout p-tb-15">
+		<div class="row">
+			<div class="col-xs-12 col-md-8">
+				<div class="ws-box content order-details">
+					<div class="head">
+						<h1>Order Information</h1>
+						<span class="status">
+							{% if purchase.is_shipped %} Shipped {% elif
+							purchase.approval_date %} Approved {% else %}
+							Pending {% endif %}
+						</span>
+					</div>
+					<div class="g-box">
+						{% if purchase.is_shipped or purchase.approval_date %}
+						<div class="row">
+							<div class="col-md-6 address">
+								<h5>Shipping Address</h5>
+								<address>
+									{{ current_user.first_name + " " +
+									current_user.last_name }}<br />
+									{{purchase.address}}
+								</address>
+								<div class="telephone p-tb-15">
+									<span>Mobile: </span
+									><span>{{current_user.phone_number}}</span>
+								</div>
+							</div>
+						</div>
+						{% else %}
+						<div class="row">
+							<div class="col-md-6 address">
+								<h5>Shipping Address</h5>
+								<h1>
+									{{ current_user.first_name + " " +
+									current_user.last_name }}
+								</h1>
+								<form
+									action="{{ url_for('sales.info', purchase_id=purchase.id) }}"
+									method="post"
+									enctype="multipart/form-data"
+								>
+									<label
+										class="control-label"
+										for="input-address"
+										>Address</label
+									>
+									<input
+										type="text"
+										name="address"
+										value="{{ purchase.address }}"
+										id="input-address"
+										class="form-control"
+									/>
+									<button
+										type="submit"
+										class="btn btn-primary"
+									>
+										Change Address
+									</button>
+								</form>
+								<div class="telephone p-tb-15">
+									<span>Mobile: </span
+									><span>{{current_user.phone_number}}</span>
+								</div>
+							</div>
+						</div>
+
+						{% endif %}
+					</div>
+					<h5 class="m-t-30">Products</h5>
+					<table
+						class="table table-bordered table-hover table-order-products"
+					>
+						<thead>
+							<tr>
+								<td class="text-left">Image</td>
+								<td class="text-left">Product Name</td>
+								<td class="text-right">Quantity</td>
+								<td class="text-right">Total</td>
+							</tr>
+						</thead>
+						<tbody>
+							{% for product in purchase._products %}
+							<tr>
+								<td>
+									<img
+										src="{{ product.img_urls[0] }}"
+										alt="{{ product.name }}"
+									/>
+								</td>
+								<td class="text-left">
+									<a
+										href="{{ url_for('product.product_view', product_id=product.id) }}"
+									>
+										{{ product.name }}
+									</a>
+								</td>
+								<td class="text-right">
+									{{ purchase.productid_count[product.id] }}
+								</td>
+								<td class="text-right">
+									{{ product.base_price *
+									purchase.productid_count[product.id] }}৳
+								</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock content %}

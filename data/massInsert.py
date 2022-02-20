@@ -44,8 +44,8 @@ def insert_Products_Specs(c, csv_location, range_start):
 
         stock = 10
 
-        product_insert_sql = "insert into salman.products (id, base_price, discount, category, subcategory, brand, stock) values("+str(
-            id)+f","+str(base_price)+","+str(discount)+",\'"+str(category)+"\',\'"+str(subcategory)+"\',\'"+str(brand)+"\',"+str(stock)+")"
+        product_insert_sql = "insert into salman.products (id, base_price, discount, rating, category, subcategory, brand, stock) values("+str(
+            id)+f","+str(base_price)+","+str(discount)+f",{0},\'"+str(category)+"\',\'"+str(subcategory)+"\',\'"+str(brand)+"\',"+str(stock)+")"
 
         print(product_insert_sql)
         c.execute(product_insert_sql)

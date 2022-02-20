@@ -1,15 +1,16 @@
 {% extends "layout.html" %} {% block content %}
-<form
-	action="{{ url_for('admin.edit_user', userid=user.id) }}"
-	method="post"
-	enctype="multipart/form-data"
-	class="form-horizontal"
->
-	<div class="multiple-form-group">
-		<div class="form-group required">
-			<label for="input-firstname">ID </label>
+<div class="container ac-layout">
+	<h1>Edit User</h1><br><br>
+	<form
+		action="{{ url_for('admin.edit_user', userid=user.id) }}"
+		method="post"
+		enctype="multipart/form-data"
+		class="form-horizontal"
+	>
+		<div class="form-group">
+			<label for="input-id">ID </label>
 			<input
-				type="text"
+				type="number"
 				name="id"
 				value="{{ user.id }}"
 				placeholder="ID"
@@ -18,65 +19,82 @@
 				class="form-control"
 			/>
 		</div>
-		<div class="form-group required">
-			<label for="input-firstname">First Name </label>
+		<div class="multiple-form-group">
+			<div class="form-group">
+				<label for="input-firstname">First Name </label>
+				<input
+					type="text"
+					name="firstname"
+					value="{{ user.first_name }}"
+					placeholder="First Name"
+					id="input-firstname"
+					class="form-control"
+				/>
+			</div>
+			<div class="form-group">
+				<label for="input-lastname">Last Name</label>
+				<input
+					type="text"
+					name="lastname"
+					value="{{ user.last_name }}"
+					placeholder="Last Name"
+					id="input-lastname"
+					class="form-control"
+				/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="input-email">E-Mail</label>
 			<input
-				type="text"
-				name="firstname"
-				value="{{ user.first_name }}"
-				placeholder="First Name"
-				id="input-firstname"
+				type="email"
+				name="email"
+				value="{{ user.email }}"
+				placeholder="E-Mail"
+				readonly=""
+				id="input-email"
+				readonly=""
 				class="form-control"
 			/>
 		</div>
-		<div class="form-group required">
-			<label for="input-lastname">Last Name</label>
+		<div class="form-group">
+			<label for="input-telephone">Phone Number</label>
 			<input
-				type="text"
-				name="lastname"
-				value="{{ user.last_name }}"
-				placeholder="Last Name"
-				id="input-lastname"
+				type="tel"
+				name="telephone"
+				value="{{ user.phone_number }}"
+				placeholder="Telephone"
+				id="input-telephone"
 				class="form-control"
 			/>
 		</div>
-	</div>
-	<div class="form-group required">
-		<label for="input-email">E-Mail</label>
-		<input
-			type="email"
-			name="email"
-			value="{{ user.email }}"
-			placeholder="E-Mail"
-			readonly=""
-			id="input-email"
-			readonly=""
-			class="form-control"
-		/>
-	</div>
-	<div class="form-group required">
-		<label for="input-telephone">Phone Number</label>
-		<input
-			type="tel"
-			name="telephone"
-			value="{{ user.phone_number }}"
-			placeholder="Telephone"
-			id="input-telephone"
-			class="form-control"
-		/>
-	</div>
-	<div class="form-group required">
-		<label for="input-firstname">Address </label>
-		<input
-			type="text"
-			name="address"
-			value="{{ user.address }}"
-			placeholder="Address"
-			id="input-address"
-			class="form-control"
-		/>
-	</div>
-	<button type="submit" name="action" value="Update" class="btn btn-primary">Update</button>
-	<button type="submit" name="action" value="Delete" class="btn btn-primary">Delete</button>
-</form>
+		<div class="form-group">
+			<label for="input-firstname">Address </label>
+			<input
+				type="text"
+				name="address"
+				value="{{ user.address }}"
+				placeholder="Address"
+				id="input-address"
+				class="form-control"
+			/>
+		</div>
+		<button
+			type="submit"
+			name="action"
+			value="Update"
+			class="btn btn-primary"
+		>
+			Update
+		</button>
+		<button
+			type="submit"
+			name="action"
+			value="Delete"
+			class="btn btn-primary"
+		>
+			Delete
+		</button>
+	</form>
+</div>
+
 {% endblock content %}

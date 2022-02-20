@@ -105,12 +105,16 @@
 					</div>
 				</div>
 				<div class="main-content p-items-wrap">
-					{% for product in products %}
+					{% for product in products %} {% if current_user.is_admin %}
+					{% set product_url = url_for("admin.edit_product",
+					product_id=product.id) %} {% else %} {% set product_url =
+					url_for("product.product_view", product_id=product.id) %} {%
+					endif %}
+
 					<div class="p-item" data-product-id="{{ product.id }}">
 						<div class="p-item-inner">
 							<div class="p-item-img">
-								<a
-									href="{{ url_for('product.product_view', product_id=product.id) }}"
+								<a href="{{ product_url }}"
 									><img
 										src="{{ product.img_urls[0] }}"
 										alt="{{ product.name }}"
@@ -121,8 +125,7 @@
 							</div>
 							<div class="p-item-details">
 								<h4 class="p-item-name">
-									<a
-										href="{{ url_for('product.product_view', product_id=product.id)}}"
+									<a href="{{ product_url}}"
 										>{{ product.name }}</a
 									>
 								</h4>

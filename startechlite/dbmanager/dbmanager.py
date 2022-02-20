@@ -19,7 +19,7 @@ class DBManager:
     SELECT_USERS_BY_ID = "SELECT * FROM users WHERE id = :id"
     SELECT_USER_COUNT = "SELECT COUNT(*) FROM users"
     SELECT_USERS = """
-        SELECT * FROM users 
+        SELECT * FROM users
         OFFSET :offset ROWS FETCH NEXT :maxnumrows ROWS ONLY
     """
     UPDATE_USER = "UPDATE users SET first_name = :first_name, last_name = :last_name, phone_number = :phone_number, user_address = :user_address WHERE id = :id"
@@ -29,8 +29,13 @@ class DBManager:
     # INSERT_ADMIN = "INSERT INTO startech_admins (admin_name, email, pass_word) VALUES (:admin_name, :email, :pass_word)"
     # SELECT_ADMIN_BY_ID = "SELECT * FROM startech_admins WHERE id = :id"
 
-    INSERT_PURCHASE = "INSERT INTO salman.purchase (payment_info, bought_by) VALUES (:info, :bought_by) RETURNING purchase_id INTO :id_output"
+    INSERT_PURCHASE = "INSERT INTO salman.purchase (payment_info, address, bought_by) VALUES (:info, :address, :bought_by) RETURNING purchase_id INTO :id_output"
     INSERT_PURCHASE_PRODUCT = "INSERT INTO salman.purchase_product (purchase_id, product_id, product_count) VALUES (:purchase_id, :product_id, :product_count)"
+    SELECT_PURCHASE_IDS_BY_USER_ID = "SELECT purchase_id FROM purchase WHERE bought_by = :bought_by"
+    SELECT_PURCHASE_BY_ID = "SELECT * FROM purchase WHERE purchase_id = :purchase_id"
+    APPROVE_PURCHASE_BY_ID = "UPDATE purchase SET approval_date = CURRENT_TIMESTAMP WHERE purchase_id = :purchase_id"
+    UPDATE_PURCHASE_ADDRESS_BY_ID = "UPDATE purchase SET address = :address WHERE purchase_id = :purchase_id"
+    SELECT_ALL_PURCHASES = "SELECT * FROM purchase"
 
     SELECT_PRODUCT_BY_ID = "SELECT * FROM products WHERE id = :id"
     SELECT_PRODUCT_SPECS_BY_ID = "SELECT * FROM spec_table WHERE product_id = :id"
@@ -44,19 +49,19 @@ class DBManager:
 
     SELECT_PRODUCT_COUNT_BY_CATEGORY_SUBCATEGORY_BRAND = "SELECT COUNT(*) FROM products WHERE LOWER(category) = :category AND LOWER(subcategory) = :subcategory AND LOWER(brand) = :brand"
     SELECT_PRODUCT_ID_BY_CATEGORY_SUBCATEGORY_BRAND = """
-        SELECT id FROM products 
-        WHERE LOWER(category) = :category AND 
-            LOWER(subcategory) = :subcategory AND 
-            LOWER(brand) = :brand 
+        SELECT id FROM products
+        WHERE LOWER(category) = :category AND
+            LOWER(subcategory) = :subcategory AND
+            LOWER(brand) = :brand
         OFFSET :offset ROWS FETCH NEXT :maxnumrows ROWS ONLY
     """
 
-    SELECT_PURCHASES_BY_USER_ID = "SELECT * FROM purchase WHERE bought_by = :bought_by"
+    DELETE_PRODUCT_BY_ID = "DELETE FROM products WHERE id = :id"
 
     SELECT_PRODUCTS_BY_PURCHASE_ID = "SELECT * FROM purchase_product WHERE purchase_id = :purchase_id"
 
     SELECT_PRODUCTS_BOUGHT_WITH_ANOTHER_PRODUCT = """
-        SELECT product_id, COUNT(purchase_id) "purchase_count" FROM purchase_product 
+        SELECT product_id, COUNT(purchase_id) "purchase_count" FROM purchase_product
         WHERE purchase_id IN (
             SELECT purchase_id FROM purchase_product
             WHERE product_id = :product_id
@@ -93,17 +98,114 @@ class DBManager:
         num_items = end_index - start_index
         return (start_index, num_items)
 
+    # USERS
+
+    def get_user_by_id(self, userid: int) -> User | None:
+        user = None
+        with self.ConnectionAndCursor() as connection_cursor:
+            user = connection_cursor.cursor.execute(
+                self.SELECT_USERS_BY_ID, id=userid).fetchone()
+
+        if user:
+            user = User(*user)
+
+        return user
+
+    def get_user_by_email(self, email: str) -> User | None:
+        # TODO: make email a primary key, or THE primary key
+        user = None
+        with self.ConnectionAndCursor() as connection_cursor:
+            user = connection_cursor.cursor.execute(
+                self.SELECT_USERS_BY_EMAIL, email=email
+            ).fetchone()
+
+        if user:
+            user = User(*user)
+
+        return user
+
+    def insert_init_admin(self):
+        # there will be only one admin, so admin table is redundant
+        with self.ConnectionAndCursor() as connection_cursor:
+            admin = connection_cursor.cursor.execute(
+                self.SELECT_USERS_BY_EMAIL, email=ADMIN_EMAIL
+            ).fetchone()
+
+            if not admin:
+                password = startechlite.bcrypt.generate_password_hash(
+                    ADMIN_PASS_UNENCRYPTED).decode("utf-8")
+                connection_cursor.cursor.execute(
+                    self.INSERT_USERS_SQL, first_name=ADMIN_FIRST_NAME, last_name=ADMIN_LAST_NAME,
+                    email=ADMIN_EMAIL, pass_word=password, phone_number="", user_address=""
+                )
+
+    def insert_user(self, user: User):
+        """Inserts a user into the "users" table.
+
+        Args:
+            user (User): User model for the data.
+        """
+        with self.ConnectionAndCursor() as connection_cursor:
+            connection_cursor.cursor.execute(
+                self.INSERT_USERS_SQL,
+                first_name=user.first_name,
+                last_name=user.last_name,
+                email=user.email,
+                pass_word=user.password,
+                phone_number=user.phone_number,
+                user_address=user.address
+            )
+
+    def update_user(self, user: User):
+        with self.ConnectionAndCursor() as connection_cursor:
+            connection_cursor.cursor.execute(
+                self.UPDATE_USER,
+                first_name=user.first_name,
+                last_name=user.last_name,
+                phone_number=user.phone_number,
+                user_address=user.address,
+                id=user.id
+            )
+
+    def delete_user(self, userid: int):
+        with self.ConnectionAndCursor() as connection_cursor:
+            print("deleting", userid)
+            connection_cursor.cursor.execute(
+                self.DELETE_USER,
+                id=userid
+            )
+
+    def get_user_list(self, page: int = 1, per_page: int = 15) -> tuple[list[User], flask_paginate.Pagination]:
+        users = []
+        pagination = flask_paginate.Pagination()
+
+        with self.ConnectionAndCursor() as connection_cursor:
+            cursor = connection_cursor.cursor
+
+            user_count, = cursor.execute(self.SELECT_USER_COUNT).fetchone()
+            pagination = flask_paginate.Pagination(
+                page=page, per_page=per_page, total=user_count)
+            offset, num_users = self._pagination_indices(pagination)
+
+            users = cursor.execute(
+                self.SELECT_USERS, offset=offset, maxnumrows=num_users).fetchall()
+            users = [User(*user) for user in users if user[3] != ADMIN_EMAIL]
+
+        return users, pagination
+
+    # PRODUCTS
+
     def get_bought_togethers_by_id(self, id: int) -> list[tuple[int, int]]:
-        """Queries product id s from purchases in purchase_product table where target product is 
+        """Queries product id s from purchases in purchase_product table where target product is
         present. Then counts the number of time each product pairs with the target product in distinct
-        purchases by grouping by products. 
+        purchases by grouping by products.
 
         Args:
             id (int): Target product id
 
         Returns:
-            list[tuple[int, int]]: Tuples of product id and its corresponding count of pairs 
-            with target product in distinct purchases. 
+            list[tuple[int, int]]: Tuples of product id and its corresponding count of pairs
+            with target product in distinct purchases.
         """
         product_pair_count = []
         with self.ConnectionAndCursor() as connection_cursor:
@@ -206,98 +308,42 @@ class DBManager:
     def get_category_subcategory_brand(self, category: str, subcategory: str, brand: str, page: int = 1, per_page: int = 15) -> tuple[list[Product], flask_paginate.Pagination]:
         return self._get_category_subcategory_brand_helper(category=category, subcategory=subcategory, brand=brand, page=page, per_page=per_page)
 
-    def get_user_by_id(self, userid: int) -> User | None:
-        user = None
+    def delete_product(self, id: int):
         with self.ConnectionAndCursor() as connection_cursor:
-            user = connection_cursor.cursor.execute(
-                self.SELECT_USERS_BY_ID, id=userid).fetchone()
+            connection_cursor.cursor.execute(
+                self.DELETE_PRODUCT_BY_ID,
+                id=id
+            )
 
-        if user:
-            user = User(*user)
+    # PURCHASES
 
-        return user
+    def get_products_counts_for_purchase(self, purchase_id: int, connection_cursor: "ConnectionAndCursor") -> list[tuple[Product, int]]:
+        products = []
+        for _, product_id, count in connection_cursor.cursor.execute(self.SELECT_PRODUCTS_BY_PURCHASE_ID, purchase_id=purchase_id):
+            products.append((self.get_product_by_id(product_id), count))
+        return products
 
-    def get_user_by_email(self, email: str) -> User | None:
-        # TODO: make email a primary key, or THE primary key
-        user = None
+    def get_purchase_by_id(self, id: int, with_products_counts: bool = True) -> Purchase | None:
+        purchase = None
+
         with self.ConnectionAndCursor() as connection_cursor:
-            user = connection_cursor.cursor.execute(
-                self.SELECT_USERS_BY_EMAIL, email=email
+            purchase = connection_cursor.cursor.execute(
+                self.SELECT_PURCHASE_BY_ID,
+                purchase_id=id
             ).fetchone()
 
-        if user:
-            user = User(*user)
+            if purchase:
+                purchase = Purchase(
+                    *purchase, productid_count={}, _products=[])
+                assert purchase.productid_count is not None and purchase._products is not None
 
-        return user
+                if with_products_counts:
+                    # query purchase associated products and counts for detailed view
+                    for product, count in self.get_products_counts_for_purchase(purchase.id, connection_cursor):
+                        purchase.productid_count[product.id] = count
+                        purchase._products.append(product)
 
-    def insert_init_admin(self):
-        # there will be only one admin, so admin table is redundant
-        with self.ConnectionAndCursor() as connection_cursor:
-            admin = connection_cursor.cursor.execute(
-                self.SELECT_USERS_BY_EMAIL, email=ADMIN_EMAIL
-            ).fetchone()
-
-            if not admin:
-                password = startechlite.bcrypt.generate_password_hash(
-                    ADMIN_PASS_UNENCRYPTED).decode("utf-8")
-                connection_cursor.cursor.execute(
-                    self.INSERT_USERS_SQL, first_name=ADMIN_FIRST_NAME, last_name=ADMIN_LAST_NAME,
-                    email=ADMIN_EMAIL, pass_word=password, phone_number="", user_address=""
-                )
-
-    def insert_user(self, user: User):
-        """Inserts a user into the "users" table.
-
-        Args:
-            user (User): User model for the data.
-        """
-        with self.ConnectionAndCursor() as connection_cursor:
-            connection_cursor.cursor.execute(
-                self.INSERT_USERS_SQL,
-                first_name=user.first_name,
-                last_name=user.last_name,
-                email=user.email,
-                pass_word=user.password,
-                phone_number=user.phone_number,
-                user_address=user.address
-            )
-
-    def update_user(self, user: User):
-        with self.ConnectionAndCursor() as connection_cursor:
-            connection_cursor.cursor.execute(
-                self.UPDATE_USER,
-                first_name=user.first_name,
-                last_name=user.last_name,
-                phone_number=user.phone_number,
-                user_address=user.address, 
-                id=user.id
-            )
-
-    def delete_user(self, userid: int):
-        with self.ConnectionAndCursor() as connection_cursor:
-            print("deleting", userid)
-            connection_cursor.cursor.execute(
-                self.DELETE_USER,
-                id=userid
-            )
-
-    def get_user_list(self, page: int = 1, per_page: int = 15) -> tuple[list[User], flask_paginate.Pagination]:
-        users = []
-        pagination = flask_paginate.Pagination()
-
-        with self.ConnectionAndCursor() as connection_cursor:
-            cursor = connection_cursor.cursor
-
-            user_count, = cursor.execute(self.SELECT_USER_COUNT).fetchone()
-            pagination = flask_paginate.Pagination(
-                page=page, per_page=per_page, total=user_count)
-            offset, num_users = self._pagination_indices(pagination)
-
-            users = cursor.execute(
-                self.SELECT_USERS, offset=offset, maxnumrows=num_users).fetchall()
-            users = [User(*user) for user in users if user[3] != ADMIN_EMAIL]
-
-        return users, pagination
+        return purchase
 
     def insert_purchase(self, purchase: Purchase):
         with self.ConnectionAndCursor() as connection_cursor:
@@ -307,6 +353,7 @@ class DBManager:
             connection_cursor.cursor.execute(
                 self.INSERT_PURCHASE,
                 info=purchase.info,
+                address=purchase.address,
                 bought_by=purchase.bought_by,
                 id_output=id_output
             )
@@ -322,31 +369,50 @@ class DBManager:
                     product_count=purchase.productid_count.get(product_id)
                 )
 
-    def get_products_counts_for_purchase(self, purchase_id: int, connection_cursor: "ConnectionAndCursor") -> list[tuple[Product, int]]:
-        products = []
-        for _, product_id, count in connection_cursor.cursor.execute(self.SELECT_PRODUCTS_BY_PURCHASE_ID, purchase_id=purchase_id):
-            products.append((self.get_product_by_id(product_id), count))
-        return products
-
     def get_user_purhcases(self) -> list[Purchase]:
         purchases: list[Purchase] = []
         with self.ConnectionAndCursor() as connection_cursor:
             current_userid = flask_login.current_user.id  # type: ignore
 
             # query purchase ids
-            for id, date, _, status, _, _ in connection_cursor.cursor.execute(
-                    self.SELECT_PURCHASES_BY_USER_ID,
+            for id, in connection_cursor.cursor.execute(
+                    self.SELECT_PURCHASE_IDS_BY_USER_ID,
                     bought_by=current_userid):
-                purchase = Purchase(id=id, date=date, status=status)
+                purchase = self.get_purchase_by_id(id)
+                assert purchase
                 purchases.append(purchase)
 
-            # query products for purchase ids
-            for purchase in purchases:
-                purchase.productid_count = {}
-                purchase._products = []
-                for product, count in self.get_products_counts_for_purchase(purchase.id, connection_cursor):
-                    purchase.productid_count[product.id] = count
-                    purchase._products.append(product)
+        return purchases
+
+    def approve_purchase(self, id: int):
+        with self.ConnectionAndCursor() as connection_cursor:
+            purchase = self.get_purchase_by_id(id, False)
+
+            if purchase and purchase.approval_date:
+                return
+
+            connection_cursor.cursor.execute(
+                self.APPROVE_PURCHASE_BY_ID,
+                purchase_id=id
+            )
+
+    def update_purchase_address_by_id(self, id, new_address):
+        with self.ConnectionAndCursor() as connection_cursor:
+            connection_cursor.cursor.execute(
+                self.UPDATE_PURCHASE_ADDRESS_BY_ID,
+                purchase_id=id,
+                address=new_address
+            )
+
+    def get_all_purchases(self) -> list[Purchase]:
+        purchases = []
+
+        with self.ConnectionAndCursor() as connection_cursor:
+            for purchase in connection_cursor.cursor.execute(
+                self.SELECT_ALL_PURCHASES
+            ):
+                print(purchase)
+                purchases.append(Purchase(*purchase))
 
         return purchases
 

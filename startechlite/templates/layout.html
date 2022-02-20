@@ -15,6 +15,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<link href="/static/img/suntech.png" rel="icon" />
 		<link href="/static/main.css" rel="stylesheet" />
+		<!-- <link href="/static/main_old.css" rel="stylesheet" /> -->
 		<link
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css?family=Sofia"
@@ -146,6 +147,13 @@
 								class="nav-link"
 								href="{{ url_for('admin.get_users') }}"
 								>Users</a
+							>
+						</li>
+						<li class="nav-item c-1">
+							<a
+								class="nav-link"
+								href="{{ url_for('admin.get_purchases') }}"
+								>Purchases</a
 							>
 						</li>
 						{% endif %}

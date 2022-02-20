@@ -19,7 +19,6 @@ class Product:
     spec_dict: dict[str, str]
     EMI: float
     bought_together: list["Product"]
-    description: str = ""
 
     def inStock(self) -> str:
         if self.stock > 0:
