@@ -1,7 +1,9 @@
 {% extends "layout.html" %} {% block content %}
 <table class="table table-bordered cmpr-table count-6">
 	<thead></thead>
-	<h2>Purchases</h2>
+	<br />
+	<h1>Purchases</h1>
+	<hr />
 	<tbody>
 		<tr>
 			<td class="value">ID</td>
@@ -13,17 +15,29 @@
 		</tr>
 		{% for purchase in purchases %}
 		<tr>
-			<td class="value">{{ purchase.id }}</td>
-			<td class="value">{{ purchase.purchase_date }}</td>
+			<td class="value">
+				<a href="{{ url_for('sales.info', purchase_id=purchase.id) }}">
+					{{ purchase.id }}
+				</a>
+			</td>
+			<td class="value">
+				<a href="{{ url_for('sales.info', purchase_id=purchase.id) }}">
+					{{ purchase.purchase_date }}
+				</a>
+			</td>
 
 			<td class="value">
-				{% if purchase.approval_date %} {{ purchase.approval_date }} {%
-				else %}
-				<a
-					href="{{ url_for('admin.approve_purchase', purchase_id=purchase.id) }}"
-				>
-					Approve
+				{% if purchase.approval_date %}
+				<a href="{{ url_for('sales.info', purchase_id=purchase.id) }}">
+					{{ purchase.approval_date }}
 				</a>
+				{% else %}
+				<form
+					action="{{ url_for('admin.approve_purchase', purchase_id=purchase.id) }}"
+					method="POST"
+				>
+					<button type="submit">Approve</button>
+				</form>
 				{% endif %}
 			</td>
 

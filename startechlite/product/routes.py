@@ -1,8 +1,6 @@
 import flask
-import flask_login
 from werkzeug import Response
 from startechlite.dbmanager.dbmanager import DBManager
-from startechlite.product.model import Product
 from startechlite.constants import *
 import flask_breadcrumbs
 
@@ -16,12 +14,27 @@ def product_id_dlc():
     return f"{view_args.get('product_id')}"
 
 
-@product.route("/<string:product_id>")
+@product.route("/<string:product_id>", methods=['GET', 'POST'])
 @flask_breadcrumbs.register_breadcrumb(product, ".productid", "", dynamic_list_constructor=product_id_dlc)
-def product_view(product_id) -> str | Response:
-    product = dbman.get_product_by_id(
-        product_id, bought_togethers_included=True)
-    return flask.render_template("product_page.html", product=product)
+def product_view(product_id) -> str:
+    if flask.request.method == "POST":
+        p_id = flask.request.form.getlist('product_id')
+        comments = flask.request.form.getlist('comment')
+        comment_on = flask.request.form.getlist('comment_on')
+        ratings = flask.request.form.getlist('rating')
+        review_texts = flask.request.form.getlist('review_text')
+
+        if len(comments) != 0:
+            dbman.add_comment([p_id, comments, comment_on])
+
+        if len(review_texts) != 0:
+            dbman.add_review([p_id, ratings, review_texts])
+
+    product = dbman.get_product_by_id(product_id, True)
+    reviews = dbman.get_reviews(product_id)
+    main_comments, sub_comments = dbman.get_comments(
+        product_id)  # type: ignore
+    return flask.render_template("product_page.html", product=product, main_comments=main_comments, sub_comments=sub_comments, reviews=reviews)
 
 
 @product.route("/compare")

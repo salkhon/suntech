@@ -8,7 +8,7 @@ import flask_login
 from startechlite.dbmanager.dbmanager import DBManager
 from startechlite.sales.model import Purchase
 
-dbmanager = DBManager()
+dbman = DBManager()
 
 account = flask.Blueprint("account", __name__, url_prefix="/account")
 
@@ -24,7 +24,7 @@ def user_account():
 @flask_breadcrumbs.register_breadcrumb(account, ".order", "Order History")
 @flask_login.login_required
 def order_history():
-    purchases: list[Purchase] = dbmanager.get_user_purhcases()
+    purchases: list[Purchase] = dbman.get_user_purhcases()
     # TODO: fill purchases with product info. So have to query products to fill purchase.
     return flask.render_template("account_order_history.html", purchases=purchases)
 
@@ -43,15 +43,17 @@ def get_validated_registered_user() -> User | None:
     email = flask.request.form.get("email")
     password = flask.request.form.get("password")
     telephone = flask.request.form.get("telephone")
+    address = flask.request.form.get("address", "")
     PLACEHOLDER_ID = -1
 
-    if not (firstname and lastname and email and telephone and password):
+    if (
+        not (firstname and lastname and email and telephone and password) or
+        email in dbman.get_banned_emails() or
+        dbman.get_user_by_email(email)
+    ):
         return None
 
-    if dbmanager.get_user_by_email(email):
-        return None
-
-    return User(PLACEHOLDER_ID, firstname, lastname, email, startechlite.bcrypt.generate_password_hash(password).decode("utf-8"), telephone, "")
+    return User(PLACEHOLDER_ID, firstname, lastname, email, startechlite.bcrypt.generate_password_hash(password).decode("utf-8"), telephone, address)
 
 
 @account.route("/register", methods=["GET", "POST"])
@@ -68,7 +70,7 @@ def register() -> str | Response:
             flask.flash("Registration failed", "danger")
             return flask.render_template("register.html")
 
-        dbmanager.insert_user(validated_user)
+        dbman.insert_user(validated_user)
 
         flask.flash(
             "Your account has been successfully created! You are now able to login!", "success")
@@ -81,7 +83,7 @@ def register() -> str | Response:
 def _auth_login() -> bool:
     email = flask.request.form.get("email")
     if email:
-        queried_user = dbmanager.get_user_by_email(email)
+        queried_user = dbman.get_user_by_email(email)
         if queried_user and startechlite.bcrypt.check_password_hash(queried_user.password, flask.request.form.get("password")):
             flask.flash(f"Welcome {queried_user.first_name}!")
             if queried_user.is_admin:

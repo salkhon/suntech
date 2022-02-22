@@ -125,6 +125,7 @@ class ComparePanel {
 
 		this.#updateSessionStorage();
 		this.renderComparePanelElem();
+		alert("Product has been added to compare!");
 	}
 
 	/**
@@ -207,7 +208,7 @@ compareNowButton.onclick = async function (/** @type { Event } */ event) {
 	if (this.disabled) {
 		return;
 	}
-	
+
 	const urlWithQueryParams =
 		"http://localhost:5000/product/compare?" +
 		new URLSearchParams({

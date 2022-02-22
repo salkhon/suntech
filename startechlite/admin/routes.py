@@ -1,7 +1,8 @@
 import flask
 import flask_login
+from startechlite.constants import BRANDS, CAT_SUBCAT_BRAND_DICT, CATEGORIES, SUBCATEGORIES
 from startechlite.dbmanager.dbmanager import DBManager
-from startechlite.admin.util import _make_updated_product_from_form, _make_updated_user_from_form, _get_deleted_product_basic_info_from_form
+from startechlite.admin.utils import _make_new_basic_product_from_form, _make_updated_product_from_form, _make_updated_user_from_form, _get_deleted_product_basic_info_from_form
 
 dbman = DBManager()
 
@@ -24,7 +25,7 @@ def get_users():
 
 @admin.route("/edituser/<int:userid>", methods=["GET", "POST"])
 @flask_login.login_required
-def edit_user(userid):
+def edit_or_ban_user(userid):
     if not flask_login.current_user.is_admin:  # type: ignore
         flask.flash("You don't have sufficient privileges", "warning")
         flask.redirect(flask.url_for("main.home"))
@@ -33,10 +34,10 @@ def edit_user(userid):
         if flask.request.form.get("action") == "Update":
             updated_user = _make_updated_user_from_form()
             dbman.update_user(updated_user)
-        elif flask.request.form.get("action") == "Delete":
-            id = flask.request.form.get("id")
-            assert id
-            dbman.delete_user(int(id))
+        elif flask.request.form.get("action") == "Ban":
+            id, email = flask.request.form.get("id"), flask.request.form.get("email")
+            assert id and email
+            dbman.ban_user(int(id), email)
 
         return flask.redirect(flask.url_for("admin.get_users"))
     else:
@@ -54,13 +55,20 @@ def edit_product(product_id):
     if flask.request.method == "POST":
         if flask.request.form.get("action") == "Update":
             updated_product = _make_updated_product_from_form()
-            print(updated_product)
+
+            uploaded_images = []
+            if flask.request.files.get("image"):
+                uploaded_images = flask.request.files.getlist("image")
+
+            dbman.update_product_by_id(
+                product_id, updated_product, uploaded_images)
+
             return flask.redirect(flask.url_for(
                 "admin.edit_product",
-                product_id=updated_product.id
+                product_id=product_id
             ))
         elif flask.request.form.get("action") == "Delete":
-            del_id, del_cat, del_subcat, del_brand = _get_deleted_product_basic_info_from_form()
+            _, del_cat, del_subcat, del_brand = _get_deleted_product_basic_info_from_form()
 
             dbman.delete_product(product_id)
 
@@ -70,9 +78,43 @@ def edit_product(product_id):
                 subcategory=del_subcat,
                 brand=del_brand
             ))
+        elif flask.request.form.get("action") == "Add New Specification":
+            spec_attr_name, spec_attr_val = flask.request.form.get(
+                "attr_name"), flask.request.form.get("attr_value")
+            assert spec_attr_name and spec_attr_val
+
+            existing_attr_val = dbman.get_product_spec_attr_val_by_id_and_attr_name(
+                product_id, spec_attr_name)
+
+            if existing_attr_val:
+                flask.flash(
+                    f"Attribute named by {spec_attr_name} already exists")
+            else:
+                dbman.add_new_spec_for_product_by_id(
+                    product_id, spec_attr_name, spec_attr_val)
+
+            return flask.redirect(flask.url_for(
+                "admin.edit_product",
+                product_id=product_id
+            ))
     else:
         product = dbman.get_product_by_id(product_id)
         return flask.render_template("admin_edit_product.html", product=product)
+
+
+@admin.route("/createproduct", methods=["GET", "POST"])
+@flask_login.login_required
+def create_product():
+    if flask.request.method == "POST":
+        new_basic_product = _make_new_basic_product_from_form()
+        dbman.create_new_product(new_basic_product)
+    return flask.render_template(
+        "admin_create_product.html",
+        CATEGORIES=CATEGORIES,
+        SUBCATEGORIES=SUBCATEGORIES,
+        BRANDS=BRANDS
+    )
+
 
 @admin.route("/purchases")
 @flask_login.login_required
@@ -80,11 +122,12 @@ def get_purchases():
     if not flask_login.current_user.is_admin:  # type: ignore
         flask.flash("You don't have sufficient privileges", "warning")
         return flask.redirect(flask.url_for("main.home"))
-    
+
     purchases = dbman.get_all_purchases()
     return flask.render_template("admin_purchases.html", purchases=purchases)
 
-@admin.route("/purchases/approve/<int:purchase_id>")
+
+@admin.route("/purchases/approve/<int:purchase_id>", methods=["POST"])
 @flask_login.login_required
 def approve_purchase(purchase_id: int):
     if not flask_login.current_user.is_admin:  # type: ignore

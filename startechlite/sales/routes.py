@@ -1,8 +1,5 @@
-import random
 import flask
 from werkzeug import Response
-import startechlite
-from startechlite.account.model import User
 from startechlite.constants import *
 import flask_breadcrumbs
 import flask_login
@@ -40,6 +37,9 @@ def _make_purchase_from_form_and_json() -> Purchase:
 @flask_breadcrumbs.register_breadcrumb(sales, ".checkout", "Checkout")
 @flask_login.login_required
 def checkout() -> str | Response:
+    if flask_login.current_user.is_admin:  # type: ignore
+        return flask.redirect(flask.url_for("admin.get_purchases"))
+
     if flask.request.method == "POST":
         purchase = _make_purchase_from_form_and_json()
         dbman.insert_purchase(purchase)
@@ -54,12 +54,6 @@ def order_confirmed() -> str | flask.Response:
     return flask.render_template("order_confirmed.html")
 
 
-@sales.route("/cart")
-def cart() -> str | Response:
-    print("to be done cart")
-    return ""
-
-
 @sales.route("/info/<int:purchase_id>", methods=["GET", "POST"])
 @flask_login.login_required
 def info(purchase_id: int):
@@ -69,4 +63,11 @@ def info(purchase_id: int):
         return flask.redirect(flask.url_for("sales.info", purchase_id=purchase_id))
 
     purchase = dbman.get_purchase_by_id(purchase_id)
+
+    if not purchase:
+        flask.abort(404)
+
+    if purchase.bought_by != flask_login.current_user.id and not flask_login.current_user.is_admin:  # type: ignore
+        flask.abort(404)
+
     return flask.render_template("sale_info.html", purchase=purchase)

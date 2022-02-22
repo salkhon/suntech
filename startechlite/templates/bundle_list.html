@@ -1,0 +1,109 @@
+{% extends "layout_with_breadcrumbs.html" %} {% block content %}
+
+<section class="p-item-page bg-bt-gray p-tb-15">
+	<div class="container">
+		<div class="row">
+			<div id="content" class="product-listing">
+				<div class="top-bar ws-box">
+					<div class="row">
+						<div class="breadcrumb-container">
+							<button class="tool-btn" id="lc-toggle">
+								<i class="material-icons">filter_list</i> Filter
+							</button>
+							<h6 class="page-heading m-hide">
+								{% for breadcrumb in breadcrumbs %} {% if
+								loop.last %} {{ breadcrumb.text }} {% endif %}
+								{% endfor %}
+							</h6>
+						</div>
+					</div>
+				</div>
+
+				<div class="center-product-listing">
+					<div class="main-content p-items-wrap">
+						{% for bundle in bundles %}
+						<div class="p-item">
+							<div class="sameen_bundles">
+								<h3 class="sameen_bundle_title">
+									{{bundle.name}}
+								</h3>
+								{%for product in bundle.products_list%}
+								<div class="p-s-item" data-product-id="{{ product.id }}">
+									<div class="image-holder">
+										<a
+											href="{{ url_for('product.product_view', product_id=product.id) }}"
+										>
+											<img
+												src="{{ product.img_urls[0] }}"
+												alt="{{ product.name }}"
+												width="80"
+												height="80"
+										/></a>
+										
+									</div>
+									<div class="caption">
+										<h4 class="product-name">
+											<a
+												href="{{ url_for('product.product_view', product_id=product.id) }}"
+											>
+												{{ product.name }}
+											</a>
+										</h4>
+										{% if product.discount %}
+										<h5 id="product-price">Tk. {{ product.base_price * product.discount }}</h5>
+
+										{% else %}
+										<h5 id="product-price">Tk. {{ product.base_price }}</h5>
+										{% endif %}
+									</div>
+								</div>
+								{% endfor %}
+
+								<div class="p-item-price">
+									<span class="price-new"
+										>Tk.{{ bundle.total_price() }}</span
+									>
+								</div>
+
+								<div class="sam_abs_btm actions">
+									<span
+										class="st-btn btn-add-cart"
+										type="button"
+										id="bundle-add-to-cart"
+										><i class="material-icons"
+											>shopping_cart</i
+										>
+										Buy Now</span
+									>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+
+						<div class="bottom-bar">
+							<div class="row">
+								<div class="col-md-6 col-sm-12">
+									{{ pagination.links }}
+								</div>
+								<div class="col-md-6 rs-none text-right">
+									{{ pagination.info }}
+								</div>
+								<script>
+									// removing next, previous, current labels on the pagination
+									paginationTextLabels =
+										document.querySelectorAll(
+											"span.sr-only"
+										);
+									for (span of paginationTextLabels) {
+										span.remove();
+									}
+								</script>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock content %}

@@ -1,7 +1,9 @@
 {% extends "layout.html" %} {% block content %}
-<table class="table table-bordered cmpr-table count-6">
+<table class="table table-bordered cmpr-table count-5">
 	<thead></thead>
-	<h2>Suntech Users</h2>
+	<br>
+	<h1>Suntech Users</h1>
+	<hr>
 	<tbody>
 		<tr>
 			<td class="value">ID</td>
@@ -14,32 +16,32 @@
 		{% for user in users %}
 		<tr>
 			<td class="value">
-				<a href="{{ url_for('admin.edit_user', userid=user.id) }}">
+				<a href="{{ url_for('admin.edit_or_ban_user', userid=user.id) }}">
 					{{user.id}}
 				</a>
 			</td>
 			<td class="value">
-				<a href="{{ url_for('admin.edit_user', userid=user.id) }}">
+				<a href="{{ url_for('admin.edit_or_ban_user', userid=user.id) }}">
 					{{user.first_name}}
 				</a>
 			</td>
 			<td class="value">
-				<a href="{{ url_for('admin.edit_user', userid=user.id) }}">
+				<a href="{{ url_for('admin.edit_or_ban_user', userid=user.id) }}">
 					{{user.last_name}}
 				</a>
 			</td>
 			<td class="value">
-				<a href="{{ url_for('admin.edit_user', userid=user.id) }}">
+				<a href="{{ url_for('admin.edit_or_ban_user', userid=user.id) }}">
 					{{user.email}}
 				</a>
 			</td>
 			<td class="value">
-				<a href="{{ url_for('admin.edit_user', userid=user.id) }}">
+				<a href="{{ url_for('admin.edit_or_ban_user', userid=user.id) }}">
 					{{user.phone_number}}
 				</a>
 			</td>
 			<td class="value">
-				<a href="{{ url_for('admin.edit_user', userid=user.id) }}">
+				<a href="{{ url_for('admin.edit_or_ban_user', userid=user.id) }}">
 					{{user.address}}
 				</a>
 			</td>

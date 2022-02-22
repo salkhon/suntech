@@ -1,0 +1,202 @@
+{% extends "layout_with_breadcrumbs.html" %} {% block content %}
+<section class="p-item-page bg-bt-gray p-tb-15">
+	<div class="container">
+		<div class="row">
+			<column id="column-left" class="col-sm-3">
+				<div class="filters">
+					<form action="" method="post">
+						<div class="price-filter ws-box">
+							<div class="label">
+								<span>Price Range</span>
+							</div>
+							<div class="pf-wrap">
+								<input
+									type="range"
+									class="slider"
+									id="rang-slider"
+									min="{{side_filters['price'][0]}}"
+									max="{{side_filters['price'][1] }}"
+									value="{{side_filters['price'][1] }}"
+									oninput="price_range(this)"
+								/>
+							</div>
+							<label class="range-label from"
+								><input
+									type="text"
+									id="range-to"
+									name="price_from"
+									value="Tk.{{side_filters['price'][0] }}"
+							/></label>
+							<label class="range-label to"
+								><input
+									type="text"
+									id="range-from"
+									name="price_to"
+									value="Tk.{{side_filters['price'][1] }}"
+							/></label>
+						</div>
+						<div
+							class="filter-group ws-box show"
+							data-group-type="status"
+						>
+							{%for key in side_filters %} {% if key !='price'%}
+							<div class="label">
+								<span>{{key}}</span>
+							</div>
+							<div class="items">
+								{% for element in side_filters[key] %}
+
+								<label class="filter">
+									<input
+										type="checkbox"
+										name="{{key}}"
+										value="{{element}}"
+									/>
+									<span>{{element}}</span>
+								</label>
+								{%endfor%}
+							</div>
+							{%endif%} {%endfor%}
+
+							<button type="submit" class="sameen-filter-btn">
+								Apply Filters
+							</button>
+						</div>
+					</form>
+				</div>
+				<div class="clear ads ads-pos-2" data-position="2"></div>
+			</column>
+
+			<div id="content" class="product-listing">
+				<div class="top-bar ws-box">
+					<div class="row">
+						<div class="breadcrumb-container">
+							<button class="tool-btn" id="lc-toggle">
+								<i class="material-icons">filter_list</i> Filter
+							</button>
+							<h6 class="page-heading m-hide">
+								{% for breadcrumb in breadcrumbs %} {% if
+								loop.last %} {{ breadcrumb.text }} {% endif %}
+								{% endfor %}
+							</h6>
+						</div>
+					</div>
+				</div>
+				<div class="main-content p-items-wrap">
+					{% for product in products %}
+
+					<div class="p-item" data-product-id="{{ product.id }}">
+						<div class="p-item-inner">
+							{% if product.discount > 0 %}
+							<div class="marks">
+								<span class="mark"
+									>Save: Tk.{{ (product.base_price *
+									product.discount)|int }}</span
+								>
+							</div>
+							{% endif %}
+							<div class="p-item-img">
+								{% if current_user.is_admin %}
+								<a
+									href="{{ url_for('admin.edit_product', product_id=product.id) }}"
+									><img
+										src="{{ product.img_urls[0] }}"
+										alt="{{ product.name }}"
+										class="sameen_plist_img"
+										width="350"
+										height="350"
+								/></a>
+								{% else %}
+								<a
+									href="{{ url_for('product.product_view', product_id=product.id) }}"
+									><img
+										src="{{ product.img_urls[0] }}"
+										alt="{{ product.name }}"
+										class="sameen_plist_img"
+										width="350"
+										height="350"
+								/></a>
+								{% endif %}
+							</div>
+							<div class="p-item-details">
+								<h4 class="p-item-name">
+									{% if current_user.is_admin %}
+									<a
+										href="{{  url_for('admin.edit_product', product_id=product.id)  }}"
+										>{{ product.name }}</a
+									>
+									{% else %}
+									<a
+										href="{{  url_for('product.product_view', product_id=product.id) }}"
+										>{{ product.name }}</a
+									>
+									{% endif %}
+								</h4>
+								<div class="short-description">
+									<ul>
+										{% for property in
+										product.summaryProperties() %}
+										<li>
+											{{ property }} : {{
+											product.summaryProperties()[property]
+											}}
+										</li>
+										{% endfor %}
+									</ul>
+								</div>
+								<div class="p-item-price">
+									<span class="price-new"
+										>Tk.{{
+										(product.base_price*(1-product.discount))|int
+										}}</span
+									>
+
+									{% if product.discount > 0 %}
+									<span class="price-old"
+										>Tk.{{ product.base_price }}</span
+									>
+									{% endif %}
+								</div>
+								<div class="actions">
+									<span
+										class="st-btn btn-add-cart"
+										type="button"
+										><i class="material-icons"
+											>shopping_cart</i
+										>
+										Buy Now</span
+									>
+									<span class="st-btn btn-compare"
+										><i class="material-icons"
+											>library_add</i
+										>Add to Compare</span
+									>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+					<div class="bottom-bar">
+						<div class="row">
+							<div class="col-md-6 col-sm-12">
+								{{ pagination.links }}
+							</div>
+							<div class="col-md-6 rs-none text-right">
+								{{ pagination.info }}
+							</div>
+							<script>
+								// removing next, previous, current labels on the pagination
+								paginationTextLabels =
+									document.querySelectorAll("span.sr-only");
+								for (span of paginationTextLabels) {
+									span.remove();
+								}
+							</script>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock content %}

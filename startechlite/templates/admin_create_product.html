@@ -1,0 +1,117 @@
+{% extends "layout.html" %} {% block content %}
+<div class="container ac-layout">
+	<h1>Create Product</h1>
+	<hr />
+	<br /><br />
+	<form
+		action="{{ url_for('admin.create_product') }}"
+		method="post"
+		enctype="multipart/form-data"
+		class="form-horizontal"
+	>
+		<div class="form-group required">
+			<label for="input-name">Name</label>
+			<input
+				type="text"
+				name="name"
+				placeholder="Name"
+				id="input-name"
+				class="form-control"
+				required
+			/>
+		</div>
+		<div class="multiple-form-group">
+			<div class="form-group required">
+				<label for="input-base-price">Base Price </label>
+				<input
+					type="number"
+					name="base_price"
+					value="0"
+					placeholder="Base Price"
+					id="input-baseprice"
+					class="form-control"
+					required
+				/>
+			</div>
+			<div class="form-group required">
+				<label for="input-discount">Discount</label>
+				<input
+					type="number"
+					name="discount"
+					min="0"
+					max="1"
+					step="0.01"
+					value="0"
+					placeholder="Discount"
+					id="input-discount"
+					class="form-control"
+					required
+				/>
+			</div>
+		</div>
+		<div class="form-group required">
+			<label for="input-rating">Rating</label>
+			<input
+				type="number"
+				min="0"
+				max="5"
+				step="0.5"
+				name="rating"
+				value="0.0"
+				placeholder="Rating"
+				id="input-rating"
+				class="form-control"
+				required
+			/>
+		</div>
+		<div class="multiple-form-group">
+			<div class="form-group required">
+				<label for="input-category">Category</label>
+				<select name="category" id="category-select">
+					{% for category in CATEGORIES %}
+					<option value="{{ category }}">{{ category }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div class="form-group required">
+				<label for="input-subcategory">Subcategory</label>
+				<select name="subcategory" id="subcategory-select">
+					{% for subcategory in SUBCATEGORIES %}
+					<option value="{{ subcategory }}">{{ subcategory }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div class="form-group required">
+				<label for="input-brand">Brand</label>
+				<select name="brand" id="brand-select">
+					{% for brand in BRANDS %}
+					<option value="{{ brand }}">{{ brand }}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+		<div class="multiple-form-group">
+			<div class="form-group required">
+				<label for="input-stock">Stock</label>
+				<input
+					type="number"
+					name="stock"
+					placeholder="stock"
+					id="input-stock"
+					class="form-control"
+					required
+				/>
+			</div>
+		</div>
+
+		<button
+			type="submit"
+			name="action"
+			value="Create"
+			class="btn btn-primary"
+		>
+			Create
+		</button>
+	</form>
+</div>
+{% endblock content %}

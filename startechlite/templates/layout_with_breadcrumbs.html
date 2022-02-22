@@ -7,7 +7,7 @@
 					><i class="material-icons" title="Home">home</i></a
 				>
 			</li>
-			{% for breadcrumb in breadcrumbs %}
+			{% for breadcrumb in breadcrumbs[2:] %}
 			<li>
 				<a href="{{ breadcrumb.url }}"> {{ breadcrumb.text }} </a>
 			</li>

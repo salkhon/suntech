@@ -1,6 +1,11 @@
 {% extends "layout.html" %} {% block content %}
 <div class="container ac-layout">
-	<h1>Edit Product</h1><br><br>
+	<h1>Edit Product</h1>
+	<a href="{{ url_for('product.product_view', product_id=product.id) }}">
+		Go to user view
+	</a>
+	<hr />
+	<br /><br />
 	<form
 		action="{{ url_for('admin.edit_product', product_id=product.id) }}"
 		method="post"
@@ -46,6 +51,9 @@
 				<label for="input-discount">Discount</label>
 				<input
 					type="number"
+					min="0"
+					max="1"
+					step="0.01"
 					name="discount"
 					value="{{ product.discount }}"
 					placeholder="Discount"
@@ -77,6 +85,7 @@
 					value="{{ product.category }}"
 					placeholder="Category"
 					id="input-category"
+					readonly=""
 					class="form-control"
 				/>
 			</div>
@@ -88,6 +97,7 @@
 					value="{{ product.subcategory }}"
 					placeholder="Subcategory"
 					id="input-subcategory"
+					readonly=""
 					class="form-control"
 				/>
 			</div>
@@ -99,6 +109,7 @@
 					value="{{ product.brand }}"
 					placeholder="Brand"
 					id="input-brand"
+					readonly=""
 					class="form-control"
 				/>
 			</div>
@@ -128,13 +139,15 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="input-image">Add Image</label>
+			<label for="input-image">Add Image(s)</label>
 			<input
 				type="file"
 				name="image"
 				placeholder="Image"
 				id="input-add-image"
 				class="form-control"
+				accept=".jpg, .jpeg, .png"
+				multiple
 			/>
 		</div>
 		<div class="form-group">
@@ -177,6 +190,49 @@
 			class="btn btn-primary"
 		>
 			Delete
+		</button>
+	</form>
+	<br /><br />
+	<hr />
+	<br /><br />
+	<form
+		action="{{ url_for('admin.edit_product', product_id=product.id) }}"
+		method="post"
+		enctype="multipart/form-data"
+		class="form-horizontal"
+	>
+		<h1>Add New Specification</h1>
+		<div class="multiple-form-group">
+			<div class="form-group required">
+				<label for="input-attr-name"> Spec Attribute Name </label>
+				<input
+					type="text"
+					name="attr_name"
+					placeholder="New Attribute"
+					id="input-attr-name"
+					class="form-control"
+					required
+				/>
+			</div>
+			<div class="form-group required">
+				<label for="input-attr-value">Spec Attribute Value</label>
+				<input
+					type="text"
+					name="attr_value"
+					placeholder="New Attribute Value"
+					id="input-attr-value"
+					class="form-control"
+					required
+				/>
+			</div>
+		</div>
+		<button
+			type="submit"
+			name="action"
+			value="Add New Specification"
+			class="btn btn-primary"
+		>
+			Add
 		</button>
 	</form>
 </div>

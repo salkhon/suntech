@@ -1,8 +1,9 @@
 {% extends "layout.html" %} {% block content %}
 <div class="container ac-layout">
-	<h1>Edit User</h1><br><br>
+	<br>
+	<h1>Edit User</h1><hr><br>
 	<form
-		action="{{ url_for('admin.edit_user', userid=user.id) }}"
+		action="{{ url_for('admin.edit_or_ban_user', userid=user.id) }}"
 		method="post"
 		enctype="multipart/form-data"
 		class="form-horizontal"
@@ -89,10 +90,10 @@
 		<button
 			type="submit"
 			name="action"
-			value="Delete"
+			value="Ban"
 			class="btn btn-primary"
 		>
-			Delete
+			Ban
 		</button>
 	</form>
 </div>

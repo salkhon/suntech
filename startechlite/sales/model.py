@@ -25,7 +25,7 @@ class Purchase:
 
         Returns:
             datetime.datetime: tentative due date
-        """        
+        """
         if self.approval_date:
             return self.approval_date + datetime.timedelta(days=7)
         else:

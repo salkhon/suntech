@@ -20,7 +20,16 @@
 			</div>
 
 			<div class="product-short-info">
-				<h1 itemprop="name" class="product-name">{{ product.name }}</h1>
+				<h1 itemprop="name" class="product-name" id="product-name">{{ product.name }}</h1>
+				{% if current_user.is_admin %}
+				<br>
+					<a
+						class="edit_product"
+						href="{{ url_for('admin.edit_product', product_id=product.id) }}"
+					>
+						Edit Product
+					</a>
+				{% endif %}
 				<table class="product-info-table">
 					<tbody>
 						<tr class="product-info-group">
@@ -74,6 +83,7 @@
 								href="{{ product.img_urls[0] }}"
 								title="{{ product.name }}"
 								><img
+									id="main_img"
 									class="main-img"
 									src="{{ product.img_urls[0] }}"
 									title="{{ product.name }}"
@@ -91,13 +101,15 @@
 							<li>
 								<a
 									class="sameen_thumbnail"
-									href="{{image}}"
+									onclick="changeImage(this)"
+									lnk="{{image}}"
 									title="{{ product.name }}"
 									><img
 										src="{{image}}"
 										title="{{ product.name }}"
 										alt="{{ product.name }}"
-								/></a>
+									/>
+								</a>
 							</li>
 							{% endfor %}
 						</ul>
@@ -106,54 +118,58 @@
 
 				<div id="product sameen_60_div">
 					<div class="pd-summary">
+						<h2>Key Features</h2>
+						<div class="short-description">
+							<ul>
+								{% for property in product.mainProperties() %}
+								<li>
+									<span class="just-color-span"
+										>{{ property }}</span
+									>
+									:<br />
+									{{ product.mainProperties()[property] }}
+								</li>
+								{% endfor %}
+							</ul>
+						</div>
+						<div class="stickers">
+							<div class="sticker reward">
+								<span class="material-icons">stars</span>
+								<span class="points">Rating: </span>
+								<span class="text"
+									>{{ product.rating }} stars</span
+								>
+							</div>
+						</div>
+						<br /><br />
+
 						<h2>Payment Options</h2>
 						<div class="product-price-options">
 							<label class="p-wrap cash-payment active">
-								<input
-									type="radio"
-									name="enable_emi"
-									checked=""
-									value="0"
-								/>
-								<span class="price"
-									>Tk.{{ product.base_price }}</span
-								>
-								<div class="p-tag fade">
-									Online / Cash Payment
-								</div>
-							</label>
-							<label class="p-wrap">
-								<input
-									type="radio"
-									name="enable_emi"
-									value="1"
-								/>
-								<span class="price"
-									>{{product.EMI}} ৳/month</span
-								>
-								<div class="p-tag fade">0% EMI for 1 Year</div>
+								<span class="price">
+									<span class="price-new" id="product-price"
+										>Tk.{{
+										(product.base_price*(1-product.discount))|round|int
+										}}</span
+									>
+
+									{% if product.discount > 0 %}
+									<span class="price-old"
+										>Tk.{{ product.base_price }}</span
+									>
+									{% endif %}
+								</span>
 							</label>
 						</div>
 						<div class="cart-option">
 							<label class="quantity">
-								<span class="ctl"
-									><i class="material-icons">remove</i></span
-								>
-								<span class="qty"
-									><input
-										type="text"
-										name="quantity"
-										id="input-quantity"
-										value="1"
-										size="2"
-								/></span>
-								<span class="ctl increment"
-									><i class="material-icons">add</i></span
-								>
 								<input
-									type="hidden"
-									name="product_id"
-									value="13593"
+									type="number"
+									name="qty"
+									id="cart-add-qty"
+									value="1"
+									min="0"
+									max="{{ product.stock }}"
 								/>
 							</label>
 							<button
@@ -191,23 +207,36 @@
 							</colgroup>
 							<thead>
 								<tr>
-									<td class="heading-row" colspan="3">
+									<td class="heading-row" colspan="2">
 										Basic Information
 									</td>
 								</tr>
 							</thead>
 							<tbody>
+								{% for property in product.mainProperties() %}
+
 								<tr>
-									<td class="name">Brand</td>
-									<td class="value">{{product.brand}}</td>
+									<td class="name">{{ property }}</td>
+
+									<td class="value">
+										{{ product.spec_dict[property] }}
+									</td>
 								</tr>
 
-								{% for property in product.spec_dict %}
+								{% endfor %}
+							</tbody>
+							<thead>
+								<tr>
+									<td class="heading-row" colspan="2">
+										Detailed Specifications
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								{% for property in product.otherProperties() %}
 
 								<tr>
-									<td class="heading-row" colspan="3">
-										{{ property }}
-									</td>
+									<td class="name">{{ property }}</td>
 
 									<td class="value">
 										{{ product.spec_dict[property] }}
@@ -220,106 +249,205 @@
 					</section>
 
 					<section
-						class="ask-question q-n-r-section bg-white m-tb-15"
+						class="ask-question bg-bt-gray q-n-r-section m-tb-15"
 						id="ask-question"
 					>
 						<div class="section-head">
 							<div class="title-n-action">
-								<h2>Questions</h2>
+								<h2>User Comments</h2>
 								<p class="section-blurb">
-									Have question about this product? Get
-									specific details about this product from
-									expert.
+									Have a concern about this product? Get in
+									Touch!
 								</p>
 							</div>
-							<div class="q-action">
-								<a
-									href="https://www.startech.com.bd/account/question?product_id=13593"
-									class="btn st-outline"
-									>Ask Question</a
-								>
-							</div>
 						</div>
-						<div id="question">
-							<div class="empty-content">
-								<span class="icon material-icons">textsms</span>
-								<div class="empty-text">
-									There are no questions asked yet. Be the
-									first one to ask a question.
+
+						<div class="comment_thread">
+							<div class="question-wrap">
+								<div class="sameen_comment_author">
+									<h1>Demo</h1>
+								</div>
+								<p class="sameen_comment_body">
+									This is a static comment. Dynamic Ones shown
+									below
+								</p>
+							</div>
+
+							<div class="sub_comments">
+								<div class="question-wrap">
+									<div class="sameen_comment_author">
+										<h1>Demo</h1>
+									</div>
+									<p class="sameen_comment_body">
+										This is a static subcomment
+									</p>
 								</div>
 							</div>
 						</div>
-					</section>
-					<section
-						class="review q-n-r-section bg-white m-tb-15"
-						id="write-review"
-					>
-						<div class="section-head">
-							<div class="title-n-action">
-								<h2>Reviews (0)</h2>
-								<p class="section-blurb">
-									Get specific details about this product from
-									customers who own it.
-								</p>
-								<div class="average-rating"></div>
-							</div>
-							<div class="q-action">
-								<a
-									href="https://www.startech.com.bd/account/review?product_id=13593"
-									class="btn st-outline"
-									>Write a Review</a
-								>
-							</div>
-						</div>
-						<div id="review">
-							<div class="empty-content">
-								<span class="icon material-icons"
-									>assignment</span
-								>
-								<div class="empty-text">
-									This product has no reviews yet. Be the
-									first one to write a review.
+
+						{%for row in main_comments%}
+
+						<div class="comment_thread">
+							<div class="question-wrap">
+								<div class="sameen_comment_author">
+									<h1>{{row[0]}}</h1>
 								</div>
+								<p class="sameen_comment_body">{{row[3]}}</p>
+							</div>
+
+							<div class="sub_comments">
+								{% for sub_row in sub_comments[ row[1] ] %}
+								<div class="question-wrap">
+									<div class="sameen_comment_author">
+										<h1>{{sub_row[0]}}</h1>
+									</div>
+									<p class="sameen_comment_body">
+										{{sub_row[3]}}
+									</p>
+								</div>
+								{% endfor %}
+
+								<form method="POST" class="comment_form">
+									<input
+										hidden
+										name="product_id"
+										value="{{product.id}}"
+									/>
+									<input
+										class="comment_input"
+										name="comment"
+										placeholder="Reply to Comment"
+										value=""
+									/>
+									<input
+										hidden
+										name="comment_on"
+										value="{{row[1]}}"
+									/>
+
+									<button
+										type="submit"
+										class="remove_btn_style"
+									>
+										Reply
+									</button>
+								</form>
 							</div>
 						</div>
+
+						{% endfor %}
+
+						<form method="POST" class="comment_form">
+							<input
+								hidden
+								name="product_id"
+								value="{{product.id}}"
+							/>
+
+							<input
+								class="comment_input"
+								name="comment"
+								placeholder="Add Comment"
+								value=""
+							/>
+
+							<button type="submit" class="remove_btn_style">
+								Comment
+							</button>
+						</form>
 					</section>
 				</div>
 				<div class="col-lg-3 col-md-12 c-left">
-					<section class="bought-together-list">
-						<h3>Frequently Bought Together</h3>
-						{% for paired_prod in product.bought_together %}
-						<div class="p-s-item">
-							<div class="image-holder">
-								<a
-									href="{{ url_for('product.product_view', product_id=paired_prod.id) }}"
-									><img
-										src="{{ paired_prod.img_urls[0] }}"
-										alt="{{ paired_prod.name }}"
-										width="80"
-										height="80"
-								/></a>
-							</div>
-							<div class="caption">
-								<h4 class="product-name">
-									<a
-										href="{{ url_for('product.product_view', product_id=paired_prod.id) }}"
-										>{{ paired_prod.name }}</a
-									>
-								</h4>
-								<div class="p-item-price price">
-									<span>Tk.{{ paired_prod.base_price }}</span>
-								</div>
-								<div class="actions">
-									<span
-										class="btn-compare"
-										><i class="material-icons"
-											>library_add</i
-										>Add to Compare</span
-									>
-								</div>
+					
+					<section
+						class="ask-question bg-bt-gray q-n-r-section m-tb-15"
+						id="ask-question"
+					>
+						<div class="section-head">
+							<div class="title-n-action">
+								<h2>User Reviews</h2>
+								<p class="section-blurb">
+									We appreciate your feedback.
+								</p>
 							</div>
 						</div>
+
+						<div class="comment_thread">
+							<div class="question-wrap">
+								<div class="sameen_comment_author">
+									<h1>Demo</h1>
+								</div>
+								<p class="sameen_comment_body">
+									This is a static Review. Dynamic Ones shown
+									below
+								</p>
+							</div>
+						</div>
+
+						{%for row in reviews%}
+
+						<div class="comment_thread">
+							<div class="purple_borders">
+								<div class="sameen_comment_author">
+									<h1>{{row[0]}}</h1>
+									<h3>Rating: {{row[1]}}/5</h3>
+								</div>
+
+								<p class="sameen_comment_body">{{row[2]}}</p>
+							</div>
+						</div>
+
 						{% endfor %}
+
+						<form method="POST" class="comment_form">
+							<input
+								hidden
+								name="product_id"
+								value="{{product.id}}"
+							/>
+
+							<label for="vol">Rating (0 to 5):</label>
+							<input type="range" name="rating" min="0" max="5" />
+
+							<input
+								class="comment_input"
+								name="review_text"
+								placeholder="Add Review"
+								value=""
+							/>
+
+							<button type="submit" class="remove_btn_style">
+								Review
+							</button>
+						</form>
+						<section class="bought-together-list">
+							<h3>Frequently Bought Together</h3>
+							{% for paired_prod in product.bought_together %}
+							<div class="p-s-item">
+								<div class="image-holder">
+									<a
+										href="{{ url_for('product.product_view', product_id=paired_prod.id) }}"
+										><img
+											src="{{ paired_prod.img_urls[0] }}"
+											alt="{{ paired_prod.name }}"
+											width="80"
+											height="80"
+									/></a>
+								</div>
+								<div class="caption">
+									<h4 class="product-name">
+										<a
+											href="{{ url_for('product.product_view', product_id=paired_prod.id) }}"
+											>{{ paired_prod.name }}</a
+										>
+									</h4>
+									<div class="p-item-price price">
+										<span>Tk.{{ paired_prod.base_price }}</span>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+						</section>
 					</section>
 				</div>
 			</div>

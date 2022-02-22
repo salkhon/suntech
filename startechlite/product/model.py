@@ -14,7 +14,6 @@ class Product:
     brand: str
     stock: int
     year: int
-    tags: list[str]
     img_urls: list[str]
     spec_dict: dict[str, str]
     EMI: float
@@ -128,7 +127,7 @@ class Product:
                 d['Brightness'] = self.spec_dict['Brightness']
             return d
 
-        return OrderedDict()
+        return OrderedDict(self.spec_dict)
 
     def otherProperties(self) -> dict:
 
@@ -176,3 +175,25 @@ class Product:
                 d2[key] = [' ', dict2[key]]
 
         return d, d2
+
+
+@dataclass
+class Bundle:
+    id: int
+    name: str
+    products_list: list[Product]
+
+    def inStock(self):
+        for product in self.products_list:
+            if product.stock == 0:
+                return False
+
+        return True
+
+    def total_price(self) -> int:
+        total = 0
+
+        for product in self.products_list:
+            total += product.base_price
+
+        return int(total)
