@@ -1,5 +1,3 @@
-"""any changes here need to be reflected back on the templates manually"""
-
 CATEGORIES = [
 
     'Monitor',
