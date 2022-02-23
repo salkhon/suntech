@@ -1,2 +1,2 @@
 # SunTech (startechlite)
-SunTech is a project for the database course CSE216 of L2T2. The purpose of this project is to use databases to emulate a real world application. In this project we use databases in a webapp that sells tech products, mainly PC components. The idea of this project is heavily influenced by the Bangladeshi PC shop https://www.startech.com.bd.
+SunTech is a project for the database course CSE216 of L2T2. The purpose of this project is to use databases to emulate a real world application. In this project we use databases in a webapp that sells tech products, mainly PC components.
