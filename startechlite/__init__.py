@@ -1,18 +1,14 @@
 from flask import Flask
 import flask_bcrypt
 import flask_login
-import flask_mail
 from startechlite.config import Config
 import flask_breadcrumbs
 
 bcrypt = flask_bcrypt.Bcrypt()
 
 login_manager = flask_login.LoginManager()
-# has to implement user_loader method, UserMixin methods
 login_manager.login_view = "account.login"  # type: ignore
 login_manager.login_message_category = "info"
-
-mail = flask_mail.Mail()
 
 breadcrumbs = flask_breadcrumbs.Breadcrumbs()
 
@@ -23,7 +19,6 @@ def create_app(config_cls=Config) -> Flask:
 
     bcrypt.init_app(app)
     login_manager.init_app(app)
-    mail.init_app(app)
     breadcrumbs.init_app(app)
 
     from startechlite.main.routes import main
