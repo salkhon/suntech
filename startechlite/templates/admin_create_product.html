@@ -67,27 +67,15 @@
 		<div class="multiple-form-group">
 			<div class="form-group required">
 				<label for="input-category">Category</label>
-				<select name="category" id="category-select">
-					{% for category in CATEGORIES %}
-					<option value="{{ category }}">{{ category }}</option>
-					{% endfor %}
-				</select>
+				<select name="category" id="category-select"></select>
 			</div>
 			<div class="form-group required">
 				<label for="input-subcategory">Subcategory</label>
-				<select name="subcategory" id="subcategory-select">
-					{% for subcategory in SUBCATEGORIES %}
-					<option value="{{ subcategory }}">{{ subcategory }}</option>
-					{% endfor %}
-				</select>
+				<select name="subcategory" id="subcategory-select"></select>
 			</div>
 			<div class="form-group required">
 				<label for="input-brand">Brand</label>
-				<select name="brand" id="brand-select">
-					{% for brand in BRANDS %}
-					<option value="{{ brand }}">{{ brand }}</option>
-					{% endfor %}
-				</select>
+				<select name="brand" id="brand-select"></select>
 			</div>
 		</div>
 		<div class="multiple-form-group">
@@ -113,5 +101,44 @@
 			Create
 		</button>
 	</form>
+	<script>
+		const CAT_SUBCAT_BRAND = JSON.parse({{ CAT_SUBCAT_BRAND_DICT | tojson }});
+
+		const categorySelectElem = document.getElementById("category-select");
+		const subcategorySelectElem =
+			document.getElementById("subcategory-select");
+		const brandSelectElem = document.getElementById("brand-select");
+
+		for (let category in CAT_SUBCAT_BRAND) {
+			categoryOpt = new Option(category, category);
+			categorySelectElem.options.add(categoryOpt);
+		}
+
+		function removeAllOptions(selectElem) {
+			while (selectElem.options.length) {
+				selectElem.options.remove(0);
+			}
+		}
+
+		categorySelectElem.onchange = function () {
+			removeAllOptions(subcategorySelectElem);
+			selectedCat = categorySelectElem.options[categorySelectElem.options.selectedIndex].value;
+			for (subcat in CAT_SUBCAT_BRAND[selectedCat]) {
+				subcategorySelectElem.options.add(new Option(subcat, subcat));
+			}
+			subcategorySelectElem.onchange();
+		};
+
+		subcategorySelectElem.onchange = function () {
+			removeAllOptions(brandSelectElem);
+			selectedCat = categorySelectElem.options[categorySelectElem.options.selectedIndex].value;
+			selectedSubcat = subcategorySelectElem.options[subcategorySelectElem.options.selectedIndex].value;
+			for (let brand of CAT_SUBCAT_BRAND[selectedCat][selectedSubcat]) {
+				brandSelectElem.options.add(new Option(brand, brand));
+			}
+		}
+
+		categorySelectElem.onchange();
+	</script>
 </div>
 {% endblock content %}

@@ -1,5 +1,6 @@
 import flask
 import flask_login
+import json
 from startechlite.constants import BRANDS, CAT_SUBCAT_BRAND_DICT, CATEGORIES, SUBCATEGORIES
 from startechlite.dbmanager.dbmanager import DBManager
 from startechlite.admin.utils import _make_new_basic_product_from_form, _make_updated_product_from_form, _make_updated_user_from_form, _get_deleted_product_basic_info_from_form
@@ -108,11 +109,10 @@ def create_product():
     if flask.request.method == "POST":
         new_basic_product = _make_new_basic_product_from_form()
         dbman.create_new_product(new_basic_product)
+    print(json.dumps(CAT_SUBCAT_BRAND_DICT))
     return flask.render_template(
         "admin_create_product.html",
-        CATEGORIES=CATEGORIES,
-        SUBCATEGORIES=SUBCATEGORIES,
-        BRANDS=BRANDS
+        CAT_SUBCAT_BRAND_DICT=json.dumps(CAT_SUBCAT_BRAND_DICT)
     )
 
 

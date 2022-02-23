@@ -267,145 +267,145 @@ ADMIN_LAST_NAME = "admin"
 CAT_SUBCAT_BRAND_DICT = {
     'Monitor': {
 
-        'Dell': {
+        'Dell': [
 
             'Dell',
 
-        },
+        ],
 
-        'LG': {
+        'LG': [
 
             'LG',
 
-        },
+        ],
 
         'Asus':
-        {
+        [
 
             'Asus',
 
-        },
+        ],
 
-        'BenQ': {
+        'BenQ': [
 
             'BenQ',
 
-        },
+        ],
 
-        'GameMax': {
+        'GameMax': [
 
             'GameMax',
 
-        },
+        ],
 
 
-        'Razer': {
+        'Razer': [
 
             'Razer',
 
-        },
+        ],
 
-        'Huawei': {
+        'Huawei': [
 
             'Huawei',
 
-        },
+        ],
 
-        'HP': {
+        'HP': [
 
             'HP',
 
-        },
+        ],
 
 
-        'AOC': {
+        'AOC': [
 
             'AOC',
 
-        },
+        ],
 
-        'MSI': {
+        'MSI': [
 
             'MSI',
 
-        },
+        ],
 
-        'Samsung': {
+        'Samsung': [
 
             'Samsung',
 
-        },
+        ],
 
 
-        'Walton': {
+        'Walton': [
 
             'Walton',
 
-        },
+        ],
 
-        'Hikvision': {
+        'Hikvision': [
 
             'Hikvision',
 
-        },
+        ],
 
         'PHILIPS':
-        {
+        [
 
             'PHILIPS',
 
-        },
+        ],
 
-        'Lenovo': {
+        'Lenovo': [
 
             'Lenovo',
 
-        },
+        ],
 
-        'Viewsonic': {
+        'Viewsonic': [
 
             'Viewsonic',
 
 
-        },
+        ],
 
-        'ASUS': {
+        'ASUS': [
 
             'ASUS',
 
-        },
+        ],
 
-        'GIGABYTE': {
+        'GIGABYTE': [
 
             'GIGABYTE',
 
-        },
+        ],
 
         'Acer':
-        {
+        [
 
             'Acer',
 
-        },
+        ],
 
-        'Corsair': {
+        'Corsair': [
 
             'Corsair',
 
-        },
+        ],
 
-        'Fantech': {
+        'Fantech': [
 
             'Fantech',
 
-        },
+        ],
 
 
     },
 
     'Component': {
 
-        'Motherboard': {
+        'Motherboard': [
 
             'ASRock',
 
@@ -420,9 +420,9 @@ CAT_SUBCAT_BRAND_DICT = {
 
             'Intel',
 
-        },
+        ],
 
-        'cpu_cooler': {
+        'cpu_cooler': [
 
             'Redragon',
 
@@ -450,8 +450,8 @@ CAT_SUBCAT_BRAND_DICT = {
 
             'Noctua',
 
-        },
-        'power_supply': {
+        ],
+        'power_supply': [
 
             'Antec',
 
@@ -471,10 +471,10 @@ CAT_SUBCAT_BRAND_DICT = {
 
             'ASUS',
 
-        },
+        ],
 
 
-        'graphics_card': {
+        'graphics_card': [
 
             'Asus',
 
@@ -491,9 +491,9 @@ CAT_SUBCAT_BRAND_DICT = {
 
             'ZOTAC',
 
-        },
+        ],
 
-        'HDD': {
+        'HDD': [
 
             'Seagate',
 
@@ -504,9 +504,9 @@ CAT_SUBCAT_BRAND_DICT = {
 
             'western_digital',
 
-        },
+        ],
 
-        'desktop_ram': {
+        'desktop_ram': [
 
             'Adata',
 
@@ -530,9 +530,9 @@ CAT_SUBCAT_BRAND_DICT = {
 
             'Team',
 
-        },
+        ],
 
-        'Casing': {
+        'Casing': [
 
             'MaxGreen',
 
@@ -549,18 +549,18 @@ CAT_SUBCAT_BRAND_DICT = {
 
             'Corsair',
 
-        },
+        ],
 
         'Processor':
-        {
+        [
 
             'AMD',
 
             'Intel',
 
-        },
+        ],
 
-        'laptop_ram': {
+        'laptop_ram': [
 
             'Adata',
 
@@ -579,10 +579,10 @@ CAT_SUBCAT_BRAND_DICT = {
 
             'Transcend',
 
-        },
+        ],
 
         'SSD':
-        {
+        [
 
             'Adata',
 
@@ -607,10 +607,10 @@ CAT_SUBCAT_BRAND_DICT = {
 
             'Team',
 
-        },
+        ],
 
 
-        'casing_cooler': {
+        'casing_cooler': [
 
             'Antec',
 
@@ -625,13 +625,13 @@ CAT_SUBCAT_BRAND_DICT = {
 
             'Noctua',
 
-        },
+        ],
 
     },
 
     'Accessories': {
 
-        'Pen Drive': {
+        'Pen Drive': [
 
             'Adata',
 
@@ -644,10 +644,10 @@ CAT_SUBCAT_BRAND_DICT = {
 
             'Transcend',
 
-        },
+        ],
 
         'Keyboard':
-        {
+        [
 
             'Redragon',
 
@@ -670,9 +670,9 @@ CAT_SUBCAT_BRAND_DICT = {
 
             'Corsair',
 
-        },
+        ],
 
-        'Earbud': {
+        'Earbud': [
 
             'Ugreen',
 
@@ -683,9 +683,9 @@ CAT_SUBCAT_BRAND_DICT = {
 
             'Fantech',
 
-        },
+        ],
 
-        'Webcam': {
+        'Webcam': [
 
             'Cisco',
 
@@ -702,10 +702,10 @@ CAT_SUBCAT_BRAND_DICT = {
 
             'Fantech',
 
-        },
+        ],
 
         'Microphone':
-        {
+        [
 
             'Redragon',
 
@@ -722,9 +722,9 @@ CAT_SUBCAT_BRAND_DICT = {
 
             'Corsair',
 
-        },
+        ],
 
-        'Headphone': {
+        'Headphone': [
 
             'Asus',
 
@@ -746,17 +746,17 @@ CAT_SUBCAT_BRAND_DICT = {
             'ASUS',
 
 
-        },
+        ],
 
-        'Power Bank': {
+        'Power Bank': [
 
             'Adata',
 
             'Havit',
 
-        },
+        ],
 
-        'Mouse': {
+        'Mouse': [
 
             'Redragon',
 
@@ -783,10 +783,10 @@ CAT_SUBCAT_BRAND_DICT = {
 
             'Benq',
 
-        },
+        ],
 
         'Earphone':
-        {
+        [
 
             'Redragon',
 
@@ -796,16 +796,16 @@ CAT_SUBCAT_BRAND_DICT = {
 
             'Fantech',
 
-        },
+        ],
 
         'Capture Card':
-        {
+        [
 
             'Avermedia',
 
-        },
+        ],
 
-        'Speaker': {
+        'Speaker': [
 
             'Redragon',
 
@@ -822,9 +822,9 @@ CAT_SUBCAT_BRAND_DICT = {
 
             'ASUS',
 
-        },
+        ],
 
-        'Memory Card': {
+        'Memory Card': [
 
             'Adata',
 
@@ -834,14 +834,14 @@ CAT_SUBCAT_BRAND_DICT = {
 
             'Transcend',
 
-        },
+        ],
 
     },
 
     'Laptop':
     {
 
-        'Gaming_Laptop': {
+        'Gaming_Laptop': [
 
             'Asus',
 
@@ -858,15 +858,15 @@ CAT_SUBCAT_BRAND_DICT = {
 
             'Lenovo',
 
-        },
+        ],
 
-        'Asus': {
+        'Asus': [
 
             'ASUS',
 
-        },
+        ],
 
-        'Ultrabook': {
+        'Ultrabook': [
 
             'Mi',
 
@@ -888,62 +888,62 @@ CAT_SUBCAT_BRAND_DICT = {
 
             'Acer',
 
-        },
+        ],
 
     },
 
     'Tablet': {
 
-        'Huion': {
+        'Huion': [
 
             'Huion',
 
-        },
+        ],
 
         'VEIKK':
-        {
+        [
 
             'VEIKK',
 
-        },
+        ],
 
-        'Amazon': {
+        'Amazon': [
 
             'Amazon',
 
-        },
+        ],
 
-        'Apple': {
+        'Apple': [
 
             'Apple',
 
-        },
+        ],
 
 
-        'Wacom': {
+        'Wacom': [
 
             'Wacom',
 
-        },
+        ],
 
-        'Walton': {
+        'Walton': [
 
             'Walton',
 
-        },
+        ],
 
         'Lenovo':
-        {
+        [
 
             'Lenovo',
 
-        },
+        ],
 
     },
 
     'Desktop': {
 
-        'Brand PC': {
+        'Brand PC': [
 
             'Dell',
 
@@ -958,18 +958,18 @@ CAT_SUBCAT_BRAND_DICT = {
 
             'Acer',
 
-        },
+        ],
 
-        'Apple PC': {
+        'Apple PC': [
 
             'Mac_Mini',
 
             'iMac',
 
 
-        },
+        ],
 
-        'All in One PC': {
+        'All in One PC': [
 
             'Dell',
 
@@ -982,15 +982,15 @@ CAT_SUBCAT_BRAND_DICT = {
             'ASUS',
 
 
-        },
+        ],
 
-        'Gaming PC': {
+        'Gaming PC': [
 
             'Ryzen',
 
             'Intel',
 
-        },
+        ],
 
     },
 

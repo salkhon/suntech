@@ -19,3 +19,4 @@ def search():
 
     products, pagination = dbman.get_by_search(search_string)  # type: ignore
     return flask.render_template("productslist.html", products=products, pagination=pagination)
+    

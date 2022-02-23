@@ -20,15 +20,17 @@
 			</div>
 
 			<div class="product-short-info">
-				<h1 itemprop="name" class="product-name" id="product-name">{{ product.name }}</h1>
+				<h1 itemprop="name" class="product-name" id="product-name">
+					{{ product.name }}
+				</h1>
 				{% if current_user.is_admin %}
-				<br>
-					<a
-						class="edit_product"
-						href="{{ url_for('admin.edit_product', product_id=product.id) }}"
-					>
-						Edit Product
-					</a>
+				<br />
+				<a
+					class="edit_product"
+					href="{{ url_for('admin.edit_product', product_id=product.id) }}"
+				>
+					Edit Product
+				</a>
 				{% endif %}
 				<table class="product-info-table">
 					<tbody>
@@ -161,6 +163,7 @@
 								</span>
 							</label>
 						</div>
+						{% if not current_user.is_admin %}
 						<div class="cart-option">
 							<label class="quantity">
 								<input
@@ -180,6 +183,7 @@
 								Buy Now
 							</button>
 						</div>
+						{% endif %}
 					</div>
 				</div>
 			</div>
@@ -358,7 +362,6 @@
 					</section>
 				</div>
 				<div class="col-lg-3 col-md-12 c-left">
-					
 					<section
 						class="ask-question bg-bt-gray q-n-r-section m-tb-15"
 						id="ask-question"
@@ -442,7 +445,10 @@
 										>
 									</h4>
 									<div class="p-item-price price">
-										<span>Tk.{{ paired_prod.base_price }}</span>
+										<span
+											>Tk.{{ paired_prod.base_price
+											}}</span
+										>
 									</div>
 								</div>
 							</div>

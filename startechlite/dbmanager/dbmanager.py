@@ -413,7 +413,7 @@ class DBManager:
             connection_cursor.cursor.execute(
                 self.UPDATE_PRODUCT_BY_ID,
                 id=id,
-                name=updated_product.name, 
+                name=updated_product.name,
                 base_price=updated_product.base_price,
                 discount=updated_product.discount,
                 rating=updated_product.rating,
@@ -984,6 +984,7 @@ class DBManager:
                 self.DELETE_PURCHASE_BY_ID,
                 purchase_id=id,
             )
+
 
 @startechlite.login_manager.user_loader
 def load_user(id):
