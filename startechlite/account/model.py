@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 from flask_login import UserMixin
-from flask_admin.model import BaseModelView
 from wtforms.form import Form
 from wtforms.fields import StringField, EmailField, PasswordField, TelField, TextAreaField
 from wtforms import validators

@@ -4082,3 +4082,52 @@ body
 	border-radius: 5px;
 	border: 4px solid  rgb(95, 0, 139);
 }
+
+.cat-items-wrap {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -5px;
+	padding: 50px 180px;
+}.cat-items-wrap {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -5px;
+	padding: 50px 180px;
+}
+.cat-item {
+	flex: 0 0 12.33%;
+	padding: 0 5px;
+	margin-bottom: 20px;
+	text-align: center;
+	
+}
+
+.cat-img-filter{
+	filter: invert(1);
+}
+.cat-item .cat-item-inner {
+	display: block;
+	background: rgb(0, 0, 0);
+	border-radius: 15px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+	padding: 15px 0;
+	border: 3px solid rgb(0, 0, 0);
+}
+.cat-item .cat-item-inner:hover{
+	border: 3px solid rgb(187, 0, 0);
+}
+.cat-item .cat-item-inner:hover {
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.cat-item .cat-icon {
+	display: inline-block;
+	padding: 15px;
+}
+.cat-item p {
+	font-size: 16px;
+	margin: 0;
+	color: white;
+}
+.cat-item:hover a {
+	text-decoration: none;
+}

@@ -1,15 +1,15 @@
 {% extends "layout.html" %} {% block content %}
 <div class="m-home m-cat">
-	<h2 class="m-header">Featured Category</h2>
-	<p class="m-blurb">Get Your Desired Product from Featured Category!</p>
-	<div class="cat-items-wrap">
+	<h2 class="m-header">Welcome To SUNTECH</h2>
+	<p class="m-blurb">Your one stop destination for all things tech!</p>
+<div class="cat-items-wrap">
 		<div class="cat-item">
 			<a
-				href="https://www.startech.com.bd/laptop-notebook/laptop"
+			href="{{ url_for('productslist.get_category', category='laptop') }}"
 				class="cat-item-inner"
 			>
 				<span class="cat-icon"
-					><img
+					><img	 class="cat-img-filter"
 						src="https://www.startech.com.bd/image/cache/catalog/category-thumb/laptop-48x48.png"
 						alt="All Laptop"
 						width="48"
@@ -20,11 +20,11 @@
 		</div>
 		<div class="cat-item">
 			<a
-				href="https://www.startech.com.bd/desktops"
+			href="{{ url_for('productslist.get_category', category='desktop') }}"
 				class="cat-item-inner"
 			>
 				<span class="cat-icon"
-					><img
+					><img	 class="cat-img-filter"
 						src="https://www.startech.com.bd/image/cache/catalog/category-thumb/desktop-48x48.png"
 						alt="Desktop"
 						width="48"
@@ -39,7 +39,7 @@
 				class="cat-item-inner"
 			>
 				<span class="cat-icon"
-					><img
+					><img	 class="cat-img-filter"
 						src="https://www.startech.com.bd/image/cache/catalog/category-thumb/cpu-48x48.png"
 						alt="Processor"
 						width="48"
@@ -50,11 +50,10 @@
 		</div>
 		<div class="cat-item">
 			<a
-				href="https://www.startech.com.bd/component/graphics-card"
 				class="cat-item-inner"
 			>
 				<span class="cat-icon"
-					><img
+					><img	 class="cat-img-filter"
 						src="https://www.startech.com.bd/image/cache/catalog/category-thumb/gpu-48x48.png"
 						alt="Graphics Card"
 						width="48"
@@ -65,11 +64,10 @@
 		</div>
 		<div class="cat-item">
 			<a
-				href="https://www.startech.com.bd/component/SSD-Hard-Disk"
 				class="cat-item-inner"
 			>
 				<span class="cat-icon"
-					><img
+					><img	 class="cat-img-filter"
 						src="https://www.startech.com.bd/image/cache/catalog/category-thumb/SSD-48x48.png"
 						alt="SSD"
 						width="48"
@@ -80,11 +78,10 @@
 		</div>
 		<div class="cat-item">
 			<a
-				href="{{ url_for('productslist.get_category_subcategory', category='accessories', subcategory='keyboards') }}"
 				class="cat-item-inner"
 			>
 				<span class="cat-icon"
-					><img
+					><img	 class="cat-img-filter"
 						src="https://www.startech.com.bd/image/cache/catalog/category-thumb/keyboard-48x48.png"
 						alt="Keyboard"
 						width="48"
@@ -95,11 +92,10 @@
 		</div>
 		<div class="cat-item">
 			<a
-				href="https://www.startech.com.bd/accessories/mouse"
 				class="cat-item-inner"
 			>
 				<span class="cat-icon"
-					><img
+					><img	 class="cat-img-filter"
 						src="https://www.startech.com.bd/image/cache/catalog/category-thumb/accessories-48x48.png"
 						alt="Mouse"
 						width="48"
@@ -110,11 +106,10 @@
 		</div>
 		<div class="cat-item">
 			<a
-				href="https://www.startech.com.bd/accessories/headphone"
 				class="cat-item-inner"
 			>
 				<span class="cat-icon"
-					><img
+					><img	 class="cat-img-filter"
 						src="https://www.startech.com.bd/image/cache/catalog/category-thumb/headphone-48x48.png"
 						alt="Headphone"
 						width="48"
@@ -125,11 +120,10 @@
 		</div>
 		<div class="cat-item">
 			<a
-				href="https://www.startech.com.bd/accessories/webcam"
 				class="cat-item-inner"
 			>
 				<span class="cat-icon"
-					><img
+					><img	 class="cat-img-filter"
 						src="https://www.startech.com.bd/image/cache/catalog/category-thumb/webcam-48x48.png"
 						alt="Webcam"
 						width="48"
@@ -140,11 +134,10 @@
 		</div>
 		<div class="cat-item">
 			<a
-				href="https://www.startech.com.bd/office-equipment/printer"
 				class="cat-item-inner"
 			>
 				<span class="cat-icon"
-					><img
+					><img	 class="cat-img-filter"
 						src="https://www.startech.com.bd/image/cache/catalog/category-thumb/printer-48x48.png"
 						alt="Printer"
 						width="48"
@@ -155,11 +148,10 @@
 		</div>
 		<div class="cat-item">
 			<a
-				href="https://www.startech.com.bd/photocopier"
 				class="cat-item-inner"
 			>
 				<span class="cat-icon"
-					><img
+					><img	 class="cat-img-filter"
 						src="https://www.startech.com.bd/image/cache/catalog/category-thumb/photocopier-48x48.png"
 						alt="Photocopier"
 						width="48"
@@ -170,11 +162,10 @@
 		</div>
 		<div class="cat-item">
 			<a
-				href="https://www.startech.com.bd/projector"
 				class="cat-item-inner"
 			>
 				<span class="cat-icon"
-					><img
+					><img	 class="cat-img-filter"
 						src="https://www.startech.com.bd/image/cache/catalog/category-thumb/projector-48x48.png"
 						alt="Projector"
 						width="48"
@@ -185,11 +176,10 @@
 		</div>
 		<div class="cat-item">
 			<a
-				href="https://www.startech.com.bd/networking/router"
 				class="cat-item-inner"
 			>
 				<span class="cat-icon"
-					><img
+					><img	 class="cat-img-filter"
 						src="https://www.startech.com.bd/image/cache/catalog/category-thumb/router-48x48.png"
 						alt="Router"
 						width="48"
@@ -199,9 +189,9 @@
 			</a>
 		</div>
 		<div class="cat-item">
-			<a href="https://www.startech.com.bd/gadget" class="cat-item-inner">
+			<a  class="cat-item-inner">
 				<span class="cat-icon"
-					><img
+					><img	 class="cat-img-filter"
 						src="https://www.startech.com.bd/image/cache/catalog/category-thumb/gadget-48x48.png"
 						alt="Gadget"
 						width="48"
@@ -212,11 +202,10 @@
 		</div>
 		<div class="cat-item">
 			<a
-				href="https://www.startech.com.bd/gadget/smart-watch"
 				class="cat-item-inner"
 			>
 				<span class="cat-icon"
-					><img
+					><img	 class="cat-img-filter"
 						src="https://www.startech.com.bd/image/cache/catalog/category-thumb/smart-watch-48x48.png"
 						alt="Smart Watch"
 						width="48"
@@ -227,17 +216,16 @@
 		</div>
 		<div class="cat-item">
 			<a
-				href="https://www.startech.com.bd/accessories/converter-and-cable"
-				class="cat-item-inner"
+					class="cat-item-inner"
 			>
 				<span class="cat-icon"
-					><img
+					><img class="cat-img-filter"
 						src="https://www.startech.com.bd/image/cache/catalog/category-thumb/cable-converter-48x48.png"
-						alt="Converter &amp; Cable"
+						alt="Cable"
 						width="48"
 						height="48"
 				/></span>
-				<p>Converter &amp; Cable</p>
+				<p>Cable</p>
 			</a>
 		</div>
 	</div>

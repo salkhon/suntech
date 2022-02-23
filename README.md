@@ -12,7 +12,7 @@ The downloaded `products` folder will contain the images. Put this folder in the
 `startechlite/static/img/`\
 \
 So after putting `products` in the appropriate directory the folders containing the images should be in:
-`startechlite/static/img/products/`\
+`startechlite/static/img/products/`
 
 #### 3. Preparing database
 ###### a. Setting username and password

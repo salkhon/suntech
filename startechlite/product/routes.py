@@ -28,7 +28,9 @@ def product_view(product_id) -> str:
             dbman.add_comment([p_id, comments, comment_on])
 
         if len(review_texts) != 0:
-            dbman.add_review([p_id, ratings, review_texts])
+            is_review_successful =  dbman.add_review([p_id, ratings, review_texts])
+            if not is_review_successful:
+                flask.flash("You have to buy the product to review!")
 
     product = dbman.get_product_by_id(product_id, True)
     reviews = dbman.get_reviews(product_id)

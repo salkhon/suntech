@@ -878,6 +878,7 @@ class DBManager:
     APPROVE_PURCHASE_BY_ID = "UPDATE purchase SET approval_date = CURRENT_TIMESTAMP WHERE purchase_id = :purchase_id"
     UPDATE_PURCHASE_ADDRESS_BY_ID = "UPDATE purchase SET address = :address WHERE purchase_id = :purchase_id"
     SELECT_ALL_PURCHASES = "SELECT * FROM purchase"
+    DELETE_PURCHASE_BY_ID = "DELETE FROM purchase WHERE purchase_id = :purchase_id"
 
     def get_products_counts_for_purchase(self, purchase_id: int, connection_cursor: "ConnectionAndCursor") -> list[tuple[Product, int]]:
         products = []
@@ -977,6 +978,12 @@ class DBManager:
 
         return purchases
 
+    def delete_purchase_by_id(self, id):
+        with self.ConnectionAndCursor() as connection_cursor:
+            connection_cursor.cursor.execute(
+                self.DELETE_PURCHASE_BY_ID,
+                purchase_id=id,
+            )
 
 @startechlite.login_manager.user_loader
 def load_user(id):

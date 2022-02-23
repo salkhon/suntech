@@ -14,10 +14,10 @@ cartJS.products.forEach((product) => {
             >
             <div class="options"></div>
         </td>
-        <td class="rs-none">${product.price}৳</td>
+        <td class="rs-none">Tk. ${product.price}</td>
         <td class="rs-none">${product.count}</td>
         <td class="price text-right">
-            ${product.price * product.count}৳
+            Tk. ${product.price * product.count}
         </td>								
     `;
 	orderOverviewTableBody.appendChild(tableRow);
@@ -29,17 +29,17 @@ const homeDelivery = 60;
 orderOverviewTableBody.innerHTML += `
     <tr class="total">
         <td colspan="3" class="text-right"><strong>Sub-Total:</strong></td>
-        <td class="text-right"><span class="amount">${subTotal}৳</span></td>
+        <td class="text-right"><span class="amount">Tk. ${subTotal}</span></td>
     </tr>
     <tr class="total">
         <td colspan="3" class="text-right"><strong>Home Delivery:</strong></td>
-        <td class="text-right"><span class="amount">${homeDelivery}৳</span></td>
+        <td class="text-right"><span class="amount">Tk. ${homeDelivery}</span></td>
     </tr>
     <tr class="total">
         <td colspan="3" class="text-right"><strong>Total:</strong></td>
-        <td class="text-right"><span class="amount">${
+        <td class="text-right"><span class="amount">Tk. ${
 			subTotal + homeDelivery
-		}৳</span></td>
+		}</span></td>
     </tr>
 `;
 

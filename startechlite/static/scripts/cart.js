@@ -251,11 +251,11 @@ class Cart {
 		} height="47"></div>
                 <div class="info">
                     <div class="name">${product.name}</div>
-                    <span class="amount">${product.price}</span>
+                    <span class="amount">Tk. ${product.price}</span>
                     <i class="material-icons">clear</i>
-                    <span>${product.count}৳</span>
+                    <span>${product.count}</span>
                     <span class="eq">=</span>
-                    <span class="total">${product.price * product.count}৳</span>
+                    <span class="total">Tk. ${product.price * product.count}</span>
                 </div>
                 <div class="remove" title="Remove"><i class="material-icons" aria-hidden="true">delete</i></div>
             `;
@@ -282,7 +282,7 @@ class Cart {
 		});
 
 		const cartSubtotal = document.querySelector("div.total div.amount");
-		cartSubtotal.textContent = "" + total + "৳";
+		cartSubtotal.textContent = "Tk. " + total;
 
 		cartToggler.title = `${this.products.length} item(s)`;
 		const cartToggleCount = cartToggler.querySelector("span.counter");

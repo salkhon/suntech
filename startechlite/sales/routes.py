@@ -58,9 +58,21 @@ def order_confirmed() -> str | flask.Response:
 @flask_login.login_required
 def info(purchase_id: int):
     if flask.request.method == "POST":
-        new_address = flask.request.form.get("address")
-        dbman.update_purchase_address_by_id(purchase_id, new_address)
-        return flask.redirect(flask.url_for("sales.info", purchase_id=purchase_id))
+        if flask.request.form.get("action") == "Change Address":
+            new_address = flask.request.form.get("address")
+            dbman.update_purchase_address_by_id(purchase_id, new_address)
+            return flask.redirect(flask.url_for("sales.info", purchase_id=purchase_id))
+        elif flask.request.form.get("action") == "Delete Purchase":
+            purchase_to_be_deleted = dbman.get_purchase_by_id(purchase_id)
+
+            if not purchase_to_be_deleted or (purchase_to_be_deleted and purchase_to_be_deleted.approval_date):
+                flask.flash("Purchase cannot be deleted")
+                return flask.redirect(flask.url_for("sales.info", purchase_id=purchase_id))
+
+            dbman.delete_purchase_by_id(purchase_id)
+            flask.flash("Purchase deleted")
+            return flask.redirect(flask.url_for("main.home"))
+        print("here")
 
     purchase = dbman.get_purchase_by_id(purchase_id)
 

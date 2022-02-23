@@ -178,7 +178,9 @@
 									/>
 									<button
 										type="submit"
+										name="action"
 										class="btn btn-primary"
+										value="Change Address"
 									>
 										Change Address
 									</button>
@@ -231,6 +233,22 @@
 							{% endfor %}
 						</tbody>
 					</table>
+					{% if not purchase.approval_date %}
+					<form
+						action="{{ url_for('sales.info', purchase_id=purchase.id) }}"
+						method="post"
+						enctype="multipart/form-data"
+					>
+						<button
+							name="action"
+							type="submit"
+							class="btn btn-primary"
+							value="Delete Purchase"
+						>
+							Delete
+						</button>
+					</form>
+					{% endif %}
 				</div>
 			</div>
 		</div>
