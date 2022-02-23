@@ -94,6 +94,7 @@
 										>
 										{% endif %}
 									</div>
+									{% if not current_user.is_admin %}
 									<div class="actions">
 										<span
 											class="st-btn btn-add-cart"
@@ -109,6 +110,7 @@
 											>Add to Compare</span
 										>
 									</div>
+									{% endif %}
 								</div>
 							</div>
 						</div>

@@ -7,11 +7,11 @@
 					><i class="material-icons" title="Home">home</i></a
 				>
 			</li>
-			{% for breadcrumb in breadcrumbs[2:] %}
+			{% for breadcrumb in breadcrumbs[2:] %} {% if breadcrumb.text %}
 			<li>
 				<a href="{{ breadcrumb.url }}"> {{ breadcrumb.text }} </a>
 			</li>
-			{% endfor %}
+			{% endif %} {% endfor %}
 		</ul>
 	</div>
 </section>
