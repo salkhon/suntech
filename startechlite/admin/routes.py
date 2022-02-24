@@ -109,7 +109,6 @@ def create_product():
     if flask.request.method == "POST":
         new_basic_product = _make_new_basic_product_from_form()
         dbman.create_new_product(new_basic_product)
-    print(json.dumps(CAT_SUBCAT_BRAND_DICT))
     return flask.render_template(
         "admin_create_product.html",
         CAT_SUBCAT_BRAND_DICT=json.dumps(CAT_SUBCAT_BRAND_DICT)

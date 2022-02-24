@@ -13,7 +13,7 @@ Run `git clone <repo link>` on your terminal at the appropriate directory.
 The images for this webapp exceed github's file size restriction, so you have to download them from the following google drive link:
 [SunTech Images](https://drive.google.com/drive/folders/1-tysqCQBnzjx3oBqQWv6LcE-A8N-R-kM?usp=sharing).\
 \
-The downloaded `products` folder will contain the images. Put this folder in the following directory **relative** to the project root:
+The downloaded `products` folder will contain the images in their corresponding id folder. Put this folder in the following directory **relative** to the project root:
 `/startechlite/static/img/`\
 \
 So after putting `products` in the appropriate directory the folders containing the images should be in:
@@ -37,7 +37,7 @@ After you have logged in as the database user using any of the two methods on st
 #### c. Inserting data
 Then run: `data\INSERT_DATA.sql` to insert the data. It is advisable to run the insertion sql using sqlplus in the terminal to have it done quicker. 
 ### 4. Installing dependencies
-To install all the dependecies of the webapp run the following pip command:
+To install all the dependencies of the webapp run the following pip command:
 ```
 pip install requirements.txt
 ```
@@ -45,3 +45,28 @@ pip install requirements.txt
 After completing these steps run the webapp by executing the file: `run.py`. 
 
 ## Features
+This webapp is designed to sell PC related products, and the features revolve around that goal. There are two types of access to the webapp:
+## 1. User 
+### a. Registration
+### b. Login
+### c. Browse Products
+### d. Compare Products
+### e. Search Products
+### f. Filter Products
+### g. Add Products to Cart
+### h. Purchase Products
+### i. Update and Delete Purchase
+### j. Logout
+
+## 2. Admin
+### a. View Users
+### b. Update Users
+### c. Ban Users
+### d. View Purchases
+### e. Approve Purchases
+### f. Update Purchases
+### g. Delete Purchases
+### h. Create Product
+### i. Edit Product
+### j. Add Product Specification
+### k. Delete Product
