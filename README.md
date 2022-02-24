@@ -60,9 +60,9 @@ This webapp is designed to sell PC related products, and the features revolve ar
 
 ### 2. Admin
 #### - Login
-Admins can login with a special account that can be accessed by loggin in using the email: `admin@suntech.com`, and the password `admin`. Further features can be accessed through the navigation bar after loggin in. 
+Admins can login with a special account that can be accessed by logging in using the email: `admin@suntech.com`, and the password `admin`. Further features can be accessed through the navigation bar after logging in. 
 #### - View Users
-Clicking on the `Users` link on the navigation bar the admin can see the list of suntech users currently registered. By clicking on any of the fields of the list, admin can visit the user specific page. 
+Clicking on the `Users` link on the navigation bar the admin can see the list of SunTech users currently registered. By clicking on any of the fields of the list, admin can visit the user specific page. 
 #### - Update Users
 By visiting the user's page, the admin can change the user's name, phone number and address. After performing the changes, the admin has to click the update button at the bottom of the page to complete that update. 
 #### - Ban Users
@@ -80,6 +80,6 @@ Admins can create new products to be viewed on the site. By clicking on the `Cre
 #### - Edit Product
 Admins can edit existing and newly created product. After creating a bare-bone product, admin must edit and decorate a product to make it attractive. By clicking on any product, admin can go to the editing page. There admin can edit the product's name, base price, discount, rating, stock, year etc attributes. Admin can also upload any image that corresponds to the product. That image will show up on the product's individual page. 
 #### - Add Product Specification
-Implementing the Entity Attribute Value model for our database design, we can allow products to have variable number of attrbutes, according to the product's unique features. The admin simply has to visit the bottom part of the edit product page, and add an attribute name and it's corresponding value and click the add button. That new attribute will show up on the product's page. Moreover, that attribute is now directly comparable with other product's having the same attribute name using SunTech's compare now feature. 
+Implementing the Entity Attribute Value model for our database design, allowed products to have variable number of attrbutes, according to the product's unique features. The admin simply has to visit the bottom part of the edit product page, and add an attribute name and it's corresponding value and click the add button. That new attribute will show up on the product's page. Moreover, that attribute is now directly comparable with other product's having the same attribute name using SunTech's compare now feature. 
 #### - Delete Product
 Beside the update button for each product is a delete button, that deletes a product. 

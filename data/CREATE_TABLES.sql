@@ -134,6 +134,8 @@ EXCEPTION
 END;
 /
 
+-- Functions
+
 CREATE OR REPLACE FUNCTION is_email_registrable(input_email IN VARCHAR2)
 RETURN INT IS
     existing_email_count INT;
@@ -168,5 +170,23 @@ BEGIN
     UPDATE products 
     SET stock = stock - :NEW.product_count
     WHERE id = :NEW.product_id;
+END;
+/
+
+CREATE OR REPLACE TRIGGER update_rating 
+BEFORE INSERT ON review
+FOR EACH ROW 
+DECLARE
+    updated_pid NUMBER;
+    new_rating NUMBER;
+    old_rating NUMBER;
+    cnt NUMBER;
+BEGIN
+    updated_pid := :NEW.product_id;
+    new_rating := :NEW.rating;
+
+    SELECT AVG(RATING) INTO old_rating FROM review WHERE product_id = updated_pid;
+    SELECT COUNT(*) INTO cnt FROM review WHERE product_id = updated_pid;
+    UPDATE products SET rating = (old_rating*cnt + new_rating)/(cnt+1) WHERE id = updated_pid;
 END;
 /
