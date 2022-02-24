@@ -38,7 +38,11 @@ def edit_or_ban_user(userid):
         elif flask.request.form.get("action") == "Ban":
             id, email = flask.request.form.get("id"), flask.request.form.get("email")
             assert id and email
-            dbman.ban_user(int(id), email)
+            ban_successful = dbman.ban_user(int(id), email)
+            if ban_successful:
+                flask.flash("Banned user", "success")
+            else:
+                flask.flash("Could not ban", "error")
 
         return flask.redirect(flask.url_for("admin.get_users"))
     else:

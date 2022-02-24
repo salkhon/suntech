@@ -16,7 +16,7 @@ data needs to be sent to the server.
 """
 
 
-def _make_purchase_from_form_and_json() -> Purchase:
+def _make_purchase_from_form_and_json() -> Purchase | None:
     purchase_json = flask.request.get_json()
     assert purchase_json
 
@@ -25,6 +25,12 @@ def _make_purchase_from_form_and_json() -> Purchase:
 
     productid_count = {}
     for product_count in product_counts:
+        id, count = product_count["id"], product_count["count"]
+        product = dbman.get_product_by_id(id)
+
+        if not product or (product and product.stock < count):
+            return None
+
         productid_count[product_count["id"]] = product_count["count"]
 
     purchase = Purchase(info=formdata.get(
@@ -42,16 +48,23 @@ def checkout() -> str | Response:
 
     if flask.request.method == "POST":
         purchase = _make_purchase_from_form_and_json()
+        if not purchase:
+            return flask.redirect(flask.url_for("sales.order_confirmed", result="fail"))
+
         dbman.insert_purchase(purchase)
-        return flask.redirect(flask.url_for("sales.order_confirmed"))
+        return flask.redirect(flask.url_for("sales.order_confirmed", result="successful"))
 
     return flask.render_template("checkout.html")
 
 
-@sales.route("/confirm")
-def order_confirmed() -> str | flask.Response:
-    flask.flash("Success", "success")
-    return flask.render_template("order_confirmed.html")
+@sales.route("/confirm/<result>")
+def order_confirmed(result: str) -> str | flask.Response:
+    if result == "success":
+        return flask.render_template("order_confirmed.html", is_success=True)
+    else:
+        flask.flash(
+            "Product might not exist anymore or you have ordered more than is in stock!")
+        return flask.render_template("order_confirmed.html", is_success=False)
 
 
 @sales.route("/info/<int:purchase_id>", methods=["GET", "POST"])

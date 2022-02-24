@@ -70,7 +70,16 @@ class DBManager:
         OFFSET :offset ROWS FETCH NEXT :maxnumrows ROWS ONLY
     """
     UPDATE_USER = "UPDATE users SET first_name = :first_name, last_name = :last_name, phone_number = :phone_number, user_address = :user_address WHERE id = :id"
-    DELETE_USER = "DELETE FROM users WHERE id = :id"
+    DELETE_AND_BAN_USER = """
+        BEGIN
+            delete_and_ban_user(:user_id, :is_success);
+        END;
+    """
+    RUN_IS_USER_REGISTRABLE = """
+        BEGIN
+            :is_registrable := is_email_registrable(:user_email);
+        END;
+    """
 
     def get_user_by_id(self, userid: int) -> User | None:
         user = None
@@ -95,6 +104,17 @@ class DBManager:
             user = User(*user)
 
         return user
+
+    def is_user_email_registrable(self, email: str) -> bool:
+        with self.ConnectionAndCursor() as connection_cursor:
+            is_registrable = connection_cursor.cursor.var(int)
+            connection_cursor.cursor.execute(
+                self.RUN_IS_USER_REGISTRABLE, 
+                user_email=email, 
+                is_registrable=is_registrable
+            )
+            return is_registrable.getvalue() == 1
+        return False
 
     def insert_init_admin(self):
         # there will be only one admin, so admin table is redundant
@@ -161,16 +181,16 @@ class DBManager:
     SELECT_ALL_BANS = "SELECT * FROM bans"
     INSERT_INTO_BANS = "INSERT INTO bans (email) VALUES (:email)"
 
-    def ban_user(self, userid: int, email: str):
+    def ban_user(self, userid: int, email: str) -> bool:
         with self.ConnectionAndCursor() as connection_cursor:
+            is_success = connection_cursor.cursor.var(int)
             connection_cursor.cursor.execute(
-                self.DELETE_USER,
-                id=userid
+                self.DELETE_AND_BAN_USER,
+                user_id=userid, 
+                is_success=is_success
             )
-            connection_cursor.cursor.execute(
-                self.INSERT_INTO_BANS,
-                email=email
-            )
+            return is_success.getvalue() == 1
+        return False
 
     def get_banned_emails(self) -> list[str]:
         banned_emails = []
@@ -315,7 +335,7 @@ class DBManager:
 
         return product
 
-    def _get_category_subcategory_brand_helper(self, category: str, subcategory: str = None, brand: str = None, page: int = 1, per_page: int = 15) -> tuple[list[Product], flask_paginate.Pagination, dict]:
+    def _get_category_subcategory_brand_helper(self, category: str, subcategory: str | None = None, brand: str | None = None, page: int = 1, per_page: int = 15) -> tuple[list[Product], flask_paginate.Pagination, dict]:
 
         def execute_count_query():
             if category and subcategory and brand:

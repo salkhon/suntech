@@ -255,7 +255,9 @@ class Cart {
                     <i class="material-icons">clear</i>
                     <span>${product.count}</span>
                     <span class="eq">=</span>
-                    <span class="total">Tk. ${product.price * product.count}</span>
+                    <span class="total">Tk. ${
+						product.price * product.count
+					}</span>
                 </div>
                 <div class="remove" title="Remove"><i class="material-icons" aria-hidden="true">delete</i></div>
             `;
@@ -321,22 +323,27 @@ cartCloseToggler.onclick = function () {
 
 addToCartButtons.forEach((button) => {
 	// @ts-ignore
-	button.onclick = function () {
+	button.addEventListener("click", function () {
 		const productElem = button.closest("div.p-item");
 		cartJS.addToCart(productElem);
 		alert("Product has been added to cart!");
-	};
+	});
 });
 
 if (productPageAddToCart) {
-	productPageAddToCart.onclick = function () {
+	productPageAddToCart.addEventListener("click", function () {
 		// @ts-ignore
 		const qty = parseInt(document.getElementById("cart-add-qty").value);
+
+		if (qty == 0) {
+			return;
+		}
+
 		for (let i = 0; i < qty; i++) {
 			cartJS.addToCartFromProductPage();
 		}
 		alert("Product has been added to cart!");
-	};
+	});
 }
 
 if (bundlePageAddToCart) {

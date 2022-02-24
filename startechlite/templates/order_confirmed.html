@@ -1,3 +1,7 @@
 {% extends "layout.html" %} {% block content %}
+{% if is_success %}
 <h2>Your order has been confirmed!</h2>
+{% else %}
+<h2>Order Failed</h2>
+{% endif %}
 {% endblock content %}

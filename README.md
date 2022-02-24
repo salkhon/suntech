@@ -46,27 +46,27 @@ After completing these steps run the webapp by executing the file: `run.py`.
 
 ## Features
 This webapp is designed to sell PC related products, and the features revolve around that goal. There are two types of access to the webapp:
-## 1. User 
-### a. Registration
-### b. Login
-### c. Browse Products
-### d. Compare Products
-### e. Search Products
-### f. Filter Products
-### g. Add Products to Cart
-### h. Purchase Products
-### i. Update and Delete Purchase
-### j. Logout
+### 1. User 
+#### a. Registration
+#### b. Login
+#### c. Browse Products
+#### d. Compare Products
+#### e. Search Products
+#### f. Filter Products
+#### g. Add Products to Cart
+#### h. Purchase Products
+#### i. Update and Delete Purchase
+#### j. Logout
 
-## 2. Admin
-### a. View Users
-### b. Update Users
-### c. Ban Users
-### d. View Purchases
-### e. Approve Purchases
-### f. Update Purchases
-### g. Delete Purchases
-### h. Create Product
-### i. Edit Product
-### j. Add Product Specification
-### k. Delete Product
+### 2. Admin
+#### a. View Users
+#### b. Update Users
+#### c. Ban Users
+#### d. View Purchases
+#### e. Approve Purchases
+#### f. Update Purchases
+#### g. Delete Purchases
+#### h. Create Product
+#### i. Edit Product
+#### j. Add Product Specification
+#### k. Delete Product

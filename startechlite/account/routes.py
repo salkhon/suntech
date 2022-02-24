@@ -48,8 +48,7 @@ def get_validated_registered_user() -> User | None:
 
     if (
         not (firstname and lastname and email and telephone and password) or
-        email in dbman.get_banned_emails() or
-        dbman.get_user_by_email(email)
+        not dbman.is_user_email_registrable(email)
     ):
         return None
 
