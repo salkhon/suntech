@@ -109,8 +109,8 @@ class DBManager:
         with self.ConnectionAndCursor() as connection_cursor:
             is_registrable = connection_cursor.cursor.var(int)
             connection_cursor.cursor.execute(
-                self.RUN_IS_USER_REGISTRABLE, 
-                user_email=email, 
+                self.RUN_IS_USER_REGISTRABLE,
+                user_email=email,
                 is_registrable=is_registrable
             )
             return is_registrable.getvalue() == 1
@@ -186,7 +186,7 @@ class DBManager:
             is_success = connection_cursor.cursor.var(int)
             connection_cursor.cursor.execute(
                 self.DELETE_AND_BAN_USER,
-                user_id=userid, 
+                user_id=userid,
                 is_success=is_success
             )
             return is_success.getvalue() == 1
