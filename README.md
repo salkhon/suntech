@@ -1,6 +1,8 @@
 # SunTech
 SunTech is a project for the database course CSE216 of L2T2. The purpose of this project is to use databases to emulate a real world application. In this project we use databases in a webapp that sells tech products, mainly PC components.
 
+This application was built using Flask as its backend framework, and OracleDB as its database. The frontend was built using VanillaJS, HTML and CSS. 
+
 ## Running on your PC
 
 ### 1. Cloning repo
