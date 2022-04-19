@@ -49,7 +49,7 @@ pip install requirements.txt
 After completing these steps run the webapp by executing the file: `run.py`. 
 
 ## Features
-!(demo)[https://github.com/salkhon/suntech/blob/master/startechlite/static/img/demo.png]
+![demo](https://github.com/salkhon/suntech/blob/master/startechlite/static/img/demo.png)
 
 This webapp is designed to sell PC related products, and the features revolve around that goal. There are two types of access to the webapp:
 ### 1. User 
