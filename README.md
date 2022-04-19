@@ -1,4 +1,6 @@
 # SunTech
+![suntech](https://github.com/salkhon/suntech/blob/master/startechlite/static/img/suntech.png)
+
 SunTech is a project for the database course CSE216 of L2T2. The purpose of this project is to use databases to emulate a real world application. In this project we use databases in a webapp that sells tech products, mainly PC components.
 
 This application was built using Flask as its backend framework, and OracleDB as its database. The frontend was built using VanillaJS, HTML and CSS. 
@@ -47,6 +49,8 @@ pip install requirements.txt
 After completing these steps run the webapp by executing the file: `run.py`. 
 
 ## Features
+!(demo)[https://github.com/salkhon/suntech/blob/master/startechlite/static/img/demo.png]
+
 This webapp is designed to sell PC related products, and the features revolve around that goal. There are two types of access to the webapp:
 ### 1. User 
 #### - Registration
